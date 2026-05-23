@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Blankee</string>
+    <string name="app_title">Blankee</string>
+    <string name="app_subtitle">ผ่อนคลายและมีสมาธิ</string>
+
+    <string name="menu_settings">การตั้งค่า</string>
+    <string name="menu_about">เกี่ยวกับ</string>
+    <string name="menu_pause">หยุดเสียงชั่วคราว</string>
+    <string name="menu_play">เล่นเสียง</string>
+    <string name="menu_timer">ตั้งเวลานอน</string>
+    <string name="menu_reset">รีเซ็ตเสียง</string>
+    <string name="content_desc_more_options">ตัวเลือกเพิ่มเติม</string>
+
+    <string name="tab_home">หน้าแรก</string>
+    <string name="tab_settings">การตั้งค่า</string>
+
+    <string name="category_nature">ธรรมชาติ</string>
+    <string name="category_travel">ท่องเที่ยว</string>
+    <string name="category_indoor">ในอาคาร</string>
+    <string name="category_interiors">ภายใน</string>
+    <string name="category_noise">เสียงรบกวน</string>
+    <string name="category_custom">เสียงกำหนดเอง</string>
+
+    <string name="sound_rain">ฝน</string>
+    <string name="sound_wind">ลม</string>
+    <string name="sound_storm">พายุ</string>
+    <string name="sound_wave">คลื่น</string>
+    <string name="sound_stream">ลำธาร</string>
+    <string name="sound_birds">นก</string>
+    <string name="sound_summer_night">คืนฤดูร้อน</string>
+
+    <string name="sound_train">รถไฟ</string>
+    <string name="sound_boat">เรือ</string>
+    <string name="sound_city">เมือง</string>
+
+    <string name="sound_coffee_shop">ร้านกาแฟ</string>
+    <string name="sound_fireplace">เตาผิง</string>
+    <string name="sound_busy_restaurant">ร้านอาหารคึกคัก</string>
+
+    <string name="sound_pink_noise">เสียงรบกวนสีชมพู</string>
+    <string name="sound_white_noise">เสียงรบกวนสีขาว</string>
+
+    <string name="settings_title">การตั้งค่า</string>
+    <string name="settings_section_app_preferences">การตั้งค่าของแอป</string>
+    <string name="settings_theme">ธีม</string>
+    <string name="settings_theme_hint">ค่าตั้งต้นเป็นธีมมืด ระบบจะตามโหมดสว่าง/มืดของอุปกรณ์</string>
+    <string name="settings_language">ภาษา</string>
+    <string name="settings_language_hint">นำไปใช้ทันที แอปจะรีสตาร์ทเพื่อโหลดภาษาใหม่</string>
+    <string name="language_system">ใช้ภาษาของระบบ</string>
+    <string name="theme_light">สว่าง</string>
+    <string name="theme_dark">มืด</string>
+    <string name="theme_system">ระบบ</string>
+    <string name="language_english">อังกฤษ</string>
+    <string name="language_chinese">จีน (简体)</string>
+    <string name="language_hindi">ฮินดี</string>
+    <string name="language_spanish">สเปน</string>
+    <string name="language_korean">เกาหลี</string>
+    <string name="language_arabic">อาหรับ</string>
+    <string name="language_french">ฝรั่งเศส</string>
+    <string name="language_bengali">เบงกาลี</string>
+    <string name="language_portuguese">โปรตุเกส</string>
+    <string name="language_tamil">ทมิฬ</string>
+    <string name="language_urdu">อูร์ดู</string>
+    <string name="language_indonesian">อินโดนีเซีย</string>
+    <string name="language_japanese">ญี่ปุ่น</string>
+    <string name="language_russian">รัสเซีย</string>
+    <string name="language_german">เยอรมัน</string>
+    <string name="language_turkish">ตุรกี</string>
+    <string name="language_vietnamese">เวียดนาม</string>
+    <string name="language_thai">ไทย</string>
+    <string name="language_persian">เปอร์เซีย</string>
+    <string name="language_punjabi">ปัญจาบ</string>
+
+    <string name="add_custom_sound">เพิ่มเสียงกำหนดเอง</string>
+    <string name="custom_sounds_premium_message">เสียงกำหนดเองเป็นส่วนหนึ่งของ Premium ปลดล็อกด้วยการซื้อครั้งเดียว</string>
+    <string name="buy_premium">ซื้อ Premium</string>
+    <string name="content_desc_buy_premium">ซื้อ Premium เพื่อปลดล็อกเสียงกำหนดเอง</string>
+    <string name="restore_purchases">กู้คืนการซื้อ</string>
+    <string name="premium_active">Premium ใช้งานอยู่ ขอบคุณสำหรับการสนับสนุน</string>
+    <string name="settings_section_premium">Premium</string>
+    <string name="billing_not_ready">การชำระเงินยังไม่พร้อม โปรดลองอีกครั้งภายหลัง</string>
+    <string name="billing_product_not_loaded">รายการร้านค้ายังไม่โหลด ตรวจสอบการเชื่อมต่อและลองใหม่</string>
+    <string name="billing_launch_failed">ไม่สามารถเปิดหน้าจอการซื้อได้</string>
+    <string name="billing_restored">กู้คืนการซื้อแล้ว</string>
+    <string name="billing_restore_none">ไม่พบการซื้อที่ใช้งานอยู่สำหรับบัญชีนี้</string>
+    <string name="custom_sound_default_name">กำหนดเอง %1$d</string>
+    <string name="sound_added">เพิ่มเสียงแล้ว: %1$s</string>
+    <string name="could_not_add_sound">ไม่สามารถเพิ่มเสียงได้</string>
+    <string name="sounds_reset">รีเซ็ตเสียงทั้งหมดแล้ว</string>
+    <string name="cant_play_sound_on_pause">ไม่สามารถเล่นเสียงขณะหยุดชั่วคราว</string>
+    <string name="delete_sound">ลบเสียงกำหนดเอง</string>
+    <string name="delete_sound_dialog_title">ลบเสียงไหม?</string>
+    <string name="delete_sound_dialog_message">ลบ "%1$s" ออกจากเสียงกำหนดเอง?</string>
+    <string name="delete_sound_confirm">ลบ</string>
+    <string name="rename_sound">เปลี่ยนชื่อเสียง</string>
+    <string name="sound_name_label">ชื่อเสียง</string>
+    <string name="rename_sound_confirm">เปลี่ยนชื่อ</string>
+
+    <string name="no_browser_installed">ไม่มีแอปที่เปิดลิงก์นี้ได้ โปรดติดตั้งเว็บเบราว์เซอร์</string>
+    <string name="error_unexpected">เกิดข้อผิดพลาดที่ไม่คาดคิด</string>
+
+    <string name="inspired_text">ได้รับแรงบันดาลใจจาก Blanket ของ Rafael Mardojai ซึ่งเดิมเป็นแอป GNOME</string>
+    <string name="app_description">ฟังเสียงต่างๆ เพิ่มสมาธิและประสิทธิภาพของคุณ</string>
+
+    <string name="about_title">เกี่ยวกับเรา</string>
+    <string name="about_version">เวอร์ชัน %1$s</string>
+    <string name="about_source_code">ซอร์สโค้ด</string>
+    <string name="about_source_code_subtitle">ดูซอร์สโค้ดของแอปนี้บน GitHub</string>
+    <string name="content_desc_back">กลับ</string>
+    <string name="content_desc_logo">โลโก้แอป</string>
+    <string name="content_desc_sound_icon">ไอคอนเสียง</string>
+    <string name="content_desc_add_custom_sound">เพิ่มเสียงกำหนดเอง</string>
+
+    <string name="presets_title">พรีเซ็ต</string>
+    <string name="presets_hint">บันทึกมิกซ์ปัจจุบัน แล้วโหลดเมื่อไรก็ได้</string>
+    <string name="presets_empty">ยังไม่มีพรีเซ็ต</string>
+    <string name="presets_save_mix">บันทึกมิกซ์ปัจจุบัน</string>
+    <string name="preset_load">โหลด</string>
+    <string name="preset_delete_desc">ลบพรีเซ็ต</string>
+    <string name="preset_delete_confirm_title">ลบพรีเซ็ตไหม?</string>
+    <string name="preset_delete_confirm_message">ลบ "%1$s" อย่างถาวร?</string>
+    <string name="preset_untitled">มิกซ์ไม่มีชื่อ</string>
+    <string name="preset_saved">บันทึกพรีเซ็ตแล้ว</string>
+    <string name="preset_nothing_to_save">เพิ่มเสียงอย่างน้อยหนึ่งเสียงก่อนบันทึก</string>
+    <string name="save_preset_dialog_title">บันทึกมิกซ์</string>
+    <string name="preset_name_label">ชื่อพรีเซ็ต</string>
+    <string name="preset_name_hint">หากปล่อยว่าง จะบันทึกเป็น "มิกซ์ไม่มีชื่อ"</string>
+    <string name="preset_dialog_save">บันทึก</string>
+    <string name="dialog_cancel">ยกเลิก</string>
+    <string name="timer_dialog_title">ตั้งเวลานอน</string>
+    <string name="timer_custom">กำหนดเอง</string>
+    <string name="timer_custom_label">นาที</string>
+    <string name="timer_minutes_format">%1$d นาที</string>
+    <string name="timer_start">เริ่ม</string>
+    <string name="timer_set">ตั้งเวลาไว้ %1$d นาที</string>
+    <string name="timer_invalid_input">ใส่ระยะเวลาให้ถูกต้อง</string>
+    <string name="sleep_timer_finished">หมดเวลาแล้ว หยุดเสียงแล้ว</string>
+    <string name="timer_countdown_label">ตั้งเวลานอน: %1$s</string>
+    <string name="timer_cancel">ยกเลิกตัวจับเวลา</string>
+    <string name="timer_cancel_confirm_title">ยกเลิกการตั้งเวลานอน?</string>
+    <string name="timer_cancel_confirm_message">คุณต้องการหยุดตัวจับเวลาปัจจุบันหรือไม่?</string>
+
+    <string name="notification_channel_name">การเล่น</string>
+    <string name="notification_channel_desc">แสดงเมื่อมิกซ์ Blankee ของคุณทำงานอยู่</string>
+    <string name="notification_playing">กำลังเล่นมิกซ์</string>
+    <string name="notification_paused">มิกซ์ถูกหยุดชั่วคราว</string>
+    <string name="notification_action_play">เล่น</string>
+    <string name="notification_action_pause">หยุดชั่วคราว</string>
+    <string name="notification_primer_title">อนุญาตการแจ้งเตือนหรือไม่?</string>
+    <string name="notification_primer_message">การแจ้งเตือนช่วยให้ควบคุมการเล่นได้ขณะเสียงกำลังเล่น</string>
+    <string name="notification_primer_grant">อนุญาต</string>
+    <string name="notification_primer_continue_anyway">ดำเนินการต่อ</string>
+
+    <string name="enjoy_prompt_title">ชอบ Blankee ไหม?</string>
+    <string name="enjoy_prompt_message">ถ้าชอบ คุณอยากให้ดาวโปรเจกต์บน GitHub ไหม?</string>
+    <string name="enjoy_prompt_yes">ใช่</string>
+    <string name="enjoy_prompt_no">ไม่</string>
+    <string name="star_github_title">ให้ดาวบน GitHub</string>
+    <string name="star_github_message">สิ่งนี้ช่วยได้มากและทำให้โปรเจกต์เติบโตต่อไป</string>
+    <string name="star_github_confirm">ให้ดาวตอนนี้</string>
+    <string name="star_github_later">ไว้ทีหลัง</string>
+
+    <string name="onboarding_title">ยินดีต้อนรับสู่ Blankee</string>
+    <string name="onboarding_subtitle">ทัวร์สั้นๆ เพื่อเริ่มต้น</string>
+    <string name="onboarding_feature_mix_title">ผสมเสียงผ่อนคลาย</string>
+    <string name="onboarding_feature_mix_body">รวมเสียงหลายแบบและปรับระดับเสียงเพื่อสร้างบรรยากาศที่สมบูรณ์แบบ</string>
+    <string name="onboarding_feature_timer_title">ตั้งเวลานอน</string>
+    <string name="onboarding_feature_timer_body">ตั้งเวลาเพื่อให้มิกซ์หยุดอัตโนมัติ</string>
+    <string name="onboarding_feature_presets_title">พรีเซ็ต</string>
+    <string name="onboarding_feature_presets_body">บันทึกมิกซ์โปรดและโหลดเมื่อไรก็ได้</string>
+    <string name="onboarding_feature_custom_title">เสียงกำหนดเอง</string>
+    <string name="onboarding_feature_custom_body">นำเข้าไฟล์เสียงของคุณเองและเพิ่มในมิกซ์</string>
+    <string name="onboarding_language_title">เลือกภาษา</string>
+    <string name="onboarding_language_body">คุณสามารถเปลี่ยนได้ภายหลังในการตั้งค่า</string>
+    <string name="onboarding_back">กลับ</string>
+    <string name="onboarding_next">ถัดไป</string>
+    <string name="onboarding_start">เริ่ม</string>
+    <string name="settings_section_others">อื่นๆ</string>
+    <string name="settings_report_bug_feature">รายงานบั๊กหรือขอฟีเจอร์</string>
+    <string name="settings_report_bug_feature_hint">เปิดที่เก็บ GitHub เพื่อสร้าง issue</string>
+    <string name="made_with_love_by_pronay">สร้างด้วยความรักโดย Pronay</string>
+
+    <string name="empty_string" translatable="false"></string>
+</resources>

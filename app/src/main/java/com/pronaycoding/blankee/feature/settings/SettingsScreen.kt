@@ -6,30 +6,23 @@ package com.pronaycoding.blankee.feature.settings
  * Displays app preferences and configuration options:
  * - Theme selection (Light/Dark/System)
  * - Language selection (English, Hindi, Bengali, Spanish, System)
- * - Premium/Billing section (upgrade, restore purchases, management)
  * - About section (app info, attribution, links)
  * - Privacy & Legal (privacy policy, open source attribution)
  *
  * Features:
  * - Segmented buttons for theme selection
  * - Single choice button row for language selection
- * - Premium purchase integration
  * - External links to privacy policy and GitHub
  * - Scrollable layout for all options
  *
  * State management via [SettingsViewModel]:
  * - Theme preference
  * - Language preference
- * - Premium unlock status
- * - Billing operations
  *
  * @see SettingsViewModel for screen state and business logic
  * @see PreferenceManagerRepository for preference persistence
- * @see PlayBillingManager for in-app purchases
  */
 
-import android.app.Activity
-import android.content.Context
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -39,19 +32,26 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.border
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.ArrowDropDown
+import androidx.compose.material.icons.filled.ArrowForwardIos
 import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.filled.KeyboardDoubleArrowDown
 import androidx.compose.material.icons.outlined.BrightnessAuto
 import androidx.compose.material.icons.outlined.DarkMode
 import androidx.compose.material.icons.outlined.LightMode
-import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CenterAlignedTopAppBar
+import androidx.compose.material3.Divider
+import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -62,10 +62,12 @@ import androidx.compose.material3.SegmentedButtonDefaults
 import androidx.compose.material3.SingleChoiceSegmentedButtonRow
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -78,7 +80,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.pronaycoding.blankee.BuildConfig
 import com.pronaycoding.blankee.R
 import com.pronaycoding.blankee.core.common.Constants
 import com.pronaycoding.blankee.core.common.util.findActivity
@@ -92,19 +93,15 @@ fun SettingsScreenRoute(
 ) {
     val selectedTheme by viewModel.selectedTheme.collectAsStateWithLifecycle()
     val selectedLanguage by viewModel.selectedLanguage.collectAsStateWithLifecycle()
-    val customSoundsUnlocked by viewModel.customSoundsUnlocked.collectAsStateWithLifecycle()
 
     SettingsScreen(
         selectedTheme = selectedTheme,
         selectedLanguage = selectedLanguage,
-        customSoundsUnlocked = customSoundsUnlocked,
         themeChoices = viewModel.themeChoices,
         languageChoices = viewModel.languageChoices,
         onBackPressed = onBackPressed,
         updateTheme = viewModel::updateTheme,
         updateLanguage = viewModel::updateLanguage,
-        restorePurchases = viewModel::restorePurchases,
-        launchPremiumPurchase = viewModel::launchPremiumPurchase,
     )
 }
 
@@ -113,14 +110,11 @@ fun SettingsScreenRoute(
 fun SettingsScreen(
     selectedTheme: String,
     selectedLanguage: String,
-    customSoundsUnlocked: Boolean,
     themeChoices: List<ThemeChoice>,
     languageChoices: List<LanguageChoice>,
     updateTheme: (String) -> Unit,
     updateLanguage: (String) -> Unit,
-    restorePurchases: (Context) -> Unit,
     onBackPressed: () -> Unit,
-    launchPremiumPurchase: (Activity) -> Unit,
 ) {
     val context = LocalContext.current
     val scheme = MaterialTheme.colorScheme
@@ -164,7 +158,7 @@ fun SettingsScreen(
             Spacer(modifier = Modifier.height(4.dp))
 
             Text(
-                text = stringResource(R.string.settings_section_display),
+                text = stringResource(R.string.settings_section_app_preferences),
                 style = MaterialTheme.typography.labelLarge,
                 color = scheme.primary,
                 modifier = Modifier.padding(start = 4.dp, bottom = 2.dp),
@@ -179,7 +173,8 @@ fun SettingsScreen(
                     ),
                 elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
             ) {
-                Column(Modifier.padding(20.dp)) {
+                Column(Modifier.padding(24.dp)) {
+                    // Theme section
                     Text(
                         text = stringResource(R.string.settings_theme),
                         style = MaterialTheme.typography.titleMedium,
@@ -240,162 +235,102 @@ fun SettingsScreen(
                             }
                         }
                     }
-                }
-            }
 
-            Spacer(modifier = Modifier.height(8.dp))
+                    Divider(
+                        modifier = Modifier.padding(vertical = 24.dp),
+                        color = scheme.outlineVariant,
+                    )
 
-            Text(
-                text = stringResource(R.string.settings_section_language),
-                style = MaterialTheme.typography.labelLarge,
-                color = scheme.primary,
-                modifier = Modifier.padding(start = 4.dp, bottom = 2.dp, top = 4.dp),
-            )
-
-            Card(
-                modifier = Modifier.fillMaxWidth(),
-                shape = MaterialTheme.shapes.extraLarge,
-                colors =
-                    CardDefaults.cardColors(
-                        containerColor = scheme.surfaceContainerLow,
-                    ),
-                elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
-            ) {
-                Column(Modifier.padding(vertical = 8.dp)) {
+                    // Language section
                     Text(
                         text = stringResource(R.string.settings_language),
                         style = MaterialTheme.typography.titleMedium,
                         fontWeight = FontWeight.SemiBold,
-                        modifier = Modifier.padding(horizontal = 20.dp, vertical = 4.dp),
-                    )
-                    Text(
-                        text = stringResource(R.string.settings_language_hint),
-                        style = MaterialTheme.typography.bodySmall,
-                        color = scheme.onSurfaceVariant,
-                        modifier =
-                            Modifier
-                                .padding(horizontal = 20.dp)
-                                .padding(bottom = 8.dp),
+                        color = scheme.onSurface,
+                        modifier = Modifier.padding(bottom = 12.dp),
                     )
 
-                    Column(
-                        modifier =
+                    var expanded by remember { mutableStateOf(false) }
+                    val currentLanguageLabel = stringResource(
+                        languageChoices.find { it.tag == selectedLanguage }?.labelRes
+                            ?: R.string.language_system
+                    )
+
+                    ElevatedCard(
+                        onClick = { expanded = true },
+                        shape = MaterialTheme.shapes.medium,
+                        elevation = CardDefaults.elevatedCardElevation(
+                            defaultElevation = if (expanded) 6.dp else 2.dp,
+                        ),
+                        colors = CardDefaults.elevatedCardColors(
+                            containerColor = scheme.surfaceContainer,
+                        ),
+                        modifier = Modifier.fillMaxWidth(),
+                    ) {
+                        Row(
                             Modifier
                                 .fillMaxWidth()
-                                .padding(horizontal = 12.dp, vertical = 4.dp),
-                        verticalArrangement = Arrangement.spacedBy(6.dp),
+                                .padding(horizontal = 20.dp, vertical = 16.dp),
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.SpaceBetween,
+                        ) {
+                            Text(
+                                text = currentLanguageLabel,
+                                style = MaterialTheme.typography.bodyLarge,
+                                color = scheme.onSurface,
+                                fontWeight = FontWeight.Normal,
+                                modifier = Modifier.weight(1f),
+                            )
+                            Icon(
+                                imageVector = Icons.Default.ArrowDropDown,
+                                contentDescription = null,
+                                tint = scheme.onSurfaceVariant,
+                                modifier = Modifier.size(24.dp),
+                            )
+                        }
+                    }
+
+                    DropdownMenu(
+                        expanded = expanded,
+                        onDismissRequest = { expanded = false },
+                        modifier = Modifier.fillMaxWidth(0.9f),
                     ) {
                         languageChoices.forEach { choice ->
                             val label = stringResource(choice.labelRes)
-                            val selected = selectedLanguage == choice.tag
-                            Surface(
-                                onClick = {
-                                    if (selectedLanguage == choice.tag) return@Surface
-                                    updateLanguage(choice.tag)
-                                    context.findActivity()?.recreate()
-                                },
-                                shape = MaterialTheme.shapes.large,
-                                color =
-                                    if (selected) {
-                                        scheme.primary.copy(alpha = 0.14f)
-                                    } else {
-                                        scheme.surfaceContainerHighest.copy(alpha = 0.45f)
-                                    },
-                                modifier = Modifier.fillMaxWidth(),
-                            ) {
-                                Row(
-                                    Modifier
-                                        .fillMaxWidth()
-                                        .padding(horizontal = 16.dp, vertical = 14.dp),
-                                    verticalAlignment = Alignment.CenterVertically,
-                                    horizontalArrangement = Arrangement.SpaceBetween,
-                                ) {
+                            val isSelected = selectedLanguage == choice.tag
+                            DropdownMenuItem(
+                                text = {
                                     Text(
                                         text = label,
                                         style = MaterialTheme.typography.bodyLarge,
-                                        fontWeight = if (selected) FontWeight.SemiBold else FontWeight.Normal,
-                                        color = scheme.onSurface,
-                                        modifier = Modifier.weight(1f),
+                                        fontWeight = if (isSelected) FontWeight.SemiBold else FontWeight.Normal,
+                                        color = if (isSelected) scheme.primary else scheme.onSurface,
                                     )
-                                    if (selected) {
+                                },
+                                onClick = {
+                                    if (!isSelected) {
+                                        updateLanguage(choice.tag)
+                                        context.findActivity()?.recreate()
+                                    }
+                                    expanded = false
+                                },
+                                leadingIcon = if (isSelected) {
+                                    {
                                         Icon(
                                             imageVector = Icons.Default.Check,
                                             contentDescription = null,
                                             tint = scheme.primary,
-                                            modifier = Modifier.size(22.dp),
+                                            modifier = Modifier.size(20.dp),
                                         )
                                     }
-                                }
-                            }
+                                } else null,
+                            )
                         }
                     }
                 }
             }
 
             Spacer(modifier = Modifier.height(24.dp))
-
-            if (BuildConfig.CUSTOM_SOUNDS_PREMIUM_LOCKED) {
-                Text(
-                    text = stringResource(R.string.settings_section_premium),
-                    style = MaterialTheme.typography.labelLarge,
-                    color = scheme.primary,
-                    modifier = Modifier.padding(start = 4.dp, bottom = 2.dp, top = 4.dp),
-                )
-
-                Card(
-                    modifier = Modifier.fillMaxWidth(),
-                    shape = MaterialTheme.shapes.extraLarge,
-                    colors =
-                        CardDefaults.cardColors(
-                            containerColor = scheme.surfaceContainerLow,
-                        ),
-                    elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
-                ) {
-                    Column(Modifier.padding(20.dp)) {
-                        if (customSoundsUnlocked) {
-                            Text(
-                                text = stringResource(R.string.premium_active),
-                                style = MaterialTheme.typography.bodyMedium,
-                                color = scheme.onSurfaceVariant,
-                            )
-                            Spacer(modifier = Modifier.height(12.dp))
-                            TextButton(
-                                onClick = { restorePurchases(context) },
-                                modifier = Modifier.fillMaxWidth(),
-                            ) {
-                                Text(stringResource(R.string.restore_purchases))
-                            }
-                        } else {
-                            Text(
-                                text = stringResource(R.string.custom_sounds_premium_message),
-                                style = MaterialTheme.typography.bodyMedium,
-                                color = scheme.onSurfaceVariant,
-                            )
-                            Spacer(modifier = Modifier.height(16.dp))
-                            Button(
-                                onClick = {
-                                    context
-                                        .findActivity()
-                                        ?.let { launchPremiumPurchase(it) }
-                                },
-                                modifier = Modifier.fillMaxWidth(),
-                                shape = MaterialTheme.shapes.large,
-                            ) {
-                                Text(stringResource(R.string.buy_premium))
-                            }
-                            Spacer(modifier = Modifier.height(8.dp))
-                            TextButton(
-                                onClick = { restorePurchases(context) },
-                                modifier = Modifier.fillMaxWidth(),
-                            ) {
-                                Text(stringResource(R.string.restore_purchases))
-                            }
-                        }
-                    }
-                }
-
-                Spacer(modifier = Modifier.height(16.dp))
-            }
 
             Text(
                 text = stringResource(R.string.settings_section_others),

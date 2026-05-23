@@ -10,7 +10,6 @@ package com.pronaycoding.blankee.feature.home
  * - Manage global playback state (play/pause/reset)
  * - Save and load sound presets
  * - Manage sleep timer functionality
- * - Handle premium feature availability
  * - Coordinate with SoundManager, GlobalPlaybackState, and repositories
  *
  * State flows exposed:
@@ -19,7 +18,6 @@ package com.pronaycoding.blankee.feature.home
  * - `builtinVolumes`: Current volume levels for built-in sounds
  * - `customVolumes`: Current volume levels for custom sounds
  * - `presets`: Saved sound presets
- * - `customSoundsUnlocked`: Premium status for custom sounds
  * - `sleepTimerRemainingMillis`: Sleep timer countdown
  *
  * @see SoundManager for audio playback control
@@ -28,22 +26,18 @@ package com.pronaycoding.blankee.feature.home
  * @see CustomSoundRepositoryImpl for custom sound management
  */
 
-import android.app.Activity
 import android.content.Context
 import android.util.Log
 import android.widget.Toast
 import androidx.core.net.toUri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.pronaycoding.blankee.BuildConfig
 import com.pronaycoding.blankee.R
 import com.pronaycoding.blankee.core.common.PresetJson
 import com.pronaycoding.blankee.core.data.repositoryImpl.CustomSoundRepositoryImpl
 import com.pronaycoding.blankee.core.data.repositoryImpl.PresetRepositoryImpl
 import com.pronaycoding.blankee.core.database.entities.CustomSoundEntity
 import com.pronaycoding.blankee.core.database.entities.PresetEntity
-import com.pronaycoding.blankee.core.datastore.PreferenceManagerRepository
-import com.pronaycoding.blankee.core.service.billing.PlayBillingManager
 import com.pronaycoding.blankee.core.service.playback.GlobalPlaybackState
 import com.pronaycoding.blankee.core.service.playback.MediaPlaybackNotifications
 import kotlinx.coroutines.Job
@@ -65,8 +59,6 @@ class HomeViewmodel(
     private val globalPlaybackState: GlobalPlaybackState,
     private val mediaPlaybackNotifications: MediaPlaybackNotifications,
     private val context: Context,
-    private val preferenceManager: PreferenceManagerRepository,
-    private val playBillingManager: PlayBillingManager,
 ) : ViewModel() {
     val canPlay: StateFlow<Boolean> = globalPlaybackState.canPlay
 
@@ -88,33 +80,12 @@ class HomeViewmodel(
     private var customSoundsCollectionJob: Job? = null
     private var sleepTimerJob: Job? = null
 
-    /**
-     * Custom sounds are free in debug. In release they require an active Premium purchase
-     * (synced from Play Billing into preferences).
-     */
-    val customSoundsUnlocked: StateFlow<Boolean> =
-        preferenceManager
-            .premiumUnlockedFlow()
-            .map { storedPremium -> !BuildConfig.CUSTOM_SOUNDS_PREMIUM_LOCKED || storedPremium }
-            .stateIn(
-                viewModelScope,
-                SharingStarted.WhileSubscribed(5000),
-                !BuildConfig.CUSTOM_SOUNDS_PREMIUM_LOCKED,
-            )
     private val _sleepTimerRemainingMillis: MutableStateFlow<Long?> = MutableStateFlow(null)
     val sleepTimerRemainingMillis: StateFlow<Long?> = _sleepTimerRemainingMillis.asStateFlow()
 
     init {
         soundManager.loadSounds()
-        viewModelScope.launch {
-            customSoundsUnlocked.collect { unlocked ->
-                if (unlocked) {
-                    startCustomSoundsCollection()
-                } else {
-                    stopCustomSoundsCollection()
-                }
-            }
-        }
+        startCustomSoundsCollection()
         // Always start from a clean playback state on app launch/re-entry.
         resetAllSounds()
     }
@@ -165,10 +136,6 @@ class HomeViewmodel(
         _customSounds.value = emptyList()
         _customVolumes.value = emptyMap()
         syncPlaybackNotification()
-    }
-
-    fun launchPremiumPurchase(activity: Activity) {
-        playBillingManager.launchPremiumPurchase(activity)
     }
 
     private fun hasAudibleMix(): Boolean {
@@ -368,15 +335,6 @@ class HomeViewmodel(
         displayName: String,
         filePath: String,
     ) {
-        if (!customSoundsUnlocked.value) {
-            Toast
-                .makeText(
-                    context,
-                    context.getString(R.string.custom_sounds_premium_message),
-                    Toast.LENGTH_LONG,
-                ).show()
-            return
-        }
         viewModelScope.launch {
             customSoundRepository.addCustomSound(displayName, filePath)
         }
@@ -409,11 +367,8 @@ class HomeViewmodel(
                 idx in 0 until end && vol > 0f
             }
         val custom =
-            if (!customSoundsUnlocked.value) {
-                emptyMap()
-            } else {
-                _customVolumes.value.filter { (_, vol) -> vol > 0f }
-            }
+            _customVolumes.value.filter { (_, vol) -> vol > 0f }
+
         return builtIn to custom
     }
 
@@ -443,12 +398,7 @@ class HomeViewmodel(
             PresetJson
                 .jsonToMap(preset.builtInVolumesJson)
                 .filterKeys { it in 0 until endExclusive }
-        val custom =
-            if (!customSoundsUnlocked.value) {
-                emptyMap()
-            } else {
-                PresetJson.jsonToMap(preset.customVolumesJson)
-            }
+        val custom = PresetJson.jsonToMap(preset.customVolumesJson)
 
         soundManager.stopAllSounds()
 

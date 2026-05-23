@@ -10,6 +10,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -99,7 +100,7 @@ class MainActivity : ComponentActivity() {
                                         }
                                     },
                                 ) {
-                                    Text(getString(R.string.notification_primer_continue_anyway))
+                                    Text(getString(R.string.notification_primer_continue_anyway), color = MaterialTheme.colorScheme.error)
                                 }
                             },
                         )

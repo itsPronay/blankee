@@ -42,8 +42,7 @@
     <string name="sound_white_noise">হোয়াইট নয়েজ</string>
 
     <string name="settings_title">সেটিংস</string>
-    <string name="settings_section_display">ডিসপ্লে</string>
-    <string name="settings_section_language">ভাষা</string>
+    <string name="settings_section_app_preferences">অ্যাপ পছন্দ</string>
     <string name="settings_theme">থিম</string>
     <string name="settings_theme_hint">ডিফল্ট গাঢ়। সিস্টেম আপনার ডিভাইসের লাইট/ডার্ক মোড অনুসরণ করে।</string>
     <string name="settings_language">ভাষা</string>

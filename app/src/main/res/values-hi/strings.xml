@@ -42,8 +42,7 @@
     <string name="sound_white_noise">व्हाइट नॉइज़</string>
 
     <string name="settings_title">सेटिंग्स</string>
-    <string name="settings_section_display">प्रदर्शन</string>
-    <string name="settings_section_language">भाषा</string>
+    <string name="settings_section_app_preferences">ऐप्लिकेशन प्राथमिकताएं</string>
     <string name="settings_theme">थीम</string>
     <string name="settings_theme_hint">डिफ़ॉल्ट गहरा है। सिस्टम आपके डिवाइस की लाइट/डार्क सेटिंग का पालन करता है।</string>
     <string name="settings_language">भाषा</string>

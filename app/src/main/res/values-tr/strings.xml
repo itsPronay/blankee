@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Blankee</string>
+    <string name="app_title">Blankee</string>
+    <string name="app_subtitle">Rahatla ve odaklan</string>
+
+    <string name="menu_settings">Ayarlar</string>
+    <string name="menu_about">Hakkında</string>
+    <string name="menu_pause">Sesleri duraklat</string>
+    <string name="menu_play">Sesleri çal</string>
+    <string name="menu_timer">Uyku zamanlayıcısı</string>
+    <string name="menu_reset">Sesleri sıfırla</string>
+    <string name="content_desc_more_options">Daha fazla seçenek</string>
+
+    <string name="tab_home">Ana sayfa</string>
+    <string name="tab_settings">Ayarlar</string>
+
+    <string name="category_nature">Doğa</string>
+    <string name="category_travel">Seyahat</string>
+    <string name="category_indoor">İç mekân</string>
+    <string name="category_interiors">İç mekânlar</string>
+    <string name="category_noise">Gürültü</string>
+    <string name="category_custom">Özel sesler</string>
+
+    <string name="sound_rain">Yağmur</string>
+    <string name="sound_wind">Rüzgar</string>
+    <string name="sound_storm">Fırtına</string>
+    <string name="sound_wave">Dalgalar</string>
+    <string name="sound_stream">Dere</string>
+    <string name="sound_birds">Kuşlar</string>
+    <string name="sound_summer_night">Yaz gecesi</string>
+
+    <string name="sound_train">Tren</string>
+    <string name="sound_boat">Tekne</string>
+    <string name="sound_city">Şehir</string>
+
+    <string name="sound_coffee_shop">Kahve dükkanı</string>
+    <string name="sound_fireplace">Şömine</string>
+    <string name="sound_busy_restaurant">Kalabalık restoran</string>
+
+    <string name="sound_pink_noise">Pembe gürültü</string>
+    <string name="sound_white_noise">Beyaz gürültü</string>
+
+    <string name="settings_title">Ayarlar</string>
+    <string name="settings_section_app_preferences">Uygulama Tercihleri</string>
+    <string name="settings_theme">Tema</string>
+    <string name="settings_theme_hint">Varsayılan koyu. Sistem cihazın açık/koyu modunu takip eder.</string>
+    <string name="settings_language">Dil</string>
+    <string name="settings_language_hint">Hemen uygulanır. Yeni dili yüklemek için uygulama yeniden başlatılır.</string>
+    <string name="language_system">Sistem dilini kullan</string>
+    <string name="theme_light">Açık</string>
+    <string name="theme_dark">Koyu</string>
+    <string name="theme_system">Sistem</string>
+    <string name="language_english">İngilizce</string>
+    <string name="language_chinese">Çince (简体)</string>
+    <string name="language_hindi">Hintçe</string>
+    <string name="language_spanish">İspanyolca</string>
+    <string name="language_korean">Korece</string>
+    <string name="language_arabic">Arapça</string>
+    <string name="language_french">Fransızca</string>
+    <string name="language_bengali">Bengalce</string>
+    <string name="language_portuguese">Portekizce</string>
+    <string name="language_tamil">Tamilce</string>
+    <string name="language_urdu">Urduca</string>
+    <string name="language_indonesian">Endonezce</string>
+    <string name="language_japanese">Japonca</string>
+    <string name="language_russian">Rusça</string>
+    <string name="language_german">Almanca</string>
+    <string name="language_turkish">Türkçe</string>
+    <string name="language_vietnamese">Vietnamca</string>
+    <string name="language_thai">Tayca</string>
+    <string name="language_persian">Farsça</string>
+    <string name="language_punjabi">Pencapça</string>
+
+    <string name="add_custom_sound">Özel ses ekle</string>
+    <string name="custom_sounds_premium_message">Özel sesler Premium içeriğindedir. Tek seferlik satın alımla açın.</string>
+    <string name="buy_premium">Premium satın al</string>
+    <string name="content_desc_buy_premium">Özel sesleri açmak için Premium satın al</string>
+    <string name="restore_purchases">Satın alımları geri yükle</string>
+    <string name="premium_active">Premium aktif. Desteğiniz için teşekkürler.</string>
+    <string name="settings_section_premium">Premium</string>
+    <string name="billing_not_ready">Faturalandırma hazır değil. Kısa süre sonra tekrar deneyin.</string>
+    <string name="billing_product_not_loaded">Mağaza listesi yüklenmedi. Bağlantınızı kontrol edip tekrar deneyin.</string>
+    <string name="billing_launch_failed">Satın alma ekranı açılamadı.</string>
+    <string name="billing_restored">Satın alımlar geri yüklendi.</string>
+    <string name="billing_restore_none">Bu hesap için aktif satın alım bulunamadı.</string>
+    <string name="custom_sound_default_name">Özel %1$d</string>
+    <string name="sound_added">Ses eklendi: %1$s</string>
+    <string name="could_not_add_sound">Ses eklenemedi</string>
+    <string name="sounds_reset">Tüm sesler sıfırlandı</string>
+    <string name="cant_play_sound_on_pause">Duraklatılmışken ses oynatılamaz</string>
+    <string name="delete_sound">Özel sesi sil</string>
+    <string name="delete_sound_dialog_title">Ses silinsin mi?</string>
+    <string name="delete_sound_dialog_message">"%1$s" özel seslerden kaldırılsın mı?</string>
+    <string name="delete_sound_confirm">Sil</string>
+    <string name="rename_sound">Ses adını değiştir</string>
+    <string name="sound_name_label">Ses adı</string>
+    <string name="rename_sound_confirm">Değiştir</string>
+
+    <string name="no_browser_installed">Bu bağlantıyı açacak bir uygulama yok. Lütfen bir web tarayıcı yükleyin.</string>
+    <string name="error_unexpected">Beklenmeyen bir hata oluştu.</string>
+
+    <string name="inspired_text">Rafael Mardojai\'nin Blanket uygulamasından, aslında bir GNOME uygulamasından ilham alınmıştır.</string>
+    <string name="app_description">Farklı sesleri dinleyin. Odağınızı artırın ve verimliliğinizi yükseltin.</string>
+
+    <string name="about_title">Hakkımızda</string>
+    <string name="about_version">Sürüm %1$s</string>
+    <string name="about_source_code">Kaynak kod</string>
+    <string name="about_source_code_subtitle">Bu uygulamanın kaynak kodunu GitHub\'da görüntüleyin</string>
+    <string name="content_desc_back">Geri</string>
+    <string name="content_desc_logo">Uygulama logosu</string>
+    <string name="content_desc_sound_icon">Ses simgesi</string>
+    <string name="content_desc_add_custom_sound">Özel ses ekle</string>
+
+    <string name="presets_title">Ön ayarlar</string>
+    <string name="presets_hint">Mevcut karışımınızı kaydedin ve istediğiniz zaman yükleyin.</string>
+    <string name="presets_empty">Henüz ön ayar yok.</string>
+    <string name="presets_save_mix">Mevcut karışımı kaydet</string>
+    <string name="preset_load">Yükle</string>
+    <string name="preset_delete_desc">Ön ayarı sil</string>
+    <string name="preset_delete_confirm_title">Ön ayar silinsin mi?</string>
+    <string name="preset_delete_confirm_message">"%1$s" kalıcı olarak silinsin mi?</string>
+    <string name="preset_untitled">Başlıksız karışım</string>
+    <string name="preset_saved">Ön ayar kaydedildi</string>
+    <string name="preset_nothing_to_save">Kaydetmeden önce en az bir sesi artırın.</string>
+    <string name="save_preset_dialog_title">Karışımı kaydet</string>
+    <string name="preset_name_label">Ön ayar adı</string>
+    <string name="preset_name_hint">Boş bırakılırsa "Başlıksız karışım" olarak kaydedilir</string>
+    <string name="preset_dialog_save">Kaydet</string>
+    <string name="dialog_cancel">İptal</string>
+    <string name="timer_dialog_title">Uyku zamanlayıcısını ayarla</string>
+    <string name="timer_custom">Özel</string>
+    <string name="timer_custom_label">Dakika</string>
+    <string name="timer_minutes_format">%1$d dk</string>
+    <string name="timer_start">Başlat</string>
+    <string name="timer_set">Zamanlayıcı %1$d dakika için ayarlandı</string>
+    <string name="timer_invalid_input">Geçerli bir süre girin</string>
+    <string name="sleep_timer_finished">Zamanlayıcı bitti. Sesler durduruldu.</string>
+    <string name="timer_countdown_label">Uyku zamanlayıcısı: %1$s</string>
+    <string name="timer_cancel">Zamanlayıcıyı iptal et</string>
+    <string name="timer_cancel_confirm_title">Uyku zamanlayıcısı iptal edilsin mi?</string>
+    <string name="timer_cancel_confirm_message">Mevcut zamanlayıcıyı durdurmak istiyor musunuz?</string>
+
+    <string name="notification_channel_name">Çalma</string>
+    <string name="notification_channel_desc">Blankee karışımınız aktif olduğunda gösterir</string>
+    <string name="notification_playing">Karışım çalıyor</string>
+    <string name="notification_paused">Karışım duraklatıldı</string>
+    <string name="notification_action_play">Çal</string>
+    <string name="notification_action_pause">Duraklat</string>
+    <string name="notification_primer_title">Bildirimlere izin verilsin mi?</string>
+    <string name="notification_primer_message">Bildirimler, sesler çalışırken oynatma kontrollerini kullanılabilir tutar.</string>
+    <string name="notification_primer_grant">İzin ver</string>
+    <string name="notification_primer_continue_anyway">Yine de devam et</string>
+
+    <string name="enjoy_prompt_title">Blankee\'yi seviyor musunuz?</string>
+    <string name="enjoy_prompt_message">Beğendiyseniz, projeye GitHub\'da yıldız vermek ister misiniz?</string>
+    <string name="enjoy_prompt_yes">Evet</string>
+    <string name="enjoy_prompt_no">Hayır</string>
+    <string name="star_github_title">GitHub\'da yıldız ver</string>
+    <string name="star_github_message">Bu çok yardımcı olur ve projeyi büyütür.</string>
+    <string name="star_github_confirm">Şimdi yıldız ver</string>
+    <string name="star_github_later">Belki sonra</string>
+
+    <string name="onboarding_title">Blankee\'ye hoş geldiniz</string>
+    <string name="onboarding_subtitle">Başlamak için kısa bir tur.</string>
+    <string name="onboarding_feature_mix_title">Rahatlatıcı sesleri karıştırın</string>
+    <string name="onboarding_feature_mix_body">Birden fazla sesi birleştirin ve ideal ortamınızı oluşturmak için sesi ayarlayın.</string>
+    <string name="onboarding_feature_timer_title">Uyku zamanlayıcısı</string>
+    <string name="onboarding_feature_timer_body">Karışımınızın otomatik durması için bir zamanlayıcı ayarlayın.</string>
+    <string name="onboarding_feature_presets_title">Ön ayarlar</string>
+    <string name="onboarding_feature_presets_body">Favori karışımlarınızı kaydedin ve istediğiniz zaman yükleyin.</string>
+    <string name="onboarding_feature_custom_title">Özel sesler</string>
+    <string name="onboarding_feature_custom_body">Kendi ses dosyalarınızı içe aktarın ve karışımınıza ekleyin.</string>
+    <string name="onboarding_language_title">Dil seçin</string>
+    <string name="onboarding_language_body">Bunu daha sonra Ayarlar\'dan değiştirebilirsiniz.</string>
+    <string name="onboarding_back">Geri</string>
+    <string name="onboarding_next">İleri</string>
+    <string name="onboarding_start">Başla</string>
+    <string name="settings_section_others">Diğer</string>
+    <string name="settings_report_bug_feature">Hata bildir veya özellik iste</string>
+    <string name="settings_report_bug_feature_hint">Bir issue oluşturmak için GitHub deposunu açın.</string>
+    <string name="made_with_love_by_pronay">Pronay tarafından sevgiyle yapıldı</string>
+
+    <string name="empty_string" translatable="false"></string>
+</resources>

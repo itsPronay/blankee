@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Blankee</string>
+    <string name="app_title">Blankee</string>
+    <string name="app_subtitle">தளர்ந்து கவனம் செலுத்தவும்</string>
+
+    <string name="menu_settings">அமைப்புகள்</string>
+    <string name="menu_about">பற்றி</string>
+    <string name="menu_pause">ஒலிகளை பாஸ் செய்யவும்</string>
+    <string name="menu_play">ஒலிகளை சালிக்கவும்</string>
+    <string name="menu_timer">உறக்க டைமர்</string>
+    <string name="menu_reset">ஒலிகளை மீட்டமைக்கவும்</string>
+    <string name="content_desc_more_options">மேலும் விருப்பங்கள்</string>
+
+    <string name="tab_home">வீடு</string>
+    <string name="tab_settings">அமைப்புகள்</string>
+
+    <string name="category_nature">இயற்கை</string>
+    <string name="category_travel">பயணம்</string>
+    <string name="category_indoor">உள்ளே</string>
+    <string name="category_interiors">உட்புறங்கள்</string>
+    <string name="category_noise">சத்தம்</string>
+    <string name="category_custom">விருப்ப ஒலிகள்</string>
+
+    <string name="sound_rain">மழை</string>
+    <string name="sound_wind">காற்று</string>
+    <string name="sound_storm">புயல்</string>
+    <string name="sound_wave">அலைகள்</string>
+    <string name="sound_stream">ஸ்ட்ரீம்</string>
+    <string name="sound_birds">பறவைகள்</string>
+    <string name="sound_summer_night">கோடை இரவு</string>
+
+    <string name="sound_train">ரயில்</string>
+    <string name="sound_boat">படகு</string>
+    <string name="sound_city">நகரம்</string>
+
+    <string name="sound_coffee_shop">காபி கடை</string>
+    <string name="sound_fireplace">நெருப்பிடம்</string>
+    <string name="sound_busy_restaurant">பிஸி உணவகம்</string>
+
+    <string name="sound_pink_noise">இளஞ்சிவப்பு சத்தம்</string>
+    <string name="sound_white_noise">வெள்ளை சத்தம்</string>
+
+    <string name="settings_title">அமைப்புகள்</string>
+    <string name="settings_section_app_preferences">பயன்பாட்டு முன்னுரிமைகள்</string>
+    <string name="settings_theme">தீம்</string>
+    <string name="settings_theme_hint">இருண்ட இயல்பாக உள்ளது. கணினி உங்கள் சாதன ஒளி/இருண்ட முறையைப் பின்பற்றுகிறது.</string>
+    <string name="settings_language">மொழி</string>
+    <string name="settings_language_hint">உடனடியாக பொருந்தும். புதிய மொழியைக் கொண்டு வர பயன்பாடு மறுதொடக்கம் செய்கிறது।</string>
+    <string name="language_system">கணினி மொழியைப் பயன்படுத்தவும்</string>
+    <string name="theme_light">ஒளி</string>
+    <string name="theme_dark">இருண்ட</string>
+    <string name="theme_system">கணினி</string>
+    <string name="language_english">English</string>
+    <string name="language_chinese">中文 (简体)</string>
+    <string name="language_hindi">हिंदी</string>
+    <string name="language_spanish">Español</string>
+    <string name="language_korean">한국어</string>
+    <string name="language_arabic">العربية</string>
+    <string name="language_french">Français</string>
+    <string name="language_bengali">বাংলা</string>
+    <string name="language_portuguese">Português</string>
+    <string name="language_tamil">தமிழ்</string>
+
+    <string name="add_custom_sound">விருப்ப ஒலியைச் சேர்க்கவும்</string>
+    <string name="custom_sounds_premium_message">விருப்ப ஒலிகள் பிரிமியমின் பகுதி. ஒரு முறை ক্রয் மூலம் அவ்வொ்ற்றுக்கவும்।</string>
+    <string name="buy_premium">பிரிமியம் வாங்கவும்</string>
+    <string name="content_desc_buy_premium">விருப்ப ஒலிகளை அவ்வொற்றுக்க பிரிமியம் வாங்கவும்</string>
+    <string name="restore_purchases">ক্রয়গুলি পুনরুদ্ধার করুন</string>
+    <string name="premium_active">প্রিমিয়াম সক্রিয়। আপনার সমর্থনের জন্য ধন্যবাদ।</string>
+    <string name="settings_section_premium">পিரিমিয়াম</string>
+    <string name="billing_not_ready">বিলিং এখনও প্রস্তুত নয়। অল்পকালে পুনরায় চেষ্টা করুন।</string>
+    <string name="billing_product_not_loaded">দোকান তালিকা ভার করা যায়নি। আপনার সংযোগ சோதনை செய்து পুনরায় চেষ্টা করুন।</string>
+    <string name="billing_launch_failed">ক্রয় திரை খুলতে முடியவில்லை।</string>
+    <string name="billing_restored">ক्रয়গुलि पुनरुद्धार किए गए।</string>
+    <string name="billing_restore_none">इस खाते के लिए कोई सक्रिय ख़रीदारी नहीं मिली।</string>
+    <string name="custom_sound_default_name">விருப்ப %1$d</string>
+    <string name="sound_added">ஒலி சேர்க்கப்பட்டது: %1$s</string>
+    <string name="could_not_add_sound">ஒலியைச் சேர்க்க முடியவில்லை</string>
+    <string name="sounds_reset">அனைத்து ஒலிகளும் மீட்டமைக்கப்பட்டுள்ளன</string>
+    <string name="cant_play_sound_on_pause">பாஸ் செய்யும் போது ஒலியை சালிக்க முடியாது</string>
+    <string name="delete_sound">விருப்ப ஒலியை நீக்கவும்</string>
+    <string name="delete_sound_dialog_title">ஒலியை நீக்கவும்?</string>
+    <string name="delete_sound_dialog_message">விருப்ப ஒலிகளிலிருந்து \"%1$s\"ஐ அகற்றவும்?</string>
+    <string name="delete_sound_confirm">நீக்கவும்</string>
+    <string name="rename_sound">ஒலியின் பெயர் மாற்றவும்</string>
+    <string name="sound_name_label">ஒலியின் பெயர்</string>
+    <string name="rename_sound_confirm">பெயர் மாற்றவும்</string>
+
+    <string name="no_browser_installed">இந்த இணைப்பை நোக்கிய பயன்பாடு இல்லை। தயவுசெய்து வெப் உலாவியை நிறுவவும்।</string>
+    <string name="error_unexpected">அप्रत्याशित त्रुटि हुई।</string>
+
+    <string name="inspired_text">Rafael Mardojai இனுடைய Blanket ஆல் முன்வைக்கப்பட்டது, இது முதলில் ஒரு GNOME பயன்பாடு।</string>
+    <string name="app_description">வெவ்வேறு ஒலிகளைக் கேளுங்கள்। கவனத்தை உন்னதமாக்கவும் மற்றும் உங்கள் உற்பத்திత்தை அதிகரிக்கவும்।</string>
+
+    <string name="about_title">நம்மை பற்றி</string>
+    <string name="about_version">பதிப்பு %1$s</string>
+    <string name="about_source_code">மூல நிரல்</string>
+    <string name="about_source_code_subtitle">GitHub இல் இந்த பயன்பாட்டின் மூல நிரலைப் பாருங்கள்</string>
+    <string name="content_desc_back">பின்னே செல்லவும்</string>
+    <string name="content_desc_logo">பயன்பாட்டு சின்னம்</string>
+    <string name="content_desc_sound_icon">ஒலி icon</string>
+    <string name="content_desc_add_custom_sound">விருப்ப ஒலியைச் சேர்க்கவும்</string>
+
+    <string name="presets_title">முன்பே அமைப்புகள்</string>
+    <string name="presets_hint">உங்கள் தற்போதைய கலவையை சேமி, பின்னர் எப்போது வேண்டுமாலும் ஆட்டவும்।</string>
+    <string name="presets_empty">எந்த முன்பு அமைப்புகளும் இல்லை।</string>
+    <string name="presets_save_mix">தற்போதைய கலவையை சேமி</string>
+    <string name="preset_load">ஆட்டவும்</string>
+    <string name="preset_delete_desc">முன்பு அமைப்பை நீக்கவும்</string>
+    <string name="preset_delete_confirm_title">முன்பு அமைப்பை நீக்கவும்?</string>
+    <string name="preset_delete_confirm_message">\"%1$s\"ஐ நிரந்தரமாக நீக்கவும்?</string>
+    <string name="preset_untitled">பெயரிடப்பாத கலவை</string>
+    <string name="preset_saved">முன்பு அமைப்பு சேமிக்கப்பட்டது</string>
+    <string name="preset_nothing_to_save">சேமிப்பதற்கு முன் குறைந்தபட்சம் ஒரு ஒலியை உயர்த்தவும்।</string>
+    <string name="save_preset_dialog_title">கலவையை சேமி</string>
+    <string name="preset_name_label">முன்பு அமைப்பின் பெயர்</string>
+    <string name="preset_name_hint">வெறுமையாக விட்டாலால் பெயரிடப்பாத கலவை என சேமிக்கப்படும்</string>
+    <string name="preset_dialog_save">சேமி</string>
+    <string name="dialog_cancel">ரத்து செய়யு</string>
+    <string name="timer_dialog_title">உறக்க டைமர் அமை</string>
+    <string name="timer_custom">விருப்ப</string>
+    <string name="timer_custom_label">நிமிடங்கள்</string>
+    <string name="timer_minutes_format">%1$d நி</string>
+    <string name="timer_start">தொடக்கம்</string>
+    <string name="timer_set">டைமர் %1$d நிமிடங்களுக்கு அமைக்கப்பட்டுள்ளது</string>
+    <string name="timer_invalid_input">செல்லுபडि டைமர் கால அளவை உवेশiக्या செய்யவும்</string>
+    <string name="sleep_timer_finished">டைமர் முடிந்து விட்டது. ஒலிகள் நிறுத்தப்பட்டுவிட்டன।</string>
+    <string name="timer_countdown_label">உறக்க டைமர்: %1$s</string>
+    <string name="timer_cancel">டைமரை ரத்து செய்யவும்</string>
+    <string name="timer_cancel_confirm_title">உறக்க டைமர்ை ரத்து செய்யவும்?</string>
+    <string name="timer_cancel_confirm_message">தற்போதைய டைமர்ை நிறுத்த வேண்டுமா?</string>
+
+    <string name="notification_channel_name">பிளேபாக்</string>
+    <string name="notification_channel_desc">உங்கள் Blankee கலவை சক்رियமாக இருக்கும்போது குறிப்பிட</string>
+    <string name="notification_playing">கலவை பிளேബாக்</string>
+    <string name="notification_paused">கலவை பாஸ் செய்யப்பட்டது</string>
+    <string name="notification_action_play">சালிக்கவும்</string>
+    <string name="notification_action_pause">பாஸ் செய்யவும்</string>
+    <string name="notification_primer_title">அறிவitsppukalai அனुमতி देना?</string>
+    <string name="notification_primer_message">அறிவிப்புகள் ஒலிகள் چलาते ஸமय आप्का प्लेबैक नियंत्रणпрезда प्राप्य रাขते हैं।</string>
+    <string name="notification_primer_grant">অनुमति दें</string>
+    <string name="notification_primer_continue_anyway">とにかも চলmidಹಿರ್</string>
+
+    <string name="enjoy_prompt_title">Blankee ను పభिभ్చిวकर</string>
+    <string name="enjoy_prompt_message">మీకు నచ్చినెలా, GitHub ఈ ప్రాజెక్ట్‌కు స్తారు ఇవ్విందాకాగా చేయాలని?</string>
+    <string name="enjoy_prompt_yes">అవ్</string>
+    <string name="enjoy_prompt_no">కాదు</string>
+    <string name="star_github_title">GitHub లో స్তారు</string>
+    <string name="star_github_message">ఇది చాలా సహాయకరమైనది మరియు ప్రాజెక్ట్ బృదిదోవిసుకుంటుంది।</string>
+    <string name="star_github_confirm">ఇప్పుడు స్తారు ఇవ్వండి</string>
+    <string name="star_github_later">నతర</string>
+
+    <string name="onboarding_title">Blankee కు స్వగతం</string>
+    <string name="onboarding_subtitle">మీరు ప్రారంభించడానికి త్వరితగతి ఉపకరణ</string>
+    <string name="onboarding_feature_mix_title">సుఖపూర్వక ఒలిలను కలిపితెలుకు</string>
+    <string name="onboarding_feature_mix_body">సంధ్యా సోలోలను సంధ్య సమన్వయం చేసి మీ సమర్థ పరిసరాన్ని సృష్టించుకోండి</string>
+    <string name="onboarding_feature_timer_title">నిద్ర టైమర్</string>
+    <string name="onboarding_feature_timer_body">మీ సంధ్య్న గుంటిదుర్ నిర్ణయించి రిటీ టిమర్ సేట్ చేయుండి।</string>
+    <string name="onboarding_feature_presets_title">ఉపస్థితిలు</string>
+    <string name="onboarding_feature_presets_body">మీ సమర్థ సంధ్యలను సేవ్ చేసుకోండి మరియు ఏ సమయంలోనైనా లోడ్ చేయుండి।</string>
+    <string name="onboarding_feature_custom_title">సంపూర్ణ ఓలిలు</string>
+    <string name="onboarding_feature_custom_body">మీ నిర్దిష్ట ఆడియో ఫైల్‌ను డిపోర్ట్ చేసుకోండి మరియు మీ సంధ్य కు కూడా చేయుండి।</string>
+    <string name="onboarding_language_title">భాష ఎంచుకోండి</string>
+    <string name="onboarding_language_body">మీరు తరువాత సెట్టింగ్‌ల్లో ఇది భేద్యీకరించుకోవచ్చు</string>
+    <string name="onboarding_back">పిన్నెలు</string>
+    <string name="onboarding_next">తరువాత</string>
+    <string name="onboarding_start">ప్రారంభించ</string>
+    <string name="settings_section_others">ఇతరుడు</string>
+    <string name="settings_report_bug_feature">బాగెట్ నివేదించుకోండి లేదా లక్షణం కోసం అభ్యర్థించుకోండి</string>
+    <string name="settings_report_bug_feature_hint">సమస్య సృష్టించుకోవటానికి GitHub రిపోజిటరీ తెరుచుకోండి</string>
+    <string name="made_with_love_by_pronay">Pronay చేత ప్రేమతో చేయబడింది</string>
+
+    <string name="empty_string" translatable="false"></string>
+</resources>

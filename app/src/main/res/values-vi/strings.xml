@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Blankee</string>
+    <string name="app_title">Blankee</string>
+    <string name="app_subtitle">Thư giãn và tập trung</string>
+
+    <string name="menu_settings">Cài đặt</string>
+    <string name="menu_about">Giới thiệu</string>
+    <string name="menu_pause">Tạm dừng âm thanh</string>
+    <string name="menu_play">Phát âm thanh</string>
+    <string name="menu_timer">Hẹn giờ ngủ</string>
+    <string name="menu_reset">Đặt lại âm thanh</string>
+    <string name="content_desc_more_options">Tùy chọn khác</string>
+
+    <string name="tab_home">Trang chủ</string>
+    <string name="tab_settings">Cài đặt</string>
+
+    <string name="category_nature">Thiên nhiên</string>
+    <string name="category_travel">Du lịch</string>
+    <string name="category_indoor">Trong nhà</string>
+    <string name="category_interiors">Nội thất</string>
+    <string name="category_noise">Nhiễu</string>
+    <string name="category_custom">Âm thanh tùy chỉnh</string>
+
+    <string name="sound_rain">Mưa</string>
+    <string name="sound_wind">Gió</string>
+    <string name="sound_storm">Bão</string>
+    <string name="sound_wave">Sóng</string>
+    <string name="sound_stream">Suối</string>
+    <string name="sound_birds">Chim</string>
+    <string name="sound_summer_night">Đêm mùa hè</string>
+
+    <string name="sound_train">Tàu hỏa</string>
+    <string name="sound_boat">Thuyền</string>
+    <string name="sound_city">Thành phố</string>
+
+    <string name="sound_coffee_shop">Quán cà phê</string>
+    <string name="sound_fireplace">Lò sưởi</string>
+    <string name="sound_busy_restaurant">Nhà hàng đông đúc</string>
+
+    <string name="sound_pink_noise">Nhiễu hồng</string>
+    <string name="sound_white_noise">Nhiễu trắng</string>
+
+    <string name="settings_title">Cài đặt</string>
+    <string name="settings_section_app_preferences">Tùy chọn ứng dụng</string>
+    <string name="settings_theme">Chủ đề</string>
+    <string name="settings_theme_hint">Mặc định là tối. Hệ thống theo chế độ sáng/tối của thiết bị.</string>
+    <string name="settings_language">Ngôn ngữ</string>
+    <string name="settings_language_hint">Áp dụng ngay. Ứng dụng sẽ khởi động lại để tải ngôn ngữ mới.</string>
+    <string name="language_system">Sử dụng ngôn ngữ hệ thống</string>
+    <string name="theme_light">Sáng</string>
+    <string name="theme_dark">Tối</string>
+    <string name="theme_system">Hệ thống</string>
+    <string name="language_english">Tiếng Anh</string>
+    <string name="language_chinese">Tiếng Trung (简体)</string>
+    <string name="language_hindi">Tiếng Hindi</string>
+    <string name="language_spanish">Tiếng Tây Ban Nha</string>
+    <string name="language_korean">Tiếng Hàn</string>
+    <string name="language_arabic">Tiếng Ả Rập</string>
+    <string name="language_french">Tiếng Pháp</string>
+    <string name="language_bengali">Tiếng Bengal</string>
+    <string name="language_portuguese">Tiếng Bồ Đào Nha</string>
+    <string name="language_tamil">Tiếng Tamil</string>
+    <string name="language_urdu">Tiếng Urdu</string>
+    <string name="language_indonesian">Tiếng Indonesia</string>
+    <string name="language_japanese">Tiếng Nhật</string>
+    <string name="language_russian">Tiếng Nga</string>
+    <string name="language_german">Tiếng Đức</string>
+    <string name="language_turkish">Tiếng Thổ Nhĩ Kỳ</string>
+    <string name="language_vietnamese">Tiếng Việt</string>
+    <string name="language_thai">Tiếng Thái</string>
+    <string name="language_persian">Tiếng Ba Tư</string>
+    <string name="language_punjabi">Tiếng Punjabi</string>
+
+    <string name="add_custom_sound">Thêm âm thanh tùy chỉnh</string>
+    <string name="custom_sounds_premium_message">Âm thanh tùy chỉnh là một phần của Premium. Mở khóa bằng một lần mua.</string>
+    <string name="buy_premium">Mua Premium</string>
+    <string name="content_desc_buy_premium">Mua Premium để mở khóa âm thanh tùy chỉnh</string>
+    <string name="restore_purchases">Khôi phục mua hàng</string>
+    <string name="premium_active">Premium đã kích hoạt. Cảm ơn bạn đã ủng hộ.</string>
+    <string name="settings_section_premium">Premium</string>
+    <string name="billing_not_ready">Thanh toán chưa sẵn sàng. Hãy thử lại sau.</string>
+    <string name="billing_product_not_loaded">Danh sách cửa hàng chưa được tải. Kiểm tra kết nối và thử lại.</string>
+    <string name="billing_launch_failed">Không thể mở màn hình mua hàng.</string>
+    <string name="billing_restored">Đã khôi phục mua hàng.</string>
+    <string name="billing_restore_none">Không có mua hàng đang hoạt động cho tài khoản này.</string>
+    <string name="custom_sound_default_name">Tùy chỉnh %1$d</string>
+    <string name="sound_added">Đã thêm âm thanh: %1$s</string>
+    <string name="could_not_add_sound">Không thể thêm âm thanh</string>
+    <string name="sounds_reset">Đã đặt lại tất cả âm thanh</string>
+    <string name="cant_play_sound_on_pause">Không thể phát âm thanh khi đang tạm dừng</string>
+    <string name="delete_sound">Xóa âm thanh tùy chỉnh</string>
+    <string name="delete_sound_dialog_title">Xóa âm thanh?</string>
+    <string name="delete_sound_dialog_message">Xóa "%1$s" khỏi âm thanh tùy chỉnh?</string>
+    <string name="delete_sound_confirm">Xóa</string>
+    <string name="rename_sound">Đổi tên âm thanh</string>
+    <string name="sound_name_label">Tên âm thanh</string>
+    <string name="rename_sound_confirm">Đổi tên</string>
+
+    <string name="no_browser_installed">Không có ứng dụng mở liên kết này. Vui lòng cài đặt trình duyệt web.</string>
+    <string name="error_unexpected">Đã xảy ra lỗi không mong muốn.</string>
+
+    <string name="inspired_text">Lấy cảm hứng từ Blanket của Rafael Mardojai, ban đầu là ứng dụng GNOME.</string>
+    <string name="app_description">Nghe nhiều âm thanh khác nhau. Cải thiện tập trung và tăng năng suất.</string>
+
+    <string name="about_title">Về chúng tôi</string>
+    <string name="about_version">Phiên bản %1$s</string>
+    <string name="about_source_code">Mã nguồn</string>
+    <string name="about_source_code_subtitle">Xem mã nguồn của ứng dụng trên GitHub</string>
+    <string name="content_desc_back">Quay lại</string>
+    <string name="content_desc_logo">Logo ứng dụng</string>
+    <string name="content_desc_sound_icon">Biểu tượng âm thanh</string>
+    <string name="content_desc_add_custom_sound">Thêm âm thanh tùy chỉnh</string>
+
+    <string name="presets_title">Cài đặt sẵn</string>
+    <string name="presets_hint">Lưu bản phối hiện tại, rồi tải lại bất cứ lúc nào.</string>
+    <string name="presets_empty">Chưa có cài đặt sẵn.</string>
+    <string name="presets_save_mix">Lưu bản phối hiện tại</string>
+    <string name="preset_load">Tải</string>
+    <string name="preset_delete_desc">Xóa cài đặt sẵn</string>
+    <string name="preset_delete_confirm_title">Xóa cài đặt sẵn?</string>
+    <string name="preset_delete_confirm_message">Xóa "%1$s" vĩnh viễn?</string>
+    <string name="preset_untitled">Bản phối chưa đặt tên</string>
+    <string name="preset_saved">Đã lưu cài đặt sẵn</string>
+    <string name="preset_nothing_to_save">Hãy tăng ít nhất một âm thanh trước khi lưu.</string>
+    <string name="save_preset_dialog_title">Lưu bản phối</string>
+    <string name="preset_name_label">Tên cài đặt sẵn</string>
+    <string name="preset_name_hint">Nếu để trống, sẽ lưu là "Bản phối chưa đặt tên"</string>
+    <string name="preset_dialog_save">Lưu</string>
+    <string name="dialog_cancel">Hủy</string>
+    <string name="timer_dialog_title">Đặt hẹn giờ ngủ</string>
+    <string name="timer_custom">Tùy chỉnh</string>
+    <string name="timer_custom_label">Phút</string>
+    <string name="timer_minutes_format">%1$d phút</string>
+    <string name="timer_start">Bắt đầu</string>
+    <string name="timer_set">Đã đặt hẹn giờ %1$d phút</string>
+    <string name="timer_invalid_input">Nhập thời lượng hợp lệ</string>
+    <string name="sleep_timer_finished">Hẹn giờ kết thúc. Đã dừng âm thanh.</string>
+    <string name="timer_countdown_label">Hẹn giờ ngủ: %1$s</string>
+    <string name="timer_cancel">Hủy hẹn giờ</string>
+    <string name="timer_cancel_confirm_title">Hủy hẹn giờ ngủ?</string>
+    <string name="timer_cancel_confirm_message">Bạn có muốn dừng hẹn giờ hiện tại không?</string>
+
+    <string name="notification_channel_name">Phát lại</string>
+    <string name="notification_channel_desc">Hiển thị khi bản phối Blankee đang hoạt động</string>
+    <string name="notification_playing">Đang phát bản phối</string>
+    <string name="notification_paused">Bản phối đã tạm dừng</string>
+    <string name="notification_action_play">Phát</string>
+    <string name="notification_action_pause">Tạm dừng</string>
+    <string name="notification_primer_title">Cho phép thông báo?</string>
+    <string name="notification_primer_message">Thông báo giữ các điều khiển phát lại khi âm thanh đang chạy.</string>
+    <string name="notification_primer_grant">Cho phép</string>
+    <string name="notification_primer_continue_anyway">Vẫn tiếp tục</string>
+
+    <string name="enjoy_prompt_title">Bạn thích Blankee?</string>
+    <string name="enjoy_prompt_message">Nếu bạn thích, bạn có muốn gắn sao cho dự án trên GitHub không?</string>
+    <string name="enjoy_prompt_yes">Có</string>
+    <string name="enjoy_prompt_no">Không</string>
+    <string name="star_github_title">Gắn sao trên GitHub</string>
+    <string name="star_github_message">Điều này rất giúp ích và giữ dự án phát triển.</string>
+    <string name="star_github_confirm">Gắn sao ngay</string>
+    <string name="star_github_later">Để sau</string>
+
+    <string name="onboarding_title">Chào mừng đến với Blankee</string>
+    <string name="onboarding_subtitle">Một chuyến tham quan nhanh để bắt đầu.</string>
+    <string name="onboarding_feature_mix_title">Trộn các âm thanh thư giãn</string>
+    <string name="onboarding_feature_mix_body">Kết hợp nhiều âm thanh và điều chỉnh âm lượng để tạo không gian hoàn hảo.</string>
+    <string name="onboarding_feature_timer_title">Hẹn giờ ngủ</string>
+    <string name="onboarding_feature_timer_body">Đặt hẹn giờ để bản phối dừng tự động.</string>
+    <string name="onboarding_feature_presets_title">Cài đặt sẵn</string>
+    <string name="onboarding_feature_presets_body">Lưu các bản phối yêu thích và tải lại bất cứ lúc nào.</string>
+    <string name="onboarding_feature_custom_title">Âm thanh tùy chỉnh</string>
+    <string name="onboarding_feature_custom_body">Nhập các tệp âm thanh của bạn và thêm vào bản phối.</string>
+    <string name="onboarding_language_title">Chọn ngôn ngữ</string>
+    <string name="onboarding_language_body">Bạn có thể thay đổi sau trong Cài đặt.</string>
+    <string name="onboarding_back">Quay lại</string>
+    <string name="onboarding_next">Tiếp theo</string>
+    <string name="onboarding_start">Bắt đầu</string>
+    <string name="settings_section_others">Khác</string>
+    <string name="settings_report_bug_feature">Báo lỗi hoặc yêu cầu tính năng</string>
+    <string name="settings_report_bug_feature_hint">Mở kho GitHub để tạo issue.</string>
+    <string name="made_with_love_by_pronay">Được làm với tình yêu bởi Pronay</string>
+
+    <string name="empty_string" translatable="false"></string>
+</resources>

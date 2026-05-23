@@ -66,4 +66,14 @@ class GlobalPlaybackState(
     fun togglePlayPause() {
         setCanPlay(!_canPlay.value)
     }
+
+    companion object {
+        @Volatile
+        var currentState: GlobalPlaybackState? = null
+            private set
+
+        internal fun setInstance(state: GlobalPlaybackState) {
+            currentState = state
+        }
+    }
 }

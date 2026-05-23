@@ -42,8 +42,7 @@
     <string name="sound_white_noise">White noise</string>
 
     <string name="settings_title">Settings</string>
-    <string name="settings_section_display">Display</string>
-    <string name="settings_section_language">Language</string>
+    <string name="settings_section_app_preferences">App Preferences</string>
     <string name="settings_theme">Theme</string>
     <string name="settings_theme_hint">Dark is the default. System follows your device light/dark mode.</string>
     <string name="settings_language">Language</string>
@@ -53,9 +52,25 @@
     <string name="theme_dark">Dark</string>
     <string name="theme_system">System</string>
     <string name="language_english">English</string>
-    <string name="language_bengali">Bengali</string>
+    <string name="language_chinese">Chinese (简体)</string>
     <string name="language_hindi">Hindi</string>
     <string name="language_spanish">Spanish</string>
+    <string name="language_korean">Korean</string>
+    <string name="language_arabic">Arabic</string>
+    <string name="language_french">French</string>
+    <string name="language_bengali">Bengali</string>
+    <string name="language_portuguese">Portuguese</string>
+    <string name="language_tamil">Tamil</string>
+    <string name="language_urdu">Urdu</string>
+    <string name="language_indonesian">Indonesian</string>
+    <string name="language_japanese">Japanese</string>
+    <string name="language_russian">Russian</string>
+    <string name="language_german">German</string>
+    <string name="language_turkish">Turkish</string>
+    <string name="language_vietnamese">Vietnamese</string>
+    <string name="language_thai">Thai</string>
+    <string name="language_persian">Persian</string>
+    <string name="language_punjabi">Punjabi</string>
 
     <string name="add_custom_sound">Add custom sound</string>
     <string name="custom_sounds_premium_message">Custom sounds are part of Premium. Unlock them with a one-time purchase.</string>
@@ -165,6 +180,7 @@
     <string name="settings_report_bug_feature">Report a bug or request a feature</string>
     <string name="settings_report_bug_feature_hint">Open the GitHub repository to create an issue.</string>
     <string name="made_with_love_by_pronay">Made with love by Pronay</string>
+
 
     <string name="empty_string" translatable="false"></string>
 </resources>

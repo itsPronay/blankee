@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Blankee</string>
+    <string name="app_title">Blankee</string>
+    <string name="app_subtitle">آرام کریں اور توجہ مرکوز کریں</string>
+
+    <string name="menu_settings">ترتیبات</string>
+    <string name="menu_about">تعارف</string>
+    <string name="menu_pause">آوازیں روکیں</string>
+    <string name="menu_play">آوازیں چلائیں</string>
+    <string name="menu_timer">نیند کا ٹائمر</string>
+    <string name="menu_reset">آوازیں ری سیٹ کریں</string>
+    <string name="content_desc_more_options">مزید اختیارات</string>
+
+    <string name="tab_home">ہوم</string>
+    <string name="tab_settings">ترتیبات</string>
+
+    <string name="category_nature">قدرت</string>
+    <string name="category_travel">سفر</string>
+    <string name="category_indoor">اندر</string>
+    <string name="category_interiors">اندرونی حصے</string>
+    <string name="category_noise">شور</string>
+    <string name="category_custom">کسٹم آوازیں</string>
+
+    <string name="sound_rain">بارش</string>
+    <string name="sound_wind">ہوا</string>
+    <string name="sound_storm">طوفان</string>
+    <string name="sound_wave">لہریں</string>
+    <string name="sound_stream">دھارا</string>
+    <string name="sound_birds">پرندے</string>
+    <string name="sound_summer_night">گرمیوں کی رات</string>
+
+    <string name="sound_train">ٹرین</string>
+    <string name="sound_boat">کشتی</string>
+    <string name="sound_city">شہر</string>
+
+    <string name="sound_coffee_shop">کافی شاپ</string>
+    <string name="sound_fireplace">آتش دان</string>
+    <string name="sound_busy_restaurant">مصروف ریستوران</string>
+
+    <string name="sound_pink_noise">پنک نوائز</string>
+    <string name="sound_white_noise">وائٹ نوائز</string>
+
+    <string name="settings_title">ترتیبات</string>
+    <string name="settings_section_app_preferences">ایپ کی ترجیحات</string>
+    <string name="settings_theme">تھیم</string>
+    <string name="settings_theme_hint">ڈارک بطور ڈیفالٹ۔ سسٹم ڈیوائس کے لائٹ/ڈارک موڈ کی پیروی کرتا ہے۔</string>
+    <string name="settings_language">زبان</string>
+    <string name="settings_language_hint">فوری طور پر لاگو ہوتا ہے۔ نئی زبان لوڈ کرنے کے لیے ایپ دوبارہ شروع ہوسکتی ہے۔</string>
+    <string name="language_system">سسٹم زبان استعمال کریں</string>
+    <string name="theme_light">لائٹ</string>
+    <string name="theme_dark">ڈارک</string>
+    <string name="theme_system">سسٹم</string>
+    <string name="language_english">انگریزی</string>
+    <string name="language_chinese">چینی (简体)</string>
+    <string name="language_hindi">ہندی</string>
+    <string name="language_spanish">ہسپانوی</string>
+    <string name="language_korean">کوریائی</string>
+    <string name="language_arabic">عربی</string>
+    <string name="language_french">فرانسیسی</string>
+    <string name="language_bengali">بنگالی</string>
+    <string name="language_portuguese">پرتگیزی</string>
+    <string name="language_tamil">تمل</string>
+    <string name="language_urdu">اردو</string>
+    <string name="language_indonesian">انڈونیشیائی</string>
+    <string name="language_japanese">جاپانی</string>
+    <string name="language_russian">روسی</string>
+    <string name="language_german">جرمن</string>
+    <string name="language_turkish">ترکی</string>
+    <string name="language_vietnamese">ویتنامی</string>
+    <string name="language_thai">تھائی</string>
+    <string name="language_persian">فارسی</string>
+    <string name="language_punjabi">پنجابی</string>
+
+    <string name="add_custom_sound">کسٹم آواز شامل کریں</string>
+    <string name="custom_sounds_premium_message">کسٹم آوازیں پریمیم کا حصہ ہیں۔ ایک بار خرید کر انلاک کریں۔</string>
+    <string name="buy_premium">پریمیم خریدیں</string>
+    <string name="content_desc_buy_premium">کسٹم آوازیں انلاک کرنے کے لیے پریمیم خریدیں</string>
+    <string name="restore_purchases">خریداری بحال کریں</string>
+    <string name="premium_active">پریمیم فعال ہے۔ آپ کی حمایت کا شکریہ۔</string>
+    <string name="settings_section_premium">پریمیم</string>
+    <string name="billing_not_ready">بلنگ تیار نہیں ہے۔ تھوڑی دیر بعد دوبارہ کوشش کریں۔</string>
+    <string name="billing_product_not_loaded">اسٹور لسٹنگ لوڈ نہیں ہوئی۔ کنکشن چیک کریں اور دوبارہ کوشش کریں۔</string>
+    <string name="billing_launch_failed">خریداری اسکرین نہیں کھل سکی۔</string>
+    <string name="billing_restored">خریداری بحال ہو گئی۔</string>
+    <string name="billing_restore_none">اس اکاؤنٹ پر کوئی فعال خریداری نہیں ملی۔</string>
+    <string name="custom_sound_default_name">کسٹم %1$d</string>
+    <string name="sound_added">آواز شامل کی گئی: %1$s</string>
+    <string name="could_not_add_sound">آواز شامل نہیں ہو سکی</string>
+    <string name="sounds_reset">تمام آوازیں ری سیٹ ہو گئیں</string>
+    <string name="cant_play_sound_on_pause">روکے جانے پر آواز نہیں چل سکتی</string>
+    <string name="delete_sound">کسٹم آواز حذف کریں</string>
+    <string name="delete_sound_dialog_title">آواز حذف کریں؟</string>
+    <string name="delete_sound_dialog_message">"%1$s" کو کسٹم آوازوں سے ہٹائیں؟</string>
+    <string name="delete_sound_confirm">حذف کریں</string>
+    <string name="rename_sound">آواز کا نام تبدیل کریں</string>
+    <string name="sound_name_label">آواز کا نام</string>
+    <string name="rename_sound_confirm">نام تبدیل کریں</string>
+
+    <string name="no_browser_installed">کوئی ایپ اس لنک کو کھول نہیں سکتی۔ براہ کرم ویب براؤزر انسٹال کریں۔</string>
+    <string name="error_unexpected">ایک غیر متوقع خرابی واقع ہوئی۔</string>
+
+    <string name="inspired_text">Rafael Mardojai کی Blanket سے متاثر، جو اصل میں GNOME ایپ ہے۔</string>
+    <string name="app_description">مختلف آوازیں سنیں۔ فوکس بہتر کریں اور اپنی پیداواریت بڑھائیں۔</string>
+
+    <string name="about_title">ہمارے بارے میں</string>
+    <string name="about_version">ورژن %1$s</string>
+    <string name="about_source_code">سورس کوڈ</string>
+    <string name="about_source_code_subtitle">اس ایپ کا سورس کوڈ GitHub پر دیکھیں</string>
+    <string name="content_desc_back">پیچھے</string>
+    <string name="content_desc_logo">ایپ لوگو</string>
+    <string name="content_desc_sound_icon">آواز آئیکن</string>
+    <string name="content_desc_add_custom_sound">کسٹم آواز شامل کریں</string>
+
+    <string name="presets_title">پری سیٹس</string>
+    <string name="presets_hint">اپنا موجودہ مکس محفوظ کریں اور جب چاہیں لوڈ کریں۔</string>
+    <string name="presets_empty">ابھی کوئی پری سیٹ نہیں۔</string>
+    <string name="presets_save_mix">موجودہ مکس محفوظ کریں</string>
+    <string name="preset_load">لوڈ کریں</string>
+    <string name="preset_delete_desc">پری سیٹ حذف کریں</string>
+    <string name="preset_delete_confirm_title">پری سیٹ حذف کریں؟</string>
+    <string name="preset_delete_confirm_message">"%1$s" کو ہمیشہ کے لیے حذف کریں؟</string>
+    <string name="preset_untitled">بلا عنوان مکس</string>
+    <string name="preset_saved">پری سیٹ محفوظ ہو گیا</string>
+    <string name="preset_nothing_to_save">محفوظ کرنے سے پہلے کم از کم ایک آواز بڑھائیں۔</string>
+    <string name="save_preset_dialog_title">مکس محفوظ کریں</string>
+    <string name="preset_name_label">پری سیٹ کا نام</string>
+    <string name="preset_name_hint">خالی چھوڑنے پر یہ "بلا عنوان مکس" کے نام سے محفوظ ہوگا</string>
+    <string name="preset_dialog_save">محفوظ کریں</string>
+    <string name="dialog_cancel">منسوخ کریں</string>
+    <string name="timer_dialog_title">نیند کا ٹائمر سیٹ کریں</string>
+    <string name="timer_custom">کسٹم</string>
+    <string name="timer_custom_label">منٹ</string>
+    <string name="timer_minutes_format">%1$d منٹ</string>
+    <string name="timer_start">شروع کریں</string>
+    <string name="timer_set">ٹائمر %1$d منٹ کے لیے سیٹ ہو گیا</string>
+    <string name="timer_invalid_input">درست دورانیہ درج کریں</string>
+    <string name="sleep_timer_finished">ٹائمر ختم۔ آوازیں بند کر دی گئیں۔</string>
+    <string name="timer_countdown_label">نیند کا ٹائمر: %1$s</string>
+    <string name="timer_cancel">ٹائمر منسوخ کریں</string>
+    <string name="timer_cancel_confirm_title">نیند کا ٹائمر منسوخ کریں؟</string>
+    <string name="timer_cancel_confirm_message">کیا آپ موجودہ ٹائمر روکنا چاہتے ہیں؟</string>
+
+    <string name="notification_channel_name">پلے بیک</string>
+    <string name="notification_channel_desc">جب آپ کا Blankee مکس فعال ہو تو دکھاتا ہے</string>
+    <string name="notification_playing">مکس چل رہا ہے</string>
+    <string name="notification_paused">مکس روکا گیا ہے</string>
+    <string name="notification_action_play">چلائیں</string>
+    <string name="notification_action_pause">روکیں</string>
+    <string name="notification_primer_title">نوٹیفکیشن کی اجازت دیں؟</string>
+    <string name="notification_primer_message">جب آوازیں چل رہی ہوں تو نوٹیفکیشن کنٹرولز دستیاب رکھتا ہے۔</string>
+    <string name="notification_primer_grant">اجازت دیں</string>
+    <string name="notification_primer_continue_anyway">پھر بھی جاری رکھیں</string>
+
+    <string name="enjoy_prompt_title">Blankee پسند آرہا ہے؟</string>
+    <string name="enjoy_prompt_message">اگر پسند ہے تو کیا آپ GitHub پر پروجیکٹ کو اسٹار کرنا چاہیں گے؟</string>
+    <string name="enjoy_prompt_yes">جی ہاں</string>
+    <string name="enjoy_prompt_no">نہیں</string>
+    <string name="star_github_title">GitHub پر اسٹار</string>
+    <string name="star_github_message">یہ بہت مدد کرتا ہے اور پروجیکٹ کو بڑھاتا ہے۔</string>
+    <string name="star_github_confirm">اب اسٹار کریں</string>
+    <string name="star_github_later">بعد میں</string>
+
+    <string name="onboarding_title">Blankee میں خوش آمدید</string>
+    <string name="onboarding_subtitle">شروع کرنے کے لیے ایک مختصر ٹور۔</string>
+    <string name="onboarding_feature_mix_title">آرام دہ آوازیں ملائیں</string>
+    <string name="onboarding_feature_mix_body">متعدد آوازیں ملائیں اور والیوم کنٹرول کر کے بہترین ماحول بنائیں۔</string>
+    <string name="onboarding_feature_timer_title">نیند کا ٹائمر</string>
+    <string name="onboarding_feature_timer_body">ٹائمر سیٹ کریں تاکہ مکس خود بخود بند ہو جائے۔</string>
+    <string name="onboarding_feature_presets_title">پری سیٹس</string>
+    <string name="onboarding_feature_presets_body">اپنے پسندیدہ مکس محفوظ کریں اور جب چاہیں لوڈ کریں۔</string>
+    <string name="onboarding_feature_custom_title">کسٹم آوازیں</string>
+    <string name="onboarding_feature_custom_body">اپنی آڈیو فائلیں امپورٹ کریں اور مکس میں شامل کریں۔</string>
+    <string name="onboarding_language_title">زبان منتخب کریں</string>
+    <string name="onboarding_language_body">آپ بعد میں سیٹنگز میں بدل سکتے ہیں۔</string>
+    <string name="onboarding_back">پیچھے</string>
+    <string name="onboarding_next">اگلا</string>
+    <string name="onboarding_start">شروع کریں</string>
+    <string name="settings_section_others">دیگر</string>
+    <string name="settings_report_bug_feature">بگ رپورٹ کریں یا فیچر کی درخواست کریں</string>
+    <string name="settings_report_bug_feature_hint">ایشو بنانے کے لیے GitHub ریپوزٹری کھولیں۔</string>
+    <string name="made_with_love_by_pronay">Pronay کی جانب سے محبت کے ساتھ بنایا گیا</string>
+
+    <string name="empty_string" translatable="false"></string>
+</resources>

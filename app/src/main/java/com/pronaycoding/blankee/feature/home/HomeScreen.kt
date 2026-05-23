@@ -31,7 +31,6 @@ package com.pronaycoding.blankee.feature.home
  */
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.content.Context
 import android.net.Uri
 import android.widget.Toast
@@ -102,7 +101,6 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.pronaycoding.blankee.R
-import com.pronaycoding.blankee.core.common.util.findActivity
 import com.pronaycoding.blankee.core.database.entities.CustomSoundEntity
 import com.pronaycoding.blankee.core.database.entities.PresetEntity
 import com.pronaycoding.blankee.core.model.CardItems
@@ -119,7 +117,6 @@ fun HomeScreenRoute(
 ) {
     val canPlaySound by viewmodel.canPlay.collectAsStateWithLifecycle()
     val customSounds by viewmodel.customSounds.collectAsStateWithLifecycle()
-    val customSoundsUnlocked by viewmodel.customSoundsUnlocked.collectAsStateWithLifecycle()
     val sleepTimerRemainingMillis by viewmodel.sleepTimerRemainingMillis.collectAsStateWithLifecycle()
     val canPlay by viewmodel.canPlay.collectAsStateWithLifecycle()
 //    val canPlay by viewModel.canPlay.collectAsStateWithLifecycle()
@@ -135,7 +132,6 @@ fun HomeScreenRoute(
         navigateToSettings = navigateToSettings,
         canPlaySound = canPlaySound,
         savePreset = viewmodel::savePreset,
-        customSoundsUnlocked = customSoundsUnlocked,
         customSounds = customSounds,
         startSleepTimer = viewmodel::startSleepTimer,
         applyPreset = viewmodel::applyPreset,
@@ -147,7 +143,6 @@ fun HomeScreenRoute(
         },
         handlePlayPause = viewmodel::handlePlayPause,
         onDeleteCustomSound = { soundId -> viewmodel.removeCustomSound(soundId) },
-        onLaunchPremiumPurchase = { activity -> viewmodel.launchPremiumPurchase(activity) },
         sleepTimerRemainingMillis = sleepTimerRemainingMillis,
         onCancelSleepTimer = { viewmodel.cancelSleepTimer() },
         resetAllSounds = viewmodel::resetAllSounds,
@@ -167,14 +162,12 @@ internal fun HomeScreen(
     startSleepTimer: (Long) -> Unit,
     applyPreset: (PresetEntity) -> Unit,
     canPlaySound: Boolean,
-    customSoundsUnlocked: Boolean,
     deletePreset: (Long) -> Unit,
     customSounds: List<CustomSoundEntity> = emptyList(),
     resetAllSounds: () -> Unit,
     handlePlayPause: (Boolean) -> Unit,
     onAddCustomSound: (String, String) -> Unit = { _, _ -> },
     onDeleteCustomSound: (Int) -> Unit = {},
-    onLaunchPremiumPurchase: (Activity) -> Unit = {},
     sleepTimerRemainingMillis: Long? = null,
     onCancelSleepTimer: () -> Unit = {},
 ) {
@@ -342,13 +335,13 @@ internal fun HomeScreen(
                         shape = CircleShape,
                         colors =
                             filledTonalIconButtonColors(
-                                containerColor = MaterialTheme.colorScheme.primaryContainer.copy(.1f)
+                                containerColor = MaterialTheme.colorScheme.primaryContainer.copy(.1f),
                             ),
                     ) {
                         Icon(
                             imageVector = Icons.Default.Timer,
                             contentDescription = stringResource(R.string.menu_timer),
-                            tint = MaterialTheme.colorScheme.primaryContainer
+                            tint = MaterialTheme.colorScheme.primaryContainer,
                         )
                     }
 
@@ -399,13 +392,13 @@ internal fun HomeScreen(
                         Spacer(modifier = Modifier.height(8.dp))
                         CustomCard {
                             SoundGrid(
-                                items = homeGridCardItems(customSoundsUnlocked),
+                                items = homeGridCardItems(),
                                 canPlaySound = canPlaySound,
                             )
                         }
                     }
 
-                    if (customSoundsUnlocked && customSounds.isNotEmpty()) {
+                    if (customSounds.isNotEmpty()) {
                         item {
                             TitleCardView(stringResource(R.string.category_custom))
                             CustomCard {
@@ -436,57 +429,32 @@ internal fun HomeScreen(
 
                     item {
                         Spacer(modifier = Modifier.height(24.dp))
-
-                        if (!customSoundsUnlocked) {
-                            Text(
-                                text = stringResource(R.string.custom_sounds_premium_message),
-                                style = MaterialTheme.typography.bodyMedium,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                            )
-                            Spacer(modifier = Modifier.height(12.dp))
+                        Box(
+                            modifier = Modifier.fillMaxWidth(),
+                        ) {
                             Button(
-                                onClick = {
-                                    context.findActivity()?.let { onLaunchPremiumPurchase(it) }
-                                },
+                                onClick = { audioPickerLauncher.launch("audio/*") },
                                 modifier =
                                     Modifier
-                                        .fillMaxWidth()
-                                        .height(56.dp),
+//                                    .fillMaxWidth()
+                                        .height(56.dp)
+                                        .align(Alignment.Center),
                                 shape = RoundedCornerShape(16.dp),
+                                colors =
+                                    ButtonDefaults.buttonColors(
+                                        containerColor = MaterialTheme.colorScheme.background,
+                                    ),
                             ) {
+                                Icon(
+                                    imageVector = Icons.Filled.Add,
+                                    contentDescription = stringResource(R.string.content_desc_add_custom_sound),
+                                    modifier = Modifier.size(24.dp),
+                                )
+                                Spacer(modifier = Modifier.width(8.dp))
                                 Text(
-                                    stringResource(R.string.buy_premium),
+                                    stringResource(R.string.add_custom_sound),
                                     style = MaterialTheme.typography.titleSmall,
                                 )
-                            }
-                        } else {
-                            Box(
-                                modifier = Modifier.fillMaxWidth(),
-                            ) {
-                                Button(
-                                    onClick = { audioPickerLauncher.launch("audio/*") },
-                                    modifier =
-                                        Modifier
-//                                    .fillMaxWidth()
-                                            .height(56.dp)
-                                            .align(Alignment.Center),
-                                    shape = RoundedCornerShape(16.dp),
-                                    colors =
-                                        ButtonDefaults.buttonColors(
-                                            containerColor = MaterialTheme.colorScheme.background,
-                                        ),
-                                ) {
-                                    Icon(
-                                        imageVector = Icons.Filled.Add,
-                                        contentDescription = stringResource(R.string.content_desc_add_custom_sound),
-                                        modifier = Modifier.size(24.dp),
-                                    )
-                                    Spacer(modifier = Modifier.width(8.dp))
-                                    Text(
-                                        stringResource(R.string.add_custom_sound),
-                                        style = MaterialTheme.typography.titleSmall,
-                                    )
-                                }
                             }
                         }
 
@@ -586,13 +554,7 @@ fun getCardList(): List<CardItems> =
         CardItems.WhiteNoise,
     )
 
-// TODO need to fix this logic
-private fun homeGridCardItems(customSoundsUnlocked: Boolean): List<CardItems> =
-    if (!customSoundsUnlocked) {
-        getCardList().filter { it != CardItems.Custom }
-    } else {
-        getCardList()
-    }
+private fun homeGridCardItems(): List<CardItems> = getCardList()
 
 @Composable
 fun CustomCard(content: @Composable () -> Unit) {
@@ -829,8 +791,7 @@ fun TimerDialog(
                                                 MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.35f)
                                             },
                                         shape = RoundedCornerShape(12.dp),
-                                    )
-                                    .clickable { selectedTimerOption = option }
+                                    ).clickable { selectedTimerOption = option }
                                     .padding(horizontal = 8.dp, vertical = 4.dp),
                             verticalAlignment = Alignment.CenterVertically,
                         ) {

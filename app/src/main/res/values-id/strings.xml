@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Blankee</string>
+    <string name="app_title">Blankee</string>
+    <string name="app_subtitle">Rileks dan fokus</string>
+
+    <string name="menu_settings">Pengaturan</string>
+    <string name="menu_about">Tentang</string>
+    <string name="menu_pause">Jeda suara</string>
+    <string name="menu_play">Putar suara</string>
+    <string name="menu_timer">Timer tidur</string>
+    <string name="menu_reset">Setel ulang suara</string>
+    <string name="content_desc_more_options">Opsi lainnya</string>
+
+    <string name="tab_home">Beranda</string>
+    <string name="tab_settings">Pengaturan</string>
+
+    <string name="category_nature">Alam</string>
+    <string name="category_travel">Perjalanan</string>
+    <string name="category_indoor">Dalam ruangan</string>
+    <string name="category_interiors">Interior</string>
+    <string name="category_noise">Derau</string>
+    <string name="category_custom">Suara kustom</string>
+
+    <string name="sound_rain">Hujan</string>
+    <string name="sound_wind">Angin</string>
+    <string name="sound_storm">Badai</string>
+    <string name="sound_wave">Ombak</string>
+    <string name="sound_stream">Aliran</string>
+    <string name="sound_birds">Burung</string>
+    <string name="sound_summer_night">Malam musim panas</string>
+
+    <string name="sound_train">Kereta</string>
+    <string name="sound_boat">Perahu</string>
+    <string name="sound_city">Kota</string>
+
+    <string name="sound_coffee_shop">Kedai kopi</string>
+    <string name="sound_fireplace">Perapian</string>
+    <string name="sound_busy_restaurant">Restoran ramai</string>
+
+    <string name="sound_pink_noise">Derau merah muda</string>
+    <string name="sound_white_noise">Derau putih</string>
+
+    <string name="settings_title">Pengaturan</string>
+    <string name="settings_section_app_preferences">Preferensi Aplikasi</string>
+    <string name="settings_theme">Tema</string>
+    <string name="settings_theme_hint">Gelap sebagai default. Sistem mengikuti mode terang/gelap perangkat.</string>
+    <string name="settings_language">Bahasa</string>
+    <string name="settings_language_hint">Diterapkan segera. Aplikasi akan dimulai ulang untuk memuat bahasa baru.</string>
+    <string name="language_system">Gunakan bahasa sistem</string>
+    <string name="theme_light">Terang</string>
+    <string name="theme_dark">Gelap</string>
+    <string name="theme_system">Sistem</string>
+    <string name="language_english">Inggris</string>
+    <string name="language_chinese">Cina (简体)</string>
+    <string name="language_hindi">Hindi</string>
+    <string name="language_spanish">Spanyol</string>
+    <string name="language_korean">Korea</string>
+    <string name="language_arabic">Arab</string>
+    <string name="language_french">Prancis</string>
+    <string name="language_bengali">Bengali</string>
+    <string name="language_portuguese">Portugis</string>
+    <string name="language_tamil">Tamil</string>
+    <string name="language_urdu">Urdu</string>
+    <string name="language_indonesian">Indonesia</string>
+    <string name="language_japanese">Jepang</string>
+    <string name="language_russian">Rusia</string>
+    <string name="language_german">Jerman</string>
+    <string name="language_turkish">Turki</string>
+    <string name="language_vietnamese">Vietnam</string>
+    <string name="language_thai">Thai</string>
+    <string name="language_persian">Persia</string>
+    <string name="language_punjabi">Punjabi</string>
+
+    <string name="add_custom_sound">Tambah suara kustom</string>
+    <string name="custom_sounds_premium_message">Suara kustom adalah bagian dari Premium. Buka dengan pembelian satu kali.</string>
+    <string name="buy_premium">Beli Premium</string>
+    <string name="content_desc_buy_premium">Beli Premium untuk membuka suara kustom</string>
+    <string name="restore_purchases">Pulihkan pembelian</string>
+    <string name="premium_active">Premium aktif. Terima kasih atas dukungan Anda.</string>
+    <string name="settings_section_premium">Premium</string>
+    <string name="billing_not_ready">Penagihan belum siap. Coba lagi sebentar.</string>
+    <string name="billing_product_not_loaded">Daftar toko belum dimuat. Periksa koneksi dan coba lagi.</string>
+    <string name="billing_launch_failed">Tidak dapat membuka layar pembelian.</string>
+    <string name="billing_restored">Pembelian dipulihkan.</string>
+    <string name="billing_restore_none">Tidak ada pembelian aktif untuk akun ini.</string>
+    <string name="custom_sound_default_name">Kustom %1$d</string>
+    <string name="sound_added">Suara ditambahkan: %1$s</string>
+    <string name="could_not_add_sound">Tidak dapat menambahkan suara</string>
+    <string name="sounds_reset">Semua suara direset</string>
+    <string name="cant_play_sound_on_pause">Tidak bisa memutar suara saat dijeda</string>
+    <string name="delete_sound">Hapus suara kustom</string>
+    <string name="delete_sound_dialog_title">Hapus suara?</string>
+    <string name="delete_sound_dialog_message">Hapus "%1$s" dari suara kustom?</string>
+    <string name="delete_sound_confirm">Hapus</string>
+    <string name="rename_sound">Ganti nama suara</string>
+    <string name="sound_name_label">Nama suara</string>
+    <string name="rename_sound_confirm">Ganti nama</string>
+
+    <string name="no_browser_installed">Tidak ada aplikasi yang dapat membuka tautan ini. Silakan instal browser web.</string>
+    <string name="error_unexpected">Terjadi kesalahan tak terduga.</string>
+
+    <string name="inspired_text">Terinspirasi oleh Blanket karya Rafael Mardojai, awalnya aplikasi GNOME.</string>
+    <string name="app_description">Dengarkan berbagai suara. Tingkatkan fokus dan produktivitas Anda.</string>
+
+    <string name="about_title">Tentang kami</string>
+    <string name="about_version">Versi %1$s</string>
+    <string name="about_source_code">Kode sumber</string>
+    <string name="about_source_code_subtitle">Lihat kode sumber aplikasi ini di GitHub</string>
+    <string name="content_desc_back">Kembali</string>
+    <string name="content_desc_logo">Logo aplikasi</string>
+    <string name="content_desc_sound_icon">Ikon suara</string>
+    <string name="content_desc_add_custom_sound">Tambah suara kustom</string>
+
+    <string name="presets_title">Preset</string>
+    <string name="presets_hint">Simpan campuran saat ini, lalu muat kapan saja.</string>
+    <string name="presets_empty">Belum ada preset.</string>
+    <string name="presets_save_mix">Simpan campuran saat ini</string>
+    <string name="preset_load">Muat</string>
+    <string name="preset_delete_desc">Hapus preset</string>
+    <string name="preset_delete_confirm_title">Hapus preset?</string>
+    <string name="preset_delete_confirm_message">Hapus "%1$s" secara permanen?</string>
+    <string name="preset_untitled">Campuran tanpa judul</string>
+    <string name="preset_saved">Preset disimpan</string>
+    <string name="preset_nothing_to_save">Naikkan setidaknya satu suara sebelum menyimpan.</string>
+    <string name="save_preset_dialog_title">Simpan campuran</string>
+    <string name="preset_name_label">Nama preset</string>
+    <string name="preset_name_hint">Jika kosong, akan disimpan sebagai "Campuran tanpa judul"</string>
+    <string name="preset_dialog_save">Simpan</string>
+    <string name="dialog_cancel">Batal</string>
+    <string name="timer_dialog_title">Atur timer tidur</string>
+    <string name="timer_custom">Kustom</string>
+    <string name="timer_custom_label">Menit</string>
+    <string name="timer_minutes_format">%1$d m</string>
+    <string name="timer_start">Mulai</string>
+    <string name="timer_set">Timer diatur selama %1$d menit</string>
+    <string name="timer_invalid_input">Masukkan durasi timer yang valid</string>
+    <string name="sleep_timer_finished">Timer selesai. Suara dihentikan.</string>
+    <string name="timer_countdown_label">Timer tidur: %1$s</string>
+    <string name="timer_cancel">Batalkan timer</string>
+    <string name="timer_cancel_confirm_title">Batalkan timer tidur?</string>
+    <string name="timer_cancel_confirm_message">Apakah Anda ingin menghentikan timer saat ini?</string>
+
+    <string name="notification_channel_name">Pemutaran</string>
+    <string name="notification_channel_desc">Tampil saat campuran Blankee Anda aktif</string>
+    <string name="notification_playing">Campuran diputar</string>
+    <string name="notification_paused">Campuran dijeda</string>
+    <string name="notification_action_play">Putar</string>
+    <string name="notification_action_pause">Jeda</string>
+    <string name="notification_primer_title">Izinkan notifikasi?</string>
+    <string name="notification_primer_message">Notifikasi menjaga kontrol pemutaran tetap tersedia saat suara berjalan.</string>
+    <string name="notification_primer_grant">Izinkan</string>
+    <string name="notification_primer_continue_anyway">Tetap lanjutkan</string>
+
+    <string name="enjoy_prompt_title">Menikmati Blankee?</string>
+    <string name="enjoy_prompt_message">Jika suka, maukah Anda memberi bintang proyek di GitHub?</string>
+    <string name="enjoy_prompt_yes">Ya</string>
+    <string name="enjoy_prompt_no">Tidak</string>
+    <string name="star_github_title">Beri bintang di GitHub</string>
+    <string name="star_github_message">Ini sangat membantu dan menjaga proyek terus berkembang.</string>
+    <string name="star_github_confirm">Beri bintang sekarang</string>
+    <string name="star_github_later">Mungkin nanti</string>
+
+    <string name="onboarding_title">Selamat datang di Blankee</string>
+    <string name="onboarding_subtitle">Tur singkat untuk memulai.</string>
+    <string name="onboarding_feature_mix_title">Campur suara yang menenangkan</string>
+    <string name="onboarding_feature_mix_body">Gabungkan beberapa suara dan atur volume untuk menciptakan suasana ideal Anda.</string>
+    <string name="onboarding_feature_timer_title">Timer tidur</string>
+    <string name="onboarding_feature_timer_body">Atur timer agar campuran Anda berhenti otomatis.</string>
+    <string name="onboarding_feature_presets_title">Preset</string>
+    <string name="onboarding_feature_presets_body">Simpan campuran favorit dan muat kapan saja.</string>
+    <string name="onboarding_feature_custom_title">Suara kustom</string>
+    <string name="onboarding_feature_custom_body">Impor file audio Anda sendiri dan tambahkan ke campuran.</string>
+    <string name="onboarding_language_title">Pilih bahasa</string>
+    <string name="onboarding_language_body">Anda dapat mengubahnya nanti di Pengaturan.</string>
+    <string name="onboarding_back">Kembali</string>
+    <string name="onboarding_next">Berikutnya</string>
+    <string name="onboarding_start">Mulai</string>
+    <string name="settings_section_others">Lainnya</string>
+    <string name="settings_report_bug_feature">Laporkan bug atau minta fitur</string>
+    <string name="settings_report_bug_feature_hint">Buka repositori GitHub untuk membuat issue.</string>
+    <string name="made_with_love_by_pronay">Dibuat dengan cinta oleh Pronay</string>
+
+    <string name="empty_string" translatable="false"></string>
+</resources>

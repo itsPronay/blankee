@@ -9,7 +9,6 @@ import com.pronaycoding.blankee.core.database.dao.CustomSoundDao
 import com.pronaycoding.blankee.core.database.dao.PresetDao
 import com.pronaycoding.blankee.core.datastore.PreferenceManagerRepository
 import com.pronaycoding.blankee.core.datastore.PreferenceManagerRepositoryImpl
-import com.pronaycoding.blankee.core.service.billing.PlayBillingManager
 import com.pronaycoding.blankee.core.service.playback.GlobalPlaybackState
 import com.pronaycoding.blankee.core.service.playback.MediaPlaybackNotifications
 import com.pronaycoding.blankee.feature.home.HomeViewmodel
@@ -30,7 +29,7 @@ import org.koin.dsl.module
  * - **Repository Module**: Data access layers (repositories and preference manager)
  * - **ViewModel Module**: Lifecycle-aware screen state management
  * - **Database Module**: Room database and Data Access Objects (DAOs)
- * - **Helper Classes Module**: Services and managers (audio, playback, notifications, billing)
+ * - **Helper Classes Module**: Services and managers (audio, playback, notifications)
  *
  * All modules are combined in [allModules] which is loaded during app initialization.
  *
@@ -45,7 +44,6 @@ object KoinModule {
      * - [PreferenceManagerRepository]: App preferences and settings
      * - [PresetRepository]: Preset persistence operations
      * - [CustomSoundRepository]: Custom sound file management
-     * - [PlayBillingManager]: Google Play billing and premium features
      *
      * Each repository is bound to its interface for dependency injection.
      */
@@ -54,7 +52,6 @@ object KoinModule {
             singleOf(::PreferenceManagerRepositoryImpl) bind PreferenceManagerRepository::class
             singleOf(::PresetRepositoryImpl) bind PresetRepository::class
             singleOf(::CustomSoundRepositoryImpl) bind CustomSoundRepository::class
-            single { PlayBillingManager(get(), get()) }
         }
 
     /**
@@ -62,7 +59,7 @@ object KoinModule {
      *
      * Provides ViewModels for screens:
      * - [HomeViewmodel]: Home screen state (sounds, presets, playback)
-     * - [SettingsViewModel]: Settings screen state (theme, language, premium)
+     * - [SettingsViewModel]: Settings screen state (theme, language)
      *
      * ViewModels are created with viewModelOf() which automatically handles
      * lifecycle awareness and dependency injection.
@@ -103,7 +100,11 @@ object KoinModule {
     private val helperClassModules =
         module {
             single { SoundManager(get()) }
-            single { GlobalPlaybackState(get()) }
+            single {
+                GlobalPlaybackState(get()).apply {
+                    GlobalPlaybackState.setInstance(this)
+                }
+            }
             single { MediaPlaybackNotifications(get()) }
         }
 

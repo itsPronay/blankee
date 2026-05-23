@@ -11,9 +11,7 @@ import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import com.pronaycoding.blankee.core.common.Constants.LANGUAGE_TAG_SYSTEM
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.runBlocking
 import java.util.Locale
 
@@ -146,27 +144,6 @@ class PreferenceManagerRepositoryImpl(
         }
     }
 
-    /**
-     * Observes the premium unlock status as a reactive Flow.
-     *
-     * @return Flow emitting premium status updates
-     */
-    override fun premiumUnlockedFlow(): Flow<Boolean> =
-        appContext.dataStore.data.map { prefs ->
-            prefs[Keys.premiumUnlocked] ?: false
-        }
-
-    /**
-     * Sets the premium unlock status.
-     *
-     * @param unlocked true if premium is unlocked
-     */
-    override suspend fun setPremiumUnlocked(unlocked: Boolean) {
-        appContext.dataStore.edit { prefs ->
-            prefs[Keys.premiumUnlocked] = unlocked
-        }
-    }
-
     companion object {
         /**
          * Wraps a Context to apply the stored language/locale settings.
@@ -213,7 +190,6 @@ class PreferenceManagerRepositoryImpl(
         val enjoyPromptShown: Preferences.Key<Boolean> = booleanPreferencesKey("enjoy_prompt_shown")
         val notificationPrimerShown: Preferences.Key<Boolean> =
             booleanPreferencesKey("notification_primer_shown")
-        val premiumUnlocked: Preferences.Key<Boolean> = booleanPreferencesKey("premium_unlocked")
     }
 }
 

@@ -42,8 +42,7 @@
     <string name="sound_white_noise">Ruido blanco</string>
 
     <string name="settings_title">Ajustes</string>
-    <string name="settings_section_display">Pantalla</string>
-    <string name="settings_section_language">Idioma</string>
+    <string name="settings_section_app_preferences">Preferencias de la aplicación</string>
     <string name="settings_theme">Tema</string>
     <string name="settings_theme_hint">Oscuro por defecto. Sistema sigue el modo claro/oscuro del dispositivo.</string>
     <string name="settings_language">Idioma</string>

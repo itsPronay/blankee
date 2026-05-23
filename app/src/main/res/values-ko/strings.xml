@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Blankee</string>
+    <string name="app_title">Blankee</string>
+    <string name="app_subtitle">휴식을 취하고 집중하세요</string>
+
+    <string name="menu_settings">설정</string>
+    <string name="menu_about">정보</string>
+    <string name="menu_pause">소리 일시 중지</string>
+    <string name="menu_play">소리 재생</string>
+    <string name="menu_timer">수면 타이머</string>
+    <string name="menu_reset">소리 재설정</string>
+    <string name="content_desc_more_options">더 많은 옵션</string>
+
+    <string name="tab_home">홈</string>
+    <string name="tab_settings">설정</string>
+
+    <string name="category_nature">자연</string>
+    <string name="category_travel">여행</string>
+    <string name="category_indoor">실내</string>
+    <string name="category_interiors">인테리어</string>
+    <string name="category_noise">소음</string>
+    <string name="category_custom">사용자 정의 소리</string>
+
+    <string name="sound_rain">빗소리</string>
+    <string name="sound_wind">바람</string>
+    <string name="sound_storm">폭풍우</string>
+    <string name="sound_wave">파도</string>
+    <string name="sound_stream">개울</string>
+    <string name="sound_birds">새</string>
+    <string name="sound_summer_night">여름밤</string>
+
+    <string name="sound_train">기차</string>
+    <string name="sound_boat">보트</string>
+    <string name="sound_city">도시</string>
+
+    <string name="sound_coffee_shop">카페</string>
+    <string name="sound_fireplace">벽난로</string>
+    <string name="sound_busy_restaurant">분주한 레스토랑</string>
+
+    <string name="sound_pink_noise">핑크 노이즈</string>
+    <string name="sound_white_noise">화이트 노이즈</string>
+
+    <string name="settings_title">설정</string>
+    <string name="settings_section_app_preferences">앱 환경설정</string>
+    <string name="settings_theme">테마</string>
+    <string name="settings_theme_hint">어두운 테마가 기본값입니다. 시스템이 기기의 라이트/다크 모드를 따릅니다.</string>
+    <string name="settings_language">언어</string>
+    <string name="settings_language_hint">즉시 적용됩니다. 새 언어를 로드하기 위해 앱이 다시 시작됩니다.</string>
+    <string name="language_system">시스템 언어 사용</string>
+    <string name="theme_light">라이트</string>
+    <string name="theme_dark">다크</string>
+    <string name="theme_system">시스템</string>
+    <string name="language_english">English</string>
+    <string name="language_chinese">中文 (简体)</string>
+    <string name="language_hindi">हिंदी</string>
+    <string name="language_spanish">Español</string>
+    <string name="language_korean">한국어</string>
+    <string name="language_arabic">العربية</string>
+    <string name="language_french">Français</string>
+    <string name="language_bengali">বাংলা</string>
+    <string name="language_portuguese">Português</string>
+    <string name="language_tamil">தமிழ்</string>
+
+    <string name="add_custom_sound">사용자 정의 소리 추가</string>
+    <string name="custom_sounds_premium_message">사용자 정의 소리는 프리미엄의 일부입니다. 일회 구매로 잠금 해제하세요.</string>
+    <string name="buy_premium">프리미엄 구매</string>
+    <string name="content_desc_buy_premium">프리미엄을 구매하여 사용자 정의 소리 잠금 해제</string>
+    <string name="restore_purchases">구매 복원</string>
+    <string name="premium_active">프리미엄이 활성화되었습니다. 지원해주셔서 감사합니다.</string>
+    <string name="settings_section_premium">프리미엄</string>
+    <string name="billing_not_ready">결제가 아직 준비되지 않았습니다. 잠시 후 다시 시도하세요.</string>
+    <string name="billing_product_not_loaded">스토어 목록이 로드되지 않았습니다. 연결을 확인하고 다시 시도하세요.</string>
+    <string name="billing_launch_failed">구매 화면을 열 수 없습니다.</string>
+    <string name="billing_restored">구매가 복원되었습니다.</string>
+    <string name="billing_restore_none">이 계정에서 활성화된 구매를 찾을 수 없습니다.</string>
+    <string name="custom_sound_default_name">사용자 정의 %1$d</string>
+    <string name="sound_added">소리 추가됨: %1$s</string>
+    <string name="could_not_add_sound">소리를 추가할 수 없습니다</string>
+    <string name="sounds_reset">모든 소리가 재설정되었습니다</string>
+    <string name="cant_play_sound_on_pause">일시 중지 중에는 소리를 재생할 수 없습니다</string>
+    <string name="delete_sound">사용자 정의 소리 삭제</string>
+    <string name="delete_sound_dialog_title">소리를 삭제하시겠습니까?</string>
+    <string name="delete_sound_dialog_message">사용자 정의 소리에서 \"%1$s\"을(를) 제거하시겠습니까?</string>
+    <string name="delete_sound_confirm">삭제</string>
+    <string name="rename_sound">소리 이름 변경</string>
+    <string name="sound_name_label">소리 이름</string>
+    <string name="rename_sound_confirm">이름 변경</string>
+
+    <string name="no_browser_installed">이 링크를 열 수 있는 앱이 없습니다. 웹 브라우저를 설치하세요.</string>
+    <string name="error_unexpected">예상치 못한 오류가 발생했습니다.</string>
+
+    <string name="inspired_text">Rafael Mardojai의 Blanket에서 영감을 받았으며, 원래는 GNOME 애플리케이션입니다.</string>
+    <string name="app_description">다양한 소리를 들으세요. 집중력을 개선하고 생산성을 높이세요.</string>
+
+    <string name="about_title">정보</string>
+    <string name="about_version">버전 %1$s</string>
+    <string name="about_source_code">소스 코드</string>
+    <string name="about_source_code_subtitle">GitHub에서 이 앱의 소스 코드를 보세요</string>
+    <string name="content_desc_back">뒤로</string>
+    <string name="content_desc_logo">앱 로고</string>
+    <string name="content_desc_sound_icon">소리 아이콘</string>
+    <string name="content_desc_add_custom_sound">사용자 정의 소리 추가</string>
+
+    <string name="presets_title">프리셋</string>
+    <string name="presets_hint">현재 믹스를 저장하고 언제든지 로드하세요.</string>
+    <string name="presets_empty">프리셋이 없습니다.</string>
+    <string name="presets_save_mix">현재 믹스 저장</string>
+    <string name="preset_load">로드</string>
+    <string name="preset_delete_desc">프리셋 삭제</string>
+    <string name="preset_delete_confirm_title">프리셋을 삭제하시겠습니까?</string>
+    <string name="preset_delete_confirm_message">\"%1$s\"을(를) 영구적으로 삭제하시겠습니까?</string>
+    <string name="preset_untitled">제목 없는 믹스</string>
+    <string name="preset_saved">프리셋이 저장되었습니다</string>
+    <string name="preset_nothing_to_save">저장하기 전에 최소한 하나의 소리를 높이세요.</string>
+    <string name="save_preset_dialog_title">믹스 저장</string>
+    <string name="preset_name_label">프리셋 이름</string>
+    <string name="preset_name_hint">비워두면 \"제목 없는 믹스\"로 저장됩니다</string>
+    <string name="preset_dialog_save">저장</string>
+    <string name="dialog_cancel">취소</string>
+    <string name="timer_dialog_title">수면 타이머 설정</string>
+    <string name="timer_custom">사용자 정의</string>
+    <string name="timer_custom_label">분</string>
+    <string name="timer_minutes_format">%1$d분</string>
+    <string name="timer_start">시작</string>
+    <string name="timer_set">타이머가 %1$d분으로 설정되었습니다</string>
+    <string name="timer_invalid_input">유효한 타이머 기간을 입력하세요</string>
+    <string name="sleep_timer_finished">타이머 완료. 소리가 중지되었습니다.</string>
+    <string name="timer_countdown_label">수면 타이머: %1$s</string>
+    <string name="timer_cancel">타이머 취소</string>
+    <string name="timer_cancel_confirm_title">수면 타이머를 취소하시겠습니까?</string>
+    <string name="timer_cancel_confirm_message">현재 타이머를 중지하시겠습니까?</string>
+
+    <string name="notification_channel_name">재생</string>
+    <string name="notification_channel_desc">Blankee 믹스가 활성화되면 표시됩니다</string>
+    <string name="notification_playing">믹스 재생 중</string>
+    <string name="notification_paused">믹스 일시 중지</string>
+    <string name="notification_action_play">재생</string>
+    <string name="notification_action_pause">일시 중지</string>
+    <string name="notification_primer_title">알림을 허용하시겠습니까?</string>
+    <string name="notification_primer_message">알림은 소리가 실행되는 동안 재생 제어를 사용 가능하게 유지합니다.</string>
+    <string name="notification_primer_grant">허용</string>
+    <string name="notification_primer_continue_anyway">계속</string>
+
+    <string name="enjoy_prompt_title">Blankee를 즐기고 계신가요?</string>
+    <string name="enjoy_prompt_message">마음에 드신다면 GitHub에서 프로젝트에 별을 주시겠어요?</string>
+    <string name="enjoy_prompt_yes">네</string>
+    <string name="enjoy_prompt_no">아니오</string>
+    <string name="star_github_title">GitHub에서 별 주기</string>
+    <string name="star_github_message">이는 많은 도움이 되고 프로젝트를 계속 성장시킵니다.</string>
+    <string name="star_github_confirm">지금 별 주기</string>
+    <string name="star_github_later">나중에</string>
+
+    <string name="onboarding_title">Blankee에 오신 것을 환영합니다</string>
+    <string name="onboarding_subtitle">시작하기 위한 빠른 둘러보기입니다.</string>
+    <string name="onboarding_feature_mix_title">이완 소리 믹싱</string>
+    <string name="onboarding_feature_mix_body">여러 소리를 결합하고 볼륨을 제어하여 완벽한 분위기를 만드세요.</string>
+    <string name="onboarding_feature_timer_title">수면 타이머</string>
+    <string name="onboarding_feature_timer_body">믹스가 자동으로 중지되도록 타이머를 설정하세요.</string>
+    <string name="onboarding_feature_presets_title">프리셋</string>
+    <string name="onboarding_feature_presets_body">좋아하는 믹스를 저장하고 언제든지 로드하세요.</string>
+    <string name="onboarding_feature_custom_title">사용자 정의 소리</string>
+    <string name="onboarding_feature_custom_body">자신의 오디오 파일을 가져오고 믹스에 추가하세요.</string>
+    <string name="onboarding_language_title">언어 선택</string>
+    <string name="onboarding_language_body">나중에 설정에서 변경할 수 있습니다.</string>
+    <string name="onboarding_back">뒤로</string>
+    <string name="onboarding_next">다음</string>
+    <string name="onboarding_start">시작</string>
+    <string name="settings_section_others">기타</string>
+    <string name="settings_report_bug_feature">버그 보고 또는 기능 요청</string>
+    <string name="settings_report_bug_feature_hint">GitHub 저장소를 열어 문제를 생성하세요.</string>
+    <string name="made_with_love_by_pronay">Pronay가 정성스럽게 제작</string>
+
+    <string name="empty_string" translatable="false"></string>
+</resources>

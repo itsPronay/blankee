@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Blankee</string>
+    <string name="app_title">Blankee</string>
+    <string name="app_subtitle">آرامش بگیرید و تمرکز کنید</string>
+
+    <string name="menu_settings">تنظیمات</string>
+    <string name="menu_about">درباره</string>
+    <string name="menu_pause">توقف صداها</string>
+    <string name="menu_play">پخش صداها</string>
+    <string name="menu_timer">تایمر خواب</string>
+    <string name="menu_reset">بازنشانی صداها</string>
+    <string name="content_desc_more_options">گزینه‌های بیشتر</string>
+
+    <string name="tab_home">خانه</string>
+    <string name="tab_settings">تنظیمات</string>
+
+    <string name="category_nature">طبیعت</string>
+    <string name="category_travel">سفر</string>
+    <string name="category_indoor">فضای داخلی</string>
+    <string name="category_interiors">فضای داخل</string>
+    <string name="category_noise">نویز</string>
+    <string name="category_custom">صداهای سفارشی</string>
+
+    <string name="sound_rain">باران</string>
+    <string name="sound_wind">باد</string>
+    <string name="sound_storm">طوفان</string>
+    <string name="sound_wave">امواج</string>
+    <string name="sound_stream">جویبار</string>
+    <string name="sound_birds">پرندگان</string>
+    <string name="sound_summer_night">شب تابستان</string>
+
+    <string name="sound_train">قطار</string>
+    <string name="sound_boat">قایق</string>
+    <string name="sound_city">شهر</string>
+
+    <string name="sound_coffee_shop">کافه</string>
+    <string name="sound_fireplace">شومینه</string>
+    <string name="sound_busy_restaurant">رستوران شلوغ</string>
+
+    <string name="sound_pink_noise">نویز صورتی</string>
+    <string name="sound_white_noise">نویز سفید</string>
+
+    <string name="settings_title">تنظیمات</string>
+    <string name="settings_section_app_preferences">تنظیمات برنامه</string>
+    <string name="settings_theme">تم</string>
+    <string name="settings_theme_hint">حالت تاریک پیش‌فرض است. برنامه از حالت روشن/تاریک دستگاه پیروی می‌کند.</string>
+    <string name="settings_language">زبان</string>
+    <string name="settings_language_hint">بلافاصله اعمال می‌شود. برای بارگذاری زبان جدید، برنامه ممکن است دوباره راه‌اندازی شود.</string>
+    <string name="language_system">استفاده از زبان سیستم</string>
+    <string name="theme_light">روشن</string>
+    <string name="theme_dark">تاریک</string>
+    <string name="theme_system">سیستم</string>
+    <string name="language_english">انگلیسی</string>
+    <string name="language_chinese">چینی (简体)</string>
+    <string name="language_hindi">هندی</string>
+    <string name="language_spanish">اسپانیایی</string>
+    <string name="language_korean">کره‌ای</string>
+    <string name="language_arabic">عربی</string>
+    <string name="language_french">فرانسوی</string>
+    <string name="language_bengali">بنگالی</string>
+    <string name="language_portuguese">پرتغالی</string>
+    <string name="language_tamil">تامیل</string>
+    <string name="language_urdu">اردو</string>
+    <string name="language_indonesian">اندونزیایی</string>
+    <string name="language_japanese">ژاپنی</string>
+    <string name="language_russian">روسی</string>
+    <string name="language_german">آلمانی</string>
+    <string name="language_turkish">ترکی</string>
+    <string name="language_vietnamese">ویتنامی</string>
+    <string name="language_thai">تایلندی</string>
+    <string name="language_persian">فارسی</string>
+    <string name="language_punjabi">پنجابی</string>
+
+    <string name="add_custom_sound">افزودن صدای سفارشی</string>
+    <string name="custom_sounds_premium_message">صداهای سفارشی بخشی از Premium هستند. با یک خرید یک‌باره آن‌ها را باز کنید.</string>
+    <string name="buy_premium">خرید Premium</string>
+    <string name="content_desc_buy_premium">برای باز کردن صداهای سفارشی Premium بخرید</string>
+    <string name="restore_purchases">بازیابی خریدها</string>
+    <string name="premium_active">Premium فعال است. از حمایت شما متشکریم.</string>
+    <string name="settings_section_premium">Premium</string>
+    <string name="billing_not_ready">پرداخت هنوز آماده نیست. کمی بعد دوباره تلاش کنید.</string>
+    <string name="billing_product_not_loaded">فهرست فروشگاه بارگذاری نشد. اتصال را بررسی و دوباره تلاش کنید.</string>
+    <string name="billing_launch_failed">باز کردن صفحه خرید ممکن نشد.</string>
+    <string name="billing_restored">خریدها بازیابی شد.</string>
+    <string name="billing_restore_none">خرید فعالی برای این حساب یافت نشد.</string>
+    <string name="custom_sound_default_name">سفارشی %1$d</string>
+    <string name="sound_added">صدا اضافه شد: %1$s</string>
+    <string name="could_not_add_sound">افزودن صدا ممکن نشد</string>
+    <string name="sounds_reset">همه صداها بازنشانی شدند</string>
+    <string name="cant_play_sound_on_pause">در حالت توقف نمی‌توان صدا را پخش کرد</string>
+    <string name="delete_sound">حذف صدای سفارشی</string>
+    <string name="delete_sound_dialog_title">حذف صدا؟</string>
+    <string name="delete_sound_dialog_message">"%1$s" از صداهای سفارشی حذف شود؟</string>
+    <string name="delete_sound_confirm">حذف</string>
+    <string name="rename_sound">تغییر نام صدا</string>
+    <string name="sound_name_label">نام صدا</string>
+    <string name="rename_sound_confirm">تغییر نام</string>
+
+    <string name="no_browser_installed">هیچ برنامه‌ای برای باز کردن این لینک وجود ندارد. لطفاً یک مرورگر وب نصب کنید.</string>
+    <string name="error_unexpected">یک خطای غیرمنتظره رخ داد.</string>
+
+    <string name="inspired_text">الهام گرفته از Blanket اثر Rafael Mardojai، که در اصل یک برنامه GNOME بود.</string>
+    <string name="app_description">به صداهای مختلف گوش دهید. تمرکز خود را بهبود دهید و بهره‌وری را افزایش دهید.</string>
+
+    <string name="about_title">درباره ما</string>
+    <string name="about_version">نسخه %1$s</string>
+    <string name="about_source_code">کد منبع</string>
+    <string name="about_source_code_subtitle">کد منبع این برنامه را در GitHub ببینید</string>
+    <string name="content_desc_back">بازگشت</string>
+    <string name="content_desc_logo">لوگوی برنامه</string>
+    <string name="content_desc_sound_icon">آیکن صدا</string>
+    <string name="content_desc_add_custom_sound">افزودن صدای سفارشی</string>
+
+    <string name="presets_title">پیش‌تنظیم‌ها</string>
+    <string name="presets_hint">میکس فعلی خود را ذخیره کنید و هر زمان بارگذاری کنید.</string>
+    <string name="presets_empty">هنوز پیش‌تنظیمی وجود ندارد.</string>
+    <string name="presets_save_mix">ذخیره میکس فعلی</string>
+    <string name="preset_load">بارگذاری</string>
+    <string name="preset_delete_desc">حذف پیش‌تنظیم</string>
+    <string name="preset_delete_confirm_title">حذف پیش‌تنظیم؟</string>
+    <string name="preset_delete_confirm_message">"%1$s" برای همیشه حذف شود؟</string>
+    <string name="preset_untitled">میکس بدون عنوان</string>
+    <string name="preset_saved">پیش‌تنظیم ذخیره شد</string>
+    <string name="preset_nothing_to_save">قبل از ذخیره حداقل یک صدا را افزایش دهید.</string>
+    <string name="save_preset_dialog_title">ذخیره میکس</string>
+    <string name="preset_name_label">نام پیش‌تنظیم</string>
+    <string name="preset_name_hint">اگر خالی باشد، به عنوان "میکس بدون عنوان" ذخیره می‌شود</string>
+    <string name="preset_dialog_save">ذخیره</string>
+    <string name="dialog_cancel">لغو</string>
+    <string name="timer_dialog_title">تنظیم تایمر خواب</string>
+    <string name="timer_custom">سفارشی</string>
+    <string name="timer_custom_label">دقیقه</string>
+    <string name="timer_minutes_format">%1$d دقیقه</string>
+    <string name="timer_start">شروع</string>
+    <string name="timer_set">تایمر برای %1$d دقیقه تنظیم شد</string>
+    <string name="timer_invalid_input">مدت‌زمان معتبر وارد کنید</string>
+    <string name="sleep_timer_finished">تایمر تمام شد. صداها متوقف شدند.</string>
+    <string name="timer_countdown_label">تایمر خواب: %1$s</string>
+    <string name="timer_cancel">لغو تایمر</string>
+    <string name="timer_cancel_confirm_title">تایمر خواب لغو شود؟</string>
+    <string name="timer_cancel_confirm_message">آیا می‌خواهید تایمر فعلی را متوقف کنید؟</string>
+
+    <string name="notification_channel_name">پخش</string>
+    <string name="notification_channel_desc">وقتی میکس Blankee فعال است نمایش می‌دهد</string>
+    <string name="notification_playing">میکس در حال پخش</string>
+    <string name="notification_paused">میکس متوقف شد</string>
+    <string name="notification_action_play">پخش</string>
+    <string name="notification_action_pause">توقف</string>
+    <string name="notification_primer_title">اجازهٔ اعلان‌ها؟</string>
+    <string name="notification_primer_message">اعلان‌ها هنگام پخش صداها کنترل‌های پخش را در دسترس نگه می‌دارند.</string>
+    <string name="notification_primer_grant">اجازه</string>
+    <string name="notification_primer_continue_anyway">ادامه بده</string>
+
+    <string name="enjoy_prompt_title">از Blankee لذت می‌برید؟</string>
+    <string name="enjoy_prompt_message">اگر دوست دارید، می‌خواهید در GitHub به پروژه ستاره بدهید؟</string>
+    <string name="enjoy_prompt_yes">بله</string>
+    <string name="enjoy_prompt_no">خیر</string>
+    <string name="star_github_title">ستاره در GitHub</string>
+    <string name="star_github_message">خیلی کمک می‌کند و باعث رشد پروژه می‌شود.</string>
+    <string name="star_github_confirm">اکنون ستاره بده</string>
+    <string name="star_github_later">بعداً</string>
+
+    <string name="onboarding_title">به Blankee خوش آمدید</string>
+    <string name="onboarding_subtitle">یک تور کوتاه برای شروع.</string>
+    <string name="onboarding_feature_mix_title">میکس صداهای آرامش‌بخش</string>
+    <string name="onboarding_feature_mix_body">چندین صدا را ترکیب کنید و بلندی صدا را کنترل کنید تا فضای دلخواهتان را بسازید.</string>
+    <string name="onboarding_feature_timer_title">تایمر خواب</string>
+    <string name="onboarding_feature_timer_body">تایمر تنظیم کنید تا میکس شما خودکار متوقف شود.</string>
+    <string name="onboarding_feature_presets_title">پیش‌تنظیم‌ها</string>
+    <string name="onboarding_feature_presets_body">میکس‌های مورد علاقه‌تان را ذخیره و هر زمان بارگذاری کنید.</string>
+    <string name="onboarding_feature_custom_title">صداهای سفارشی</string>
+    <string name="onboarding_feature_custom_body">فایل‌های صوتی خود را وارد کرده و به میکس اضافه کنید.</string>
+    <string name="onboarding_language_title">انتخاب زبان</string>
+    <string name="onboarding_language_body">بعداً در تنظیمات می‌توانید تغییر دهید.</string>
+    <string name="onboarding_back">بازگشت</string>
+    <string name="onboarding_next">بعدی</string>
+    <string name="onboarding_start">شروع</string>
+    <string name="settings_section_others">سایر</string>
+    <string name="settings_report_bug_feature">گزارش باگ یا درخواست ویژگی</string>
+    <string name="settings_report_bug_feature_hint">برای ایجاد issue مخزن GitHub را باز کنید.</string>
+    <string name="made_with_love_by_pronay">با عشق توسط Pronay ساخته شده</string>
+
+    <string name="empty_string" translatable="false"></string>
+</resources>

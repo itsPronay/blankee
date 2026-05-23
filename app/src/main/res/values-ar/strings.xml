@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Blankee</string>
+    <string name="app_title">Blankee</string>
+    <string name="app_subtitle">استرخِ وركّز</string>
+
+    <string name="menu_settings">الإعدادات</string>
+    <string name="menu_about">حول</string>
+    <string name="menu_pause">إيقاف الأصوات</string>
+    <string name="menu_play">تشغيل الأصوات</string>
+    <string name="menu_timer">مؤقت النوم</string>
+    <string name="menu_reset">إعادة تعيين الأصوات</string>
+    <string name="content_desc_more_options">خيارات إضافية</string>
+
+    <string name="tab_home">الرئيسية</string>
+    <string name="tab_settings">الإعدادات</string>
+
+    <string name="category_nature">الطبيعة</string>
+    <string name="category_travel">السفر</string>
+    <string name="category_indoor">الداخل</string>
+    <string name="category_interiors">الديكورات الداخلية</string>
+    <string name="category_noise">الضوضاء</string>
+    <string name="category_custom">الأصوات المخصصة</string>
+
+    <string name="sound_rain">المطر</string>
+    <string name="sound_wind">الريح</string>
+    <string name="sound_storm">العاصفة</string>
+    <string name="sound_wave">الموجات</string>
+    <string name="sound_stream">الجدول</string>
+    <string name="sound_birds">الطيور</string>
+    <string name="sound_summer_night">ليلة صيف</string>
+
+    <string name="sound_train">القطار</string>
+    <string name="sound_boat">القارب</string>
+    <string name="sound_city">المدينة</string>
+
+    <string name="sound_coffee_shop">مقهى</string>
+    <string name="sound_fireplace">مدفأة</string>
+    <string name="sound_busy_restaurant">مطعم مزدحم</string>
+
+    <string name="sound_pink_noise">ضوضاء وردية</string>
+    <string name="sound_white_noise">ضوضاء بيضاء</string>
+
+    <string name="settings_title">الإعدادات</string>
+    <string name="settings_section_app_preferences">تفضيلات التطبيق</string>
+    <string name="settings_theme">المظهر</string>
+    <string name="settings_theme_hint">الوضع الداكن هو الافتراضي. يتبع النظام مظهر جهازك الفاتح/الداكن.</string>
+    <string name="settings_language">اللغة</string>
+    <string name="settings_language_hint">ينطبق على الفور. يعيد التطبيق بدء التشغيل لتحميل اللغة الجديدة.</string>
+    <string name="language_system">استخدم لغة النظام</string>
+    <string name="theme_light">فاتح</string>
+    <string name="theme_dark">داكن</string>
+    <string name="theme_system">النظام</string>
+    <string name="language_english">English</string>
+    <string name="language_chinese">中文 (简体)</string>
+    <string name="language_hindi">हिंदी</string>
+    <string name="language_spanish">Español</string>
+    <string name="language_korean">한국어</string>
+    <string name="language_arabic">العربية</string>
+    <string name="language_french">Français</string>
+    <string name="language_bengali">বাংলা</string>
+    <string name="language_portuguese">Português</string>
+    <string name="language_tamil">தமிழ்</string>
+
+    <string name="add_custom_sound">إضافة صوت مخصص</string>
+    <string name="custom_sounds_premium_message">الأصوات المخصصة جزء من Premium. قم بفتح القفل بشراء لمرة واحدة.</string>
+    <string name="buy_premium">شراء Premium</string>
+    <string name="content_desc_buy_premium">اشتري Premium لفتح الأصوات المخصصة</string>
+    <string name="restore_purchases">استعادة المشتريات</string>
+    <string name="premium_active">Premium نشط. شكراً لدعمك.</string>
+    <string name="settings_section_premium">Premium</string>
+    <string name="billing_not_ready">المحاسبة ليست جاهزة بعد. حاول مرة أخرى في لحظة.</string>
+    <string name="billing_product_not_loaded">لم يتم تحميل قائمة المتجر. تحقق من اتصالك وحاول مرة أخرى.</string>
+    <string name="billing_launch_failed">لم تتمكن من فتح شاشة الشراء.</string>
+    <string name="billing_restored">تم استعادة المشتريات.</string>
+    <string name="billing_restore_none">لم يتم العثور على عمليات شراء نشطة لهذا الحساب.</string>
+    <string name="custom_sound_default_name">مخصص %1$d</string>
+    <string name="sound_added">تمت إضافة الصوت: %1$s</string>
+    <string name="could_not_add_sound">لم تتمكن من إضافة الصوت</string>
+    <string name="sounds_reset">تم إعادة تعيين جميع الأصوات</string>
+    <string name="cant_play_sound_on_pause">لا يمكن تشغيل الصوت أثناء الإيقاف</string>
+    <string name="delete_sound">حذف صوت مخصص</string>
+    <string name="delete_sound_dialog_title">حذف الصوت؟</string>
+    <string name="delete_sound_dialog_message">إزالة \"%1$s\" من الأصوات المخصصة؟</string>
+    <string name="delete_sound_confirm">حذف</string>
+    <string name="rename_sound">إعادة تسمية الصوت</string>
+    <string name="sound_name_label">اسم الصوت</string>
+    <string name="rename_sound_confirm">إعادة تسمية</string>
+
+    <string name="no_browser_installed">لا توجد تطبيقات يمكنها فتح هذا الرابط. يرجى تثبيت متصفح ويب.</string>
+    <string name="error_unexpected">حدث خطأ غير متوقع.</string>
+
+    <string name="inspired_text">مستوحى من Blanket الخاص بـ Rafael Mardojai، وهو تطبيق GNOME في الأصل.</string>
+    <string name="app_description">استمع إلى أصوات مختلفة. حسّن التركيز وزد إنتاجيتك.</string>
+
+    <string name="about_title">معلومات عنا</string>
+    <string name="about_version">الإصدار %1$s</string>
+    <string name="about_source_code">الكود المصدري</string>
+    <string name="about_source_code_subtitle">عرض كود المصدر لهذا التطبيق على GitHub</string>
+    <string name="content_desc_back">رجوع</string>
+    <string name="content_desc_logo">شعار التطبيق</string>
+    <string name="content_desc_sound_icon">أيقونة الصوت</string>
+    <string name="content_desc_add_custom_sound">إضافة صوت مخصص</string>
+
+    <string name="presets_title">الإعدادات المسبقة</string>
+    <string name="presets_hint">احفظ المزيج الحالي، ثم قم بتحميله في أي وقت.</string>
+    <string name="presets_empty">لا توجد إعدادات مسبقة حتى الآن.</string>
+    <string name="presets_save_mix">حفظ المزيج الحالي</string>
+    <string name="preset_load">تحميل</string>
+    <string name="preset_delete_desc">حذف الإعدادات المسبقة</string>
+    <string name="preset_delete_confirm_title">حذف الإعدادات المسبقة؟</string>
+    <string name="preset_delete_confirm_message">حذف \"%1$s\" بشكل دائم؟</string>
+    <string name="preset_untitled">مزيج بدون عنوان</string>
+    <string name="preset_saved">تم حفظ الإعدادات المسبقة</string>
+    <string name="preset_nothing_to_save">أعلِ على الأقل صوت واحد قبل الحفظ.</string>
+    <string name="save_preset_dialog_title">حفظ المزيج</string>
+    <string name="preset_name_label">اسم الإعدادات المسبقة</string>
+    <string name="preset_name_hint">إذا تُرك فارغاً، سيتم حفظه باسم \"مزيج بدون عنوان\"</string>
+    <string name="preset_dialog_save">حفظ</string>
+    <string name="dialog_cancel">إلغاء</string>
+    <string name="timer_dialog_title">ضبط مؤقت النوم</string>
+    <string name="timer_custom">مخصص</string>
+    <string name="timer_custom_label">الدقائق</string>
+    <string name="timer_minutes_format">%1$d د</string>
+    <string name="timer_start">ابدأ</string>
+    <string name="timer_set">تم ضبط المؤقت لمدة %1$d دقيقة</string>
+    <string name="timer_invalid_input">أدخل مدة مؤقت صحيحة</string>
+    <string name="sleep_timer_finished">انتهى المؤقت. توقفت الأصوات.</string>
+    <string name="timer_countdown_label">مؤقت النوم: %1$s</string>
+    <string name="timer_cancel">إلغاء المؤقت</string>
+    <string name="timer_cancel_confirm_title">إلغاء مؤقت النوم؟</string>
+    <string name="timer_cancel_confirm_message">هل تريد إيقاف المؤقت الحالي؟</string>
+
+    <string name="notification_channel_name">التشغيل</string>
+    <string name="notification_channel_desc">يظهر عند تشغيل مزيج Blankee</string>
+    <string name="notification_playing">المزيج قيد التشغيل</string>
+    <string name="notification_paused">المزيج موقوف</string>
+    <string name="notification_action_play">تشغيل</string>
+    <string name="notification_action_pause">إيقاف</string>
+    <string name="notification_primer_title">السماح بالإشعارات؟</string>
+    <string name="notification_primer_message">تحافظ الإشعارات على توفر عناصر التحكم في التشغيل أثناء تشغيل الأصوات.</string>
+    <string name="notification_primer_grant">السماح</string>
+    <string name="notification_primer_continue_anyway">المتابعة على أي حال</string>
+
+    <string name="enjoy_prompt_title">هل تستمتع بـ Blankee؟</string>
+    <string name="enjoy_prompt_message">إذا أعجبك الأمر، هل تود منح المشروع نجمة على GitHub؟</string>
+    <string name="enjoy_prompt_yes">نعم</string>
+    <string name="enjoy_prompt_no">لا</string>
+    <string name="star_github_title">نجمة على GitHub</string>
+    <string name="star_github_message">يساعد كثيراً ويحافظ على نمو المشروع.</string>
+    <string name="star_github_confirm">أضف نجمة الآن</string>
+    <string name="star_github_later">ربما لاحقاً</string>
+
+    <string name="onboarding_title">مرحباً بك في Blankee</string>
+    <string name="onboarding_subtitle">جولة سريعة لمساعدتك على البدء.</string>
+    <string name="onboarding_feature_mix_title">امزج الأصوات المريحة</string>
+    <string name="onboarding_feature_mix_body">اجمع بين عدة أصوات وتحكم في مستوى الصوت لإنشاء أجواء مثالية.</string>
+    <string name="onboarding_feature_timer_title">مؤقت النوم</string>
+    <string name="onboarding_feature_timer_body">اضبط مؤقتاً لإيقاف المزيج تلقائياً.</string>
+    <string name="onboarding_feature_presets_title">الإعدادات المسبقة</string>
+    <string name="onboarding_feature_presets_body">احفظ المزجات المفضلة لديك وحملها في أي وقت.</string>
+    <string name="onboarding_feature_custom_title">الأصوات المخصصة</string>
+    <string name="onboarding_feature_custom_body">استورد ملفات صوتك الخاصة وأضفها إلى المزيج.</string>
+    <string name="onboarding_language_title">اختر اللغة</string>
+    <string name="onboarding_language_body">يمكنك تغيير هذا لاحقاً في الإعدادات.</string>
+    <string name="onboarding_back">رجوع</string>
+    <string name="onboarding_next">التالي</string>
+    <string name="onboarding_start">ابدأ</string>
+    <string name="settings_section_others">آخرى</string>
+    <string name="settings_report_bug_feature">الإبلاغ عن خلل أو طلب ميزة</string>
+    <string name="settings_report_bug_feature_hint">افتح مستودع GitHub لإنشاء مشكلة.</string>
+    <string name="made_with_love_by_pronay">صنع بحب من قبل Pronay</string>
+
+    <string name="empty_string" translatable="false"></string>
+</resources>

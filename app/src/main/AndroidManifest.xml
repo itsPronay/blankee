@@ -43,6 +43,8 @@
         <receiver
             android:name=".core.service.playback.MediaPlaybackActionReceiver"
             android:exported="false" />
+
+
     </application>
 
 </manifest>

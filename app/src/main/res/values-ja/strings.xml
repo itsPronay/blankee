@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Blankee</string>
+    <string name="app_title">Blankee</string>
+    <string name="app_subtitle">リラックスして集中</string>
+
+    <string name="menu_settings">設定</string>
+    <string name="menu_about">このアプリについて</string>
+    <string name="menu_pause">サウンドを一時停止</string>
+    <string name="menu_play">サウンドを再生</string>
+    <string name="menu_timer">スリープタイマー</string>
+    <string name="menu_reset">サウンドをリセット</string>
+    <string name="content_desc_more_options">その他のオプション</string>
+
+    <string name="tab_home">ホーム</string>
+    <string name="tab_settings">設定</string>
+
+    <string name="category_nature">自然</string>
+    <string name="category_travel">旅行</string>
+    <string name="category_indoor">屋内</string>
+    <string name="category_interiors">室内</string>
+    <string name="category_noise">ノイズ</string>
+    <string name="category_custom">カスタムサウンド</string>
+
+    <string name="sound_rain">雨</string>
+    <string name="sound_wind">風</string>
+    <string name="sound_storm">嵐</string>
+    <string name="sound_wave">波</string>
+    <string name="sound_stream">小川</string>
+    <string name="sound_birds">鳥</string>
+    <string name="sound_summer_night">夏の夜</string>
+
+    <string name="sound_train">電車</string>
+    <string name="sound_boat">ボート</string>
+    <string name="sound_city">都市</string>
+
+    <string name="sound_coffee_shop">コーヒーショップ</string>
+    <string name="sound_fireplace">暖炉</string>
+    <string name="sound_busy_restaurant">混雑したレストラン</string>
+
+    <string name="sound_pink_noise">ピンクノイズ</string>
+    <string name="sound_white_noise">ホワイトノイズ</string>
+
+    <string name="settings_title">設定</string>
+    <string name="settings_section_app_preferences">アプリの設定</string>
+    <string name="settings_theme">テーマ</string>
+    <string name="settings_theme_hint">デフォルトはダーク。システムは端末のライト/ダークモードに従います。</string>
+    <string name="settings_language">言語</string>
+    <string name="settings_language_hint">すぐに適用されます。新しい言語を読み込むためアプリが再起動します。</string>
+    <string name="language_system">システムの言語を使用</string>
+    <string name="theme_light">ライト</string>
+    <string name="theme_dark">ダーク</string>
+    <string name="theme_system">システム</string>
+    <string name="language_english">英語</string>
+    <string name="language_chinese">中国語（簡体）</string>
+    <string name="language_hindi">ヒンディー語</string>
+    <string name="language_spanish">スペイン語</string>
+    <string name="language_korean">韓国語</string>
+    <string name="language_arabic">アラビア語</string>
+    <string name="language_french">フランス語</string>
+    <string name="language_bengali">ベンガル語</string>
+    <string name="language_portuguese">ポルトガル語</string>
+    <string name="language_tamil">タミル語</string>
+    <string name="language_urdu">ウルドゥー語</string>
+    <string name="language_indonesian">インドネシア語</string>
+    <string name="language_japanese">日本語</string>
+    <string name="language_russian">ロシア語</string>
+    <string name="language_german">ドイツ語</string>
+    <string name="language_turkish">トルコ語</string>
+    <string name="language_vietnamese">ベトナム語</string>
+    <string name="language_thai">タイ語</string>
+    <string name="language_persian">ペルシャ語</string>
+    <string name="language_punjabi">パンジャブ語</string>
+
+    <string name="add_custom_sound">カスタムサウンドを追加</string>
+    <string name="custom_sounds_premium_message">カスタムサウンドはプレミアムの一部です。一度の購入で解除できます。</string>
+    <string name="buy_premium">プレミアムを購入</string>
+    <string name="content_desc_buy_premium">カスタムサウンドを解除するためプレミアムを購入</string>
+    <string name="restore_purchases">購入を復元</string>
+    <string name="premium_active">プレミアムが有効です。ご支援ありがとうございます。</string>
+    <string name="settings_section_premium">プレミアム</string>
+    <string name="billing_not_ready">課金の準備ができていません。しばらくしてからもう一度お試しください。</string>
+    <string name="billing_product_not_loaded">ストアの掲載情報が読み込まれていません。接続を確認して再試行してください。</string>
+    <string name="billing_launch_failed">購入画面を開けませんでした。</string>
+    <string name="billing_restored">購入を復元しました。</string>
+    <string name="billing_restore_none">このアカウントに有効な購入がありません。</string>
+    <string name="custom_sound_default_name">カスタム %1$d</string>
+    <string name="sound_added">サウンドを追加しました: %1$s</string>
+    <string name="could_not_add_sound">サウンドを追加できませんでした</string>
+    <string name="sounds_reset">すべてのサウンドをリセットしました</string>
+    <string name="cant_play_sound_on_pause">一時停止中はサウンドを再生できません</string>
+    <string name="delete_sound">カスタムサウンドを削除</string>
+    <string name="delete_sound_dialog_title">サウンドを削除しますか？</string>
+    <string name="delete_sound_dialog_message">「%1$s」をカスタムサウンドから削除しますか？</string>
+    <string name="delete_sound_confirm">削除</string>
+    <string name="rename_sound">サウンド名を変更</string>
+    <string name="sound_name_label">サウンド名</string>
+    <string name="rename_sound_confirm">変更</string>
+
+    <string name="no_browser_installed">このリンクを開くアプリがありません。ウェブブラウザをインストールしてください。</string>
+    <string name="error_unexpected">予期しないエラーが発生しました。</string>
+
+    <string name="inspired_text">Rafael Mardojai の Blanket（元は GNOME アプリ）に触発されました。</string>
+    <string name="app_description">さまざまなサウンドを聴いて、集中力を高め、生産性を向上させましょう。</string>
+
+    <string name="about_title">私たちについて</string>
+    <string name="about_version">バージョン %1$s</string>
+    <string name="about_source_code">ソースコード</string>
+    <string name="about_source_code_subtitle">GitHub でこのアプリのソースコードを見る</string>
+    <string name="content_desc_back">戻る</string>
+    <string name="content_desc_logo">アプリのロゴ</string>
+    <string name="content_desc_sound_icon">サウンドアイコン</string>
+    <string name="content_desc_add_custom_sound">カスタムサウンドを追加</string>
+
+    <string name="presets_title">プリセット</string>
+    <string name="presets_hint">現在のミックスを保存して、いつでも読み込めます。</string>
+    <string name="presets_empty">まだプリセットがありません。</string>
+    <string name="presets_save_mix">現在のミックスを保存</string>
+    <string name="preset_load">読み込む</string>
+    <string name="preset_delete_desc">プリセットを削除</string>
+    <string name="preset_delete_confirm_title">プリセットを削除しますか？</string>
+    <string name="preset_delete_confirm_message">「%1$s」を完全に削除しますか？</string>
+    <string name="preset_untitled">無題のミックス</string>
+    <string name="preset_saved">プリセットを保存しました</string>
+    <string name="preset_nothing_to_save">保存する前に少なくとも 1 つのサウンドを上げてください。</string>
+    <string name="save_preset_dialog_title">ミックスを保存</string>
+    <string name="preset_name_label">プリセット名</string>
+    <string name="preset_name_hint">空の場合は「無題のミックス」として保存されます</string>
+    <string name="preset_dialog_save">保存</string>
+    <string name="dialog_cancel">キャンセル</string>
+    <string name="timer_dialog_title">スリープタイマーを設定</string>
+    <string name="timer_custom">カスタム</string>
+    <string name="timer_custom_label">分</string>
+    <string name="timer_minutes_format">%1$d 分</string>
+    <string name="timer_start">開始</string>
+    <string name="timer_set">%1$d 分のタイマーを設定しました</string>
+    <string name="timer_invalid_input">有効なタイマー時間を入力してください</string>
+    <string name="sleep_timer_finished">タイマーが終了しました。サウンドを停止しました。</string>
+    <string name="timer_countdown_label">スリープタイマー: %1$s</string>
+    <string name="timer_cancel">タイマーをキャンセル</string>
+    <string name="timer_cancel_confirm_title">スリープタイマーをキャンセルしますか？</string>
+    <string name="timer_cancel_confirm_message">現在のタイマーを停止しますか？</string>
+
+    <string name="notification_channel_name">再生</string>
+    <string name="notification_channel_desc">Blankee ミックスがアクティブなときに表示</string>
+    <string name="notification_playing">ミックス再生中</string>
+    <string name="notification_paused">ミックス一時停止</string>
+    <string name="notification_action_play">再生</string>
+    <string name="notification_action_pause">一時停止</string>
+    <string name="notification_primer_title">通知を許可しますか？</string>
+    <string name="notification_primer_message">サウンド再生中に通知で再生コントロールを利用できます。</string>
+    <string name="notification_primer_grant">許可</string>
+    <string name="notification_primer_continue_anyway">このまま続行</string>
+
+    <string name="enjoy_prompt_title">Blankee を楽しんでいますか？</string>
+    <string name="enjoy_prompt_message">気に入ったら GitHub でプロジェクトにスターを付けませんか？</string>
+    <string name="enjoy_prompt_yes">はい</string>
+    <string name="enjoy_prompt_no">いいえ</string>
+    <string name="star_github_title">GitHub でスター</string>
+    <string name="star_github_message">とても助けになり、プロジェクトの成長につながります。</string>
+    <string name="star_github_confirm">今すぐスター</string>
+    <string name="star_github_later">後で</string>
+
+    <string name="onboarding_title">Blankee へようこそ</string>
+    <string name="onboarding_subtitle">開始するための簡単なツアーです。</string>
+    <string name="onboarding_feature_mix_title">リラックスできるサウンドをミックス</string>
+    <string name="onboarding_feature_mix_body">複数のサウンドを組み合わせ、音量を調整して理想の雰囲気を作りましょう。</string>
+    <string name="onboarding_feature_timer_title">スリープタイマー</string>
+    <string name="onboarding_feature_timer_body">タイマーを設定してミックスを自動で停止できます。</string>
+    <string name="onboarding_feature_presets_title">プリセット</string>
+    <string name="onboarding_feature_presets_body">お気に入りのミックスを保存していつでも読み込めます。</string>
+    <string name="onboarding_feature_custom_title">カスタムサウンド</string>
+    <string name="onboarding_feature_custom_body">自分の音声ファイルをインポートしてミックスに追加できます。</string>
+    <string name="onboarding_language_title">言語を選択</string>
+    <string name="onboarding_language_body">後で設定で変更できます。</string>
+    <string name="onboarding_back">戻る</string>
+    <string name="onboarding_next">次へ</string>
+    <string name="onboarding_start">開始</string>
+    <string name="settings_section_others">その他</string>
+    <string name="settings_report_bug_feature">バグ報告または機能リクエスト</string>
+    <string name="settings_report_bug_feature_hint">GitHub リポジトリを開いて Issue を作成します。</string>
+    <string name="made_with_love_by_pronay">Pronay が愛を込めて作成</string>
+
+    <string name="empty_string" translatable="false"></string>
+</resources>

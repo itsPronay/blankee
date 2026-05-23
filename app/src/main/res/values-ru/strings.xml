@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Blankee</string>
+    <string name="app_title">Blankee</string>
+    <string name="app_subtitle">Расслабьтесь и сосредоточьтесь</string>
+
+    <string name="menu_settings">Настройки</string>
+    <string name="menu_about">О приложении</string>
+    <string name="menu_pause">Пауза звуков</string>
+    <string name="menu_play">Воспроизвести звуки</string>
+    <string name="menu_timer">Таймер сна</string>
+    <string name="menu_reset">Сбросить звуки</string>
+    <string name="content_desc_more_options">Другие варианты</string>
+
+    <string name="tab_home">Главная</string>
+    <string name="tab_settings">Настройки</string>
+
+    <string name="category_nature">Природа</string>
+    <string name="category_travel">Путешествия</string>
+    <string name="category_indoor">Дом</string>
+    <string name="category_interiors">Интерьеры</string>
+    <string name="category_noise">Шум</string>
+    <string name="category_custom">Пользовательские звуки</string>
+
+    <string name="sound_rain">Дождь</string>
+    <string name="sound_wind">Ветер</string>
+    <string name="sound_storm">Гроза</string>
+    <string name="sound_wave">Волны</string>
+    <string name="sound_stream">Ручей</string>
+    <string name="sound_birds">Птицы</string>
+    <string name="sound_summer_night">Летняя ночь</string>
+
+    <string name="sound_train">Поезд</string>
+    <string name="sound_boat">Лодка</string>
+    <string name="sound_city">Город</string>
+
+    <string name="sound_coffee_shop">Кофейня</string>
+    <string name="sound_fireplace">Камин</string>
+    <string name="sound_busy_restaurant">Оживленный ресторан</string>
+
+    <string name="sound_pink_noise">Розовый шум</string>
+    <string name="sound_white_noise">Белый шум</string>
+
+    <string name="settings_title">Настройки</string>
+    <string name="settings_section_app_preferences">Параметры приложения</string>
+    <string name="settings_theme">Тема</string>
+    <string name="settings_theme_hint">Тёмная по умолчанию. Система следует режиму светлый/тёмный.</string>
+    <string name="settings_language">Язык</string>
+    <string name="settings_language_hint">Применяется сразу. Приложение перезапустится для загрузки нового языка.</string>
+    <string name="language_system">Использовать язык системы</string>
+    <string name="theme_light">Светлая</string>
+    <string name="theme_dark">Тёмная</string>
+    <string name="theme_system">Система</string>
+    <string name="language_english">Английский</string>
+    <string name="language_chinese">Китайский (简体)</string>
+    <string name="language_hindi">Хинди</string>
+    <string name="language_spanish">Испанский</string>
+    <string name="language_korean">Корейский</string>
+    <string name="language_arabic">Арабский</string>
+    <string name="language_french">Французский</string>
+    <string name="language_bengali">Бенгальский</string>
+    <string name="language_portuguese">Португальский</string>
+    <string name="language_tamil">Тамильский</string>
+    <string name="language_urdu">Урду</string>
+    <string name="language_indonesian">Индонезийский</string>
+    <string name="language_japanese">Японский</string>
+    <string name="language_russian">Русский</string>
+    <string name="language_german">Немецкий</string>
+    <string name="language_turkish">Турецкий</string>
+    <string name="language_vietnamese">Вьетнамский</string>
+    <string name="language_thai">Тайский</string>
+    <string name="language_persian">Персидский</string>
+    <string name="language_punjabi">Пенджаби</string>
+
+    <string name="add_custom_sound">Добавить пользовательский звук</string>
+    <string name="custom_sounds_premium_message">Пользовательские звуки входят в Premium. Разблокируйте их единоразовой покупкой.</string>
+    <string name="buy_premium">Купить Premium</string>
+    <string name="content_desc_buy_premium">Купить Premium, чтобы разблокировать пользовательские звуки</string>
+    <string name="restore_purchases">Восстановить покупки</string>
+    <string name="premium_active">Premium активен. Спасибо за поддержку.</string>
+    <string name="settings_section_premium">Premium</string>
+    <string name="billing_not_ready">Оплата еще не готова. Попробуйте позже.</string>
+    <string name="billing_product_not_loaded">Листинг магазина не загружен. Проверьте соединение и попробуйте снова.</string>
+    <string name="billing_launch_failed">Не удалось открыть экран покупки.</string>
+    <string name="billing_restored">Покупки восстановлены.</string>
+    <string name="billing_restore_none">Для этого аккаунта нет активных покупок.</string>
+    <string name="custom_sound_default_name">Пользовательский %1$d</string>
+    <string name="sound_added">Звук добавлен: %1$s</string>
+    <string name="could_not_add_sound">Не удалось добавить звук</string>
+    <string name="sounds_reset">Все звуки сброшены</string>
+    <string name="cant_play_sound_on_pause">Нельзя воспроизводить звук при паузе</string>
+    <string name="delete_sound">Удалить пользовательский звук</string>
+    <string name="delete_sound_dialog_title">Удалить звук?</string>
+    <string name="delete_sound_dialog_message">Удалить "%1$s" из пользовательских звуков?</string>
+    <string name="delete_sound_confirm">Удалить</string>
+    <string name="rename_sound">Переименовать звук</string>
+    <string name="sound_name_label">Название звука</string>
+    <string name="rename_sound_confirm">Переименовать</string>
+
+    <string name="no_browser_installed">Нет приложения для открытия ссылки. Установите веб-браузер.</string>
+    <string name="error_unexpected">Произошла непредвиденная ошибка.</string>
+
+    <string name="inspired_text">Вдохновлено Blanket от Rafael Mardojai, изначально приложением GNOME.</string>
+    <string name="app_description">Слушайте разные звуки. Улучшайте фокус и повышайте продуктивность.</string>
+
+    <string name="about_title">О нас</string>
+    <string name="about_version">Версия %1$s</string>
+    <string name="about_source_code">Исходный код</string>
+    <string name="about_source_code_subtitle">Посмотреть исходный код приложения на GitHub</string>
+    <string name="content_desc_back">Назад</string>
+    <string name="content_desc_logo">Логотип приложения</string>
+    <string name="content_desc_sound_icon">Иконка звука</string>
+    <string name="content_desc_add_custom_sound">Добавить пользовательский звук</string>
+
+    <string name="presets_title">Пресеты</string>
+    <string name="presets_hint">Сохраните текущий микс и загружайте его в любое время.</string>
+    <string name="presets_empty">Пока нет пресетов.</string>
+    <string name="presets_save_mix">Сохранить текущий микс</string>
+    <string name="preset_load">Загрузить</string>
+    <string name="preset_delete_desc">Удалить пресет</string>
+    <string name="preset_delete_confirm_title">Удалить пресет?</string>
+    <string name="preset_delete_confirm_message">Удалить "%1$s" навсегда?</string>
+    <string name="preset_untitled">Микс без названия</string>
+    <string name="preset_saved">Пресет сохранён</string>
+    <string name="preset_nothing_to_save">Увеличьте хотя бы один звук перед сохранением.</string>
+    <string name="save_preset_dialog_title">Сохранить микс</string>
+    <string name="preset_name_label">Название пресета</string>
+    <string name="preset_name_hint">Если оставить пустым, будет сохранён как "Микс без названия"</string>
+    <string name="preset_dialog_save">Сохранить</string>
+    <string name="dialog_cancel">Отмена</string>
+    <string name="timer_dialog_title">Установить таймер сна</string>
+    <string name="timer_custom">Пользовательский</string>
+    <string name="timer_custom_label">Минуты</string>
+    <string name="timer_minutes_format">%1$d мин</string>
+    <string name="timer_start">Запустить</string>
+    <string name="timer_set">Таймер установлен на %1$d мин</string>
+    <string name="timer_invalid_input">Введите корректную длительность таймера</string>
+    <string name="sleep_timer_finished">Таймер завершён. Звуки остановлены.</string>
+    <string name="timer_countdown_label">Таймер сна: %1$s</string>
+    <string name="timer_cancel">Отменить таймер</string>
+    <string name="timer_cancel_confirm_title">Отменить таймер сна?</string>
+    <string name="timer_cancel_confirm_message">Хотите остановить текущий таймер?</string>
+
+    <string name="notification_channel_name">Воспроизведение</string>
+    <string name="notification_channel_desc">Показывается, когда ваш микс Blankee активен</string>
+    <string name="notification_playing">Микс воспроизводится</string>
+    <string name="notification_paused">Микс на паузе</string>
+    <string name="notification_action_play">Воспроизвести</string>
+    <string name="notification_action_pause">Пауза</string>
+    <string name="notification_primer_title">Разрешить уведомления?</string>
+    <string name="notification_primer_message">Уведомления сохраняют управление воспроизведением во время работы звуков.</string>
+    <string name="notification_primer_grant">Разрешить</string>
+    <string name="notification_primer_continue_anyway">Продолжить все равно</string>
+
+    <string name="enjoy_prompt_title">Нравится Blankee?</string>
+    <string name="enjoy_prompt_message">Если нравится, хотите поставить звезду проекту на GitHub?</string>
+    <string name="enjoy_prompt_yes">Да</string>
+    <string name="enjoy_prompt_no">Нет</string>
+    <string name="star_github_title">Звезда на GitHub</string>
+    <string name="star_github_message">Это очень помогает и поддерживает развитие проекта.</string>
+    <string name="star_github_confirm">Поставить звезду</string>
+    <string name="star_github_later">Может позже</string>
+
+    <string name="onboarding_title">Добро пожаловать в Blankee</string>
+    <string name="onboarding_subtitle">Краткий тур для начала.</string>
+    <string name="onboarding_feature_mix_title">Смешивайте расслабляющие звуки</string>
+    <string name="onboarding_feature_mix_body">Комбинируйте звуки и регулируйте громкость, чтобы создать идеальную атмосферу.</string>
+    <string name="onboarding_feature_timer_title">Таймер сна</string>
+    <string name="onboarding_feature_timer_body">Установите таймер, чтобы микс останавливался автоматически.</string>
+    <string name="onboarding_feature_presets_title">Пресеты</string>
+    <string name="onboarding_feature_presets_body">Сохраняйте любимые миксы и загружайте их в любое время.</string>
+    <string name="onboarding_feature_custom_title">Пользовательские звуки</string>
+    <string name="onboarding_feature_custom_body">Импортируйте свои аудиофайлы и добавляйте их в микс.</string>
+    <string name="onboarding_language_title">Выберите язык</string>
+    <string name="onboarding_language_body">Позже можно изменить в настройках.</string>
+    <string name="onboarding_back">Назад</string>
+    <string name="onboarding_next">Далее</string>
+    <string name="onboarding_start">Начать</string>
+    <string name="settings_section_others">Другое</string>
+    <string name="settings_report_bug_feature">Сообщить об ошибке или предложить функцию</string>
+    <string name="settings_report_bug_feature_hint">Откройте репозиторий GitHub и создайте issue.</string>
+    <string name="made_with_love_by_pronay">Сделано с любовью от Pronay</string>
+
+    <string name="empty_string" translatable="false"></string>
+</resources>

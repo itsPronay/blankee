@@ -1,7 +1,5 @@
 package com.pronaycoding.blankee.core.datastore
 
-import kotlinx.coroutines.flow.Flow
-
 /**
  * Repository interface for managing app preferences and settings.
  *
@@ -10,7 +8,6 @@ import kotlinx.coroutines.flow.Flow
  * - Language/locale settings
  * - App usage tracking (launch count)
  * - UI prompt display state
- * - Premium/billing status
  *
  * The implementation uses Android DataStore as the backing storage for type-safe, encrypted preference management.
  *
@@ -99,23 +96,4 @@ interface PreferenceManagerRepository {
      * @param shown true to mark the primer as shown
      */
     suspend fun setNotificationPrimerShown(shown: Boolean)
-
-    /**
-     * Observes the premium unlock status as a reactive Flow.
-     *
-     * Emits true if the user has an active premium/paid subscription, false otherwise.
-     * This flow is reactive and emits new values when the premium status changes (e.g., after purchase or restore).
-     *
-     * @return A Flow emitting the premium unlock status
-     */
-    fun premiumUnlockedFlow(): Flow<Boolean>
-
-    /**
-     * Sets the premium unlock status.
-     *
-     * Typically called after a successful purchase or restoration from Play Billing.
-     *
-     * @param unlocked true if premium is unlocked, false otherwise
-     */
-    suspend fun setPremiumUnlocked(unlocked: Boolean)
 }

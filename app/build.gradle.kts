@@ -26,12 +26,10 @@ android {
 
     buildTypes {
         debug {
-            buildConfigField("boolean", "CUSTOM_SOUNDS_PREMIUM_LOCKED", "false")
         }
         release {
             isShrinkResources = true
             isMinifyEnabled = true
-            buildConfigField("boolean", "CUSTOM_SOUNDS_PREMIUM_LOCKED", "true")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro",

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Blankee</string>
+    <string name="app_title">Blankee</string>
+    <string name="app_subtitle">放松和专注</string>
+
+    <string name="menu_settings">设置</string>
+    <string name="menu_about">关于</string>
+    <string name="menu_pause">暂停声音</string>
+    <string name="menu_play">播放声音</string>
+    <string name="menu_timer">睡眠计时器</string>
+    <string name="menu_reset">重置声音</string>
+    <string name="content_desc_more_options">更多选项</string>
+
+    <string name="tab_home">首页</string>
+    <string name="tab_settings">设置</string>
+
+    <string name="category_nature">自然</string>
+    <string name="category_travel">旅行</string>
+    <string name="category_indoor">室内</string>
+    <string name="category_interiors">室内</string>
+    <string name="category_noise">噪音</string>
+    <string name="category_custom">自定义声音</string>
+
+    <string name="sound_rain">雨声</string>
+    <string name="sound_wind">风声</string>
+    <string name="sound_storm">风暴</string>
+    <string name="sound_wave">波浪</string>
+    <string name="sound_stream">溪流</string>
+    <string name="sound_birds">鸟鸣</string>
+    <string name="sound_summer_night">夏夜</string>
+
+    <string name="sound_train">火车</string>
+    <string name="sound_boat">船只</string>
+    <string name="sound_city">城市</string>
+
+    <string name="sound_coffee_shop">咖啡馆</string>
+    <string name="sound_fireplace">壁炉</string>
+    <string name="sound_busy_restaurant">繁忙餐厅</string>
+
+    <string name="sound_pink_noise">粉红噪音</string>
+    <string name="sound_white_noise">白噪音</string>
+
+    <string name="settings_title">设置</string>
+    <string name="settings_section_app_preferences">应用偏好设置</string>
+    <string name="settings_theme">主题</string>
+    <string name="settings_theme_hint">深色是默认的。系统跟随您的设备光/暗模式。</string>
+    <string name="settings_language">语言</string>
+    <string name="settings_language_hint">立即应用。应用重新启动以加载新语言。</string>
+    <string name="language_system">使用系统语言</string>
+    <string name="theme_light">浅色</string>
+    <string name="theme_dark">深色</string>
+    <string name="theme_system">系统</string>
+    <string name="language_english">English</string>
+    <string name="language_chinese">中文 (简体)</string>
+    <string name="language_hindi">हिंदी</string>
+    <string name="language_spanish">Español</string>
+    <string name="language_korean">한국어</string>
+    <string name="language_arabic">العربية</string>
+    <string name="language_french">Français</string>
+    <string name="language_bengali">বাংলা</string>
+    <string name="language_portuguese">Português</string>
+    <string name="language_tamil">தமிழ்</string>
+
+    <string name="add_custom_sound">添加自定义声音</string>
+    <string name="custom_sounds_premium_message">自定义声音是高级功能。通过一次性购买来解锁。</string>
+    <string name="buy_premium">购买高级版</string>
+    <string name="content_desc_buy_premium">购买高级版以解锁自定义声音</string>
+    <string name="restore_purchases">恢复购买</string>
+    <string name="premium_active">高级版已激活。感谢您的支持。</string>
+    <string name="settings_section_premium">高级版</string>
+    <string name="billing_not_ready">账单尚未准备好。请稍后重试。</string>
+    <string name="billing_product_not_loaded">商店列表未加载。检查您的连接并重试。</string>
+    <string name="billing_launch_failed">无法打开购买屏幕。</string>
+    <string name="billing_restored">购买已恢复。</string>
+    <string name="billing_restore_none">未找到此帐户的活跃购买。</string>
+    <string name="custom_sound_default_name">自定义 %1$d</string>
+    <string name="sound_added">声音已添加：%1$s</string>
+    <string name="could_not_add_sound">无法添加声音</string>
+    <string name="sounds_reset">所有声音已重置</string>
+    <string name="cant_play_sound_on_pause">暂停时无法播放声音</string>
+    <string name="delete_sound">删除自定义声音</string>
+    <string name="delete_sound_dialog_title">删除声音?</string>
+    <string name="delete_sound_dialog_message">从自定义声音中移除 \"%1$s\"?</string>
+    <string name="delete_sound_confirm">删除</string>
+    <string name="rename_sound">重命名声音</string>
+    <string name="sound_name_label">声音名称</string>
+    <string name="rename_sound_confirm">重命名</string>
+
+    <string name="no_browser_installed">没有应用可以打开此链接。请安装网络浏览器。</string>
+    <string name="error_unexpected">发生了意外错误。</string>
+
+    <string name="inspired_text">受 Rafael Mardojai 的 Blanket 启发，原本是 GNOME 应用。</string>
+    <string name="app_description">聆听不同的声音。提高专注力并提升生产力。</string>
+
+    <string name="about_title">关于我们</string>
+    <string name="about_version">版本 %1$s</string>
+    <string name="about_source_code">源代码</string>
+    <string name="about_source_code_subtitle">在 GitHub 上查看此应用的源代码</string>
+    <string name="content_desc_back">返回</string>
+    <string name="content_desc_logo">应用logo</string>
+    <string name="content_desc_sound_icon">声音图标</string>
+    <string name="content_desc_add_custom_sound">添加自定义声音</string>
+
+    <string name="presets_title">预设</string>
+    <string name="presets_hint">保存您当前的混合，然后随时加载。</string>
+    <string name="presets_empty">还没有预设。</string>
+    <string name="presets_save_mix">保存当前混合</string>
+    <string name="preset_load">加载</string>
+    <string name="preset_delete_desc">删除预设</string>
+    <string name="preset_delete_confirm_title">删除预设?</string>
+    <string name="preset_delete_confirm_message">永久删除 \"%1$s\"?</string>
+    <string name="preset_untitled">未标题的混合</string>
+    <string name="preset_saved">预设已保存</string>
+    <string name="preset_nothing_to_save">在保存前至少调高一种声音。</string>
+    <string name="save_preset_dialog_title">保存混合</string>
+    <string name="preset_name_label">预设名称</string>
+    <string name="preset_name_hint">如果留空，将被保存为 \"未标题的混合\"</string>
+    <string name="preset_dialog_save">保存</string>
+    <string name="dialog_cancel">取消</string>
+    <string name="timer_dialog_title">设置睡眠计时器</string>
+    <string name="timer_custom">自定义</string>
+    <string name="timer_custom_label">分钟</string>
+    <string name="timer_minutes_format">%1$d 分钟</string>
+    <string name="timer_start">开始</string>
+    <string name="timer_set">计时器设置为 %1$d 分钟</string>
+    <string name="timer_invalid_input">输入有效的计时器时间</string>
+    <string name="sleep_timer_finished">计时器完成。声音已停止。</string>
+    <string name="timer_countdown_label">睡眠计时器：%1$s</string>
+    <string name="timer_cancel">取消计时器</string>
+    <string name="timer_cancel_confirm_title">取消睡眠计时器?</string>
+    <string name="timer_cancel_confirm_message">您想停止当前计时器吗?</string>
+
+    <string name="notification_channel_name">播放</string>
+    <string name="notification_channel_desc">在您的 Blankee 混合活跃时显示</string>
+    <string name="notification_playing">混合播放中</string>
+    <string name="notification_paused">混合已暂停</string>
+    <string name="notification_action_play">播放</string>
+    <string name="notification_action_pause">暂停</string>
+    <string name="notification_primer_title">允许通知?</string>
+    <string name="notification_primer_message">通知使您的播放控制在声音运行时保持可用。</string>
+    <string name="notification_primer_grant">允许</string>
+    <string name="notification_primer_continue_anyway">继续</string>
+
+    <string name="enjoy_prompt_title">喜欢 Blankee?</string>
+    <string name="enjoy_prompt_message">如果您喜欢它，您想在 GitHub 上为该项目加星吗?</string>
+    <string name="enjoy_prompt_yes">是</string>
+    <string name="enjoy_prompt_no">否</string>
+    <string name="star_github_title">在 GitHub 上加星</string>
+    <string name="star_github_message">这大有帮助并使项目继续发展。</string>
+    <string name="star_github_confirm">现在加星</string>
+    <string name="star_github_later">稍后再说</string>
+
+    <string name="onboarding_title">欢迎来到 Blankee</string>
+    <string name="onboarding_subtitle">快速导览帮助您开始。</string>
+    <string name="onboarding_feature_mix_title">混合放松声音</string>
+    <string name="onboarding_feature_mix_body">组合多种声音并控制音量以创建您完美的氛围。</string>
+    <string name="onboarding_feature_timer_title">睡眠计时器</string>
+    <string name="onboarding_feature_timer_body">设置一个计时器，使您的混合自动停止。</string>
+    <string name="onboarding_feature_presets_title">预设</string>
+    <string name="onboarding_feature_presets_body">保存您最喜欢的混合并随时加载。</string>
+    <string name="onboarding_feature_custom_title">自定义声音</string>
+    <string name="onboarding_feature_custom_body">导入您自己的音频文件并将其添加到您的混合中。</string>
+    <string name="onboarding_language_title">选择语言</string>
+    <string name="onboarding_language_body">您稍后可以在设置中更改。</string>
+    <string name="onboarding_back">返回</string>
+    <string name="onboarding_next">下一步</string>
+    <string name="onboarding_start">开始</string>
+    <string name="settings_section_others">其他</string>
+    <string name="settings_report_bug_feature">报告错误或请求功能</string>
+    <string name="settings_report_bug_feature_hint">打开 GitHub 存储库以创建问题。</string>
+    <string name="made_with_love_by_pronay">由 Pronay 精心制作</string>
+
+    <string name="empty_string" translatable="false"></string>
+</resources>

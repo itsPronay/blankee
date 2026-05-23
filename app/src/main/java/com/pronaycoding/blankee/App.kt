@@ -2,10 +2,8 @@ package com.pronaycoding.blankee
 
 import android.app.Application
 import com.google.firebase.crashlytics.FirebaseCrashlytics
-import com.pronaycoding.blankee.core.service.billing.PlayBillingManager
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
-import org.koin.core.context.GlobalContext
 import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
 
@@ -15,13 +13,11 @@ import org.koin.core.logger.Level
  * This is the entry point for the entire application. It initializes:
  * - Firebase Crashlytics for error tracking and reporting
  * - Koin dependency injection framework with all modules
- * - Play Billing Manager for in-app purchase handling
  *
  * Extends [Application] to provide application-level lifecycle methods.
  * Called once when the app process is created.
  *
  * @see KoinModule for dependency injection configuration
- * @see PlayBillingManager for billing initialization
  */
 class App : Application() {
     /**
@@ -30,7 +26,6 @@ class App : Application() {
      * This method:
      * 1. Initializes Firebase Crashlytics (enabled only in release builds for privacy)
      * 2. Starts Koin with all configured modules
-     * 3. Initializes PlayBillingManager for handling in-app purchases
      *
      * Debug logging for Koin is enabled in debug builds to help diagnose DI issues.
      */
@@ -50,8 +45,5 @@ class App : Application() {
             androidContext(this@App)
             modules(KoinModule.allModules)
         }
-
-        // Initialize Play Billing for premium features
-        GlobalContext.get().get<PlayBillingManager>().start()
     }
 }
