@@ -26,7 +26,7 @@ Improve focus and increase your productivity by listening to different sounds. B
 - **Custom Sounds** – Upload your own audio files
 - **Save Presets** – Create and save your favorite combinations for quick access
 - **Dark & Light Mode** – Full theme support for comfortable use
-- **Multilingual** – English, Spanish, Bengali, Hindi supported
+- **Multilingual** – 20 supported languages 
 - **Individual Volume Controls** – Mix and match sounds to your preference
 - **Responsive Design** – Works beautifully on phones, tablets, and foldable devices
 
@@ -61,13 +61,7 @@ cd napify
 
 ## Translations
 
-Blankee is translated into several languages:
-- 🇬🇧 English
-- 🇪🇸 Spanish  
-- 🇧🇩 Bengali
-- 🇮🇳 Hindi
-
-If your language is missing or incomplete, contributions are welcome!
+Blankee is translated into 20 languages. If your language is not added, please feel free to open an issue or contribute.
 
 ## Contributing
 
