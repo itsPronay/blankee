@@ -3,3 +3,5 @@
  local.properties
 google-services.json
 README.pdf
+app/.DS_Store
+app/release/
