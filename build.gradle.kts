@@ -9,11 +9,11 @@ plugins {
     alias(libs.plugins.spotless)
 }
 
-spotless {
+configure<com.diffplug.gradle.spotless.SpotlessExtension> {
     kotlin {
         target("**/src/**/*.kt")
         targetExclude("**/build/**")
-        ktlint(libs.versions.ktlint.get())
+        ktlint("1.4.1")
             .setEditorConfigPath("$rootDir/.editorconfig")
         trimTrailingWhitespace()
         endWithNewline()
@@ -22,7 +22,7 @@ spotless {
     kotlinGradle {
         target("*.gradle.kts", "**/*.gradle.kts")
         targetExclude("**/build/**")
-        ktlint(libs.versions.ktlint.get())
+        ktlint("1.4.1")
             .setEditorConfigPath("$rootDir/.editorconfig")
         trimTrailingWhitespace()
         endWithNewline()
