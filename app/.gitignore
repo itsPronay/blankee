@@ -5,3 +5,15 @@ google-services.json
 README.pdf
 app/.DS_Store
 app/release/
+.DS_Store
+**/.DS_Store
+.idea/
+.gradle/
+
+/build/
+/app/build/
+
+*.apk
+*.aab
+*.apks
+*.dm

@@ -51,10 +51,10 @@
     <string name="theme_light">হালকা</string>
     <string name="theme_dark">গাঢ়</string>
     <string name="theme_system">সিস্টেম অনুযায়ী</string>
-    <string name="language_english">ইংরেজি</string>
+    <string name="language_english">English</string>
     <string name="language_bengali">বাংলা</string>
-    <string name="language_hindi">হিন্দি</string>
-    <string name="language_spanish">স্প্যানিশ</string>
+    <string name="language_hindi">हिंदी</string>
+    <string name="language_spanish">Español</string>
 
     <string name="add_custom_sound">কাস্টম শব্দ যোগ করুন</string>
     <string name="custom_sounds_premium_message">কাস্টম শব্দ প্রিমিয়ামের অংশ। একবার কিনে সেগুলি আনলক করুন।</string>

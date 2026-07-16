@@ -84,6 +84,7 @@ import com.pronaycoding.blankee.R
 import com.pronaycoding.blankee.core.common.Constants
 import com.pronaycoding.blankee.core.common.util.findActivity
 import com.pronaycoding.blankee.core.common.util.openExternalUrl
+import com.pronaycoding.blankee.core.common.util.shareApp
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -348,6 +349,33 @@ fun SettingsScreen(
                     ),
                 elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
             ) {
+                Surface(
+                    onClick = { shareApp(context) },
+                    color = Color.Transparent,
+                    modifier = Modifier.fillMaxWidth(),
+                ) {
+                    Column(
+                        modifier =
+                            Modifier
+                                .fillMaxWidth()
+                                .padding(horizontal = 20.dp, vertical = 16.dp),
+                    ) {
+                        Text(
+                            text = stringResource(R.string.share_app_title),
+                            style = MaterialTheme.typography.titleMedium,
+                            fontWeight = FontWeight.SemiBold,
+                        )
+                        Text(
+                            text = stringResource(R.string.share_app_hint),
+                            style = MaterialTheme.typography.bodySmall,
+                            color = scheme.onSurfaceVariant,
+                            modifier = Modifier.padding(top = 4.dp),
+                        )
+                    }
+                }
+
+                Divider(color = scheme.outlineVariant)
+
                 Surface(
                     onClick = { openExternalUrl(context, Constants.GITHUB_REPO) },
                     color = Color.Transparent,

@@ -34,8 +34,7 @@ class App : Application() {
 
         // Initialize Firebase Crashlytics
         FirebaseCrashlytics
-            .getInstance()
-            .setCrashlyticsCollectionEnabled(BuildConfig.BUILD_TYPE == "release")
+            .getInstance().isCrashlyticsCollectionEnabled = (BuildConfig.BUILD_TYPE == "release")
 
         // Start Koin dependency injection framework
         startKoin {
