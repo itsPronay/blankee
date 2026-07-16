@@ -1,4 +1,4 @@
-<img src="appScreenshots/applogo.png" alt="Blankee" width="128" height="128" align="left"/>
+<img src="images/applogo.png" alt="Blankee" width="128" height="128" align="left"/>
 
 # Blankee
 
