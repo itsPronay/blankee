@@ -50,10 +50,14 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Close
@@ -191,6 +195,9 @@ internal fun HomeScreen(
     var presetPendingDeleteId by rememberSaveable { mutableStateOf<Long?>(null) }
     var presetPendingDeleteName by rememberSaveable { mutableStateOf("") }
     var presetClicked by rememberSaveable { mutableStateOf(false) }
+    var showCustomSoundNameDialog by rememberSaveable { mutableStateOf(false) }
+    var pendingCustomSoundUri by rememberSaveable { mutableStateOf<String?>(null) }
+    var customSoundNameInput by rememberSaveable { mutableStateOf("") }
 
     val canSavePreset =
         remember(builtinVolumes, customVolumes) {
@@ -231,21 +238,11 @@ internal fun HomeScreen(
             contract = ActivityResultContracts.GetContent(),
         ) { uri: Uri? ->
             uri?.let {
-                val defaultName =
-                    context.getString(
-                        R.string.custom_sound_default_name,
-                        customSounds.size + 1,
-                    )
-                val displayName = defaultName
                 val filePath = it.toString()
                 if (filePath.isNotEmpty()) {
-                    onAddCustomSound(displayName, filePath)
-                    Toast
-                        .makeText(
-                            context,
-                            context.getString(R.string.sound_added, displayName),
-                            Toast.LENGTH_SHORT,
-                        ).show()
+                    pendingCustomSoundUri = filePath
+                    customSoundNameInput = ""
+                    showCustomSoundNameDialog = true
                 } else {
                     Toast
                         .makeText(
@@ -263,6 +260,7 @@ internal fun HomeScreen(
                 modifier =
                     Modifier
                         .fillMaxWidth()
+                        .navigationBarsPadding()
                         .padding(bottom = 20.dp)
                         .height(60.dp),
             ) {
@@ -400,26 +398,36 @@ internal fun HomeScreen(
 
                     if (customSounds.isNotEmpty()) {
                         item {
-                            TitleCardView(stringResource(R.string.category_custom))
-                            CustomCard {
-                                val chunks = customSounds.chunked(2)
-                                chunks.forEach { chunk ->
-                                    Row(
-                                        modifier = Modifier.fillMaxWidth(),
-                                        horizontalArrangement = Arrangement.spacedBy(8.dp),
-                                    ) {
-                                        chunk.forEach { customSound ->
-                                            CustomSoundCard(
-                                                modifier = Modifier.weight(1f),
-                                                soundId = customSound.id,
-                                                displayName = customSound.displayName,
-                                                playOrPause = canPlaySound,
-                                                onDeleteClick = onDeleteCustomSound,
-                                            )
-                                        }
-                                        // Fill empty slot if odd number
-                                        if (chunk.size == 1) {
-                                            Spacer(modifier = Modifier.weight(1f))
+                            Column {
+                                TitleCardView(stringResource(R.string.category_custom))
+                                CustomCard {
+                                    BoxWithConstraints(modifier = Modifier.fillMaxWidth()) {
+                                        val itemMinWidth = 140.dp
+                                        var columns = ((maxWidth - 8.dp) / (itemMinWidth + 8.dp)).toInt().coerceAtLeast(1).coerceAtMost(5)
+                                        if (columns == 1) { columns = 2 } // minimum card 2 in a col
+
+                                        Column {
+                                            val chunks = customSounds.chunked(columns)
+                                            chunks.forEachIndexed { chunkIndex, chunk ->
+                                                Row(
+                                                    modifier = Modifier.fillMaxWidth(),
+                                                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                                                ) {
+                                                    chunk.forEachIndexed { itemIndex, customSound ->
+                                                        CustomSoundCard(
+                                                            modifier = Modifier.weight(1f),
+                                                            cardNumber = chunkIndex * columns + itemIndex + 1,
+                                                            soundId = customSound.id,
+                                                            displayName = customSound.displayName,
+                                                            playOrPause = canPlaySound,
+                                                            onDeleteClick = onDeleteCustomSound,
+                                                        )
+                                                    }
+                                                    repeat(columns - chunk.size) {
+                                                        Spacer(modifier = Modifier.weight(1f))
+                                                    }
+                                                }
+                                            }
                                         }
                                     }
                                 }
@@ -463,6 +471,67 @@ internal fun HomeScreen(
                 },
             )
         }
+    }
+
+    if (showCustomSoundNameDialog) {
+        AlertDialog(
+            onDismissRequest = {
+                showCustomSoundNameDialog = false
+                pendingCustomSoundUri = null
+                customSoundNameInput = ""
+            },
+            title = { Text(stringResource(R.string.custom_sound_name_dialog_title)) },
+            text = {
+                OutlinedTextField(
+                    supportingText = { Text(stringResource(R.string.custom_sound_name_hint)) },
+                    value = customSoundNameInput,
+                    onValueChange = { newValue ->
+                        if (newValue.length <= 20) {
+                            customSoundNameInput = newValue
+                        }
+                    },
+                    label = { Text(stringResource(R.string.sound_name_label)) },
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+            },
+            confirmButton = {
+                TextButton(
+                    onClick = {
+                        val filePath = pendingCustomSoundUri
+                        if (filePath != null) {
+                            val displayName =
+                                customSoundNameInput.trim().ifEmpty {
+                                    context.getString(R.string.custom_sound_fallback_name)
+                                }
+                            onAddCustomSound(displayName, filePath)
+                            Toast
+                                .makeText(
+                                    context,
+                                    context.getString(R.string.sound_added, displayName),
+                                    Toast.LENGTH_SHORT,
+                                ).show()
+                        }
+                        showCustomSoundNameDialog = false
+                        pendingCustomSoundUri = null
+                        customSoundNameInput = ""
+                    },
+                ) {
+                    Text(stringResource(R.string.custom_sound_dialog_add))
+                }
+            },
+            dismissButton = {
+                TextButton(
+                    onClick = {
+                        showCustomSoundNameDialog = false
+                        pendingCustomSoundUri = null
+                        customSoundNameInput = ""
+                    },
+                ) {
+                    Text(stringResource(R.string.dialog_cancel))
+                }
+            },
+        )
     }
 
     if (showCancelTimerDialog) {
@@ -509,7 +578,8 @@ private fun SoundGrid(
 ) {
     BoxWithConstraints(modifier = Modifier.fillMaxWidth()) {
         val itemMinWidth = 140.dp
-        val columns = ((maxWidth - 8.dp) / (itemMinWidth + 8.dp)).toInt().coerceAtLeast(1).coerceAtMost(5)
+        var columns = ((maxWidth - 8.dp) / (itemMinWidth + 8.dp)).toInt().coerceAtLeast(1).coerceAtMost(5)
+        if (columns == 1) { columns = 2 } // minimum card 2 in a col
 
         Column {
             val chunks = items.chunked(columns)
@@ -559,7 +629,7 @@ private fun homeGridCardItems(): List<CardItems> = getCardList()
 @Composable
 fun CustomCard(content: @Composable () -> Unit) {
     Card(
-        modifier = Modifier.padding(vertical = 8.dp),
+        modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp),
         shape = RoundedCornerShape(20.dp),
         elevation = CardDefaults.cardElevation(0.dp),
         colors =
@@ -761,7 +831,9 @@ fun TimerDialog(
                 }
             },
             text = {
-                Column {
+                Column(
+                    modifier = Modifier.verticalScroll(rememberScrollState()),
+                ) {
                     if (sleepTimerRemainingMillis != null) {
                         Text(
                             text =

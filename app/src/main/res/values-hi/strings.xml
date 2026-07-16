@@ -51,10 +51,10 @@
     <string name="theme_light">हल्का</string>
     <string name="theme_dark">गहरा</string>
     <string name="theme_system">सिस्टम के अनुसार</string>
-    <string name="language_english">अंग्रेज़ी</string>
-    <string name="language_bengali">बंगाली</string>
+    <string name="language_english">English</string>
+    <string name="language_bengali">বাংলা</string>
     <string name="language_hindi">हिंदी</string>
-    <string name="language_spanish">स्पेनिश</string>
+    <string name="language_spanish">Español</string>
 
     <string name="add_custom_sound">कस्टम ध्वनि जोड़ें</string>
     <string name="custom_sounds_premium_message">कस्टम ध्वनियाँ प्रीमियम का हिस्सा हैं। उन्हें एकबारी खरीद से अनलॉक करें।</string>
