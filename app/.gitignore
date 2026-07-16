@@ -12,7 +12,6 @@ app/release/
 
 /build/
 /app/build/
-app/release/
 
 *.apk
 *.aab
