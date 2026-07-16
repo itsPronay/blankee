@@ -8,8 +8,7 @@ package com.pronaycoding.blankee.core.ui.components
  *
  * Dialog sequence:
  * 1. Initial prompt asking "Are you enjoying Blankee?"
- * 2. GitHub star request if user clicks "Yes"
- * 3. Links to GitHub repository for starring
+ * 2. Opens GitHub repository directly if user taps "Yes"
  *
  * Features:
  * - Shown only once per app installation (tracked via preferences)
@@ -43,7 +42,6 @@ fun EnjoyBlankeePrompt(shouldShow: Boolean) {
 
     val context = LocalContext.current
     var showEnjoyDialog by rememberSaveable { mutableStateOf(false) }
-    var showStarDialog by rememberSaveable { mutableStateOf(false) }
     val preferenceManager =
         remember(context) {
             PreferenceManagerRepositoryImpl(
@@ -66,7 +64,7 @@ fun EnjoyBlankeePrompt(shouldShow: Boolean) {
                 TextButton(
                     onClick = {
                         showEnjoyDialog = false
-                        showStarDialog = true
+                        openExternalUrl(context, Constants.GITHUB_REPO)
                     },
                 ) {
                     Text(stringResource(R.string.enjoy_prompt_yes))
@@ -75,29 +73,6 @@ fun EnjoyBlankeePrompt(shouldShow: Boolean) {
             dismissButton = {
                 TextButton(onClick = { showEnjoyDialog = false }) {
                     Text(stringResource(R.string.enjoy_prompt_no))
-                }
-            },
-        )
-    }
-
-    if (showStarDialog) {
-        AlertDialog(
-            onDismissRequest = { showStarDialog = false },
-            title = { Text(stringResource(R.string.star_github_title)) },
-            text = { Text(stringResource(R.string.star_github_message)) },
-            confirmButton = {
-                TextButton(
-                    onClick = {
-                        showStarDialog = false
-                        openExternalUrl(context, Constants.GITHUB_REPO)
-                    },
-                ) {
-                    Text(stringResource(R.string.star_github_confirm))
-                }
-            },
-            dismissButton = {
-                TextButton(onClick = { showStarDialog = false }) {
-                    Text(stringResource(R.string.star_github_later))
                 }
             },
         )

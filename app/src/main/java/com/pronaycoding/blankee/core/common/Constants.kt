@@ -8,6 +8,7 @@ package com.pronaycoding.blankee.core.common
  */
 object Constants {
     const val GITHUB_REPO = "https://github.com/itsPronay/blankee"
+    const val PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=com.pronaycoding.blankee"
     const val RAFAEL_MARDOJAI_GITHUB = "https://github.com/rafaelmardojai/"
     const val PRONAY_GITHUB = "https://github.com/itsPronay/"
     const val ENJOY_PROMPT_TRIGGER_LAUNCH = 5

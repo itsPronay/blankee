@@ -14,9 +14,9 @@ android {
     defaultConfig {
         applicationId = "com.pronaycoding.blankee"
         minSdk = 24
-        targetSdk = 34
-        versionCode = 3
-        versionName = "1.1.0"
+        targetSdk = 35
+        versionCode = 5
+        versionName = "1.1.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -66,7 +66,6 @@ android {
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation("androidx.datastore:datastore-preferences:1.1.1")
     implementation("androidx.media:media:1.7.0")
@@ -101,7 +100,6 @@ dependencies {
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
-//    implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.4.0")
 
     // Koin
     implementation(libs.koin.android)

@@ -53,6 +53,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.pronaycoding.blankee.R
@@ -62,6 +64,7 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 fun CustomSoundCard(
     modifier: Modifier,
+    cardNumber: Int,
     soundId: Int,
     displayName: String,
     playOrPause: Boolean,
@@ -145,6 +148,10 @@ fun CustomSoundCard(
         Text(
             text = displayName,
             color = MaterialTheme.colorScheme.onSurface,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+            textAlign = TextAlign.Center,
+            modifier = Modifier.fillMaxWidth(),
         )
 
         Spacer(modifier = Modifier.height(12.dp))

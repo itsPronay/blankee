@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.widget.Toast
+import com.pronaycoding.blankee.core.common.Constants
 import com.pronaycoding.blankee.R
 
 /**
@@ -36,6 +37,49 @@ fun openExternalUrl(
             .makeText(
                 context,
                 context.getString(R.string.no_browser_installed),
+                Toast.LENGTH_LONG,
+            ).show()
+    } catch (e: Exception) {
+        Toast
+            .makeText(
+                context,
+                context.getString(R.string.error_unexpected),
+                Toast.LENGTH_LONG,
+            ).show()
+    }
+}
+
+/**
+ * Opens the system share sheet with a prefilled app recommendation message.
+ */
+fun shareApp(
+    context: Context,
+) {
+    val shareMessage =
+        context.getString(
+            R.string.share_app_message,
+            Constants.PLAY_STORE_URL,
+        )
+
+    val shareIntent =
+        Intent(Intent.ACTION_SEND).apply {
+            type = "text/plain"
+            putExtra(Intent.EXTRA_SUBJECT, context.getString(R.string.app_name))
+            putExtra(Intent.EXTRA_TEXT, shareMessage)
+        }
+
+    try {
+        context.startActivity(
+            Intent.createChooser(
+                shareIntent,
+                context.getString(R.string.share_app_chooser_title),
+            ),
+        )
+    } catch (e: ActivityNotFoundException) {
+        Toast
+            .makeText(
+                context,
+                context.getString(R.string.no_share_app_installed),
                 Toast.LENGTH_LONG,
             ).show()
     } catch (e: Exception) {
