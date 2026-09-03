@@ -60,7 +60,7 @@ sealed class CardItems(
     data object Rain : CardItems(
         titleResId = R.string.sound_rain,
         icon = R.drawable.rain,
-        audioSource = R.raw.nature_rain,
+        audioSource = R.raw.rain,
         type = "Nature",
         firstInType = true,
     )
@@ -72,7 +72,7 @@ sealed class CardItems(
     data object SummerNight : CardItems(
         titleResId = R.string.sound_summer_night,
         icon = R.drawable.moon,
-        audioSource = R.raw.nature_summernight,
+        audioSource = R.raw.summer_night,
         type = "Nature",
     )
 
@@ -83,7 +83,7 @@ sealed class CardItems(
     data object Wind : CardItems(
         titleResId = R.string.sound_wind,
         icon = R.drawable.wind,
-        audioSource = R.raw.nature_wind,
+        audioSource = R.raw.wind,
         type = "Nature",
     )
 
@@ -94,7 +94,7 @@ sealed class CardItems(
     data object Wave : CardItems(
         titleResId = R.string.sound_wave,
         icon = R.drawable.wave,
-        audioSource = R.raw.nature_waves,
+        audioSource = R.raw.waves,
         type = "Nature",
     )
 
@@ -105,7 +105,7 @@ sealed class CardItems(
     data object Stream : CardItems(
         titleResId = R.string.sound_stream,
         icon = R.drawable.stream,
-        audioSource = R.raw.nature_stream,
+        audioSource = R.raw.stream,
         type = "Nature",
     )
 
@@ -116,7 +116,7 @@ sealed class CardItems(
     data object Storm : CardItems(
         titleResId = R.string.sound_storm,
         icon = R.drawable.storm,
-        audioSource = R.raw.nature_storm,
+        audioSource = R.raw.storm,
         type = "Nature",
     )
 
@@ -127,7 +127,7 @@ sealed class CardItems(
     data object Birds : CardItems(
         titleResId = R.string.sound_birds,
         icon = R.drawable.birds,
-        audioSource = R.raw.nature_birds,
+        audioSource = R.raw.birds,
         type = "Nature",
     )
 
@@ -138,7 +138,7 @@ sealed class CardItems(
     data object Train : CardItems(
         titleResId = R.string.sound_train,
         icon = R.drawable.train,
-        audioSource = R.raw.travel_train,
+        audioSource = R.raw.train,
         type = "Travel",
         firstInType = true,
     )
@@ -150,7 +150,7 @@ sealed class CardItems(
     data object Boat : CardItems(
         titleResId = R.string.sound_boat,
         icon = R.drawable.sailboat,
-        audioSource = R.raw.travel_boat,
+        audioSource = R.raw.boat,
         type = "Travel",
     )
 
@@ -161,7 +161,7 @@ sealed class CardItems(
     data object City : CardItems(
         titleResId = R.string.sound_city,
         icon = R.drawable.city,
-        audioSource = R.raw.travel_city,
+        audioSource = R.raw.city,
         type = "Travel",
     )
 
@@ -172,7 +172,7 @@ sealed class CardItems(
     data object CoffeeShop : CardItems(
         titleResId = R.string.sound_coffee_shop,
         icon = R.drawable.coffee,
-        audioSource = R.raw.indoor_interior_coffeeshop,
+        audioSource = R.raw.coffee_shop,
         type = "Interiors",
         firstInType = true,
     )
@@ -184,7 +184,7 @@ sealed class CardItems(
     data object FirePlace : CardItems(
         titleResId = R.string.sound_fireplace,
         icon = R.drawable.fireplace,
-        audioSource = R.raw.indoor_interior_fireplace,
+        audioSource = R.raw.fireplace,
         type = "Interiors",
     )
 
@@ -206,7 +206,7 @@ sealed class CardItems(
     data object PinkNoise : CardItems(
         titleResId = R.string.sound_pink_noise,
         icon = R.drawable.pink_noise,
-        audioSource = R.raw.noise_pink_noise,
+        audioSource = R.raw.pink_noise,
         type = "Noise",
         firstInType = true,
     )
@@ -218,7 +218,7 @@ sealed class CardItems(
     data object WhiteNoise : CardItems(
         titleResId = R.string.sound_white_noise,
         icon = R.drawable.white_noise,
-        audioSource = R.raw.noise_white_noise,
+        audioSource = R.raw.white_noise,
         type = "Noise",
     )
 
@@ -229,7 +229,7 @@ sealed class CardItems(
     data object Custom : CardItems(
         titleResId = R.string.empty_string,
         icon = R.drawable.city,
-        audioSource = R.raw.noise_white_noise,
+        audioSource = R.raw.city,
         type = "Custom",
     )
 
@@ -252,7 +252,7 @@ sealed class CardItems(
     ) : CardItems(
             titleResId = R.string.empty_string,
             icon = R.drawable.white_noise,
-            audioSource = R.raw.noise_white_noise,
+            audioSource = R.raw.white_noise,
             type = "Custom",
             customSoundId = id,
             filePath = soundFilePath,

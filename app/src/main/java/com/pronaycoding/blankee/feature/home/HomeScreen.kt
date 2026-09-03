@@ -396,7 +396,7 @@ internal fun HomeScreen(
                         }
                     }
 
-                    if (customSounds.isNotEmpty()) {
+                    if (customSounds.isNotEmpty ()) {
                         item {
                             Column {
                                 TitleCardView(stringResource(R.string.category_custom))
