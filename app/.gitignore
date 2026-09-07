@@ -2,6 +2,11 @@
 .kotlin/
  local.properties
 google-services.json
+../keystore.properties
+../release.keystore
+../play-store-service-account.json
+*.jks
+*.keystore
 README.pdf
 app/.DS_Store
 app/release/

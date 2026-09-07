@@ -1,3 +1,6 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
@@ -7,6 +10,20 @@ plugins {
     alias(libs.plugins.google.firebase.crashlytics)
 }
 
+val keystoreProperties =
+    Properties().apply {
+        val keystorePropertiesFile = rootProject.file("keystore.properties")
+        if (keystorePropertiesFile.exists()) {
+            load(FileInputStream(keystorePropertiesFile))
+        }
+    }
+
+fun releaseKeystorePath(): String? =
+    keystoreProperties.getProperty("storeFile") ?: System.getenv("ANDROID_KEYSTORE_PATH")
+
+fun releaseSigningCredential(propertyName: String, envName: String): String? =
+    keystoreProperties.getProperty(propertyName) ?: System.getenv(envName)
+
 android {
     namespace = "com.pronaycoding.blankee"
     compileSdk = 35
@@ -14,13 +31,25 @@ android {
     defaultConfig {
         applicationId = "com.pronaycoding.blankee"
         minSdk = 24
-        targetSdk = 35
-        versionCode = 5
-        versionName = "1.1.1"
+        targetSdk = 36
+        versionCode = 7
+        versionName = "1.1.2"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary = true
+        }
+    }
+
+    signingConfigs {
+        create("release") {
+            val storeFilePath = releaseKeystorePath()
+            if (!storeFilePath.isNullOrBlank()) {
+                storeFile = rootProject.file(storeFilePath)
+                storePassword = releaseSigningCredential("storePassword", "ANDROID_KEYSTORE_PASSWORD")
+                keyAlias = releaseSigningCredential("keyAlias", "ANDROID_KEY_ALIAS")
+                keyPassword = releaseSigningCredential("keyPassword", "ANDROID_KEY_PASSWORD")
+            }
         }
     }
 
@@ -34,7 +63,13 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro",
             )
-            signingConfig = signingConfigs.getByName("debug")
+            val releaseSigning = signingConfigs.getByName("release")
+            signingConfig =
+                if (releaseSigning.storeFile?.exists() == true) {
+                    releaseSigning
+                } else {
+                    signingConfigs.getByName("debug")
+                }
         }
     }
     compileOptions {
