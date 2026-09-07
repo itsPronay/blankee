@@ -32,29 +32,32 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.border
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowForward
+import androidx.compose.material.icons.automirrored.filled.OpenInNew
 import androidx.compose.material.icons.filled.ArrowDropDown
-import androidx.compose.material.icons.filled.ArrowForwardIos
+import androidx.compose.material.icons.filled.BugReport
 import androidx.compose.material.icons.filled.Check
-import androidx.compose.material.icons.filled.KeyboardDoubleArrowDown
+import androidx.compose.material.icons.filled.Language
+import androidx.compose.material.icons.filled.OpenInNew
+import androidx.compose.material.icons.filled.Palette
+import androidx.compose.material.icons.filled.Share
 import androidx.compose.material.icons.outlined.BrightnessAuto
 import androidx.compose.material.icons.outlined.DarkMode
 import androidx.compose.material.icons.outlined.LightMode
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CenterAlignedTopAppBar
-import androidx.compose.material3.Divider
-import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SegmentedButton
@@ -71,6 +74,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
@@ -174,21 +178,22 @@ fun SettingsScreen(
                     ),
                 elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
             ) {
-                Column(Modifier.padding(24.dp)) {
-                    // Theme section
-                    Text(
-                        text = stringResource(R.string.settings_theme),
-                        style = MaterialTheme.typography.titleMedium,
-                        fontWeight = FontWeight.SemiBold,
+                Column(Modifier.padding(vertical = 8.dp)) {
+                    SettingHeading(
+                        icon = Icons.Default.Palette,
+                        title = stringResource(R.string.settings_theme),
+                        modifier = Modifier.padding(horizontal = 20.dp, vertical = 12.dp),
                     )
                     Text(
                         text = stringResource(R.string.settings_theme_hint),
                         style = MaterialTheme.typography.bodySmall,
                         color = scheme.onSurfaceVariant,
-                        modifier = Modifier.padding(top = 6.dp, bottom = 16.dp),
+                        modifier = Modifier.padding(horizontal = 20.dp).padding(bottom = 16.dp),
                     )
 
-                    SingleChoiceSegmentedButtonRow(modifier = Modifier.fillMaxWidth()) {
+                    SingleChoiceSegmentedButtonRow(
+                        modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp),
+                    ) {
                         themeChoices.forEachIndexed { index, choice ->
                             val selected = selectedTheme == choice.mode
                             SegmentedButton(
@@ -237,18 +242,21 @@ fun SettingsScreen(
                         }
                     }
 
-                    Divider(
-                        modifier = Modifier.padding(vertical = 24.dp),
+                    HorizontalDivider(
+                        modifier = Modifier.padding(vertical = 20.dp),
                         color = scheme.outlineVariant,
                     )
 
-                    // Language section
+                    SettingHeading(
+                        icon = Icons.Default.Language,
+                        title = stringResource(R.string.settings_language),
+                        modifier = Modifier.padding(horizontal = 20.dp, vertical = 4.dp),
+                    )
                     Text(
-                        text = stringResource(R.string.settings_language),
-                        style = MaterialTheme.typography.titleMedium,
-                        fontWeight = FontWeight.SemiBold,
-                        color = scheme.onSurface,
-                        modifier = Modifier.padding(bottom = 12.dp),
+                        text = stringResource(R.string.settings_language_hint),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = scheme.onSurfaceVariant,
+                        modifier = Modifier.padding(horizontal = 20.dp).padding(top = 4.dp, bottom = 14.dp),
                     )
 
                     var expanded by remember { mutableStateOf(false) }
@@ -257,21 +265,16 @@ fun SettingsScreen(
                             ?: R.string.language_system
                     )
 
-                    ElevatedCard(
+                    Surface(
                         onClick = { expanded = true },
                         shape = MaterialTheme.shapes.medium,
-                        elevation = CardDefaults.elevatedCardElevation(
-                            defaultElevation = if (expanded) 6.dp else 2.dp,
-                        ),
-                        colors = CardDefaults.elevatedCardColors(
-                            containerColor = scheme.surfaceContainer,
-                        ),
-                        modifier = Modifier.fillMaxWidth(),
+                        color = scheme.surfaceContainer,
+                        modifier = Modifier.padding(horizontal = 16.dp).fillMaxWidth(),
                     ) {
                         Row(
                             Modifier
                                 .fillMaxWidth()
-                                .padding(horizontal = 20.dp, vertical = 16.dp),
+                                .padding(horizontal = 16.dp, vertical = 15.dp),
                             verticalAlignment = Alignment.CenterVertically,
                             horizontalArrangement = Arrangement.SpaceBetween,
                         ) {
@@ -349,57 +352,22 @@ fun SettingsScreen(
                     ),
                 elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
             ) {
-                Surface(
+                SettingActionRow(
+                    icon = Icons.Default.Share,
+                    title = stringResource(R.string.share_app_title),
+                    subtitle = stringResource(R.string.share_app_hint),
                     onClick = { shareApp(context) },
-                    color = Color.Transparent,
-                    modifier = Modifier.fillMaxWidth(),
-                ) {
-                    Column(
-                        modifier =
-                            Modifier
-                                .fillMaxWidth()
-                                .padding(horizontal = 20.dp, vertical = 16.dp),
-                    ) {
-                        Text(
-                            text = stringResource(R.string.share_app_title),
-                            style = MaterialTheme.typography.titleMedium,
-                            fontWeight = FontWeight.SemiBold,
-                        )
-                        Text(
-                            text = stringResource(R.string.share_app_hint),
-                            style = MaterialTheme.typography.bodySmall,
-                            color = scheme.onSurfaceVariant,
-                            modifier = Modifier.padding(top = 4.dp),
-                        )
-                    }
-                }
+                )
 
-                Divider(color = scheme.outlineVariant)
+                HorizontalDivider(color = scheme.outlineVariant)
 
-                Surface(
+                SettingActionRow(
+                    icon = Icons.Default.BugReport,
+                    title = stringResource(R.string.settings_report_bug_feature),
+                    subtitle = stringResource(R.string.settings_report_bug_feature_hint),
+                    trailingIcon = Icons.AutoMirrored.Filled.OpenInNew,
                     onClick = { openExternalUrl(context, Constants.GITHUB_REPO) },
-                    color = Color.Transparent,
-                    modifier = Modifier.fillMaxWidth(),
-                ) {
-                    Column(
-                        modifier =
-                            Modifier
-                                .fillMaxWidth()
-                                .padding(horizontal = 20.dp, vertical = 16.dp),
-                    ) {
-                        Text(
-                            text = stringResource(R.string.settings_report_bug_feature),
-                            style = MaterialTheme.typography.titleMedium,
-                            fontWeight = FontWeight.SemiBold,
-                        )
-                        Text(
-                            text = stringResource(R.string.settings_report_bug_feature_hint),
-                            style = MaterialTheme.typography.bodySmall,
-                            color = scheme.onSurfaceVariant,
-                            modifier = Modifier.padding(top = 4.dp),
-                        )
-                    }
-                }
+                )
             }
 
             Spacer(modifier = Modifier.height(12.dp))
@@ -407,6 +375,83 @@ fun SettingsScreen(
             AttributionFooter(
                 onOpenRafael = { openExternalUrl(context, Constants.RAFAEL_MARDOJAI_GITHUB) },
                 onOpenPronay = { openExternalUrl(context, Constants.PRONAY_GITHUB) },
+            )
+        }
+    }
+}
+
+@Composable
+private fun SettingHeading(
+    icon: ImageVector,
+    title: String,
+    modifier: Modifier = Modifier,
+) {
+    val scheme = MaterialTheme.colorScheme
+
+    Row(
+        modifier = modifier.fillMaxWidth(),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Icon(
+            imageVector = icon,
+            contentDescription = null,
+            tint = scheme.primary,
+            modifier = Modifier.size(22.dp),
+        )
+        Spacer(modifier = Modifier.size(12.dp))
+        Text(
+            text = title,
+            style = MaterialTheme.typography.titleMedium,
+            fontWeight = FontWeight.SemiBold,
+            color = scheme.onSurface,
+        )
+    }
+}
+
+@Composable
+private fun SettingActionRow(
+    icon: ImageVector,
+    title: String,
+    subtitle: String,
+    onClick: () -> Unit,
+    trailingIcon: ImageVector = Icons.AutoMirrored.Filled.ArrowForward,
+) {
+    val scheme = MaterialTheme.colorScheme
+
+    Surface(
+        onClick = onClick,
+        color = Color.Transparent,
+        modifier = Modifier.fillMaxWidth(),
+    ) {
+        Row(
+            modifier = Modifier.padding(horizontal = 20.dp, vertical = 16.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Icon(
+                imageVector = icon,
+                contentDescription = null,
+                tint = scheme.primary,
+                modifier = Modifier.size(22.dp),
+            )
+            Spacer(modifier = Modifier.size(16.dp))
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = title,
+                    style = MaterialTheme.typography.titleMedium,
+                    fontWeight = FontWeight.SemiBold,
+                )
+                Text(
+                    text = subtitle,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = scheme.onSurfaceVariant,
+                    modifier = Modifier.padding(top = 4.dp),
+                )
+            }
+            Icon(
+                imageVector = trailingIcon,
+                contentDescription = null,
+                tint = scheme.onSurfaceVariant,
+                modifier = Modifier.size(20.dp),
             )
         }
     }

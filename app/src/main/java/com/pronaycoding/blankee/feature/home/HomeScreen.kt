@@ -86,6 +86,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBarDefaults
@@ -814,71 +815,102 @@ fun TimerDialog(
     if (showTimerDialog) {
         AlertDialog(
             onDismissRequest = { setTimerDialogFalse() },
-            title = {
-                Row(verticalAlignment = Alignment.CenterVertically) {
+            shape = RoundedCornerShape(28.dp),
+            containerColor = MaterialTheme.colorScheme.surfaceContainerLow,
+            tonalElevation = 6.dp,
+            icon = {
+                Surface(
+                    shape = CircleShape,
+                    color = MaterialTheme.colorScheme.primaryContainer,
+                    modifier = Modifier.size(52.dp),
+                ) {
                     Icon(
                         imageVector = Icons.Default.Timer,
                         contentDescription = null,
-                        tint =
-                            if (sleepTimerRemainingMillis != null) {
-                                MaterialTheme.colorScheme.error
-                            } else {
-                                MaterialTheme.colorScheme.primary
-                            },
+                        tint = MaterialTheme.colorScheme.onPrimaryContainer,
+                        modifier = Modifier.padding(14.dp),
                     )
-                    Spacer(modifier = Modifier.size(8.dp))
-                    Text(stringResource(R.string.timer_dialog_title))
                 }
+            },
+            title = {
+                Text(
+                    text = stringResource(R.string.timer_dialog_title),
+                    style = MaterialTheme.typography.headlineSmall,
+                )
             },
             text = {
                 Column(
                     modifier = Modifier.verticalScroll(rememberScrollState()),
+                    verticalArrangement = Arrangement.spacedBy(8.dp),
                 ) {
                     if (sleepTimerRemainingMillis != null) {
-                        Text(
-                            text =
-                                stringResource(
-                                    R.string.timer_countdown_label,
-                                    formatRemainingTimerLabel(sleepTimerRemainingMillis ?: 0L),
-                                ),
-                            style = MaterialTheme.typography.bodyMedium,
-                            color = MaterialTheme.colorScheme.error,
-                            modifier = Modifier.padding(bottom = 10.dp),
-                        )
+                        Surface(
+                            shape = RoundedCornerShape(16.dp),
+                            color = MaterialTheme.colorScheme.errorContainer,
+                            modifier = Modifier.fillMaxWidth(),
+                        ) {
+                            Row(
+                                modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp),
+                                verticalAlignment = Alignment.CenterVertically,
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Default.Timer,
+                                    contentDescription = null,
+                                    tint = MaterialTheme.colorScheme.onErrorContainer,
+                                    modifier = Modifier.size(20.dp),
+                                )
+                                Spacer(modifier = Modifier.size(10.dp))
+                                Text(
+                                    text =
+                                        stringResource(
+                                            R.string.timer_countdown_label,
+                                            formatRemainingTimerLabel(sleepTimerRemainingMillis),
+                                        ),
+                                    style = MaterialTheme.typography.titleSmall,
+                                    color = MaterialTheme.colorScheme.onErrorContainer,
+                                )
+                            }
+                        }
                     }
 
                     val timerOptions = listOf(1, 5, 10, 15, 30, -1)
                     timerOptions.forEach { option ->
                         val isSelected = selectedTimerOption == option
-                        Row(
-                            modifier =
-                                Modifier
-                                    .fillMaxWidth()
-                                    .padding(vertical = 4.dp)
-                                    .background(
-                                        color =
-                                            if (isSelected) {
-                                                MaterialTheme.colorScheme.primary.copy(alpha = 0.10f)
-                                            } else {
-                                                MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.35f)
-                                            },
-                                        shape = RoundedCornerShape(12.dp),
-                                    ).clickable { selectedTimerOption = option }
-                                    .padding(horizontal = 8.dp, vertical = 4.dp),
-                            verticalAlignment = Alignment.CenterVertically,
+                        Surface(
+                            onClick = { selectedTimerOption = option },
+                            shape = RoundedCornerShape(14.dp),
+                            color =
+                                if (isSelected) {
+                                    MaterialTheme.colorScheme.primaryContainer
+                                } else {
+                                    MaterialTheme.colorScheme.surfaceContainerHighest
+                                },
+                            modifier = Modifier.fillMaxWidth(),
                         ) {
-                            RadioButton(
-                                selected = isSelected,
-                                onClick = { selectedTimerOption = option },
-                            )
-                            Text(
-                                text =
-                                    if (option == -1) {
-                                        stringResource(R.string.timer_custom)
-                                    } else {
-                                        stringResource(R.string.timer_minutes_format, option)
-                                    },
-                            )
+                            Row(
+                                modifier = Modifier.padding(horizontal = 8.dp, vertical = 3.dp),
+                                verticalAlignment = Alignment.CenterVertically,
+                            ) {
+                                RadioButton(
+                                    selected = isSelected,
+                                    onClick = { selectedTimerOption = option },
+                                )
+                                Text(
+                                    text =
+                                        if (option == -1) {
+                                            stringResource(R.string.timer_custom)
+                                        } else {
+                                            stringResource(R.string.timer_minutes_format, option)
+                                        },
+                                    style = MaterialTheme.typography.bodyLarge,
+                                    color =
+                                        if (isSelected) {
+                                            MaterialTheme.colorScheme.onPrimaryContainer
+                                        } else {
+                                            MaterialTheme.colorScheme.onSurface
+                                        },
+                                )
+                            }
                         }
                     }
                     if (selectedTimerOption == -1) {
@@ -888,13 +920,13 @@ fun TimerDialog(
                             label = { Text(stringResource(R.string.timer_custom_label)) },
                             singleLine = true,
                             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                            modifier = Modifier.fillMaxWidth(),
+                            modifier = Modifier.fillMaxWidth().padding(top = 4.dp),
                         )
                     }
                 }
             },
             confirmButton = {
-                TextButton(
+                Button(
                     onClick = {
                         val selectedMinutes =
                             if (selectedTimerOption == -1) {
@@ -909,7 +941,7 @@ fun TimerDialog(
                                     context.getString(R.string.timer_invalid_input),
                                     Toast.LENGTH_SHORT,
                                 ).show()
-                            return@TextButton
+                            return@Button
                         }
                         startSleepTimer(selectedMinutes * 60_000L)
                         Toast
