@@ -1,7 +1,6 @@
 /build
 .kotlin/
  local.properties
-google-services.json
 ../keystore.properties
 ../release.keystore
 ../play-store-service-account.json

@@ -6,8 +6,6 @@ plugins {
     alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.google.ksp)
     alias(libs.plugins.compose.compiler)
-    alias(libs.plugins.google.gms.google.services)
-    alias(libs.plugins.google.firebase.crashlytics)
 }
 
 val keystoreProperties =
@@ -26,10 +24,10 @@ fun releaseSigningCredential(propertyName: String, envName: String): String? =
 
 android {
     namespace = "com.pronaycoding.blankee"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.pronaycoding.blankee"
+        applicationId = "com.pronaycoding.blankee.fdroid"
         minSdk = 24
         targetSdk = 36
         versionCode = 7
@@ -113,7 +111,7 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.lifecycle.runtime.compose.android)
-    implementation(libs.firebase.crashlytics)
+
 //    implementation(libs.androidx.material3.android)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
@@ -147,7 +145,4 @@ dependencies {
     implementation(libs.androidx.room.runtime)
     ksp(libs.androidx.room.compiler)
     implementation(libs.androidx.room.ktx)
-
-    implementation(libs.billing)
-    implementation(libs.billing.ktx)
 }

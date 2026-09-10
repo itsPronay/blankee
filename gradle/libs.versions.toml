@@ -1,6 +1,5 @@
 [versions]
 agp = "8.5.2"
-billing = "8.3.0"
 koinAndroid = "3.5.6"
 koinAndroidxCompose = "3.5.6"
 kotlin = "2.1.0"
@@ -18,9 +17,6 @@ lifecycleViewmodelCompose = "2.8.7"
 lifecycleViewmodelKtx = "2.4.0"
 material3Android = "1.3.1"
 lifecycleRuntimeComposeAndroid = "2.8.7"
-firebaseCrashlytics = "20.0.5"
-googleGmsGoogleServices = "4.4.4"
-googleFirebaseCrashlytics = "3.0.7"
 materialIconsExtended = "1.5.1"
 media3Exoplayer = "1.3.1"
 media3Ui = "1.3.1"
@@ -41,8 +37,6 @@ androidx-navigation-compose = { module = "androidx.navigation:navigation-compose
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomRuntime" }
 androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomRuntime" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
-billing = { module = "com.android.billingclient:billing", version.ref = "billing" }
-billing-ktx = { module = "com.android.billingclient:billing-ktx", version.ref = "billing" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -59,7 +53,6 @@ androidx-material3 = { group = "androidx.compose.material3", name = "material3" 
 androidx-lifecycle-viewmodel-compose = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "lifecycleViewmodelCompose" }
 androidx-material3-android = { group = "androidx.compose.material3", name = "material3-android", version.ref = "material3Android" }
 androidx-lifecycle-runtime-compose-android = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose-android", version.ref = "lifecycleRuntimeComposeAndroid" }
-firebase-crashlytics = { group = "com.google.firebase", name = "firebase-crashlytics", version.ref = "firebaseCrashlytics" }
 koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koinAndroidxCompose" }
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koinAndroid" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutinesCore" }
@@ -70,7 +63,5 @@ androidApplication = { id = "com.android.application", version.ref = "agp" }
 jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 google-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
-google-gms-google-services = { id = "com.google.gms.google-services", version.ref = "googleGmsGoogleServices" }
-google-firebase-crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "googleFirebaseCrashlytics" }
 spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
 
