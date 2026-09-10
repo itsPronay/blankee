@@ -7,7 +7,6 @@ plugins {
     alias(libs.plugins.google.ksp)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.google.gms.google.services) apply false
-    alias(libs.plugins.google.firebase.crashlytics) apply false
 }
 
 val keystoreProperties =
@@ -119,12 +118,11 @@ android {
     }
 }
 
-// Only wire up Google Services / Crashlytics when a gplay variant is
-// actually being assembled. This keeps the fdroid flavor's build graph
-// (and google-services.json requirement) completely clean.
+// Only wire up Google Services when a gplay variant is actually being
+// assembled. This keeps the fdroid flavor's build graph (and
+// google-services.json requirement) completely clean.
 if (isGplayBuild) {
     apply(plugin = "com.google.gms.google-services")
-    apply(plugin = "com.google.firebase.crashlytics")
 }
 
 dependencies {
@@ -140,9 +138,6 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.lifecycle.runtime.compose.android)
-
-    // Crashlytics only compiled into the gplay flavor
-    "gplayImplementation"(libs.firebase.crashlytics)
 
 //    implementation(libs.androidx.material3.android)
     testImplementation(libs.junit)
