@@ -61,9 +61,9 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro",
             )
-            val releaseSigning = signingConfigs.getByName("release")
+            val releaseSigning = signingConfigs.findByName("release")
             signingConfig =
-                if (releaseSigning.storeFile?.exists() == true) {
+                if (releaseSigning?.storeFile?.exists() == true) {
                     releaseSigning
                 } else {
                     signingConfigs.getByName("debug")
