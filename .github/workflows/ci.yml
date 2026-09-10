@@ -31,24 +31,14 @@ jobs:
       - name: Grant execute permission for Gradle wrapper
         run: chmod +x gradlew
 
-      - name: Build Release APKs
-        run: ./gradlew assembleGplayRelease assembleFdroidRelease
+      - name: Build Release APK
+        run: ./gradlew assembleRelease
 
-      - name: Rename APKs
-        run: |
-          mv app/build/outputs/apk/gplay/release/*.apk app/build/outputs/apk/gplay/release/blankee-gplay.apk
-          mv app/build/outputs/apk/fdroid/release/*.apk app/build/outputs/apk/fdroid/release/blankee-fdroid.apk
+      - name: Rename APK
+        run: mv app/build/outputs/apk/release/*.apk app/build/outputs/apk/release/blankee.apk
 
-      - name: Upload Gplay APK Artifact
+      - name: Upload APK Artifact
         uses: actions/upload-artifact@v7
         with:
-          name: blankee-gplay
-          path: app/build/outputs/apk/gplay/release/blankee-gplay.apk
-          archive: false
-
-      - name: Upload Fdroid APK Artifact
-        uses: actions/upload-artifact@v7
-        with:
-          name: blankee-fdroid
-          path: app/build/outputs/apk/fdroid/release/blankee-fdroid.apk
+          path: app/build/outputs/apk/release/blankee.apk
           archive: false
