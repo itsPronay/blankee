@@ -30,8 +30,8 @@ android {
         applicationId = "com.pronaycoding.blankee"
         minSdk = 24
         targetSdk = 36
-        versionCode = 7
-        versionName = "1.1.2"
+        versionCode = 8
+        versionName = "1.1.3"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -61,9 +61,9 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro",
             )
-            val releaseSigning = signingConfigs.getByName("release")
+            val releaseSigning = signingConfigs.findByName("release")
             signingConfig =
-                if (releaseSigning.storeFile?.exists() == true) {
+                if (releaseSigning?.storeFile?.exists() == true) {
                     releaseSigning
                 } else {
                     signingConfigs.getByName("debug")
