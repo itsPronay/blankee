@@ -24,14 +24,6 @@ fun releaseKeystorePath(): String? =
 fun releaseSigningCredential(propertyName: String, envName: String): String? =
     keystoreProperties.getProperty(propertyName) ?: System.getenv(envName)
 
-// Detect which flavor is actually being built so we know whether to
-// apply the Google plugins. Works for `./gradlew assembleGplayRelease`,
-// `assembleFdroidDebug`, `bundleGplayRelease`, etc.
-val requestedTasks = gradle.startParameter.taskNames
-val isGplayBuild =
-    requestedTasks.any { it.contains("Gplay", ignoreCase = true) } ||
-        requestedTasks.isEmpty() // fall back to applying it for IDE sync / default tasks
-
 android {
     namespace = "com.pronaycoding.blankee"
     compileSdk = 36
@@ -53,12 +45,16 @@ android {
     productFlavors {
         create("gplay") {
             dimension = "distribution"
-            // e.g. applicationIdSuffix = ".gplay" if you want distinct package IDs
+            // Keeps the applicationId that's already registered on the Play Store.
         }
         create("fdroid") {
             dimension = "distribution"
+            // Distinct applicationId so this differently-signed build doesn't collide
+            // with the Play Store package's registered signing key on-device.
+            applicationIdSuffix = ".fdroid"
         }
     }
+
 
     signingConfigs {
         create("release") {
@@ -119,12 +115,18 @@ android {
     }
 }
 
-// Only wire up Google Services / Crashlytics when a gplay variant is
-// actually being assembled. This keeps the fdroid flavor's build graph
-// (and google-services.json requirement) completely clean.
-if (isGplayBuild) {
-    apply(plugin = "com.google.gms.google-services")
-    apply(plugin = "com.google.firebase.crashlytics")
+// Applied unconditionally so IDE sync and mixed invocations (e.g.
+// `assembleGplayRelease assembleFdroidRelease` in the same command) work.
+// Both plugins generate a task per variant, including fdroid ones, which
+// would otherwise fail looking for a google-services.json that only the
+// gplay flavor ships. Disable those tasks for fdroid instead.
+apply(plugin = "com.google.gms.google-services")
+apply(plugin = "com.google.firebase.crashlytics")
+
+tasks.configureEach {
+    if (name.contains("Fdroid") && (name.contains("GoogleServices") || name.contains("Crashlytics"))) {
+        enabled = false
+    }
 }
 
 dependencies {
