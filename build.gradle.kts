@@ -5,7 +5,6 @@ plugins {
     alias(libs.plugins.compose.compiler) apply false
     alias(libs.plugins.google.ksp) apply false
     alias(libs.plugins.google.gms.google.services) apply false
-    alias(libs.plugins.google.firebase.crashlytics) apply false
     alias(libs.plugins.spotless)
 }
 
