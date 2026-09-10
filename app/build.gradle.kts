@@ -6,8 +6,8 @@ plugins {
     alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.google.ksp)
     alias(libs.plugins.compose.compiler)
-    alias(libs.plugins.google.gms.google.services)
-    alias(libs.plugins.google.firebase.crashlytics)
+    alias(libs.plugins.google.gms.google.services) apply false
+    alias(libs.plugins.google.firebase.crashlytics) apply false
 }
 
 val keystoreProperties =
@@ -24,20 +24,39 @@ fun releaseKeystorePath(): String? =
 fun releaseSigningCredential(propertyName: String, envName: String): String? =
     keystoreProperties.getProperty(propertyName) ?: System.getenv(envName)
 
+// Detect which flavor is actually being built so we know whether to
+// apply the Google plugins. Works for `./gradlew assembleGplayRelease`,
+// `assembleFdroidDebug`, `bundleGplayRelease`, etc.
+val requestedTasks = gradle.startParameter.taskNames
+val isGplayBuild =
+    requestedTasks.any { it.contains("Gplay", ignoreCase = true) } ||
+        requestedTasks.isEmpty() // fall back to applying it for IDE sync / default tasks
+
 android {
     namespace = "com.pronaycoding.blankee"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.pronaycoding.blankee"
         minSdk = 24
         targetSdk = 36
-        versionCode = 7
-        versionName = "1.1.2"
+        versionCode = 8
+        versionName = "1.1.3"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary = true
+        }
+    }
+
+    flavorDimensions += "distribution"
+    productFlavors {
+        create("gplay") {
+            dimension = "distribution"
+            // e.g. applicationIdSuffix = ".gplay" if you want distinct package IDs
+        }
+        create("fdroid") {
+            dimension = "distribution"
         }
     }
 
@@ -100,6 +119,14 @@ android {
     }
 }
 
+// Only wire up Google Services / Crashlytics when a gplay variant is
+// actually being assembled. This keeps the fdroid flavor's build graph
+// (and google-services.json requirement) completely clean.
+if (isGplayBuild) {
+    apply(plugin = "com.google.gms.google-services")
+    apply(plugin = "com.google.firebase.crashlytics")
+}
+
 dependencies {
     implementation(libs.androidx.core.ktx)
     implementation("androidx.datastore:datastore-preferences:1.1.1")
@@ -113,7 +140,10 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.lifecycle.runtime.compose.android)
-    implementation(libs.firebase.crashlytics)
+
+    // Crashlytics only compiled into the gplay flavor
+    "gplayImplementation"(libs.firebase.crashlytics)
+
 //    implementation(libs.androidx.material3.android)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
@@ -148,6 +178,9 @@ dependencies {
     ksp(libs.androidx.room.compiler)
     implementation(libs.androidx.room.ktx)
 
-    implementation(libs.billing)
-    implementation(libs.billing.ktx)
+    // Play Billing is a Google Play service — gplay only.
+    // F-Droid won't accept it as-is; provide a no-op or alternative
+    // purchase flow for the fdroid flavor if you need one.
+    "gplayImplementation"(libs.billing)
+    "gplayImplementation"(libs.billing.ktx)
 }
