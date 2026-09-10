@@ -27,7 +27,7 @@ android {
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.pronaycoding.blankee.fdroid"
+        applicationId = "com.pronaycoding.blankee"
         minSdk = 24
         targetSdk = 36
         versionCode = 7
