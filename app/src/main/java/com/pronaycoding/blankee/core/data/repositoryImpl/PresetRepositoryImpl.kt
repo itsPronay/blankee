@@ -41,4 +41,6 @@ class PresetRepositoryImpl(
      * @param id The ID of the preset to delete
      */
     override suspend fun deletePreset(id: Long) = presetDao.deleteById(id)
+
+    override suspend fun updatePreset(entity: PresetEntity) = presetDao.updatePreset(entity)
 }

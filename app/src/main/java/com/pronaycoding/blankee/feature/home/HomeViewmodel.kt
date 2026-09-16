@@ -425,6 +425,14 @@ class HomeViewmodel(
         }
     }
 
+    fun renamePreset(preset: PresetEntity, newName: String) {
+        val trimmed = newName.trim()
+        if (trimmed.isEmpty()) return
+        viewModelScope.launch {
+            presetRepository.updatePreset(preset.copy(name = trimmed))
+        }
+    }
+
     fun startSleepTimer(durationMillis: Long) {
         if (durationMillis <= 0L) return
         sleepTimerJob?.cancel()

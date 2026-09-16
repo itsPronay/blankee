@@ -68,13 +68,14 @@ import androidx.compose.material.icons.filled.Save
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Timer
 import androidx.compose.material.icons.outlined.Delete
+import androidx.compose.material.icons.outlined.Edit
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.DropdownMenu
-import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.ModalBottomSheet
+import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilledTonalIconButton
 import androidx.compose.material3.HorizontalDivider
@@ -102,6 +103,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -152,6 +155,7 @@ fun HomeScreenRoute(
         onCancelSleepTimer = { viewmodel.cancelSleepTimer() },
         resetAllSounds = viewmodel::resetAllSounds,
         deletePreset = viewmodel::deletePreset,
+        renamePreset = viewmodel::renamePreset,
     )
 }
 
@@ -168,6 +172,7 @@ internal fun HomeScreen(
     applyPreset: (PresetEntity) -> Unit,
     canPlaySound: Boolean,
     deletePreset: (Long) -> Unit,
+    renamePreset: (PresetEntity, String) -> Unit = { _, _ -> },
     customSounds: List<CustomSoundEntity> = emptyList(),
     resetAllSounds: () -> Unit,
     handlePlayPause: (Boolean) -> Unit,
@@ -217,6 +222,7 @@ internal fun HomeScreen(
         setPresetPendingDeleteName = { presetPendingDeleteName = it },
         canSavePreset = canSavePreset,
         savePreset = savePreset,
+        renamePreset = renamePreset,
     )
 
     DeletePresetDialog(
@@ -644,6 +650,7 @@ fun CustomCard(content: @Composable () -> Unit) {
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PresetClicked(
     dropdownEnabled: Boolean,
@@ -654,75 +661,118 @@ fun PresetClicked(
     setPresetPendingDeleteName: (String) -> Unit,
     canSavePreset: Boolean,
     savePreset: (String) -> Unit,
+    renamePreset: (PresetEntity, String) -> Unit,
     context: Context,
 ) {
     var presetNameInput by rememberSaveable { mutableStateOf("") }
     var showSavePresetDialog by rememberSaveable { mutableStateOf(false) }
+    var pendingRenamePreset by remember { mutableStateOf<PresetEntity?>(null) }
+    var renameInput by rememberSaveable { mutableStateOf("") }
+    val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
 
-    DropdownMenu(
-        expanded = dropdownEnabled,
-        onDismissRequest = setDropdownFalse,
-    ) {
-        DropdownMenuItem(
-            text = { Text(stringResource(R.string.presets_save_mix)) },
-            onClick = {
-                setDropdownFalse()
-                if (!canSavePreset) {
-                    Toast
-                        .makeText(
-                            context,
-                            context.getString(R.string.preset_nothing_to_save),
-                            Toast.LENGTH_SHORT,
-                        ).show()
-                } else {
-                    presetNameInput = ""
-                    showSavePresetDialog = true
-                }
-            },
-        )
-        HorizontalDivider()
-        if (presets.isEmpty()) {
-            DropdownMenuItem(
-                text = {
+    if (dropdownEnabled) {
+        ModalBottomSheet(
+            onDismissRequest = setDropdownFalse,
+            sheetState = sheetState,
+        ) {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 24.dp)
+                    .padding(bottom = 32.dp)
+                    .verticalScroll(rememberScrollState()),
+            ) {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(bottom = 4.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
                     Text(
-                        stringResource(R.string.presets_empty),
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        text = stringResource(R.string.presets_title),
+                        style = MaterialTheme.typography.headlineSmall,
+                        fontWeight = FontWeight.SemiBold,
                     )
-                },
-                onClick = { },
-                enabled = false,
-            )
-        } else {
-            presets.forEach { preset ->
-                DropdownMenuItem(
-                    text = {
-                        Text(
-                            preset.name,
-                            maxLines = 1,
-                            overflow = TextOverflow.Ellipsis,
+                    IconButton(onClick = setDropdownFalse) {
+                        Icon(
+                            imageVector = Icons.Default.Close,
+                            contentDescription = stringResource(R.string.dialog_cancel),
                         )
-                    },
+                    }
+                }
+                Text(
+                    text = stringResource(R.string.presets_hint),
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.padding(bottom = 20.dp),
+                )
+                Button(
                     onClick = {
                         setDropdownFalse()
-                        applyPreset(preset)
+                        if (!canSavePreset) {
+                            Toast
+                                .makeText(
+                                    context,
+                                    context.getString(R.string.preset_nothing_to_save),
+                                    Toast.LENGTH_SHORT,
+                                ).show()
+                        } else {
+                            presetNameInput = ""
+                            showSavePresetDialog = true
+                        }
                     },
-                    trailingIcon = {
-                        IconButton(
-                            onClick = {
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(52.dp),
+                    shape = RoundedCornerShape(16.dp),
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Save,
+                        contentDescription = null,
+                        modifier = Modifier.size(18.dp),
+                    )
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Text(
+                        text = stringResource(R.string.presets_save_mix),
+                        style = MaterialTheme.typography.titleSmall,
+                    )
+                }
+                if (presets.isNotEmpty()) {
+                    Spacer(modifier = Modifier.height(20.dp))
+                    HorizontalDivider()
+                    Spacer(modifier = Modifier.height(16.dp))
+                    presets.forEach { preset ->
+                        PresetItem(
+                            preset = preset,
+                            onApply = {
+                                setDropdownFalse()
+                                applyPreset(preset)
+                            },
+                            onEdit = {
+                                renameInput = preset.name
+                                pendingRenamePreset = preset
+                            },
+                            onDelete = {
                                 setDropdownFalse()
                                 setPresentPendingDeleteId(preset.id)
                                 setPresetPendingDeleteName(preset.name)
                             },
-                        ) {
-                            Icon(
-                                imageVector = Icons.Outlined.Delete,
-                                tint = MaterialTheme.colorScheme.error,
-                                contentDescription = stringResource(R.string.preset_delete_desc),
-                            )
-                        }
-                    },
-                )
+                        )
+                        Spacer(modifier = Modifier.height(8.dp))
+                    }
+                } else {
+                    Spacer(modifier = Modifier.height(24.dp))
+                    Text(
+                        text = stringResource(R.string.presets_empty),
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = 8.dp),
+                    )
+                }
             }
         }
     }
@@ -758,6 +808,94 @@ fun PresetClicked(
                 }
             },
         )
+    }
+
+    if (pendingRenamePreset != null) {
+        AlertDialog(
+            onDismissRequest = { pendingRenamePreset = null },
+            title = { Text(stringResource(R.string.preset_rename_title)) },
+            text = {
+                OutlinedTextField(
+                    value = renameInput,
+                    onValueChange = { renameInput = it },
+                    label = { Text(stringResource(R.string.preset_name_label)) },
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+            },
+            confirmButton = {
+                TextButton(
+                    onClick = {
+                        val preset = pendingRenamePreset ?: return@TextButton
+                        renamePreset(preset, renameInput)
+                        pendingRenamePreset = null
+                    },
+                ) {
+                    Text(stringResource(R.string.preset_rename_confirm))
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = { pendingRenamePreset = null }) {
+                    Text(stringResource(R.string.dialog_cancel))
+                }
+            },
+        )
+    }
+}
+
+@Composable
+private fun PresetItem(
+    preset: PresetEntity,
+    onApply: () -> Unit,
+    onEdit: () -> Unit,
+    onDelete: () -> Unit,
+) {
+    Surface(
+        onClick = onApply,
+        shape = RoundedCornerShape(14.dp),
+        color = MaterialTheme.colorScheme.surfaceContainerHigh,
+        modifier = Modifier.fillMaxWidth(),
+        tonalElevation = 0.dp,
+    ) {
+        Row(
+            modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Surface(
+                shape = CircleShape,
+                color = MaterialTheme.colorScheme.primaryContainer,
+                modifier = Modifier.size(40.dp),
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Save,
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.onPrimaryContainer,
+                    modifier = Modifier.padding(10.dp),
+                )
+            }
+            Spacer(modifier = Modifier.width(12.dp))
+            Text(
+                text = preset.name,
+                style = MaterialTheme.typography.bodyLarge,
+                modifier = Modifier.weight(1f),
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+            )
+            IconButton(onClick = onEdit) {
+                Icon(
+                    imageVector = Icons.Outlined.Edit,
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                    contentDescription = stringResource(R.string.preset_rename_title),
+                )
+            }
+            IconButton(onClick = onDelete) {
+                Icon(
+                    imageVector = Icons.Outlined.Delete,
+                    tint = MaterialTheme.colorScheme.error,
+                    contentDescription = stringResource(R.string.preset_delete_desc),
+                )
+            }
+        }
     }
 }
 

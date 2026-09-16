@@ -41,4 +41,11 @@ interface PresetRepository {
      * @throws Exception if the delete operation fails
      */
     suspend fun deletePreset(id: Long)
+
+    /**
+     * Updates an existing preset (e.g. to rename it).
+     *
+     * @param entity The updated [PresetEntity] (matched by its primary key)
+     */
+    suspend fun updatePreset(entity: PresetEntity)
 }
