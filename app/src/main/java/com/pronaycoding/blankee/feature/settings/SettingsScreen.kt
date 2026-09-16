@@ -41,6 +41,7 @@ import androidx.compose.material.icons.automirrored.filled.ArrowForward
 import androidx.compose.material.icons.automirrored.filled.OpenInNew
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.BugReport
+import androidx.compose.material.icons.filled.Gavel
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Language
 import androidx.compose.material.icons.filled.OpenInNew
@@ -367,6 +368,16 @@ fun SettingsScreen(
                     subtitle = stringResource(R.string.settings_report_bug_feature_hint),
                     trailingIcon = Icons.AutoMirrored.Filled.OpenInNew,
                     onClick = { openExternalUrl(context, Constants.GITHUB_REPO) },
+                )
+
+                HorizontalDivider(color = scheme.outlineVariant)
+
+                SettingActionRow(
+                    icon = Icons.Default.Gavel,
+                    title = stringResource(R.string.settings_license),
+                    subtitle = stringResource(R.string.settings_license_hint),
+                    trailingIcon = Icons.AutoMirrored.Filled.OpenInNew,
+                    onClick = { openExternalUrl(context, Constants.GPL_3_LICENSE_URL) },
                 )
             }
 

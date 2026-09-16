@@ -190,6 +190,8 @@
     <string name="no_share_app_installed">No app can share this message. Please install a messaging or social app.</string>
     <string name="settings_report_bug_feature">Report a bug or request a feature</string>
     <string name="settings_report_bug_feature_hint">Open the GitHub repository to create an issue.</string>
+    <string name="settings_license">License</string>
+    <string name="settings_license_hint">GNU General Public License v3.0</string>
     <string name="made_with_love_by_pronay">Made with love by Pronay</string>
 
 
