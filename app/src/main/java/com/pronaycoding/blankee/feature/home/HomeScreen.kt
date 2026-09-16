@@ -1011,7 +1011,7 @@ fun TimerDialog(
                         }
                     }
 
-                    val timerOptions = listOf(1, 5, 10, 15, 30, -1)
+                    val timerOptions = listOf(5, 10, 15, 30, -1)
                     timerOptions.forEach { option ->
                         val isSelected = selectedTimerOption == option
                         Surface(
