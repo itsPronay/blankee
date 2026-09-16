@@ -131,6 +131,8 @@
     <string name="preset_name_label">Preset name</string>
     <string name="preset_name_hint">If left empty, it will be saved as \"Untitled mix\"</string>
     <string name="preset_dialog_save">Save</string>
+    <string name="preset_rename_title">Rename preset</string>
+    <string name="preset_rename_confirm">Rename</string>
     <string name="dialog_cancel">Cancel</string>
     <string name="timer_dialog_title">Set sleep timer</string>
     <string name="timer_custom">Custom</string>
