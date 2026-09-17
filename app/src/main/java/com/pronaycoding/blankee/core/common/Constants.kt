@@ -12,7 +12,7 @@ object Constants {
     const val PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=com.pronaycoding.blankee"
     const val RAFAEL_MARDOJAI_GITHUB = "https://github.com/rafaelmardojai/"
     const val PRONAY_GITHUB = "https://github.com/itsPronay/"
-    const val ENJOY_PROMPT_TRIGGER_LAUNCH = 5
+    const val ENJOY_PROMPT_TRIGGER_LAUNCH = 10
     const val MODE_LIGHT = "light"
     const val MODE_DARK = "dark"
     const val MODE_SYSTEM = "system"
