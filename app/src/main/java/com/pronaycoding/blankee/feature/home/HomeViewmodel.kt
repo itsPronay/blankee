@@ -1,31 +1,5 @@
 package com.pronaycoding.blankee.feature.home
 
-/**
- * ViewModel for the Home screen managing all audio playback and preset logic.
- *
- * Responsibilities:
- * - Load and manage built-in sounds
- * - Load and manage custom user-uploaded sounds
- * - Control sound volume levels (both built-in and custom)
- * - Manage global playback state (play/pause/reset)
- * - Save and load sound presets
- * - Manage sleep timer functionality
- * - Coordinate with SoundManager, GlobalPlaybackState, and repositories
- *
- * State flows exposed:
- * - `canPlay`: Global playback state
- * - `customSounds`: List of user-uploaded custom sounds
- * - `builtinVolumes`: Current volume levels for built-in sounds
- * - `customVolumes`: Current volume levels for custom sounds
- * - `presets`: Saved sound presets
- * - `sleepTimerRemainingMillis`: Sleep timer countdown
- *
- * @see SoundManager for audio playback control
- * @see GlobalPlaybackState for global playback coordination
- * @see PresetRepositoryImpl for preset persistence
- * @see CustomSoundRepositoryImpl for custom sound management
- */
-
 import android.content.Context
 import android.util.Log
 import android.widget.Toast
@@ -34,10 +8,16 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.pronaycoding.blankee.R
 import com.pronaycoding.blankee.core.common.PresetJson
-import com.pronaycoding.blankee.core.data.repositoryImpl.CustomSoundRepositoryImpl
-import com.pronaycoding.blankee.core.data.repositoryImpl.PresetRepositoryImpl
 import com.pronaycoding.blankee.core.database.entities.CustomSoundEntity
 import com.pronaycoding.blankee.core.database.entities.PresetEntity
+import com.pronaycoding.blankee.core.domain.usecase.customsound.AddCustomSoundUseCase
+import com.pronaycoding.blankee.core.domain.usecase.customsound.GetCustomSoundsUseCase
+import com.pronaycoding.blankee.core.domain.usecase.customsound.RemoveCustomSoundUseCase
+import com.pronaycoding.blankee.core.domain.usecase.customsound.UpdateCustomSoundDisplayNameUseCase
+import com.pronaycoding.blankee.core.domain.usecase.preset.DeletePresetUseCase
+import com.pronaycoding.blankee.core.domain.usecase.preset.GetPresetsUseCase
+import com.pronaycoding.blankee.core.domain.usecase.preset.SavePresetUseCase
+import com.pronaycoding.blankee.core.domain.usecase.preset.UpdatePresetUseCase
 import com.pronaycoding.blankee.core.service.playback.GlobalPlaybackState
 import com.pronaycoding.blankee.core.service.playback.MediaPlaybackNotifications
 import kotlinx.coroutines.Job
@@ -46,7 +26,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -54,8 +33,14 @@ import java.io.File
 
 class HomeViewmodel(
     private val soundManager: SoundManager,
-    private val customSoundRepository: CustomSoundRepositoryImpl,
-    private val presetRepository: PresetRepositoryImpl,
+    private val getCustomSoundsUseCase: GetCustomSoundsUseCase,
+    private val addCustomSoundUseCase: AddCustomSoundUseCase,
+    private val removeCustomSoundUseCase: RemoveCustomSoundUseCase,
+    private val updateCustomSoundDisplayNameUseCase: UpdateCustomSoundDisplayNameUseCase,
+    private val getPresetsUseCase: GetPresetsUseCase,
+    private val savePresetUseCase: SavePresetUseCase,
+    private val deletePresetUseCase: DeletePresetUseCase,
+    private val updatePresetUseCase: UpdatePresetUseCase,
     private val globalPlaybackState: GlobalPlaybackState,
     private val mediaPlaybackNotifications: MediaPlaybackNotifications,
     private val context: Context,
@@ -72,8 +57,7 @@ class HomeViewmodel(
     val customVolumes: StateFlow<Map<Int, Float>> = _customVolumes.asStateFlow()
 
     val presets: StateFlow<List<PresetEntity>> =
-        presetRepository
-            .observePresets()
+        getPresetsUseCase()
             .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
 
     private val loadedCustomSoundIds: MutableSet<Int> = mutableSetOf()
@@ -86,7 +70,6 @@ class HomeViewmodel(
     init {
         soundManager.loadSounds()
         startCustomSoundsCollection()
-        // Always start from a clean playback state on app launch/re-entry.
         resetAllSounds()
     }
 
@@ -96,13 +79,12 @@ class HomeViewmodel(
         if (customSoundsCollectionJob?.isActive == true) return
         customSoundsCollectionJob =
             viewModelScope.launch {
-                customSoundRepository.getAllCustomSounds().collect { sounds ->
+                getCustomSoundsUseCase().collect { sounds ->
                     _customSounds.value = sounds
 
                     sounds.forEach { sound ->
                         if (!loadedCustomSoundIds.contains(sound.id)) {
                             val persistentPath = getPersistentFilePath(sound.id, sound.filePath)
-
                             Log.d("HomeViewmodel", "Loading custom sound from: $persistentPath")
                             soundManager.loadCustomSound(sound.id, persistentPath)
                             loadedCustomSoundIds.add(sound.id)
@@ -222,10 +204,6 @@ class HomeViewmodel(
         syncPlaybackNotification()
     }
 
-    /**
-     * Updates built-in sound audio only while dragging a slider. Avoids updating [builtinVolumes]
-     * and notification sync on every frame (those caused heavy recomposition and service churn).
-     */
     fun previewBuiltinVolume(
         index: Int,
         volume: Float,
@@ -275,7 +253,6 @@ class HomeViewmodel(
         syncPlaybackNotification()
     }
 
-    /** Same as [previewBuiltinVolume] for custom sounds. */
     fun previewCustomSoundVolume(
         soundId: Int,
         volume: Float,
@@ -336,14 +313,14 @@ class HomeViewmodel(
         filePath: String,
     ) {
         viewModelScope.launch {
-            customSoundRepository.addCustomSound(displayName, filePath)
+            addCustomSoundUseCase(displayName, filePath)
         }
     }
 
     fun removeCustomSound(soundId: Int) {
         viewModelScope.launch {
             soundManager.unloadCustomSound(soundId)
-            customSoundRepository.removeCustomSound(soundId)
+            removeCustomSoundUseCase(soundId)
             _customVolumes.update { it - soundId }
             syncPlaybackNotification()
         }
@@ -356,7 +333,7 @@ class HomeViewmodel(
         val sanitizedName = newDisplayName.trim()
         if (sanitizedName.isEmpty()) return
         viewModelScope.launch {
-            customSoundRepository.updateCustomSoundDisplayName(soundId, sanitizedName)
+            updateCustomSoundDisplayNameUseCase(soundId, sanitizedName)
         }
     }
 
@@ -366,9 +343,7 @@ class HomeViewmodel(
             _builtinVolumes.value.filter { (idx, vol) ->
                 idx in 0 until end && vol > 0f
             }
-        val custom =
-            _customVolumes.value.filter { (_, vol) -> vol > 0f }
-
+        val custom = _customVolumes.value.filter { (_, vol) -> vol > 0f }
         return builtIn to custom
     }
 
@@ -376,7 +351,7 @@ class HomeViewmodel(
         val (builtIn, custom) = snapshotForNewPreset()
         if (builtIn.isEmpty() && custom.isEmpty()) return
         viewModelScope.launch {
-            presetRepository.savePreset(
+            savePresetUseCase(
                 PresetEntity(
                     name = name.trim().ifEmpty { context.getString(R.string.preset_untitled) },
                     builtInVolumesJson = PresetJson.mapToJson(builtIn),
@@ -421,15 +396,18 @@ class HomeViewmodel(
 
     fun deletePreset(id: Long) {
         viewModelScope.launch {
-            presetRepository.deletePreset(id)
+            deletePresetUseCase(id)
         }
     }
 
-    fun renamePreset(preset: PresetEntity, newName: String) {
+    fun renamePreset(
+        preset: PresetEntity,
+        newName: String,
+    ) {
         val trimmed = newName.trim()
         if (trimmed.isEmpty()) return
         viewModelScope.launch {
-            presetRepository.updatePreset(preset.copy(name = trimmed))
+            updatePresetUseCase(preset.copy(name = trimmed))
         }
     }
 
