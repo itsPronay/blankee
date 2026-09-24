@@ -68,6 +68,8 @@ android {
                 } else {
                     signingConfigs.getByName("debug")
                 }
+            // AGP 8.3+ embeds git revision + build path; disable for reproducible builds
+            vcsInfo.include = false
         }
     }
     compileOptions {
@@ -90,11 +92,24 @@ android {
         }
     }
 
+    // PNG crunching is non-deterministic across build environments
+    @Suppress("UnstableApiUsage")
+    aaptOptions {
+        cruncherEnabled = false
+    }
+
     // Lint is currently hanging during `lintAnalyzeDebug` / `lintVitalAnalyzeRelease`.
     // Keep CI/builds unblocked while we investigate root cause.
     lint {
         checkReleaseBuilds = false
         abortOnError = false
+    }
+}
+
+// baseline.prof / baseline.profm are non-deterministic across CPU architectures
+tasks.whenTaskAdded {
+    if (name.contains("ArtProfile")) {
+        enabled = false
     }
 }
 
