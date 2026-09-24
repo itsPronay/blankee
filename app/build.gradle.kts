@@ -92,12 +92,6 @@ android {
         }
     }
 
-    // PNG crunching is non-deterministic across build environments
-    @Suppress("UnstableApiUsage")
-    aaptOptions {
-        cruncherEnabled = false
-    }
-
     // Lint is currently hanging during `lintAnalyzeDebug` / `lintVitalAnalyzeRelease`.
     // Keep CI/builds unblocked while we investigate root cause.
     lint {
