@@ -100,6 +100,13 @@ android {
     }
 }
 
+// PNG crunching is non-deterministic across aapt2 versions.
+// cruncherEnabled was removed from the public AGP 8.x DSL so we access it via BaseExtension.
+@Suppress("DEPRECATION")
+extensions.configure<com.android.build.gradle.BaseExtension> {
+    aaptOptions.cruncherEnabled = false
+}
+
 // baseline.prof / baseline.profm are non-deterministic across CPU architectures
 tasks.whenTaskAdded {
     if (name.contains("ArtProfile")) {
