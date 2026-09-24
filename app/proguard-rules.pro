@@ -19,3 +19,9 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+# R8 rewrites kotlinx.coroutines ServiceLoader lookups; without these keeps the
+# obfuscated class names in META-INF/services differ across builds, breaking
+# F-Droid reproducible-build verification.
+-keep class kotlinx.coroutines.CoroutineExceptionHandler
+-keep class kotlinx.coroutines.internal.MainDispatcherFactory
