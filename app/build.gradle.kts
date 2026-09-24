@@ -68,6 +68,8 @@ android {
                 } else {
                     signingConfigs.getByName("debug")
                 }
+            // AGP 8.3+ embeds git revision + build path; disable for reproducible builds
+            vcsInfo.include = false
         }
     }
     compileOptions {
@@ -95,6 +97,13 @@ android {
     lint {
         checkReleaseBuilds = false
         abortOnError = false
+    }
+}
+
+// baseline.prof / baseline.profm are non-deterministic across CPU architectures
+tasks.whenTaskAdded {
+    if (name.contains("ArtProfile")) {
+        enabled = false
     }
 }
 
