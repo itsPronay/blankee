@@ -107,10 +107,23 @@ extensions.configure<com.android.build.gradle.BaseExtension> {
     aaptOptions.cruncherEnabled = false
 }
 
-// baseline.prof / baseline.profm are non-deterministic across CPU architectures
-tasks.whenTaskAdded {
+// baseline.prof / baseline.profm are non-deterministic across CPU architectures.
+// Use configureEach (lazy API) rather than whenTaskAdded for reliable task disabling.
+tasks.configureEach {
     if (name.contains("ArtProfile")) {
         enabled = false
+    }
+}
+// Belt-and-suspenders: scrub any stale compiled baseline profile intermediates
+// before packageRelease runs, so they never make it into the APK even if
+// ArtProfile tasks ran in a previous incremental (non-clean) build.
+tasks.configureEach {
+    if (name == "packageRelease") {
+        doFirst {
+            fileTree(project.layout.buildDirectory) {
+                include("**/dexopt/**")
+            }.forEach { it.delete() }
+        }
     }
 }
 
