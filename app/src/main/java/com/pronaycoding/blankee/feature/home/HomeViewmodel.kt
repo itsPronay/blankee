@@ -73,7 +73,7 @@ class HomeViewmodel(
         resetAllSounds()
     }
 
-    private fun builtInPresetIndexEndExclusive(): Int = getCardList().size - 1
+    private fun builtInPresetIndexEndExclusive(): Int = getCardList().size
 
     private fun startCustomSoundsCollection() {
         if (customSoundsCollectionJob?.isActive == true) return
