@@ -69,7 +69,7 @@ fun BlankeeTopAppBar(
 
     val canSavePreset =
         remember(builtinVolumes, customVolumes) {
-            val until = getCardList().size - 1
+            val until = getCardList().size
             builtinVolumes.any { (i, v) -> i in 0 until until && v > 0f } ||
                 customVolumes.any { (_, v) -> v > 0f }
         }
