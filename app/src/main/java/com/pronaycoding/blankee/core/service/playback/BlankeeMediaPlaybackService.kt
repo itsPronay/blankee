@@ -13,6 +13,7 @@ import android.support.v4.media.session.MediaSessionCompat
 import android.support.v4.media.session.PlaybackStateCompat
 import androidx.core.app.NotificationCompat
 import androidx.media.app.NotificationCompat.MediaStyle
+import androidx.media.session.MediaButtonReceiver
 import com.pronaycoding.blankee.MainActivity
 import com.pronaycoding.blankee.R
 import org.koin.android.ext.android.inject
@@ -40,6 +41,12 @@ class BlankeeMediaPlaybackService : Service() {
                         }
                     },
                 )
+                setMediaButtonReceiver(
+                    MediaButtonReceiver.buildMediaButtonPendingIntent(
+                        this@BlankeeMediaPlaybackService,
+                        PlaybackStateCompat.ACTION_PLAY_PAUSE,
+                    ),
+                )
                 isActive = true
             }
     }
@@ -58,6 +65,18 @@ class BlankeeMediaPlaybackService : Service() {
         startId: Int,
     ): Int {
         when (intent?.action) {
+            Intent.ACTION_MEDIA_BUTTON -> {
+                startForeground(
+                    NOTIFICATION_ID,
+                    buildNotification(globalPlaybackState.canPlay.value, globalPlaybackState.lastHasAudibleMix),
+                )
+                MediaButtonReceiver.handleIntent(mediaSession, intent)
+                if (!globalPlaybackState.lastHasAudibleMix) {
+                    stopForeground(STOP_FOREGROUND_REMOVE)
+                    stopSelf(startId)
+                    return START_NOT_STICKY
+                }
+            }
             ACTION_UPDATE -> {
                 val canPlay = intent.getBooleanExtra(EXTRA_CAN_PLAY, true)
                 val hasMix = intent.getBooleanExtra(EXTRA_HAS_MIX, false)
