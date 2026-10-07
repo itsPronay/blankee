@@ -60,6 +60,7 @@ class SettingsViewModel(
             LanguageChoice(Constants.LANGUAGE_TAG_THAI, R.string.language_thai),
             LanguageChoice(Constants.LANGUAGE_TAG_PERSIAN, R.string.language_persian),
             LanguageChoice(Constants.LANGUAGE_TAG_PUNJABI, R.string.language_punjabi),
+            LanguageChoice(Constants.LANGUAGE_TAG_ITALIAN, R.string.language_italian),
         )
 
     private val _selectedTheme =

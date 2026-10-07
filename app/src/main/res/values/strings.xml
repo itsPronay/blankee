@@ -71,6 +71,7 @@
     <string name="language_thai">ไทย</string>
     <string name="language_persian">فارسی</string>
     <string name="language_punjabi">ਪੰਜਾਬੀ</string>
+    <string name="language_italian">Italiano</string>
 
     <string name="add_custom_sound">Add custom sound</string>
     <string name="custom_sounds_premium_message">Custom sounds are part of Premium. Unlock them with a one-time purchase.</string>

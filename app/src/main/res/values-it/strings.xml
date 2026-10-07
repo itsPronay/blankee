@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Blankee</string>
+    <string name="app_title">Blankee</string>
+    <string name="app_subtitle">Rilassati e concentrati</string>
+
+    <string name="menu_settings">Impostazioni</string>
+    <string name="menu_about">Informazioni</string>
+    <string name="menu_pause">Pausa suoni</string>
+    <string name="menu_play">Riproduci suoni</string>
+    <string name="menu_timer">Timer per dormire</string>
+    <string name="menu_reset">Ripristina suoni</string>
+    <string name="content_desc_more_options">Altre opzioni</string>
+
+    <string name="tab_home">Home</string>
+    <string name="tab_settings">Impostazioni</string>
+
+    <string name="category_nature">Natura</string>
+    <string name="category_travel">Viaggio</string>
+    <string name="category_indoor">Interno</string>
+    <string name="category_interiors">Interni</string>
+    <string name="category_noise">Rumore</string>
+    <string name="category_custom">Suoni personalizzati</string>
+
+    <string name="sound_rain">Pioggia</string>
+    <string name="sound_wind">Vento</string>
+    <string name="sound_storm">Tempesta</string>
+    <string name="sound_wave">Onde</string>
+    <string name="sound_stream">Ruscello</string>
+    <string name="sound_birds">Uccelli</string>
+    <string name="sound_summer_night">Notte d\'estate</string>
+
+    <string name="sound_train">Treno</string>
+    <string name="sound_boat">Barca</string>
+    <string name="sound_city">Città</string>
+
+    <string name="sound_coffee_shop">Caffetteria</string>
+    <string name="sound_fireplace">Caminetto</string>
+    <string name="sound_busy_restaurant">Ristorante affollato</string>
+
+    <string name="sound_pink_noise">Rumore rosa</string>
+    <string name="sound_white_noise">Rumore bianco</string>
+
+    <string name="settings_title">Impostazioni</string>
+    <string name="settings_section_app_preferences">Preferenze dell\'app</string>
+    <string name="settings_theme">Tema</string>
+    <string name="settings_theme_hint">Scuro è il tema predefinito. Sistema segue la modalità chiaro/scuro del dispositivo.</string>
+    <string name="settings_language">Lingua</string>
+    <string name="settings_language_hint">Si applica subito. L\'app si riavvia per caricare la nuova lingua.</string>
+    <string name="language_system">Usa la lingua del sistema</string>
+    <string name="theme_light">Chiaro</string>
+    <string name="theme_dark">Scuro</string>
+    <string name="theme_system">Sistema</string>
+    <string name="language_english">English</string>
+    <string name="language_chinese">中文 (简体)</string>
+    <string name="language_hindi">हिंदी</string>
+    <string name="language_spanish">Español</string>
+    <string name="language_korean">한국어</string>
+    <string name="language_arabic">العربية</string>
+    <string name="language_french">Français</string>
+    <string name="language_bengali">বাংলা</string>
+    <string name="language_portuguese">Português</string>
+    <string name="language_tamil">தமிழ்</string>
+    <string name="language_urdu">اردو</string>
+    <string name="language_indonesian">Bahasa Indonesia</string>
+    <string name="language_japanese">日本語</string>
+    <string name="language_russian">Русский</string>
+    <string name="language_german">Deutsch</string>
+    <string name="language_turkish">Türkçe</string>
+    <string name="language_vietnamese">Tiếng Việt</string>
+    <string name="language_thai">ไทย</string>
+    <string name="language_persian">فارسی</string>
+    <string name="language_punjabi">ਪੰਜਾਬੀ</string>
+    <string name="language_italian">Italiano</string>
+
+    <string name="add_custom_sound">Aggiungi suono personalizzato</string>
+    <string name="custom_sounds_premium_message">I suoni personalizzati fanno parte di Premium. Sbloccali con un acquisto unico.</string>
+    <string name="buy_premium">Acquista Premium</string>
+    <string name="content_desc_buy_premium">Acquista Premium per sbloccare i suoni personalizzati</string>
+    <string name="restore_purchases">Ripristina acquisti</string>
+    <string name="premium_active">Premium è attivo. Grazie per il tuo supporto.</string>
+    <string name="settings_section_premium">Premium</string>
+    <string name="billing_not_ready">La fatturazione non è ancora pronta. Riprova tra un momento.</string>
+    <string name="billing_product_not_loaded">Scheda del negozio non caricata. Controlla la connessione e riprova.</string>
+    <string name="billing_launch_failed">Non è stato possibile aprire la schermata di acquisto.</string>
+    <string name="billing_restored">Acquisti ripristinati.</string>
+    <string name="billing_restore_none">Nessun acquisto attivo trovato per questo account.</string>
+    <string name="custom_sound_default_name">Personalizzato %1$d</string>
+    <string name="custom_sound_fallback_name">Personalizzato</string>
+    <string name="custom_sound_name_dialog_title">Assegna un nome al suono</string>
+    <string name="custom_sound_name_hint">Facoltativo. Lascia vuoto per salvare come \"Personalizzato\".</string>
+    <string name="custom_sound_dialog_add">Aggiungi</string>
+    <string name="sound_added">Suono aggiunto: %1$s</string>
+    <string name="could_not_add_sound">Non è stato possibile aggiungere il suono</string>
+    <string name="sounds_reset">Tutti i suoni sono stati ripristinati</string>
+    <string name="cant_play_sound_on_pause">Non è possibile riprodurre un suono in pausa</string>
+    <string name="delete_sound">Elimina suono personalizzato</string>
+    <string name="delete_sound_dialog_title">Eliminare il suono?</string>
+    <string name="delete_sound_dialog_message">Rimuovere \"%1$s\" dai suoni personalizzati?</string>
+    <string name="delete_sound_confirm">Elimina</string>
+    <string name="rename_sound">Rinomina suono</string>
+    <string name="sound_name_label">Nome del suono</string>
+    <string name="rename_sound_confirm">Rinomina</string>
+
+    <string name="no_browser_installed">Nessuna app può aprire questo link. Installa un browser web.</string>
+    <string name="error_unexpected">Si è verificato un errore imprevisto.</string>
+
+    <string name="inspired_text">Ispirato a Blanket di Rafael Mardojai, originariamente un\'applicazione GNOME.</string>
+    <string name="app_description">Ascolta suoni diversi. Migliora la concentrazione e aumenta la tua produttività.</string>
+
+    <string name="about_title">Chi siamo</string>
+    <string name="about_version">Versione %1$s</string>
+    <string name="about_source_code">Codice sorgente</string>
+    <string name="about_source_code_subtitle">Visualizza il codice sorgente di questa app su GitHub</string>
+    <string name="content_desc_back">Indietro</string>
+    <string name="content_desc_logo">Logo dell\'app</string>
+    <string name="content_desc_sound_icon">Icona del suono</string>
+    <string name="content_desc_add_custom_sound">Aggiungi suono personalizzato</string>
+
+    <string name="presets_title">Preset</string>
+    <string name="presets_hint">Salva il tuo mix attuale, poi caricalo quando vuoi.</string>
+    <string name="presets_empty">Ancora nessun preset.</string>
+    <string name="presets_save_mix">Salva il mix attuale</string>
+    <string name="preset_load">Carica</string>
+    <string name="preset_delete_desc">Elimina preset</string>
+    <string name="preset_delete_confirm_title">Eliminare il preset?</string>
+    <string name="preset_delete_confirm_message">Eliminare \"%1$s\" definitivamente?</string>
+    <string name="preset_untitled">Mix senza titolo</string>
+    <string name="preset_saved">Preset salvato</string>
+    <string name="preset_nothing_to_save">Alza il volume di almeno un suono prima di salvare.</string>
+    <string name="save_preset_dialog_title">Salva mix</string>
+    <string name="preset_name_label">Nome del preset</string>
+    <string name="preset_name_hint">Se lasciato vuoto, verrà salvato come \"Mix senza titolo\"</string>
+    <string name="preset_dialog_save">Salva</string>
+    <string name="preset_rename_title">Rinomina preset</string>
+    <string name="preset_rename_confirm">Rinomina</string>
+    <string name="dialog_cancel">Annulla</string>
+    <string name="timer_dialog_title">Imposta timer per dormire</string>
+    <string name="timer_custom">Personalizzato</string>
+    <string name="timer_custom_label">Minuti</string>
+    <string name="timer_minutes_format">%1$d m</string>
+    <string name="timer_start">Avvia</string>
+    <string name="timer_set">Timer impostato per %1$d minuti</string>
+    <string name="timer_invalid_input">Inserisci una durata valida per il timer</string>
+    <string name="sleep_timer_finished">Timer terminato. Suoni interrotti.</string>
+    <string name="timer_countdown_label">Timer per dormire: %1$s</string>
+    <string name="timer_cancel">Annulla timer</string>
+    <string name="timer_cancel_confirm_title">Annullare il timer per dormire?</string>
+    <string name="timer_cancel_confirm_message">Vuoi interrompere il timer attuale?</string>
+
+    <string name="notification_channel_name">Riproduzione</string>
+    <string name="notification_channel_desc">Mostrato quando il tuo mix Blankee è attivo</string>
+    <string name="notification_playing">Mix in riproduzione</string>
+    <string name="notification_paused">Mix in pausa</string>
+    <string name="notification_action_play">Riproduci</string>
+    <string name="notification_action_pause">Pausa</string>
+    <string name="notification_primer_title">Consentire le notifiche?</string>
+    <string name="notification_primer_message">Le notifiche mantengono disponibili i controlli di riproduzione mentre i suoni sono attivi.</string>
+    <string name="notification_primer_grant">Consenti</string>
+    <string name="notification_primer_continue_anyway">Continua comunque</string>
+
+    <string name="enjoy_prompt_title">Ti piace Blankee?</string>
+    <string name="enjoy_prompt_message">Se ti piace, vuoi metterci una stella su GitHub?</string>
+    <string name="enjoy_prompt_yes">Sì</string>
+    <string name="enjoy_prompt_no">No</string>
+    <string name="star_github_title">Metti una stella su GitHub</string>
+    <string name="star_github_message">Aiuta molto e permette al progetto di crescere.</string>
+    <string name="star_github_confirm">Metti una stella ora</string>
+    <string name="star_github_later">Forse più tardi</string>
+
+    <string name="onboarding_title">Benvenuto in Blankee</string>
+    <string name="onboarding_subtitle">Un breve tour per iniziare.</string>
+    <string name="onboarding_feature_mix_title">Mixa suoni rilassanti</string>
+    <string name="onboarding_feature_mix_body">Combina più suoni e controlla il volume per creare l\'atmosfera perfetta.</string>
+    <string name="onboarding_feature_timer_title">Timer per dormire</string>
+    <string name="onboarding_feature_timer_body">Imposta un timer per interrompere automaticamente il mix.</string>
+    <string name="onboarding_feature_presets_title">Preset</string>
+    <string name="onboarding_feature_presets_body">Salva i tuoi mix preferiti e caricali quando vuoi.</string>
+    <string name="onboarding_feature_custom_title">Suoni personalizzati</string>
+    <string name="onboarding_feature_custom_body">Importa i tuoi file audio e aggiungili al tuo mix.</string>
+    <string name="onboarding_language_title">Scegli la lingua</string>
+    <string name="onboarding_language_body">Potrai cambiarla in seguito nelle Impostazioni.</string>
+    <string name="onboarding_back">Indietro</string>
+    <string name="onboarding_next">Avanti</string>
+    <string name="onboarding_start">Inizia</string>
+    <string name="settings_section_others">Altro</string>
+    <string name="share_app_title">Condividi Blankee</string>
+    <string name="share_app_hint">Condividi la nostra app con amici e familiari.</string>
+    <string name="share_app_chooser_title">Condividi Blankee con</string>
+    <string name="share_app_message">Prova Blankee per suoni rilassanti, concentrazione e sonno. Scaricalo qui: %1$s</string>
+    <string name="no_share_app_installed">Nessuna app può condividere questo messaggio. Installa un\'app di messaggistica o social.</string>
+    <string name="settings_report_bug_feature">Segnala un bug o richiedi una funzionalità</string>
+    <string name="settings_report_bug_feature_hint">Apri il repository GitHub per creare una segnalazione.</string>
+    <string name="settings_license">Licenza</string>
+    <string name="settings_license_hint">GNU General Public License v3.0</string>
+    <string name="made_with_love_by_pronay">Fatto con amore da Pronay</string>
+
+
+    <string name="empty_string" translatable="false"></string>
+</resources>

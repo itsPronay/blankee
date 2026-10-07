@@ -37,4 +37,5 @@ object Constants {
     const val LANGUAGE_TAG_THAI = "th"
     const val LANGUAGE_TAG_PERSIAN = "fa"
     const val LANGUAGE_TAG_PUNJABI = "pa"
+    const val LANGUAGE_TAG_ITALIAN = "it"
 }
