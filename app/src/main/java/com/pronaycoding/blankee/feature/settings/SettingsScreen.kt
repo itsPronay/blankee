@@ -51,6 +51,7 @@ import androidx.compose.material.icons.outlined.BrightnessAuto
 import androidx.compose.material.icons.outlined.DarkMode
 import androidx.compose.material.icons.outlined.LightMode
 import androidx.compose.material3.Card
+import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.DropdownMenu
@@ -87,10 +88,12 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.pronaycoding.blankee.R
 import com.pronaycoding.blankee.core.common.Constants
+import com.pronaycoding.blankee.core.common.util.SnackbarController
 import com.pronaycoding.blankee.core.common.util.findActivity
 import com.pronaycoding.blankee.core.common.util.openExternalUrl
 import com.pronaycoding.blankee.core.common.util.shareApp
 import org.koin.androidx.compose.koinViewModel
+import org.koin.compose.koinInject
 
 @Composable
 fun SettingsScreenRoute(
@@ -124,10 +127,12 @@ fun SettingsScreen(
 ) {
     val context = LocalContext.current
     val scheme = MaterialTheme.colorScheme
+    val snackbarController = koinInject<SnackbarController>()
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         containerColor = scheme.background,
+        snackbarHost = { SnackbarHost(snackbarController.hostState) },
         topBar = {
             CenterAlignedTopAppBar(
                 title = {

@@ -16,7 +16,6 @@ package com.pronaycoding.blankee.core.ui.components
  * @see androidx.compose.material3.Icon for sound icons
  */
 
-import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -53,8 +52,10 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.pronaycoding.blankee.R
 import com.pronaycoding.blankee.core.model.CardItems
+import com.pronaycoding.blankee.core.common.util.SnackbarController
 import com.pronaycoding.blankee.feature.home.HomeViewmodel
 import org.koin.androidx.compose.koinViewModel
+import org.koin.compose.koinInject
 
 @Composable
 fun PrettyCardView(
@@ -65,6 +66,7 @@ fun PrettyCardView(
     viewModel: HomeViewmodel = koinViewModel(),
 ) {
     val context = LocalContext.current
+    val snackbarController = koinInject<SnackbarController>()
     val builtinVolumes by viewModel.builtinVolumes.collectAsStateWithLifecycle()
     val volume = builtinVolumes[index] ?: 0f
     var localVolume by remember(index) { mutableFloatStateOf(volume) }
@@ -148,12 +150,7 @@ fun PrettyCardView(
                 }
                 isDragging = false
                 if (!playOrPause) {
-                    Toast
-                        .makeText(
-                            context,
-                            context.getString(R.string.cant_play_sound_on_pause),
-                            Toast.LENGTH_SHORT,
-                        ).show()
+                    snackbarController.show(context.getString(R.string.cant_play_sound_on_pause))
                 }
             },
             valueRange = 0f..1f,

@@ -1,6 +1,5 @@
 package com.pronaycoding.blankee.core.ui.components
 
-import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -51,7 +50,9 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.pronaycoding.blankee.R
 import com.pronaycoding.blankee.feature.home.HomeViewmodel
 import com.pronaycoding.blankee.feature.home.getCardList
+import com.pronaycoding.blankee.core.common.util.SnackbarController
 import org.koin.androidx.compose.koinViewModel
+import org.koin.compose.koinInject
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -61,6 +62,7 @@ fun BlankeeTopAppBar(
 ) {
     val viewModel: HomeViewmodel = koinViewModel()
     val context = LocalContext.current
+    val snackbarController = koinInject<SnackbarController>()
     val canPlay by viewModel.canPlay.collectAsStateWithLifecycle()
     val presets by viewModel.presets.collectAsStateWithLifecycle()
     val builtinVolumes by viewModel.builtinVolumes.collectAsStateWithLifecycle()
@@ -205,21 +207,11 @@ fun BlankeeTopAppBar(
                                 selectedTimerOption.toLong()
                             }
                         if (selectedMinutes == null || selectedMinutes <= 0L) {
-                            Toast
-                                .makeText(
-                                    context,
-                                    context.getString(R.string.timer_invalid_input),
-                                    Toast.LENGTH_SHORT,
-                                ).show()
+                            snackbarController.show(context.getString(R.string.timer_invalid_input))
                             return@TextButton
                         }
                         viewModel.startSleepTimer(selectedMinutes * 60_000L)
-                        Toast
-                            .makeText(
-                                context,
-                                context.getString(R.string.timer_set, selectedMinutes),
-                                Toast.LENGTH_SHORT,
-                            ).show()
+                        snackbarController.show(context.getString(R.string.timer_set, selectedMinutes))
                         showTimerDialog = false
                     },
                 ) {
@@ -288,12 +280,7 @@ fun BlankeeTopAppBar(
                 FilledTonalIconButton(
                     onClick = {
                         viewModel.resetAllSounds()
-                        Toast
-                            .makeText(
-                                context,
-                                context.getString(R.string.sounds_reset),
-                                Toast.LENGTH_SHORT,
-                            ).show()
+                        snackbarController.show(context.getString(R.string.sounds_reset))
                     },
                     colors = btnColors,
                 ) {

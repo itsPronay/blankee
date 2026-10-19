@@ -4,9 +4,12 @@ import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import android.widget.Toast
+import androidx.compose.material3.SnackbarDuration
 import com.pronaycoding.blankee.core.common.Constants
 import com.pronaycoding.blankee.R
+import org.koin.core.context.GlobalContext
+
+private fun snackbar(): SnackbarController = GlobalContext.get().get()
 
 /**
  * Opens an external URL in the device's default browser.
@@ -33,19 +36,9 @@ fun openExternalUrl(
     try {
         context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
     } catch (e: ActivityNotFoundException) {
-        Toast
-            .makeText(
-                context,
-                context.getString(R.string.no_browser_installed),
-                Toast.LENGTH_LONG,
-            ).show()
+        snackbar().show(context.getString(R.string.no_browser_installed), SnackbarDuration.Long)
     } catch (e: Exception) {
-        Toast
-            .makeText(
-                context,
-                context.getString(R.string.error_unexpected),
-                Toast.LENGTH_LONG,
-            ).show()
+        snackbar().show(context.getString(R.string.error_unexpected), SnackbarDuration.Long)
     }
 }
 
@@ -76,18 +69,8 @@ fun shareApp(
             ),
         )
     } catch (e: ActivityNotFoundException) {
-        Toast
-            .makeText(
-                context,
-                context.getString(R.string.no_share_app_installed),
-                Toast.LENGTH_LONG,
-            ).show()
+        snackbar().show(context.getString(R.string.no_share_app_installed), SnackbarDuration.Long)
     } catch (e: Exception) {
-        Toast
-            .makeText(
-                context,
-                context.getString(R.string.error_unexpected),
-                Toast.LENGTH_LONG,
-            ).show()
+        snackbar().show(context.getString(R.string.error_unexpected), SnackbarDuration.Long)
     }
 }

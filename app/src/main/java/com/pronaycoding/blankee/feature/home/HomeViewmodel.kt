@@ -2,12 +2,12 @@ package com.pronaycoding.blankee.feature.home
 
 import android.content.Context
 import android.util.Log
-import android.widget.Toast
 import androidx.core.net.toUri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.pronaycoding.blankee.R
 import com.pronaycoding.blankee.core.common.PresetJson
+import com.pronaycoding.blankee.core.common.util.SnackbarController
 import com.pronaycoding.blankee.core.database.entities.CustomSoundEntity
 import com.pronaycoding.blankee.core.database.entities.PresetEntity
 import com.pronaycoding.blankee.core.domain.usecase.customsound.AddCustomSoundUseCase
@@ -44,6 +44,7 @@ class HomeViewmodel(
     private val globalPlaybackState: GlobalPlaybackState,
     private val mediaPlaybackNotifications: MediaPlaybackNotifications,
     private val context: Context,
+    private val snackbarController: SnackbarController,
 ) : ViewModel() {
     val canPlay: StateFlow<Boolean> = globalPlaybackState.canPlay
 
@@ -358,12 +359,7 @@ class HomeViewmodel(
                     customVolumesJson = PresetJson.mapToJson(custom),
                 ),
             )
-            Toast
-                .makeText(
-                    context,
-                    context.getString(R.string.preset_saved),
-                    Toast.LENGTH_SHORT,
-                ).show()
+            snackbarController.show(context.getString(R.string.preset_saved))
         }
     }
 
@@ -426,12 +422,7 @@ class HomeViewmodel(
                 }
                 _sleepTimerRemainingMillis.value = null
                 resetAllSounds()
-                Toast
-                    .makeText(
-                        context,
-                        context.getString(R.string.sleep_timer_finished),
-                        Toast.LENGTH_SHORT,
-                    ).show()
+                snackbarController.show(context.getString(R.string.sleep_timer_finished))
             }
     }
 

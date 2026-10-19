@@ -33,7 +33,6 @@ package com.pronaycoding.blankee.feature.home
 import android.annotation.SuppressLint
 import android.content.Context
 import android.net.Uri
-import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
@@ -69,6 +68,7 @@ import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Timer
 import androidx.compose.material.icons.outlined.Delete
 import androidx.compose.material.icons.outlined.Edit
+import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -109,6 +109,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.pronaycoding.blankee.R
+import com.pronaycoding.blankee.core.common.util.SnackbarController
 import com.pronaycoding.blankee.core.database.entities.CustomSoundEntity
 import com.pronaycoding.blankee.core.database.entities.PresetEntity
 import com.pronaycoding.blankee.core.model.CardItems
@@ -117,12 +118,14 @@ import com.pronaycoding.blankee.core.ui.components.CustomSoundCard
 import com.pronaycoding.blankee.core.ui.components.PrettyCardView
 import com.pronaycoding.blankee.core.ui.components.TitleCardView
 import org.koin.androidx.compose.koinViewModel
+import org.koin.compose.koinInject
 
 @Composable
 fun HomeScreenRoute(
     navigateToSettings: () -> Unit,
     viewmodel: HomeViewmodel = koinViewModel(),
 ) {
+    val snackbarController = org.koin.compose.koinInject<SnackbarController>()
     val canPlaySound by viewmodel.canPlay.collectAsStateWithLifecycle()
     val customSounds by viewmodel.customSounds.collectAsStateWithLifecycle()
     val sleepTimerRemainingMillis by viewmodel.sleepTimerRemainingMillis.collectAsStateWithLifecycle()
@@ -156,6 +159,7 @@ fun HomeScreenRoute(
         resetAllSounds = viewmodel::resetAllSounds,
         deletePreset = viewmodel::deletePreset,
         renamePreset = viewmodel::renamePreset,
+        snackbarController = snackbarController
     )
 }
 
@@ -180,6 +184,7 @@ internal fun HomeScreen(
     onDeleteCustomSound: (Int) -> Unit = {},
     sleepTimerRemainingMillis: Long? = null,
     onCancelSleepTimer: () -> Unit = {},
+    snackbarController: SnackbarController,
 ) {
     val context = LocalContext.current
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
@@ -223,6 +228,7 @@ internal fun HomeScreen(
         canSavePreset = canSavePreset,
         savePreset = savePreset,
         renamePreset = renamePreset,
+        snackbarController = snackbarController,
     )
 
     DeletePresetDialog(
@@ -238,7 +244,10 @@ internal fun HomeScreen(
         sleepTimerRemainingMillis = sleepTimerRemainingMillis,
         setTimerDialogFalse = { showTimerDialog = false },
         startSleepTimer = startSleepTimer,
+        snackbarController = snackbarController,
     )
+
+    val snackbarController = org.koin.compose.koinInject<SnackbarController>()
 
     val audioPickerLauncher =
         rememberLauncherForActivityResult(
@@ -251,17 +260,13 @@ internal fun HomeScreen(
                     customSoundNameInput = ""
                     showCustomSoundNameDialog = true
                 } else {
-                    Toast
-                        .makeText(
-                            context,
-                            context.getString(R.string.could_not_add_sound),
-                            Toast.LENGTH_SHORT,
-                        ).show()
+                    snackbarController.show(context.getString(R.string.could_not_add_sound))
                 }
             }
         }
 
     Scaffold(
+        snackbarHost = { SnackbarHost(snackbarController.hostState) },
         bottomBar = {
             Box(
                 modifier =
@@ -292,12 +297,7 @@ internal fun HomeScreen(
                     FilledTonalIconButton(
                         onClick = {
                             resetAllSounds()
-                            Toast
-                                .makeText(
-                                    context,
-                                    context.getString(R.string.sounds_reset),
-                                    Toast.LENGTH_SHORT,
-                                ).show()
+                            snackbarController.show(context.getString(R.string.sounds_reset))
                         },
                         colors = btnColors,
                     ) {
@@ -512,12 +512,7 @@ internal fun HomeScreen(
                                     context.getString(R.string.custom_sound_fallback_name)
                                 }
                             onAddCustomSound(displayName, filePath)
-                            Toast
-                                .makeText(
-                                    context,
-                                    context.getString(R.string.sound_added, displayName),
-                                    Toast.LENGTH_SHORT,
-                                ).show()
+                            snackbarController.show(context.getString(R.string.sound_added, displayName))
                         }
                         showCustomSoundNameDialog = false
                         pendingCustomSoundUri = null
@@ -663,6 +658,7 @@ fun PresetClicked(
     savePreset: (String) -> Unit,
     renamePreset: (PresetEntity, String) -> Unit,
     context: Context,
+    snackbarController: SnackbarController,
 ) {
     var presetNameInput by rememberSaveable { mutableStateOf("") }
     var showSavePresetDialog by rememberSaveable { mutableStateOf(false) }
@@ -711,12 +707,7 @@ fun PresetClicked(
                     onClick = {
                         setDropdownFalse()
                         if (!canSavePreset) {
-                            Toast
-                                .makeText(
-                                    context,
-                                    context.getString(R.string.preset_nothing_to_save),
-                                    Toast.LENGTH_SHORT,
-                                ).show()
+                            snackbarController.show(context.getString(R.string.preset_nothing_to_save))
                         } else {
                             presetNameInput = ""
                             showSavePresetDialog = true
@@ -946,6 +937,7 @@ fun TimerDialog(
     sleepTimerRemainingMillis: Long?,
     startSleepTimer: (Long) -> Unit,
     setTimerDialogFalse: () -> Unit,
+    snackbarController: SnackbarController,
 ) {
     var selectedTimerOption by rememberSaveable { mutableIntStateOf(5) }
     var customTimerInput by rememberSaveable { mutableStateOf("") }
@@ -1073,21 +1065,11 @@ fun TimerDialog(
                                 selectedTimerOption.toLong()
                             }
                         if (selectedMinutes == null || selectedMinutes <= 0L) {
-                            Toast
-                                .makeText(
-                                    context,
-                                    context.getString(R.string.timer_invalid_input),
-                                    Toast.LENGTH_SHORT,
-                                ).show()
+                            snackbarController.show(context.getString(R.string.timer_invalid_input))
                             return@Button
                         }
                         startSleepTimer(selectedMinutes * 60_000L)
-                        Toast
-                            .makeText(
-                                context,
-                                context.getString(R.string.timer_set, selectedMinutes),
-                                Toast.LENGTH_SHORT,
-                            ).show()
+                        snackbarController.show(context.getString(R.string.timer_set, selectedMinutes))
                         setTimerDialogFalse.invoke()
                     },
                 ) {

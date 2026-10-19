@@ -8,6 +8,7 @@ import com.pronaycoding.blankee.core.di.viewModelModule
 import org.koin.dsl.module
 
 val appModule = module {
+    single { com.pronaycoding.blankee.core.common.util.SnackbarController() }
     includes(
         databaseModule,
         repositoryModule,
