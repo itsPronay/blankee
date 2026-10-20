@@ -50,6 +50,7 @@ import androidx.compose.material.icons.filled.Share
 import androidx.compose.material.icons.outlined.BrightnessAuto
 import androidx.compose.material.icons.outlined.DarkMode
 import androidx.compose.material.icons.outlined.LightMode
+import androidx.compose.material.icons.outlined.Contrast
 import androidx.compose.material3.Card
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.CardDefaults
@@ -68,6 +69,7 @@ import androidx.compose.material3.SingleChoiceSegmentedButtonRow
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.Switch
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -197,10 +199,12 @@ fun SettingsScreen(
                         modifier = Modifier.padding(horizontal = 20.dp).padding(bottom = 16.dp),
                     )
 
+
+                    val standardThemeChoices = themeChoices.filter { it.mode != Constants.MODE_OLED }
                     SingleChoiceSegmentedButtonRow(
                         modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp),
                     ) {
-                        themeChoices.forEachIndexed { index, choice ->
+                        standardThemeChoices.forEachIndexed { index, choice ->
                             val selected = selectedTheme == choice.mode
                             SegmentedButton(
                                 selected = selected,
@@ -212,7 +216,7 @@ fun SettingsScreen(
                                 shape =
                                     SegmentedButtonDefaults.itemShape(
                                         index = index,
-                                        count = themeChoices.size,
+                                        count = standardThemeChoices.size,
                                     ),
                                 colors =
                                     SegmentedButtonDefaults.colors(
@@ -245,6 +249,33 @@ fun SettingsScreen(
                                     )
                                 }
                             }
+                        }
+                    }
+
+                    Spacer(modifier = Modifier.height(16.dp))
+
+                    Surface(
+                        color = Color.Transparent,
+                        modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp),
+                    ) {
+                        Row(
+                            modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp),
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.SpaceBetween,
+                        ) {
+                            Text(
+                                text = "OLED Dark",
+                                style = MaterialTheme.typography.bodyLarge,
+                                color = scheme.onSurface,
+                                fontWeight = FontWeight.Normal,
+                            )
+                            Switch(
+                                checked = selectedTheme == Constants.MODE_OLED,
+                                onCheckedChange = { checked ->
+                                    updateTheme(if (checked) Constants.MODE_OLED else Constants.MODE_DARK)
+                                    context.findActivity()?.recreate()
+                                },
+                            )
                         }
                     }
 

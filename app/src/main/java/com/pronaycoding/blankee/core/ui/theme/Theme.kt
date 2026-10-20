@@ -72,6 +72,18 @@ private val DarkColorScheme =
         outlineVariant = Color(0xFF49454E),
     )
 
+// OLED theme
+private val OledColorScheme =
+    DarkColorScheme.copy(
+        background = Color.Black,
+        surface = Color.Black,
+        surfaceVariant = Color(0xFF121212),
+        surfaceContainerLow = Color.Black,
+        surfaceContainer = Color(0xFF0A0A0A),
+        surfaceContainerHigh = Color(0xFF121212),
+        surfaceContainerHighest = Color(0xFF1E1E1E),
+    )
+
 // Light theme
 private val LightColorScheme =
     lightColorScheme(
@@ -110,10 +122,11 @@ fun BlankeeAppTheme(
     val context = LocalContext.current
     val preferenceManager = PreferenceManagerRepositoryImpl(context)
     val systemDark = isSystemInDarkTheme()
+    val themeMode = preferenceManager.getThemeModeBlocking(Constants.MODE_DARK)
     val darkTheme =
         when (preferenceManager.getThemeModeBlocking(Constants.MODE_DARK)) {
             Constants.MODE_LIGHT -> false
-            Constants.MODE_DARK -> true
+            Constants.MODE_DARK, Constants.MODE_OLED -> true
             Constants.MODE_SYSTEM -> systemDark
             else -> true
         }
@@ -123,6 +136,7 @@ fun BlankeeAppTheme(
             dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
                 if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
             }
+            themeMode == Constants.MODE_OLED -> OledColorScheme
             darkTheme -> DarkColorScheme
             else -> LightColorScheme
         }
