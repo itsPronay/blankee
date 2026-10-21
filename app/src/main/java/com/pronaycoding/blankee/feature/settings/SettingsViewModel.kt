@@ -34,7 +34,7 @@ class SettingsViewModel(
         listOf(
             ThemeChoice(Constants.MODE_LIGHT, R.string.theme_light),
             ThemeChoice(Constants.MODE_DARK, R.string.theme_dark),
-            ThemeChoice(Constants.MODE_OLED, R.string.theme_oled),
+            ThemeChoice(Constants.MODE_AMOLED, R.string.theme_amoled),
             ThemeChoice(Constants.MODE_SYSTEM, R.string.theme_system),
         )
 

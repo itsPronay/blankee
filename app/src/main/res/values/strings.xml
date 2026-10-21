@@ -51,7 +51,7 @@
     <string name="theme_light">Light</string>
     <string name="theme_dark">Dark</string>
     <string name="theme_system">System</string>
-    <string name="theme_oled">OLED</string>
+    <string name="theme_amoled">AMOLED</string>
     <string name="language_english">English</string>
     <string name="language_chinese">中文 (简体)</string>
     <string name="language_hindi">हिंदी</string>

@@ -199,8 +199,7 @@ fun SettingsScreen(
                         modifier = Modifier.padding(horizontal = 20.dp).padding(bottom = 16.dp),
                     )
 
-
-                    val standardThemeChoices = themeChoices.filter { it.mode != Constants.MODE_OLED }
+                    val standardThemeChoices = themeChoices.filter { it.mode != Constants.MODE_AMOLED }
                     SingleChoiceSegmentedButtonRow(
                         modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp),
                     ) {
@@ -264,15 +263,15 @@ fun SettingsScreen(
                             horizontalArrangement = Arrangement.SpaceBetween,
                         ) {
                             Text(
-                                text = "OLED Dark",
+                                text = stringResource(R.string.theme_amoled)
                                 style = MaterialTheme.typography.bodyLarge,
                                 color = scheme.onSurface,
                                 fontWeight = FontWeight.Normal,
                             )
                             Switch(
-                                checked = selectedTheme == Constants.MODE_OLED,
+                                checked = selectedTheme == Constants.MODE_AMOLED,
                                 onCheckedChange = { checked ->
-                                    updateTheme(if (checked) Constants.MODE_OLED else Constants.MODE_DARK)
+                                    updateTheme(if (checked) Constants.MODE_AMOLED else Constants.MODE_DARK)
                                     context.findActivity()?.recreate()
                                 },
                             )

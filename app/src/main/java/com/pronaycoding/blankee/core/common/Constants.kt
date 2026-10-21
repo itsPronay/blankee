@@ -15,7 +15,7 @@ object Constants {
     const val ENJOY_PROMPT_TRIGGER_LAUNCH = 10
     const val MODE_LIGHT = "light"
     const val MODE_DARK = "dark"
-    const val MODE_OLED = "oled"
+    const val MODE_AMOLED = "amoled"
     const val MODE_SYSTEM = "system"
     const val LANGUAGE_TAG_SYSTEM = "system"
     const val LANGUAGE_TAG_ENGLISH = "en"

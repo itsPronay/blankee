@@ -72,8 +72,8 @@ private val DarkColorScheme =
         outlineVariant = Color(0xFF49454E),
     )
 
-// OLED theme
-private val OledColorScheme =
+// AMOLED theme
+private val AmoledColorScheme =
     DarkColorScheme.copy(
         background = Color.Black,
         surface = Color.Black,
@@ -126,7 +126,7 @@ fun BlankeeAppTheme(
     val darkTheme =
         when (preferenceManager.getThemeModeBlocking(Constants.MODE_DARK)) {
             Constants.MODE_LIGHT -> false
-            Constants.MODE_DARK, Constants.MODE_OLED -> true
+            Constants.MODE_DARK, Constants.MODE_AMOLED -> true
             Constants.MODE_SYSTEM -> systemDark
             else -> true
         }
@@ -136,7 +136,7 @@ fun BlankeeAppTheme(
             dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
                 if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
             }
-            themeMode == Constants.MODE_OLED -> OledColorScheme
+            themeMode == Constants.MODE_AMOLED -> AmoledColorScheme
             darkTheme -> DarkColorScheme
             else -> LightColorScheme
         }
