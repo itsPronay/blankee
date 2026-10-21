@@ -123,10 +123,10 @@ fun BlankeeAppTheme(
     val preferenceManager = PreferenceManagerRepositoryImpl(context)
     val systemDark = isSystemInDarkTheme()
     val themeMode = preferenceManager.getThemeModeBlocking(Constants.MODE_DARK)
+    val amoledDark = preferenceManager.getAmoledDarkBlocking(false)
     val darkTheme =
-        when (preferenceManager.getThemeModeBlocking(Constants.MODE_DARK)) {
+        when (themeMode) {
             Constants.MODE_LIGHT -> false
-            Constants.MODE_DARK, Constants.MODE_AMOLED -> true
             Constants.MODE_SYSTEM -> systemDark
             else -> true
         }
@@ -136,7 +136,7 @@ fun BlankeeAppTheme(
             dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
                 if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
             }
-            themeMode == Constants.MODE_AMOLED -> AmoledColorScheme
+            darkTheme && amoledDark -> AmoledColorScheme
             darkTheme -> DarkColorScheme
             else -> LightColorScheme
         }

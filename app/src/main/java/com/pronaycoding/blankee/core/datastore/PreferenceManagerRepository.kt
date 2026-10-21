@@ -32,6 +32,12 @@ interface PreferenceManagerRepository {
      */
     suspend fun setThemeMode(mode: String)
 
+    /** Returns whether the AMOLED (pure black) variant of the dark theme is enabled. */
+    fun getAmoledDarkBlocking(defaultValue: Boolean): Boolean
+
+    /** Enables or disables the AMOLED variant of the dark theme. */
+    suspend fun setAmoledDark(enabled: Boolean)
+
     /**
      * Retrieves the current language tag synchronously (blocking operation).
      *

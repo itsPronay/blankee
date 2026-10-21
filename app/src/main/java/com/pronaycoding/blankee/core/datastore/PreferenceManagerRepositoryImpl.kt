@@ -62,6 +62,17 @@ class PreferenceManagerRepositoryImpl(
         }
     }
 
+    override fun getAmoledDarkBlocking(defaultValue: Boolean): Boolean =
+    runBlocking {
+        appContext.dataStore.data.first()[Keys.amoledDark] ?: defaultValue
+    }
+
+    override suspend fun setAmoledDark(enabled: Boolean) {
+        appContext.dataStore.edit { prefs ->
+            prefs[Keys.amoledDark] = enabled
+        }
+    }
+
     /**
      * Retrieves the stored language tag using synchronous blocking.
      *
@@ -185,6 +196,7 @@ class PreferenceManagerRepositoryImpl(
      */
     private object Keys {
         val themeMode: Preferences.Key<String> = stringPreferencesKey("app_theme_mode")
+        val amoledDark: Preferences.Key<Boolean> = booleanPreferencesKey("amoled_dark")
         val languageTag: Preferences.Key<String> = stringPreferencesKey("app_language_tag")
         val launchCount: Preferences.Key<Int> = intPreferencesKey("launch_count")
         val enjoyPromptShown: Preferences.Key<Boolean> = booleanPreferencesKey("enjoy_prompt_shown")

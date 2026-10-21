@@ -50,7 +50,6 @@ import androidx.compose.material.icons.filled.Share
 import androidx.compose.material.icons.outlined.BrightnessAuto
 import androidx.compose.material.icons.outlined.DarkMode
 import androidx.compose.material.icons.outlined.LightMode
-import androidx.compose.material.icons.outlined.Contrast
 import androidx.compose.material3.Card
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.CardDefaults
@@ -103,15 +102,18 @@ fun SettingsScreenRoute(
     viewModel: SettingsViewModel = koinViewModel(),
 ) {
     val selectedTheme by viewModel.selectedTheme.collectAsStateWithLifecycle()
+    val amoledDark by viewModel.amoledDark.collectAsStateWithLifecycle()
     val selectedLanguage by viewModel.selectedLanguage.collectAsStateWithLifecycle()
 
     SettingsScreen(
         selectedTheme = selectedTheme,
+        amoledDark = amoledDark,
         selectedLanguage = selectedLanguage,
         themeChoices = viewModel.themeChoices,
         languageChoices = viewModel.languageChoices,
         onBackPressed = onBackPressed,
         updateTheme = viewModel::updateTheme,
+        updateAmoledDark = viewModel::updateAmoledDark,
         updateLanguage = viewModel::updateLanguage,
     )
 }
@@ -120,10 +122,12 @@ fun SettingsScreenRoute(
 @Composable
 fun SettingsScreen(
     selectedTheme: String,
+    amoledDark: Boolean,
     selectedLanguage: String,
     themeChoices: List<ThemeChoice>,
     languageChoices: List<LanguageChoice>,
     updateTheme: (String) -> Unit,
+    updateAmoledDark: (Boolean) -> Unit,
     updateLanguage: (String) -> Unit,
     onBackPressed: () -> Unit,
 ) {
@@ -199,11 +203,10 @@ fun SettingsScreen(
                         modifier = Modifier.padding(horizontal = 20.dp).padding(bottom = 16.dp),
                     )
 
-                    val standardThemeChoices = themeChoices.filter { it.mode != Constants.MODE_AMOLED }
                     SingleChoiceSegmentedButtonRow(
                         modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp),
                     ) {
-                        standardThemeChoices.forEachIndexed { index, choice ->
+                        themeChoices.forEachIndexed { index, choice ->
                             val selected = selectedTheme == choice.mode
                             SegmentedButton(
                                 selected = selected,
@@ -215,7 +218,7 @@ fun SettingsScreen(
                                 shape =
                                     SegmentedButtonDefaults.itemShape(
                                         index = index,
-                                        count = standardThemeChoices.size,
+                                        count = themeChoices.size,
                                     ),
                                 colors =
                                     SegmentedButtonDefaults.colors(
@@ -251,30 +254,32 @@ fun SettingsScreen(
                         }
                     }
 
-                    Spacer(modifier = Modifier.height(16.dp))
+                    if (selectedTheme != Constants.MODE_LIGHT) {
+                        Spacer(modifier = Modifier.height(16.dp))
 
-                    Surface(
-                        color = Color.Transparent,
-                        modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp),
-                    ) {
-                        Row(
-                            modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp),
-                            verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.SpaceBetween,
+                        Surface(
+                            color = Color.Transparent,
+                            modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp),
                         ) {
-                            Text(
-                                text = stringResource(R.string.theme_amoled)
-                                style = MaterialTheme.typography.bodyLarge,
-                                color = scheme.onSurface,
-                                fontWeight = FontWeight.Normal,
-                            )
-                            Switch(
-                                checked = selectedTheme == Constants.MODE_AMOLED,
-                                onCheckedChange = { checked ->
-                                    updateTheme(if (checked) Constants.MODE_AMOLED else Constants.MODE_DARK)
-                                    context.findActivity()?.recreate()
-                                },
-                            )
+                            Row(
+                                modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp),
+                                verticalAlignment = Alignment.CenterVertically,
+                                horizontalArrangement = Arrangement.SpaceBetween,
+                            ) {
+                                Text(
+                                    text = stringResource(R.string.theme_amoled),
+                                    style = MaterialTheme.typography.bodyLarge,
+                                    color = scheme.onSurface,
+                                    fontWeight = FontWeight.Normal,
+                                )
+                                Switch(
+                                    checked = amoledDark,
+                                    onCheckedChange = { checked ->
+                                        updateAmoledDark(checked)
+                                        context.findActivity()?.recreate()
+                                    },
+                                )
+                            }
                         }
                     }
 
