@@ -33,7 +33,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.text.ClickableText
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
@@ -80,10 +79,14 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
+import androidx.compose.ui.text.LinkAnnotation
+import androidx.compose.ui.text.TextLinkStyles
+import androidx.compose.ui.text.withLink
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.pronaycoding.blankee.R
@@ -489,17 +492,19 @@ private fun AttributionFooter(
         )
 
     val inspired =
-        AnnotatedString
-            .Builder()
-            .apply {
-                append("Inspired by ")
-                pushStringAnnotation(tag = "rafael", annotation = "rafael")
-                withStyle(linkStyle) { append("Rafael Mardojai") }
-                pop()
-                append("'s Blanket")
-            }.toAnnotatedString()
+        buildAnnotatedString {
+            append("Inspired by ")
+            withLink(
+                LinkAnnotation.Clickable(
+                    tag = "rafael",
+                    styles = TextLinkStyles(style = linkStyle),
+                    linkInteractionListener = { onOpenRafael() },
+                ),
+            ) { append("Rafael Mardojai") }
+            append("'s Blanket")
+        }
 
-    ClickableText(
+    Text(
         text = inspired,
         style =
             MaterialTheme.typography.bodySmall.copy(
@@ -507,25 +512,21 @@ private fun AttributionFooter(
                 textAlign = TextAlign.Center,
             ),
         modifier = Modifier.fillMaxWidth(),
-        onClick = { offset ->
-            inspired
-                .getStringAnnotations(tag = "rafael", start = offset, end = offset)
-                .firstOrNull()
-                ?.let { onOpenRafael() }
-        },
     )
 
     val madeBy =
-        AnnotatedString
-            .Builder()
-            .apply {
-                append("Made with ❤️ by ")
-                pushStringAnnotation(tag = "pronay", annotation = "pronay")
-                withStyle(linkStyle) { append("Pronay") }
-                pop()
-            }.toAnnotatedString()
+        buildAnnotatedString {
+            append("Made with ❤️ by ")
+            withLink(
+                LinkAnnotation.Clickable(
+                    tag = "pronay",
+                    styles = TextLinkStyles(style = linkStyle),
+                    linkInteractionListener = { onOpenPronay() },
+                ),
+            ) { append("Pronay") }
+        }
 
-    ClickableText(
+    Text(
         text = madeBy,
         style =
             MaterialTheme.typography.bodySmall.copy(
@@ -536,11 +537,5 @@ private fun AttributionFooter(
             Modifier
                 .fillMaxWidth()
                 .padding(top = 4.dp, bottom = 8.dp),
-        onClick = { offset ->
-            madeBy
-                .getStringAnnotations(tag = "pronay", start = offset, end = offset)
-                .firstOrNull()
-                ?.let { onOpenPronay() }
-        },
     )
 }
