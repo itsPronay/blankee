@@ -163,7 +163,10 @@
     <string name="settings_section_others">অন্যান্য</string>
     <string name="settings_report_bug_feature">একটি বাগ রিপোর্ট করুন বা বৈশিষ্ট্য অনুরোধ করুন</string>
     <string name="settings_report_bug_feature_hint">একটি সমস্যা তৈরি করতে GitHub রিপোজিটরি খুলুন।</string>
-    <string name="made_with_love_by_pronay">Pronay দ্বারা ভালোবাসা দিয়ে তৈরি</string>
 
     <string name="empty_string" translatable="false"></string>
+
+    <string name="attribution_inspired">%1$s-এর Blanket থেকে অনুপ্রাণিত</string>
+    <string name="attribution_made_by">❤️ দিয়ে তৈরি করেছেন %1$s ও %2$s</string>
+    <string name="attribution_contributors">অবদানকারীরা</string>
 </resources>

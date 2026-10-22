@@ -169,7 +169,10 @@
     <string name="settings_section_others">기타</string>
     <string name="settings_report_bug_feature">버그 보고 또는 기능 요청</string>
     <string name="settings_report_bug_feature_hint">GitHub 저장소를 열어 문제를 생성하세요.</string>
-    <string name="made_with_love_by_pronay">Pronay가 정성스럽게 제작</string>
 
     <string name="empty_string" translatable="false"></string>
+
+    <string name="attribution_inspired">%1$s의 Blanket에서 영감을 받았습니다</string>
+    <string name="attribution_made_by">%1$s 및 %2$s가 ❤️를 담아 만들었습니다</string>
+    <string name="attribution_contributors">기여자</string>
 </resources>

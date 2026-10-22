@@ -163,7 +163,10 @@
     <string name="settings_section_others">अन्य</string>
     <string name="settings_report_bug_feature">बग रिपोर्ट करें या फीचर का अनुरोध करें</string>
     <string name="settings_report_bug_feature_hint">समस्या बनाने के लिए GitHub रिपॉजिटरी खोलें।</string>
-    <string name="made_with_love_by_pronay">Pronay द्वारा प्रेम से बनाया गया</string>
 
     <string name="empty_string" translatable="false"></string>
+
+    <string name="attribution_inspired">%1$s के Blanket से प्रेरित</string>
+    <string name="attribution_made_by">%1$s और %2$s द्वारा ❤️ से बनाया गया</string>
+    <string name="attribution_contributors">योगदानकर्ता</string>
 </resources>

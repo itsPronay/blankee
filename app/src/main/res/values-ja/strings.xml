@@ -179,7 +179,10 @@
     <string name="settings_section_others">その他</string>
     <string name="settings_report_bug_feature">バグ報告または機能リクエスト</string>
     <string name="settings_report_bug_feature_hint">GitHub リポジトリを開いて Issue を作成します。</string>
-    <string name="made_with_love_by_pronay">Pronay が愛を込めて作成</string>
 
     <string name="empty_string" translatable="false"></string>
+
+    <string name="attribution_inspired">%1$s さんの Blanket に着想を得ています</string>
+    <string name="attribution_made_by">%1$s と%2$sが ❤️ を込めて作りました</string>
+    <string name="attribution_contributors">コントリビューター</string>
 </resources>

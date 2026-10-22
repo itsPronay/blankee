@@ -184,7 +184,10 @@
     <string name="no_share_app_installed">Keine App kann diese Nachricht teilen. Bitte installiere eine Nachrichten- oder Social-App.</string>
     <string name="settings_report_bug_feature">Fehler melden oder Feature anfragen</string>
     <string name="settings_report_bug_feature_hint">Öffne das GitHub-Repository, um ein Issue zu erstellen.</string>
-    <string name="made_with_love_by_pronay">Mit Liebe von Pronay gemacht</string>
 
     <string name="empty_string" translatable="false"></string>
+
+    <string name="attribution_inspired">Inspiriert von Blanket von %1$s</string>
+    <string name="attribution_made_by">Mit ❤️ entwickelt von %1$s und %2$s</string>
+    <string name="attribution_contributors">Mitwirkenden</string>
 </resources>

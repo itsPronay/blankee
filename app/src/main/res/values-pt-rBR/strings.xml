@@ -169,7 +169,10 @@
     <string name="settings_section_others">Outros</string>
     <string name="settings_report_bug_feature">Reportar um bug ou solicitar um recurso</string>
     <string name="settings_report_bug_feature_hint">Abra o repositório do GitHub para criar um problema.</string>
-    <string name="made_with_love_by_pronay">Feito com amor por Pronay</string>
 
     <string name="empty_string" translatable="false"></string>
+
+    <string name="attribution_inspired">Inspirado no Blanket de %1$s</string>
+    <string name="attribution_made_by">Feito com ❤️ por %1$s e %2$s</string>
+    <string name="attribution_contributors">colaboradores</string>
 </resources>

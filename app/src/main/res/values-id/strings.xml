@@ -179,7 +179,10 @@
     <string name="settings_section_others">Lainnya</string>
     <string name="settings_report_bug_feature">Laporkan bug atau minta fitur</string>
     <string name="settings_report_bug_feature_hint">Buka repositori GitHub untuk membuat issue.</string>
-    <string name="made_with_love_by_pronay">Dibuat dengan cinta oleh Pronay</string>
 
     <string name="empty_string" translatable="false"></string>
+
+    <string name="attribution_inspired">Terinspirasi dari Blanket oleh %1$s</string>
+    <string name="attribution_made_by">Dibuat dengan ❤️ oleh %1$s dan %2$s</string>
+    <string name="attribution_contributors">kontributor</string>
 </resources>

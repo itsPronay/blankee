@@ -169,7 +169,10 @@
     <string name="settings_section_others">其他</string>
     <string name="settings_report_bug_feature">报告错误或请求功能</string>
     <string name="settings_report_bug_feature_hint">打开 GitHub 存储库以创建问题。</string>
-    <string name="made_with_love_by_pronay">由 Pronay 精心制作</string>
 
     <string name="empty_string" translatable="false"></string>
+
+    <string name="attribution_inspired">灵感来自 %1$s 的 Blanket</string>
+    <string name="attribution_made_by">由 %1$s 和%2$s用 ❤️ 制作</string>
+    <string name="attribution_contributors">贡献者</string>
 </resources>

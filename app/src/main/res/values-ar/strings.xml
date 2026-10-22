@@ -169,7 +169,10 @@
     <string name="settings_section_others">آخرى</string>
     <string name="settings_report_bug_feature">الإبلاغ عن خلل أو طلب ميزة</string>
     <string name="settings_report_bug_feature_hint">افتح مستودع GitHub لإنشاء مشكلة.</string>
-    <string name="made_with_love_by_pronay">صنع بحب من قبل Pronay</string>
 
     <string name="empty_string" translatable="false"></string>
+
+    <string name="attribution_inspired">مستوحى من Blanket لـ %1$s</string>
+    <string name="attribution_made_by">صُنع بـ ❤️ بواسطة %1$s و%2$s</string>
+    <string name="attribution_contributors">المساهمين</string>
 </resources>

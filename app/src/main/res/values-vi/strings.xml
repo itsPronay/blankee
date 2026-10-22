@@ -179,7 +179,10 @@
     <string name="settings_section_others">Khác</string>
     <string name="settings_report_bug_feature">Báo lỗi hoặc yêu cầu tính năng</string>
     <string name="settings_report_bug_feature_hint">Mở kho GitHub để tạo issue.</string>
-    <string name="made_with_love_by_pronay">Được làm với tình yêu bởi Pronay</string>
 
     <string name="empty_string" translatable="false"></string>
+
+    <string name="attribution_inspired">Lấy cảm hứng từ Blanket của %1$s</string>
+    <string name="attribution_made_by">Được tạo với ❤️ bởi %1$s và %2$s</string>
+    <string name="attribution_contributors">những người đóng góp</string>
 </resources>

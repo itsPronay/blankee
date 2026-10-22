@@ -169,7 +169,10 @@
     <string name="settings_section_others">ఇతరుడు</string>
     <string name="settings_report_bug_feature">బాగెట్ నివేదించుకోండి లేదా లక్షణం కోసం అభ్యర్థించుకోండి</string>
     <string name="settings_report_bug_feature_hint">సమస్య సృష్టించుకోవటానికి GitHub రిపోజిటరీ తెరుచుకోండి</string>
-    <string name="made_with_love_by_pronay">Pronay చేత ప్రేమతో చేయబడింది</string>
 
     <string name="empty_string" translatable="false"></string>
+
+    <string name="attribution_inspired">%1$s-இன் Blanket-ஆல் ஈர்க்கப்பட்டது</string>
+    <string name="attribution_made_by">%1$s மற்றும் %2$s ❤️ உடன் உருவாக்கியது</string>
+    <string name="attribution_contributors">பங்களிப்பாளர்கள்</string>
 </resources>

@@ -179,7 +179,10 @@
     <string name="settings_section_others">دیگر</string>
     <string name="settings_report_bug_feature">بگ رپورٹ کریں یا فیچر کی درخواست کریں</string>
     <string name="settings_report_bug_feature_hint">ایشو بنانے کے لیے GitHub ریپوزٹری کھولیں۔</string>
-    <string name="made_with_love_by_pronay">Pronay کی جانب سے محبت کے ساتھ بنایا گیا</string>
 
     <string name="empty_string" translatable="false"></string>
+
+    <string name="attribution_inspired">%1$s کے Blanket سے متاثر</string>
+    <string name="attribution_made_by">%1$s اور %2$s کی طرف سے ❤️ کے ساتھ بنایا گیا</string>
+    <string name="attribution_contributors">معاونین</string>
 </resources>

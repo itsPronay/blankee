@@ -179,7 +179,10 @@
     <string name="settings_section_others">Другое</string>
     <string name="settings_report_bug_feature">Сообщить об ошибке или предложить функцию</string>
     <string name="settings_report_bug_feature_hint">Откройте репозиторий GitHub и создайте issue.</string>
-    <string name="made_with_love_by_pronay">Сделано с любовью от Pronay</string>
 
     <string name="empty_string" translatable="false"></string>
+
+    <string name="attribution_inspired">Вдохновлено Blanket от %1$s</string>
+    <string name="attribution_made_by">Сделано с ❤️: %1$s и %2$s</string>
+    <string name="attribution_contributors">участники</string>
 </resources>

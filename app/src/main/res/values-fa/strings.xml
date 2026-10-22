@@ -179,7 +179,10 @@
     <string name="settings_section_others">سایر</string>
     <string name="settings_report_bug_feature">گزارش باگ یا درخواست ویژگی</string>
     <string name="settings_report_bug_feature_hint">برای ایجاد issue مخزن GitHub را باز کنید.</string>
-    <string name="made_with_love_by_pronay">با عشق توسط Pronay ساخته شده</string>
 
     <string name="empty_string" translatable="false"></string>
+
+    <string name="attribution_inspired">الهام‌گرفته از Blanket اثر %1$s</string>
+    <string name="attribution_made_by">ساخته‌شده با ❤️ توسط %1$s و %2$s</string>
+    <string name="attribution_contributors">مشارکت‌کنندگان</string>
 </resources>

@@ -192,8 +192,10 @@
     <string name="settings_report_bug_feature_hint">Open the GitHub repository to create an issue.</string>
     <string name="settings_license">License</string>
     <string name="settings_license_hint">GNU General Public License v3.0</string>
-    <string name="made_with_love_by_pronay">Made with love by Pronay</string>
-
 
     <string name="empty_string" translatable="false"></string>
+
+    <string name="attribution_inspired">Inspired by %1$s\'s Blanket</string>
+    <string name="attribution_made_by">Made with ❤️ by %1$s &amp; %2$s</string>
+    <string name="attribution_contributors">contributors</string>
 </resources>

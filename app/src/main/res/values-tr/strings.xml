@@ -179,7 +179,10 @@
     <string name="settings_section_others">Diğer</string>
     <string name="settings_report_bug_feature">Hata bildir veya özellik iste</string>
     <string name="settings_report_bug_feature_hint">Bir issue oluşturmak için GitHub deposunu açın.</string>
-    <string name="made_with_love_by_pronay">Pronay tarafından sevgiyle yapıldı</string>
 
     <string name="empty_string" translatable="false"></string>
+
+    <string name="attribution_inspired">Blanket (%1$s) uygulamasından esinlenilmiştir</string>
+    <string name="attribution_made_by">%1$s ve %2$s tarafından ❤️ ile yapıldı</string>
+    <string name="attribution_contributors">katkıda bulunanlar</string>
 </resources>

@@ -179,7 +179,10 @@
     <string name="settings_section_others">อื่นๆ</string>
     <string name="settings_report_bug_feature">รายงานบั๊กหรือขอฟีเจอร์</string>
     <string name="settings_report_bug_feature_hint">เปิดที่เก็บ GitHub เพื่อสร้าง issue</string>
-    <string name="made_with_love_by_pronay">สร้างด้วยความรักโดย Pronay</string>
 
     <string name="empty_string" translatable="false"></string>
+
+    <string name="attribution_inspired">แรงบันดาลใจจาก Blanket โดย %1$s</string>
+    <string name="attribution_made_by">สร้างด้วย ❤️ โดย %1$s และ%2$s</string>
+    <string name="attribution_contributors">ผู้ร่วมพัฒนา</string>
 </resources>
