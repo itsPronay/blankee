@@ -86,7 +86,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.text.LinkAnnotation
 import androidx.compose.ui.text.TextLinkStyles
-import androidx.compose.ui.text.withLink
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.pronaycoding.blankee.R
@@ -393,7 +393,6 @@ fun SettingsScreen(
 
             AttributionFooter(
                 onOpenRafael = { openExternalUrl(context, Constants.RAFAEL_MARDOJAI_GITHUB) },
-                onOpenPronay = { openExternalUrl(context, Constants.PRONAY_GITHUB) },
             )
         }
     }
@@ -476,10 +475,26 @@ private fun SettingActionRow(
     }
 }
 
+private fun linkedText(
+    text: String,
+    vararg links: Pair<String, LinkAnnotation>,
+): AnnotatedString =
+    buildAnnotatedString {
+        append(text)
+        links.forEach { (label, link) ->
+            val start = text.indexOf(label)
+            if (start < 0) return@forEach
+            val end = start + label.length
+            when (link) {
+                is LinkAnnotation.Url -> addLink(link, start, end)
+                is LinkAnnotation.Clickable -> addLink(link, start, end)
+            }
+        }
+    }
+
 @Composable
 private fun AttributionFooter(
     onOpenRafael: () -> Unit,
-    onOpenPronay: () -> Unit,
 ) {
     val scheme = MaterialTheme.colorScheme
 
@@ -492,17 +507,15 @@ private fun AttributionFooter(
         )
 
     val inspired =
-        buildAnnotatedString {
-            append("Inspired by ")
-            withLink(
+        linkedText(
+            stringResource(R.string.attribution_inspired, "Rafael Mardojai"),
+            "Rafael Mardojai" to
                 LinkAnnotation.Clickable(
                     tag = "rafael",
                     styles = TextLinkStyles(style = linkStyle),
                     linkInteractionListener = { onOpenRafael() },
                 ),
-            ) { append("Rafael Mardojai") }
-            append("'s Blanket")
-        }
+        )
 
     Text(
         text = inspired,
@@ -515,16 +528,23 @@ private fun AttributionFooter(
     )
 
     val madeBy =
-        buildAnnotatedString {
-            append("Made with ❤️ by ")
-            withLink(
-                LinkAnnotation.Clickable(
-                    tag = "pronay",
-                    styles = TextLinkStyles(style = linkStyle),
-                    linkInteractionListener = { onOpenPronay() },
+        linkedText(
+            stringResource(
+                R.string.attribution_made_by,
+                "Pronay",
+                stringResource(R.string.attribution_contributors),
+            ),
+            "Pronay" to
+                LinkAnnotation.Url(
+                    "https://github.com/itsPronay",
+                    TextLinkStyles(style = linkStyle),
                 ),
-            ) { append("Pronay") }
-        }
+            stringResource(R.string.attribution_contributors) to
+                LinkAnnotation.Url(
+                    "https://github.com/itsPronay/blankee/graphs/contributors",
+                    TextLinkStyles(style = linkStyle),
+                ),
+        )
 
     Text(
         text = madeBy,
