@@ -26,7 +26,10 @@ android {
     namespace = "com.pronaycoding.blankee"
     compileSdk = 36
 
-    experimentalProperties.put("android.experimental.enableGradleMetadataGeneration", false)
+    dependenciesInfo {
+        includeInApk = false
+        includeInBundle = false
+    }
 
     defaultConfig {
         applicationId = "com.pronaycoding.blankee"
