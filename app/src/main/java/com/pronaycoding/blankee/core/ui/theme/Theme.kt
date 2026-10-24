@@ -82,6 +82,7 @@ private val AmoledColorScheme =
         surfaceContainer = Color(0xFF0A0A0A),
         surfaceContainerHigh = Color(0xFF121212),
         surfaceContainerHighest = Color(0xFF1E1E1E),
+        surfaceTint = Color.Black,
     )
 
 // Light theme
