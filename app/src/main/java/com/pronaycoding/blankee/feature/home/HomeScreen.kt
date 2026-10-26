@@ -946,8 +946,6 @@ fun TimerDialog(
         AlertDialog(
             onDismissRequest = { setTimerDialogFalse() },
             shape = RoundedCornerShape(28.dp),
-            containerColor = MaterialTheme.colorScheme.surfaceContainerLow,
-            tonalElevation = 6.dp,
             icon = {
                 Surface(
                     shape = CircleShape,
