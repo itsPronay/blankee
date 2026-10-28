@@ -1,5 +1,7 @@
 package com.pronaycoding.blankee
 
+import androidx.compose.animation.EnterTransition
+import androidx.compose.animation.ExitTransition
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -49,7 +51,14 @@ enum class Routes {
 fun Navigation() {
     val navController: NavHostController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = Routes.Home.name) {
+    NavHost(
+        navController = navController,
+        startDestination = Routes.Home.name,
+        enterTransition = { EnterTransition.None },
+        exitTransition = { ExitTransition.None },
+        popEnterTransition = { EnterTransition.None },
+        popExitTransition = { ExitTransition.None },
+    ) {
         /**
          * Home screen - displays sound selection, volume controls, and presets.
          */
