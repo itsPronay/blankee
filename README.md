@@ -19,7 +19,7 @@
 
 ## Description
 
-Improve focus and increase your productivity by listening to different ambient sounds. Blankee can also help you fall asleep in a noisy environment.
+Improve focus and increase your productivity by listening to different sounds. Blankee can also be used to help you to fall asleep in a noisy environment.
 
 ## Features
 
