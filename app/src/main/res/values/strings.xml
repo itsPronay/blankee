@@ -40,6 +40,18 @@
 
     <string name="sound_pink_noise">Pink noise</string>
     <string name="sound_white_noise">White noise</string>
+    <string name="sound_brown_noise">Brown noise</string>
+    <string name="sound_green_noise">Green noise</string>
+
+    <string name="sound_forest">Forest</string>
+    <string name="sound_airplane">Airplane</string>
+    <string name="sound_fan">Fan</string>
+    <string name="sound_laundry_room">Laundry room</string>
+
+    <string name="sound_ambient_synth">Ambient synth</string>
+    <string name="sound_gentle_guitar">Gentle guitar</string>
+    <string name="sound_lofi_beats">Lo-fi beats</string>
+    <string name="sound_warm_piano">Warm piano</string>
 
     <string name="settings_title">Settings</string>
     <string name="settings_section_app_preferences">App Preferences</string>

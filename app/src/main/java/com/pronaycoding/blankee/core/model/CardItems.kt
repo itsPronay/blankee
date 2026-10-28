@@ -9,7 +9,7 @@ import com.pronaycoding.blankee.R
  * Sealed class representing available sounds in the Blankee app.
  *
  * This sealed class defines all built-in ambient sounds and provides a framework for custom user-uploaded sounds.
- * Sounds are organized into categories (Nature, Travel, Interiors, Noise, Custom) and each includes:
+ * Sounds are organized into categories (Nature, Travel, Interiors, Noise, Music, Custom) and each includes:
  * - A localized title (from string resources)
  * - An icon for UI display
  * - An audio resource file (for built-in sounds)
@@ -220,6 +220,117 @@ sealed class CardItems(
         icon = R.drawable.white_noise,
         audioSource = R.raw.white_noise,
         type = "Noise",
+    )
+
+    /**
+     * Brown Noise sound - Noise category.
+     * Deep, low-frequency noise for sleep and focus.
+     */
+    data object BrownNoise : CardItems(
+        titleResId = R.string.sound_brown_noise,
+        icon = R.drawable.brown_noise,
+        audioSource = R.raw.brown_noise,
+        type = "Noise",
+    )
+
+    /**
+     * Green Noise sound - Noise category.
+     * Calm, nature-like mid-range noise.
+     */
+    data object GreenNoise : CardItems(
+        titleResId = R.string.sound_green_noise,
+        icon = R.drawable.green_noise,
+        audioSource = R.raw.green_noise,
+        type = "Noise",
+    )
+
+    /**
+     * Forest sound - Nature category.
+     * Steady breeze through the pines.
+     */
+    data object Forest : CardItems(
+        titleResId = R.string.sound_forest,
+        icon = R.drawable.forest,
+        audioSource = R.raw.forest,
+        type = "Nature",
+    )
+
+    /**
+     * Airplane sound - Travel category.
+     * Mid-flight hum of an airplane cabin.
+     */
+    data object Airplane : CardItems(
+        titleResId = R.string.sound_airplane,
+        icon = R.drawable.airplane,
+        audioSource = R.raw.airplane,
+        type = "Travel",
+    )
+
+    /**
+     * Fan sound - Interiors category.
+     * A steady, whirring fan hum.
+     */
+    data object Fan : CardItems(
+        titleResId = R.string.sound_fan,
+        icon = R.drawable.fan,
+        audioSource = R.raw.fan,
+        type = "Interiors",
+    )
+
+    /**
+     * Laundry Room sound - Interiors category.
+     * A dryer tumbling clothes.
+     */
+    data object LaundryRoom : CardItems(
+        titleResId = R.string.sound_laundry_room,
+        icon = R.drawable.laundry_room,
+        audioSource = R.raw.laundry_room,
+        type = "Interiors",
+    )
+
+    /**
+     * Ambient Synth - Music category.
+     * Slow, dreamy electronic music.
+     */
+    data object AmbientSynth : CardItems(
+        titleResId = R.string.sound_ambient_synth,
+        icon = R.drawable.ambient_synth,
+        audioSource = R.raw.ambient_music,
+        type = "Music",
+        firstInType = true,
+    )
+
+    /**
+     * Gentle Guitar - Music category.
+     * Warm acoustic guitar.
+     */
+    data object GentleGuitar : CardItems(
+        titleResId = R.string.sound_gentle_guitar,
+        icon = R.drawable.gentle_guitar,
+        audioSource = R.raw.acoustic_guitar,
+        type = "Music",
+    )
+
+    /**
+     * Lo-Fi Beats - Music category.
+     * Mellow, chill hip-hop.
+     */
+    data object LofiBeats : CardItems(
+        titleResId = R.string.sound_lofi_beats,
+        icon = R.drawable.lofi_beats,
+        audioSource = R.raw.lofi_beats,
+        type = "Music",
+    )
+
+    /**
+     * Warm Piano - Music category.
+     * A quiet, gentle piano lullaby.
+     */
+    data object WarmPiano : CardItems(
+        titleResId = R.string.sound_warm_piano,
+        icon = R.drawable.warm_piano,
+        audioSource = R.raw.warm_piano,
+        type = "Music",
     )
 
     /**

@@ -4,7 +4,7 @@ package com.pronaycoding.blankee.feature.home
  * Home screen composable for the Blankee application.
  *
  * The main feature screen displaying:
- * - Sound categories (Nature, Travel, Interiors, Noise)
+ * - Sound categories (Nature, Travel, Interiors, Noise, Music)
  * - Built-in ambient sounds with individual volume controls
  * - Custom user-uploaded sounds
  * - Sound selection and mixing interface
@@ -624,6 +624,16 @@ fun getCardList(): List<CardItems> =
         CardItems.BusyRestaurant,
         CardItems.PinkNoise,
         CardItems.WhiteNoise,
+        CardItems.BrownNoise,
+        CardItems.GreenNoise,
+        CardItems.Forest,
+        CardItems.Airplane,
+        CardItems.Fan,
+        CardItems.LaundryRoom,
+        CardItems.AmbientSynth,
+        CardItems.GentleGuitar,
+        CardItems.LofiBeats,
+        CardItems.WarmPiano,
     )
 
 private fun homeGridCardItems(): List<CardItems> = getCardList()
