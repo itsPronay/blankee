@@ -2,7 +2,7 @@
 
 # Blankee
 
-**Listen to different sounds**
+**Sleep better. Focus deeper. Listen to ambient sounds.**
 
 <br>
 
@@ -10,37 +10,48 @@
 [![Android](https://img.shields.io/badge/Android-3DDC84?logo=android&logoColor=white)](https://www.android.com)
 [![Kotlin](https://img.shields.io/badge/Kotlin-7F52FF?logo=kotlin&logoColor=white)](https://kotlinlang.org)
 
+<a href="https://play.google.com/store/apps/details?id=com.pronaycoding.blankee"><img alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" height="80"/></a>
+<a href="https://f-droid.org/packages/com.pronaycoding.blankee"><img alt="Get it on F-Droid" src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" height="80"/></a>
+
 | Mobile (left) / Tablet (right) |
 |--------|
-| <img src="image.png" height="500"/> | 
+| <img src="image.png" height="500"/> |
 
 ## Description
 
-Improve focus and increase your productivity by listening to different sounds. Blankee can also be used to help you to fall asleep in a noisy environment.
-
+Improve focus and increase your productivity by listening to different ambient sounds. Blankee can also help you fall asleep in a noisy environment.
 
 ## Features
 
 - **Multiple Ambient Sounds** – Rain, waves, fireplace, forest, wind, and more
-- **Sleep Timer** – Set a timer, sound playing will stop automatically 
+- **Sleep Timer** – Set a timer, and the playing sounds will stop automatically
 - **Custom Sounds** – Upload your own audio files
 - **Save Presets** – Create and save your favorite combinations for quick access
 - **Dark & Light Mode** – Full theme support for comfortable use
-- **Multilingual** – 20 supported languages 
+- **Multilingual** – 20 supported languages
 - **Individual Volume Controls** – Mix and match sounds to your preference
 - **Responsive Design** – Works beautifully on phones, tablets, and foldable devices
 
 ## Installation
 
-<!-- ### Google Play Store
+### Google Play Store
 
-<a href="https://play.google.com/store/apps/details?id=com.pronaycoding.blankee"><img alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" width="200"/></a> -->
+<a href="https://play.google.com/store/apps/details?id=com.pronaycoding.blankee"><img alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" width="200"/></a>
+
+[Download Blankee on Google Play](https://play.google.com/store/apps/details?id=com.pronaycoding.blankee)
+
+### F-Droid
+
+<a href="https://f-droid.org/packages/com.pronaycoding.blankee"><img alt="Get it on F-Droid" src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" width="200"/></a>
+
+[Download Blankee on F-Droid](https://f-droid.org/packages/com.pronaycoding.blankee)
 
 ### GitHub Releases
 
 - Download the latest APK from [GitHub Releases](https://github.com/itsPronay/napify/releases)
 
 ### Build from Source
+
 #### Requirements
 
 - Android API Level 24+ (Android 7.0)
