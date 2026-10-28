@@ -1,31 +1,49 @@
-
 # Sounds Licensing
 
-| Sound | Author | Editor* | License
-| :-:  | :-: | :-: | :-:
-| [Birds](https://freesound.org/people/kvgarlic/sounds/156826/) | kvgarlic | Porrumentzio | CC0
-| [Boat](https://freesound.org/people/Falcet/sounds/439365/) | Falcet | Porrumentzio | CC0
-| [City](https://freesound.org/people/gezortenplotz/sounds/44796/) | gezortenplotz | Porrumentzio | CC BY
-| [Coffee Shop](https://soundbible.com/1664-Restaurant-Ambiance.html) | stephan | - | Public Domain
-| [Fireplace (Woodstove)](https://www.nps.gov/media/video/view.htm?id=1E69FA23-BC88-460E-8EFD-8D3BA8B06C53) | NPS & MSU Acoustic Atlas | - | Public Domain
-| [Pink noise](https://es.wikipedia.org/wiki/Archivo:Pink_noise.ogg) | Omegatron | - | CC BY-SA
-| [Rain](https://freesound.org/people/alex36917/sounds/524605/) | alex36917 | Porrumentzio | CC BY
-| [Summer night](https://soundbible.com/2083-Crickets-Chirping-At-Night.html) | Lisa Redfern | - | Public Domain | 
-| [Storm](https://freesound.org/people/digifishmusic/sounds/41739/) | Digifish music | Porrumentzio | CC BY
-| [Stream](https://freesound.org/people/gluckose/sounds/333987/) | gluckose | - | CC0
-| [Train](https://freesound.org/people/SDLx/sounds/259988/) | SDLx | - | CC BY 3.0
-| [Waves](https://freesound.org/people/Luftrum/sounds/48412/) | Luftrum | Porrumentzio | CC BY
-| [White noise](https://commons.wikimedia.org/w/index.php?title=File%3AWhite-noise-sound-20sec-mono-44100Hz.ogg) | Jorge Stolfi | - | CC BY-SA |
-| [Wind](https://freesound.org/people/felix.blume/sounds/217506/) | felix.blume | Porrumentzio | CC0
-| [Brown noise](https://blankie.rest) | Blankie | - | CC0
-| [Green noise](https://blankie.rest) | Blankie | - | CC0
-| [Forest](https://freesound.org/s/202989/) | sinewave1kHz | - | CC0
-| [Airplane](https://freesound.org/s/133496/) | ikbenraar | - | CC0
-| [Fan](https://freesound.org/s/515859/) | LilMati | - | CC0
-| [Laundry room](https://freesound.org/s/411914/) | moviebuffgavin | - | CC0
-| [Ambient synth](https://freesound.org/s/742808/) | ChristmasKrumble666 | - | CC0
-| [Gentle guitar](https://freesound.org/s/653928/) | yunclas | - | CC0
-| [Lo-fi beats](https://freemusicarchive.org/music/holiznacc0/lazy-summer-lofi-1/laundry-on-the-wiremp3/) | Holizna | - | CC0
-| [Warm piano](https://freesound.org/people/blankie.rest/sounds/859607/) | Cody Bromley (for Blankie) | - | CC0
+All built-in sounds except "Busy restaurant" are the audio files shipped by [Blankie](https://github.com/codybrom/blankie)
+(see its [credits](https://blankie.rest/credits)). The sounds are **not** covered by Blankie's MIT license; each one keeps
+its own license, listed below. None of them are NonCommercial or NoDerivatives, so they can be used in this app, including
+its paid Premium features. Sounds under CC BY require that the creator is credited, which this file provides.
 
-Sound files are sourced from [Blankie](https://github.com/codybrom/blankie) (MIT).
+| Sound | Original work | Author | Editor* | License |
+| :-- | :-- | :-- | :-- | :-- |
+| Rain | [rain ambience](https://freesound.org/s/524605/) | alex36917 | Blankie (loop edit) | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
+| Storm | [Infinite Storm.wav](https://freesound.org/s/41739) | Digifish music | - | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
+| Wind | [Wind blowing in a field in Texas, USA](https://freesound.org/s/217506/) | felix.blume | Blankie (loop edit) | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) |
+| Waves | [oceanwavescrushing.wav](https://freesound.org/s/48412/) | Luftrum | Blankie (loop edit) | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
+| Stream | [stream2.wav](https://freesound.org/s/333987/) | gluckose | Blankie (loop edit) | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) |
+| Birds | [WoodThrushinMorningShawneeForestMay272012.wav](https://freesound.org/s/156826/) | kvgarlic | Blankie (loop edit) | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) |
+| Summer night | [Crickets Chirping At Night](https://soundbible.com/2083-Crickets-Chirping-At-Night.html) | Lisa Redfern | Blankie (loop edit) | Public Domain |
+| Train | [Trains of the Yamanote Line](https://freesound.org/s/259988/) | SDLx | - | [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/) |
+| Boat | [Ambience_Sea_Boat_Night_Ropes_4.wav](https://freesound.org/s/439365/) | Falcet | Blankie (loop edit) | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) |
+| City | [NYC_street leve02l.wav](https://freesound.org/s/44796/) | gezortenplotz | Blankie (loop edit) | [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/) |
+| Coffee shop | [Restaurant Ambiance](https://soundbible.com/1664-Restaurant-Ambiance.html) | stephan | Blankie (loop edit) | Public Domain |
+| Fireplace | [Woodstove](https://www.nps.gov/media/video/view.htm?id=1E69FA23-BC88-460E-8EFD-8D3BA8B06C53) | NPS & MSU Acoustic Atlas | Blankie (loop edit) | Public Domain |
+| Pink noise | [Pink Noise (Stereo)](https://blankie.rest/credits) | Blankie | - | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) |
+| White noise | [White Noise (Stereo)](https://blankie.rest/credits) | Blankie | - | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) |
+| Brown noise | [Brown Noise (Stereo)](https://blankie.rest/credits) | Blankie | - | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) |
+| Green noise | [Green Noise (Stereo)](https://blankie.rest/credits) | Blankie | - | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) |
+| Ambient synth | [Couple' Morning.wav](https://freesound.org/s/742808/) | ChristmasKrumble666 | - | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) |
+| Gentle guitar | [acoustic guitar in open D](https://freesound.org/s/653928/) | yunclas | - | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) |
+| Fan | [Air Conditioner Fan Hum.wav](https://freesound.org/s/515859/) | LilMati | - | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) |
+| Lo-fi beats | [Laundry On The Wire](https://freemusicarchive.org/music/holiznacc0/lazy-summer-lofi-1/laundry-on-the-wiremp3/) | Holizna | - | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) |
+| Forest | [Wind_pine.wav](https://freesound.org/s/202989/) | sinewave1kHz | - | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) |
+| Airplane | [Interior airplane.WAV](https://freesound.org/s/133496/) | ikbenraar | - | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) |
+| Laundry room | [Laundry Room Ambience.wav](https://freesound.org/s/411914/) | moviebuffgavin | - | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) |
+| Warm piano | [Sleepy Upright Piano Seamless Loop](https://freesound.org/people/blankie.rest/sounds/859607/) | Cody Bromley (for Blankie) | - | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) |
+| Busy restaurant | _source not recorded_ | - | - | **needs verification** |
+
+\* "Blankie (loop edit)": trimmed and crossfaded into a seamless loop by the Blankie project; the underlying recording and
+its license are unchanged.
+
+Pink, white, brown and green noise were generated by the Blankie project and released as CC0. "Warm piano" was composed by
+Cody Bromley for Blankie and released as CC0.
+
+## Icons
+
+- Sound icons for the original sounds are PNG artwork bundled with the app.
+- The icons for Brown noise, Green noise, Forest, Fan, Ambient synth, Gentle guitar and Warm piano are original vector drawings
+  made for this project.
+- The icons for Airplane, Lo-fi beats (headset) and Laundry room are based on [Material Icons](https://fonts.google.com/icons)
+  by Google, licensed under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0).
+- No Apple SF Symbols are used (SF Symbols may only be used in apps for Apple platforms).
