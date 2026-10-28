@@ -1,1 +1,9 @@
 .gradle/
+local.properties
+
+# Signing and publishing secrets (never commit)
+keystore.properties
+*.jks
+*.keystore
+play-store-service-account.json
+app/google-services.json
