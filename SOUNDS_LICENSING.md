@@ -48,9 +48,8 @@ loop-edited versions of the same recordings (see above). Blanket's own licensing
 
 ## Icons
 
-- Sound icons for the original sounds are PNG artwork bundled with the app.
-- The icons for Brown noise, Green noise, Forest, Fan, Ambient synth, Gentle guitar and Warm piano are original vector drawings
-  made for this project.
-- The icons for Airplane, Lo-fi beats (headset) and Laundry room are based on [Material Icons](https://fonts.google.com/icons)
-  by Google, licensed under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0).
-- No Apple SF Symbols are used (SF Symbols may only be used in apps for Apple platforms).
+All sound icons are original vector drawings made for this project (`app/src/main/res/drawable/`), released under the same
+license as this app. The Airplane, Lo-fi beats (headset) and Laundry room icons are based on
+[Material Icons](https://fonts.google.com/icons) by Google, licensed under the
+[Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0).
+No Apple SF Symbols are used (SF Symbols may only be used in apps for Apple platforms).
