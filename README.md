@@ -33,22 +33,15 @@ Improve focus and increase your productivity by listening to different sounds. B
 - **Responsive Design** – Works beautifully on phones, tablets, and foldable devices
 
 ## Installation
+> [!NOTE]
+> Consider downloading the app from GitHub Releases or F-Droid, or building it from source. The Google Play version may include Firebase Analytics, Crashlytics, ads etc and other Google-related services.
 
-### Google Play Store
+### Download from the Following Platforms
 
-<a href="https://play.google.com/store/apps/details?id=com.pronaycoding.blankee"><img alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" width="200"/></a>
+| Google Play Store | F-Droid | GitHub Releases |
+|:---:|:---:|:---:|
+| <a href="https://play.google.com/store/apps/details?id=com.pronaycoding.blankee"><img alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" width="180"/></a> | <a href="https://f-droid.org/packages/com.pronaycoding.blankee"><img alt="Get it on F-Droid" src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" width="180"/></a> | <a href="https://github.com/itsPronay/napify/releases"><img alt="Get it on GitHub" src="https://img.shields.io/badge/GitHub-Download%20Release-181717?logo=github&style=for-the-badge" height="55"/></a> |
 
-[Download Blankee on Google Play](https://play.google.com/store/apps/details?id=com.pronaycoding.blankee)
-
-### F-Droid
-
-<a href="https://f-droid.org/packages/com.pronaycoding.blankee"><img alt="Get it on F-Droid" src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" width="200"/></a>
-
-[Download Blankee on F-Droid](https://f-droid.org/packages/com.pronaycoding.blankee)
-
-### GitHub Releases
-
-- Download the latest APK from [GitHub Releases](https://github.com/itsPronay/napify/releases)
 
 ### Build from Source
 
@@ -63,7 +56,7 @@ Improve focus and increase your productivity by listening to different sounds. B
 
 ```bash
 # Clone the repository
-git clone https://github.com/itsPronay/napify.git
+git clone https://github.com/itsPronay/blankee.git
 cd napify
 
 # Build the app
@@ -91,5 +84,5 @@ Sounds are sourced from others. For detailed information about sounds licensing,
 <p align="center">
   Inspired by Rafael Mardojai's <a href="https://github.com/rafaelmardojai/blanket">Blanket</a>
   <br>
-  Made with ❤️ by Pronay
+  Made with ❤️ by Pronay & Contributors
 </p>
