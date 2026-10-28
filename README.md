@@ -2,7 +2,7 @@
 
 # Blankee
 
-**Sleep better. Focus deeper. Listen to ambient sounds.**
+**Listen to different sounds**
 
 <br>
 
