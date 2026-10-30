@@ -1,61 +1,92 @@
 package com.pronaycoding.blankee.feature.home
 
 import android.content.Context
-import android.media.MediaPlayer
 import android.net.Uri
 import android.util.Log
+import androidx.media3.common.AudioAttributes
+import androidx.media3.common.C
+import androidx.media3.common.MediaItem
+import androidx.media3.common.PlaybackException
+import androidx.media3.common.Player
+import androidx.media3.exoplayer.ExoPlayer
 import com.pronaycoding.blankee.core.model.CardItems
 import java.io.File
 
 /**
  * Manages audio playback for both built-in and custom sounds in the Blankee application.
  *
- * This class handles the lifecycle and control of MediaPlayer instances for:
- * - Built-in sounds (e.g., rain, birds, waves) loaded from app resources
- * - Custom sounds uploaded by users from device storage
+ * Every sound is its own looping [ExoPlayer], so any number of sounds can be mixed. Players use
+ * media [AudioAttributes] and do not request audio focus individually (otherwise mixed players would
+ * steal focus from each other and pause one another).
  *
- * Key responsibilities:
- * - Loading and unloading audio files
- * - Playing, pausing, stopping, and controlling volume of sounds
- * - Managing looping playback for ambient/sleep sounds
- * - Tracking currently playing sounds for pause/resume functionality
- * - Proper resource cleanup and error handling
+ * Built-in players are created lazily on first play to avoid allocating a decoder per bundled sound.
  *
- * Thread-safety: This class is designed to be used primarily from the main/UI thread.
- * Multiple instances may exist but typically one central instance is used through Koin DI.
+ * Thread-safety: This class must be used from the main/UI thread (ExoPlayer's application thread).
  *
- * @param context The application context used for resource access and MediaPlayer creation
+ * @param context The application context used for resource access and player creation
  *
- * @see MediaPlayer for the underlying audio playback mechanism
  * @see GlobalPlaybackState for overall app playback state management
  */
 class SoundManager(
     private val context: Context,
 ) {
-    private val mediaPlayers = mutableMapOf<Int, MediaPlayer>()
-    private val customMediaPlayers = mutableMapOf<Int, MediaPlayer>()
+    private val builtInSources = mutableMapOf<Int, Int>()
+    private val mediaPlayers = mutableMapOf<Int, ExoPlayer>()
+    private val customMediaPlayers = mutableMapOf<Int, ExoPlayer>()
     private var currentlyPlayingSounds: MutableList<Int> = mutableListOf()
 
+    private val audioAttributes =
+        AudioAttributes
+            .Builder()
+            .setUsage(C.USAGE_MEDIA)
+            .setContentType(C.AUDIO_CONTENT_TYPE_MUSIC)
+            .build()
+
+    private fun newPlayer(
+        uri: Uri,
+        label: String,
+    ): ExoPlayer =
+        ExoPlayer
+            .Builder(context)
+            // Audio focus is intentionally off: with many mixed players each one would otherwise
+            // take focus from the others.
+            .setAudioAttributes(audioAttributes, false)
+            .build()
+            .apply {
+                repeatMode = Player.REPEAT_MODE_ONE
+                addListener(
+                    object : Player.Listener {
+                        override fun onPlayerError(error: PlaybackException) {
+                            Log.e("SoundManager", "Playback error for $label", error)
+                        }
+                    },
+                )
+                setMediaItem(MediaItem.fromUri(uri))
+                prepare()
+            }
+
+    private fun ExoPlayer.isActive(): Boolean = playWhenReady && playbackState != Player.STATE_IDLE && playbackState != Player.STATE_ENDED
+
+    private fun ExoPlayer.stopAndRewind() {
+        playWhenReady = false
+        seekTo(0)
+    }
+
     /**
-     * Loads all built-in sounds from app resources into MediaPlayer instances.
-     *
-     * This method should be called once during initialization. It iterates through all available
-     * built-in sounds from [getCardList], creates a MediaPlayer for each, and stores them in
-     * the [mediaPlayers] map indexed by their position.
-     *
-     * Each sound is prepared for playback with looping enabled during [playSound] call.
-     * Errors during loading are logged but do not halt the process for other sounds.
-     *
-     * @see getCardList for the list of available built-in sounds
-     * @see playSound for playing a loaded sound
+     * Registers all built-in sounds from [getCardList] by position. Players are created on first play.
      */
     fun loadSounds() {
         getCardList().forEachIndexed { index: Int, item: CardItems ->
-            Log.d("SoundManager", "Loading sound: $index")
-            val mediaPlayer = MediaPlayer.create(context, item.audioSource)
-            mediaPlayers[index] = mediaPlayer
+            Log.d("SoundManager", "Registering sound: $index")
+            builtInSources[index] = item.audioSource
         }
     }
+
+    private fun builtInPlayer(soundIndex: Int): ExoPlayer? =
+        mediaPlayers[soundIndex] ?: builtInSources[soundIndex]?.let { resId ->
+            newPlayer(Uri.parse("android.resource://${context.packageName}/$resId"), "built-in $soundIndex")
+                .also { mediaPlayers[soundIndex] = it }
+        }
 
     /**
      * Loads a custom sound from file path or content URI
@@ -66,29 +97,19 @@ class SoundManager(
     ): Boolean {
         return try {
             Log.d("SoundManager", "Loading custom sound: $soundId from path: $filePath")
-            val mediaPlayer = MediaPlayer()
-
-            // Try to handle both file paths and content URIs
-            if (filePath.startsWith("content://")) {
-                // Handle content URI
-                val uri = Uri.parse(filePath)
-                mediaPlayer.setDataSource(context, uri)
-            } else if (filePath.startsWith("file://")) {
-                // Handle file URI
-                val uri = Uri.parse(filePath)
-                mediaPlayer.setDataSource(context, uri)
-            } else {
-                // Handle file path
-                val file = File(filePath)
-                if (!file.exists()) {
-                    Log.e("SoundManager", "Custom sound file does not exist: $filePath")
-                    return false
+            val uri =
+                if (filePath.startsWith("content://") || filePath.startsWith("file://")) {
+                    Uri.parse(filePath)
+                } else {
+                    val file = File(filePath)
+                    if (!file.exists()) {
+                        Log.e("SoundManager", "Custom sound file does not exist: $filePath")
+                        return false
+                    }
+                    Uri.fromFile(file)
                 }
-                mediaPlayer.setDataSource(context, Uri.fromFile(file))
-            }
-
-            mediaPlayer.prepare()
-            customMediaPlayers[soundId] = mediaPlayer
+            customMediaPlayers.remove(soundId)?.release()
+            customMediaPlayers[soundId] = newPlayer(uri, "custom $soundId")
             Log.d("SoundManager", "Successfully loaded custom sound: $soundId")
             true
         } catch (e: Exception) {
@@ -101,13 +122,9 @@ class SoundManager(
      * Unloads a custom sound and releases resources
      */
     fun unloadCustomSound(soundId: Int) {
-        customMediaPlayers[soundId]?.let {
+        customMediaPlayers.remove(soundId)?.let {
             try {
-                if (it.isPlaying) {
-                    it.stop()
-                }
                 it.release()
-                customMediaPlayers.remove(soundId)
                 Log.d("SoundManager", "Unloaded custom sound: $soundId")
             } catch (e: Exception) {
                 Log.e("SoundManager", "Error unloading custom sound: $soundId", e)
@@ -118,7 +135,7 @@ class SoundManager(
     /**
      * Checks if any sound is playing.
      */
-    fun isAnySoundPlaying(): Boolean = mediaPlayers.values.any { it.isPlaying } || customMediaPlayers.values.any { it.isPlaying }
+    fun isAnySoundPlaying(): Boolean = mediaPlayers.values.any { it.isActive() } || customMediaPlayers.values.any { it.isActive() }
 
     /**
      * Plays a sound if it's not already playing.
@@ -128,20 +145,16 @@ class SoundManager(
         volume: Float,
     ) {
         Log.d("SoundManager", "Play sound called for index: $soundIndex")
-        mediaPlayers[soundIndex]?.let { mediaPlayer ->
-            if (!mediaPlayer.isPlaying) {
-                mediaPlayer.setVolume(volume, volume)
-                mediaPlayer.start()
-                mediaPlayer.isLooping = true
+        builtInPlayer(soundIndex)?.let { player ->
+            player.volume = volume
+            if (!player.isActive()) {
+                player.playWhenReady = true
                 Log.d("SoundManager", "Playing sound at index: $soundIndex")
-            } else {
-                mediaPlayer.setVolume(volume, volume)
-                Log.d("SoundManager", "Sound at index: $soundIndex already playing; volume updated.")
             }
-        } ?: Log.e("SoundManager", "MediaPlayer not found for index: $soundIndex")
+        } ?: Log.e("SoundManager", "Player not found for index: $soundIndex")
     }
 
-    fun isBuiltInPlaying(soundIndex: Int): Boolean = mediaPlayers[soundIndex]?.isPlaying == true
+    fun isBuiltInPlaying(soundIndex: Int): Boolean = mediaPlayers[soundIndex]?.isActive() == true
 
     /**
      * Plays a custom sound from file
@@ -151,20 +164,16 @@ class SoundManager(
         volume: Float,
     ) {
         Log.d("SoundManager", "Play custom sound called for id: $soundId")
-        customMediaPlayers[soundId]?.let { mediaPlayer ->
-            if (!mediaPlayer.isPlaying) {
-                mediaPlayer.setVolume(volume, volume)
-                mediaPlayer.start()
-                mediaPlayer.isLooping = true
+        customMediaPlayers[soundId]?.let { player ->
+            player.volume = volume
+            if (!player.isActive()) {
+                player.playWhenReady = true
                 Log.d("SoundManager", "Playing custom sound: $soundId")
-            } else {
-                mediaPlayer.setVolume(volume, volume)
-                Log.d("SoundManager", "Custom sound: $soundId already playing; volume updated.")
             }
-        } ?: Log.e("SoundManager", "Custom MediaPlayer not found for id: $soundId")
+        } ?: Log.e("SoundManager", "Custom player not found for id: $soundId")
     }
 
-    fun isCustomSoundPlaying(soundId: Int): Boolean = customMediaPlayers[soundId]?.isPlaying == true
+    fun isCustomSoundPlaying(soundId: Int): Boolean = customMediaPlayers[soundId]?.isActive() == true
 
     /**
      * Adjusts the volume of a currently playing sound.
@@ -174,7 +183,7 @@ class SoundManager(
         volume: Float,
     ) {
         mediaPlayers[soundIndex]?.let {
-            it.setVolume(volume, volume)
+            it.volume = volume
         } ?: Log.e("SoundManager", "Cannot control sound at index: $soundIndex, not found.")
     }
 
@@ -186,7 +195,7 @@ class SoundManager(
         volume: Float,
     ) {
         customMediaPlayers[soundId]?.let {
-            it.setVolume(volume, volume)
+            it.volume = volume
         } ?: Log.e("SoundManager", "Cannot control custom sound: $soundId, not found.")
     }
 
@@ -195,9 +204,8 @@ class SoundManager(
      */
     fun stopSound(soundIndex: Int) {
         mediaPlayers[soundIndex]?.let {
-            if (it.isPlaying) {
-                it.stop()
-                it.prepare() // Reset to initial state
+            if (it.isActive()) {
+                it.stopAndRewind()
                 Log.d("SoundManager", "Stopped sound at index: $soundIndex")
             }
         } ?: Log.e("SoundManager", "Cannot stop sound at index: $soundIndex, not found.")
@@ -208,29 +216,24 @@ class SoundManager(
      */
     fun stopCustomSound(soundId: Int) {
         customMediaPlayers[soundId]?.let {
-            if (it.isPlaying) {
-                it.stop()
-                try {
-                    it.prepare()
-                } catch (e: Exception) {
-                    Log.e("SoundManager", "Error preparing custom sound after stop: $soundId", e)
-                }
+            if (it.isActive()) {
+                it.stopAndRewind()
                 Log.d("SoundManager", "Stopped custom sound: $soundId")
             }
         } ?: Log.e("SoundManager", "Cannot stop custom sound: $soundId, not found.")
     }
 
     fun pauseAllSounds() {
-        mediaPlayers.entries.forEach { (index, mediaPlayer) ->
-            if (mediaPlayer.isPlaying) {
-                mediaPlayer.pause()
+        mediaPlayers.entries.forEach { (index, player) ->
+            if (player.isActive()) {
+                player.playWhenReady = false
                 currentlyPlayingSounds.add(index)
                 Log.d("SoundManager", "Paused sound at index: $index")
             }
         }
-        customMediaPlayers.entries.forEach { (id, mediaPlayer) ->
-            if (mediaPlayer.isPlaying) {
-                mediaPlayer.pause()
+        customMediaPlayers.entries.forEach { (id, player) ->
+            if (player.isActive()) {
+                player.playWhenReady = false
                 currentlyPlayingSounds.add(id)
                 Log.d("SoundManager", "Paused custom sound: $id")
             }
@@ -242,14 +245,14 @@ class SoundManager(
      * Resumes all paused sounds.
      */
     fun resumeAllSounds() {
-        mediaPlayers.entries.forEach { (index, mediaPlayer) ->
+        mediaPlayers.entries.forEach { (index, player) ->
             if (currentlyPlayingSounds.contains(index)) {
-                mediaPlayer.start()
+                player.playWhenReady = true
             }
         }
-        customMediaPlayers.entries.forEach { (id, mediaPlayer) ->
+        customMediaPlayers.entries.forEach { (id, player) ->
             if (currentlyPlayingSounds.contains(id)) {
-                mediaPlayer.start()
+                player.playWhenReady = true
             }
         }
         currentlyPlayingSounds = mutableListOf()
@@ -259,36 +262,18 @@ class SoundManager(
      * Stops all currently playing sounds and clears active sound records.
      */
     fun stopAllSounds() {
-        mediaPlayers.values.forEach { mediaPlayer ->
-            if (mediaPlayer.isPlaying) {
-                mediaPlayer.stop()
-                mediaPlayer.prepare()
-            }
-        }
-        customMediaPlayers.values.forEach { mediaPlayer ->
-            if (mediaPlayer.isPlaying) {
-                mediaPlayer.stop()
-                try {
-                    mediaPlayer.prepare()
-                } catch (e: Exception) {
-                    Log.e("SoundManager", "Error preparing custom sound after stop", e)
-                }
-            }
-        }
+        mediaPlayers.values.forEach { if (it.isActive()) it.stopAndRewind() }
+        customMediaPlayers.values.forEach { if (it.isActive()) it.stopAndRewind() }
         currentlyPlayingSounds.clear()
         Log.d("SoundManager", "All sounds stopped.")
     }
 
     /**
-     * Releases resources used by MediaPlayer.
+     * Releases all players.
      */
     fun release() {
-        mediaPlayers.values.forEach { mediaPlayer ->
-            mediaPlayer.release()
-        }
-        customMediaPlayers.values.forEach { mediaPlayer ->
-            mediaPlayer.release()
-        }
+        mediaPlayers.values.forEach { it.release() }
+        customMediaPlayers.values.forEach { it.release() }
         mediaPlayers.clear()
         customMediaPlayers.clear()
         Log.d("SoundManager", "SoundManager resources released.")
