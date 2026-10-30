@@ -128,11 +128,12 @@
     <string name="preset_name_hint">Wenn leer, wird er als "Unbenannter Mix" gespeichert</string>
     <string name="preset_dialog_save">Speichern</string>
     <string name="dialog_cancel">Abbrechen</string>
-    <string name="timer_dialog_title">Einschlaftimer einstellen</string>
+    <string name="timer_dialog_title">Schlaftimer</string>
+    <string name="timer_dialog_subtitle">Wähle, wie lange die Klänge abgespielt werden sollen</string>
+    <string name="timer_fade_hint">Die Lautstärke wird vor dem Stopp der Wiedergabe sanft ausgeblendet</string>
     <string name="timer_custom">Benutzerdefiniert</string>
-    <string name="timer_custom_label">Minuten</string>
-    <string name="timer_minutes_format">%1$d Min</string>
-    <string name="timer_start">Starten</string>
+    <string name="timer_minutes_format">%1$d Min.</string>
+    <string name="timer_start">Timer starten</string>
     <string name="timer_set">Timer für %1$d Minuten gesetzt</string>
     <string name="timer_invalid_input">Gültige Timer-Dauer eingeben</string>
     <string name="sleep_timer_finished">Timer beendet. Sounds gestoppt.</string>

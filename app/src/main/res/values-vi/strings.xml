@@ -128,11 +128,12 @@
     <string name="preset_name_hint">Nếu để trống, sẽ lưu là "Bản phối chưa đặt tên"</string>
     <string name="preset_dialog_save">Lưu</string>
     <string name="dialog_cancel">Hủy</string>
-    <string name="timer_dialog_title">Đặt hẹn giờ ngủ</string>
+    <string name="timer_dialog_title">Hẹn giờ ngủ</string>
+    <string name="timer_dialog_subtitle">Chọn thời gian phát âm thanh</string>
+    <string name="timer_fade_hint">Âm lượng giảm dần trước khi dừng phát</string>
     <string name="timer_custom">Tùy chỉnh</string>
-    <string name="timer_custom_label">Phút</string>
     <string name="timer_minutes_format">%1$d phút</string>
-    <string name="timer_start">Bắt đầu</string>
+    <string name="timer_start">Bắt đầu hẹn giờ</string>
     <string name="timer_set">Đã đặt hẹn giờ %1$d phút</string>
     <string name="timer_invalid_input">Nhập thời lượng hợp lệ</string>
     <string name="sleep_timer_finished">Hẹn giờ kết thúc. Đã dừng âm thanh.</string>

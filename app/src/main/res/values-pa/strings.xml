@@ -128,11 +128,12 @@
     <string name="preset_name_hint">ਖਾਲੀ ਛੱਡਣ \'ਤੇ "ਬਿਨਾਂ ਨਾਮ ਮਿਕਸ" ਦੇ ਨਾਮ ਨਾਲ ਸੰਭਾਲਿਆ ਜਾਵੇਗਾ</string>
     <string name="preset_dialog_save">ਸੰਭਾਲੋ</string>
     <string name="dialog_cancel">ਰੱਦ ਕਰੋ</string>
-    <string name="timer_dialog_title">ਸੌਣ ਵਾਲਾ ਟਾਈਮਰ ਸੈੱਟ ਕਰੋ</string>
+    <string name="timer_dialog_title">ਸਲੀਪ ਟਾਈਮਰ</string>
+    <string name="timer_dialog_subtitle">ਚੁਣੋ ਕਿ ਆਵਾਜ਼ਾਂ ਕਿੰਨੀ ਦੇਰ ਚੱਲਣ</string>
+    <string name="timer_fade_hint">ਪਲੇਬੈਕ ਰੁਕਣ ਤੋਂ ਪਹਿਲਾਂ ਆਵਾਜ਼ ਹੌਲੀ-ਹੌਲੀ ਘੱਟ ਜਾਂਦੀ ਹੈ</string>
     <string name="timer_custom">ਕਸਟਮ</string>
-    <string name="timer_custom_label">ਮਿੰਟ</string>
     <string name="timer_minutes_format">%1$d ਮਿੰਟ</string>
-    <string name="timer_start">ਸ਼ੁਰੂ ਕਰੋ</string>
+    <string name="timer_start">ਟਾਈਮਰ ਸ਼ੁਰੂ ਕਰੋ</string>
     <string name="timer_set">%1$d ਮਿੰਟ ਲਈ ਟਾਈਮਰ ਸੈੱਟ ਹੋਇਆ</string>
     <string name="timer_invalid_input">ਠੀਕ ਟਾਈਮਰ ਮਿਆਦ ਦਰਜ ਕਰੋ</string>
     <string name="sleep_timer_finished">ਟਾਈਮਰ ਖਤਮ। ਆਵਾਜ਼ਾਂ ਰੋਕ ਦਿੱਤੀਆਂ ਗਈਆਂ।</string>

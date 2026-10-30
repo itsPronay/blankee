@@ -112,11 +112,12 @@
     <string name="preset_name_hint">यदि खाली छोड़ा जाता है, तो \"अनाम मिश्रण\" के रूप में सहेजा जाएगा</string>
     <string name="preset_dialog_save">सहेजें</string>
     <string name="dialog_cancel">रद्द करें</string>
-    <string name="timer_dialog_title">स्लीप टाइमर सेट करें</string>
+    <string name="timer_dialog_title">स्लीप टाइमर</string>
+    <string name="timer_dialog_subtitle">चुनें कि आवाज़ें कितनी देर तक चलें</string>
+    <string name="timer_fade_hint">प्लेबैक रुकने से पहले आवाज़ धीरे-धीरे कम हो जाती है</string>
     <string name="timer_custom">कस्टम</string>
-    <string name="timer_custom_label">मिनट</string>
-    <string name="timer_minutes_format">%1$d मि</string>
-    <string name="timer_start">शुरू करें</string>
+    <string name="timer_minutes_format">%1$d मिनट</string>
+    <string name="timer_start">टाइमर शुरू करें</string>
     <string name="timer_set">टाइमर %1$d मिनट के लिए सेट किया गया</string>
     <string name="timer_invalid_input">टाइमर के लिए वैध अवधि दर्ज करें</string>
     <string name="sleep_timer_finished">टाइमर खत्म। ध्वनियाँ रुक गईं।</string>

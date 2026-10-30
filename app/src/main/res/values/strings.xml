@@ -135,11 +135,12 @@
     <string name="preset_rename_title">Rename preset</string>
     <string name="preset_rename_confirm">Rename</string>
     <string name="dialog_cancel">Cancel</string>
-    <string name="timer_dialog_title">Set sleep timer</string>
+    <string name="timer_dialog_title">Sleep timer</string>
+    <string name="timer_dialog_subtitle">Choose how long the sounds should play</string>
+    <string name="timer_fade_hint">Volume fades out gently before playback stops</string>
     <string name="timer_custom">Custom</string>
-    <string name="timer_custom_label">Minutes</string>
-    <string name="timer_minutes_format">%1$d m</string>
-    <string name="timer_start">Start</string>
+    <string name="timer_minutes_format">%1$d min</string>
+    <string name="timer_start">Start timer</string>
     <string name="timer_set">Timer set for %1$d minutes</string>
     <string name="timer_invalid_input">Enter a valid timer duration</string>
     <string name="sleep_timer_finished">Timer finished. Sounds stopped.</string>

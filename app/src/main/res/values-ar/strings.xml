@@ -118,11 +118,12 @@
     <string name="preset_name_hint">إذا تُرك فارغاً، سيتم حفظه باسم \"مزيج بدون عنوان\"</string>
     <string name="preset_dialog_save">حفظ</string>
     <string name="dialog_cancel">إلغاء</string>
-    <string name="timer_dialog_title">ضبط مؤقت النوم</string>
+    <string name="timer_dialog_title">مؤقت النوم</string>
+    <string name="timer_dialog_subtitle">اختر مدة تشغيل الأصوات</string>
+    <string name="timer_fade_hint">ينخفض مستوى الصوت تدريجيًا قبل توقف التشغيل</string>
     <string name="timer_custom">مخصص</string>
-    <string name="timer_custom_label">الدقائق</string>
-    <string name="timer_minutes_format">%1$d د</string>
-    <string name="timer_start">ابدأ</string>
+    <string name="timer_minutes_format">%1$d دقيقة</string>
+    <string name="timer_start">ابدأ المؤقت</string>
     <string name="timer_set">تم ضبط المؤقت لمدة %1$d دقيقة</string>
     <string name="timer_invalid_input">أدخل مدة مؤقت صحيحة</string>
     <string name="sleep_timer_finished">انتهى المؤقت. توقفت الأصوات.</string>

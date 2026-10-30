@@ -118,11 +118,12 @@
     <string name="preset_name_hint">S\'il est laissé vide, il sera enregistré en tant que \"Mélange sans titre\"</string>
     <string name="preset_dialog_save">Enregistrer</string>
     <string name="dialog_cancel">Annuler</string>
-    <string name="timer_dialog_title">Définir le minuteur de sommeil</string>
+    <string name="timer_dialog_title">Minuteur de sommeil</string>
+    <string name="timer_dialog_subtitle">Choisissez la durée de lecture des sons</string>
+    <string name="timer_fade_hint">Le volume diminue doucement avant l’arrêt de la lecture</string>
     <string name="timer_custom">Personnalisé</string>
-    <string name="timer_custom_label">Minutes</string>
     <string name="timer_minutes_format">%1$d min</string>
-    <string name="timer_start">Commencer</string>
+    <string name="timer_start">Démarrer le minuteur</string>
     <string name="timer_set">Minuteur défini sur %1$d minutes</string>
     <string name="timer_invalid_input">Entrez une durée de minuteur valide</string>
     <string name="sleep_timer_finished">Minuteur terminé. Les sons se sont arrêtés.</string>

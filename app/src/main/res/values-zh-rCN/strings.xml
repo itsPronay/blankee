@@ -118,11 +118,12 @@
     <string name="preset_name_hint">如果留空，将被保存为 \"未标题的混合\"</string>
     <string name="preset_dialog_save">保存</string>
     <string name="dialog_cancel">取消</string>
-    <string name="timer_dialog_title">设置睡眠计时器</string>
+    <string name="timer_dialog_title">睡眠定时器</string>
+    <string name="timer_dialog_subtitle">选择声音播放的时长</string>
+    <string name="timer_fade_hint">播放停止前，音量会逐渐淡出</string>
     <string name="timer_custom">自定义</string>
-    <string name="timer_custom_label">分钟</string>
     <string name="timer_minutes_format">%1$d 分钟</string>
-    <string name="timer_start">开始</string>
+    <string name="timer_start">开始定时</string>
     <string name="timer_set">计时器设置为 %1$d 分钟</string>
     <string name="timer_invalid_input">输入有效的计时器时间</string>
     <string name="sleep_timer_finished">计时器完成。声音已停止。</string>

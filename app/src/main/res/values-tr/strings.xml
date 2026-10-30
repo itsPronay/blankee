@@ -128,11 +128,12 @@
     <string name="preset_name_hint">Boş bırakılırsa "Başlıksız karışım" olarak kaydedilir</string>
     <string name="preset_dialog_save">Kaydet</string>
     <string name="dialog_cancel">İptal</string>
-    <string name="timer_dialog_title">Uyku zamanlayıcısını ayarla</string>
+    <string name="timer_dialog_title">Uyku zamanlayıcısı</string>
+    <string name="timer_dialog_subtitle">Seslerin ne kadar süre çalacağını seçin</string>
+    <string name="timer_fade_hint">Oynatma durmadan önce ses yavaşça kısılır</string>
     <string name="timer_custom">Özel</string>
-    <string name="timer_custom_label">Dakika</string>
     <string name="timer_minutes_format">%1$d dk</string>
-    <string name="timer_start">Başlat</string>
+    <string name="timer_start">Zamanlayıcıyı başlat</string>
     <string name="timer_set">Zamanlayıcı %1$d dakika için ayarlandı</string>
     <string name="timer_invalid_input">Geçerli bir süre girin</string>
     <string name="sleep_timer_finished">Zamanlayıcı bitti. Sesler durduruldu.</string>

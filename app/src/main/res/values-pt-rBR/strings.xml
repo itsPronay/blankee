@@ -118,11 +118,12 @@
     <string name="preset_name_hint">Se deixado em branco, será salvo como \"Mistura sem título\"</string>
     <string name="preset_dialog_save">Salvar</string>
     <string name="dialog_cancel">Cancelar</string>
-    <string name="timer_dialog_title">Definir temporizador de sono</string>
+    <string name="timer_dialog_title">Temporizador de sono</string>
+    <string name="timer_dialog_subtitle">Escolha por quanto tempo os sons devem tocar</string>
+    <string name="timer_fade_hint">O volume diminui suavemente antes de a reprodução parar</string>
     <string name="timer_custom">Personalizado</string>
-    <string name="timer_custom_label">Minutos</string>
-    <string name="timer_minutes_format">%1$d m</string>
-    <string name="timer_start">Iniciar</string>
+    <string name="timer_minutes_format">%1$d min</string>
+    <string name="timer_start">Iniciar temporizador</string>
     <string name="timer_set">Temporizador configurado para %1$d minutos</string>
     <string name="timer_invalid_input">Digite uma duração de temporizador válida</string>
     <string name="sleep_timer_finished">Temporizador concluído. Sons parados.</string>

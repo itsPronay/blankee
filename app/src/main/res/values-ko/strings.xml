@@ -118,11 +118,12 @@
     <string name="preset_name_hint">비워두면 \"제목 없는 믹스\"로 저장됩니다</string>
     <string name="preset_dialog_save">저장</string>
     <string name="dialog_cancel">취소</string>
-    <string name="timer_dialog_title">수면 타이머 설정</string>
+    <string name="timer_dialog_title">수면 타이머</string>
+    <string name="timer_dialog_subtitle">소리를 재생할 시간을 선택하세요</string>
+    <string name="timer_fade_hint">재생이 멈추기 전에 볼륨이 서서히 줄어듭니다</string>
     <string name="timer_custom">사용자 정의</string>
-    <string name="timer_custom_label">분</string>
     <string name="timer_minutes_format">%1$d분</string>
-    <string name="timer_start">시작</string>
+    <string name="timer_start">타이머 시작</string>
     <string name="timer_set">타이머가 %1$d분으로 설정되었습니다</string>
     <string name="timer_invalid_input">유효한 타이머 기간을 입력하세요</string>
     <string name="sleep_timer_finished">타이머 완료. 소리가 중지되었습니다.</string>
