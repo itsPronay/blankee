@@ -189,7 +189,7 @@ fun BlankeeTopAppBar(
                         OutlinedTextField(
                             value = customTimerInput,
                             onValueChange = { customTimerInput = it.filter(Char::isDigit) },
-                            label = { Text(stringResource(R.string.timer_custom_label)) },
+                            label = { Text(stringResource(R.string.timer_custom)) },
                             singleLine = true,
                             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                             modifier = Modifier.fillMaxWidth(),

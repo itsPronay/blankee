@@ -1034,7 +1034,7 @@ fun TimerDialog(
                         customTimerInput = it.filter(Char::isDigit).take(4)
                         selectedTimerOption = -1
                     },
-                    label = { Text(stringResource(R.string.timer_custom_label)) },
+                    label = { Text(stringResource(R.string.timer_custom)) },
                     singleLine = true,
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                     modifier = Modifier.fillMaxWidth(),
