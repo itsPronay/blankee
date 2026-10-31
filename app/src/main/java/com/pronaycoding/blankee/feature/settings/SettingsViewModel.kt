@@ -19,12 +19,14 @@ package com.pronaycoding.blankee.feature.settings
  */
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.pronaycoding.blankee.R
 import com.pronaycoding.blankee.core.common.Constants
 import com.pronaycoding.blankee.core.datastore.PreferenceManagerRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 class SettingsViewModel(
@@ -98,7 +100,7 @@ class SettingsViewModel(
     fun updateAccentColor(id: String) {
         if (_accentColor.value == id) return
         _accentColor.value = id
-        runBlocking {
+        viewModelScope.launch {
             prefManager.setAccentColor(id)
         }
     }

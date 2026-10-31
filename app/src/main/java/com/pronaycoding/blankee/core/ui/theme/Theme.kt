@@ -36,6 +36,8 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.SideEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
@@ -129,17 +131,18 @@ fun BlankeeAppTheme(
 ) {
     val context = LocalContext.current
     val systemDark = isSystemInDarkTheme()
-    // Read once per activity: every preference change recreates the activity, and these are
-    // blocking DataStore reads that must not run on each recomposition.
-    val (themeMode, amoledDark, accentId) =
-        remember(context) {
-            val preferenceManager = PreferenceManagerRepositoryImpl(context)
-            Triple(
-                preferenceManager.getThemeModeBlocking(Constants.MODE_DARK),
-                preferenceManager.getAmoledDarkBlocking(false),
-                preferenceManager.getAccentColorBlocking(Constants.ACCENT_DEFAULT),
-            )
+    // Theme mode and AMOLED changes still recreate the activity, so these blocking reads
+    // happen once per activity rather than on each recomposition.
+    val preferenceManager = remember(context) { PreferenceManagerRepositoryImpl(context) }
+    val (themeMode, amoledDark) =
+        remember(preferenceManager) {
+            preferenceManager.getThemeModeBlocking(Constants.MODE_DARK) to
+                preferenceManager.getAmoledDarkBlocking(false)
         }
+    // The accent is observed, so changing it recomposes the theme without recreating the activity.
+    val accentId by remember(preferenceManager) {
+        preferenceManager.accentColorFlow(Constants.ACCENT_DEFAULT)
+    }.collectAsState(initial = remember(preferenceManager) { preferenceManager.getAccentColorBlocking(Constants.ACCENT_DEFAULT) })
     val darkTheme =
         when (themeMode) {
             Constants.MODE_LIGHT -> false

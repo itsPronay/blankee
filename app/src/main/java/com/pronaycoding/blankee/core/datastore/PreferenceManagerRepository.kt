@@ -1,5 +1,7 @@
 package com.pronaycoding.blankee.core.datastore
 
+import kotlinx.coroutines.flow.Flow
+
 /**
  * Repository interface for managing app preferences and settings.
  *
@@ -40,6 +42,9 @@ interface PreferenceManagerRepository {
 
     /** Returns the id of the selected accent color (see AccentColors). */
     fun getAccentColorBlocking(defaultValue: String): String
+
+    /** Emits the selected accent color id whenever it changes. */
+    fun accentColorFlow(defaultValue: String): Flow<String>
 
     /** Stores the id of the selected accent color. */
     suspend fun setAccentColor(id: String)

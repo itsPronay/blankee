@@ -11,7 +11,9 @@ import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import com.pronaycoding.blankee.core.common.Constants.LANGUAGE_TAG_SYSTEM
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.runBlocking
 import java.util.Locale
 
@@ -77,6 +79,9 @@ class PreferenceManagerRepositoryImpl(
         runBlocking {
             appContext.dataStore.data.first()[Keys.accentColor] ?: defaultValue
         }
+
+    override fun accentColorFlow(defaultValue: String): Flow<String> =
+        appContext.dataStore.data.map { it[Keys.accentColor] ?: defaultValue }
 
     override suspend fun setAccentColor(id: String) {
         appContext.dataStore.edit { prefs ->

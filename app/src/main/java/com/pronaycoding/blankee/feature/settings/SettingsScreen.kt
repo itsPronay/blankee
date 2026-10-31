@@ -339,10 +339,7 @@ fun SettingsScreen(
                                             color = scheme.onSurface,
                                             shape = CircleShape,
                                         ).clickable(role = Role.RadioButton) {
-                                            if (!selected) {
-                                                updateAccentColor(option.id)
-                                                context.findActivity()?.recreate()
-                                            }
+                                            if (!selected) updateAccentColor(option.id)
                                         }.semantics { this.selected = selected; contentDescription = option.label },
                             ) {
                                 if (selected) {
