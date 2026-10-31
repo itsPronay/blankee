@@ -66,7 +66,6 @@ val AccentColors =
         AccentColor("mint", Color(0xFF00C7BE), Color(0xFF63E6E2), "Mint"),
         AccentColor("teal", Color(0xFF30B0C7), Color(0xFF40C8E0), "Teal"),
         AccentColor("cyan", Color(0xFF32ADE6), Color(0xFF64D2FF), "Cyan"),
-        AccentColor("blue", Color(0xFF007AFF), Color(0xFF0A84FF), "Blue"),
         AccentColor("indigo", Color(0xFF5856D6), Color(0xFF5E5CE6), "Indigo"),
         AccentColor("purple", Color(0xFFAF52DE), Color(0xFFBF5AF2), "Purple"),
     )
