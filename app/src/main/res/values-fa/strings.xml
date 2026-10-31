@@ -128,11 +128,11 @@
     <string name="preset_name_hint">اگر خالی باشد، به عنوان "میکس بدون عنوان" ذخیره می‌شود</string>
     <string name="preset_dialog_save">ذخیره</string>
     <string name="dialog_cancel">لغو</string>
-    <string name="timer_dialog_title">تنظیم تایمر خواب</string>
+    <string name="timer_dialog_title">تایمر خواب</string>
+    <string name="timer_dialog_subtitle">مدت پخش صداها را انتخاب کنید</string>
     <string name="timer_custom">سفارشی</string>
-    <string name="timer_custom_label">دقیقه</string>
     <string name="timer_minutes_format">%1$d دقیقه</string>
-    <string name="timer_start">شروع</string>
+    <string name="timer_start">شروع تایمر</string>
     <string name="timer_set">تایمر برای %1$d دقیقه تنظیم شد</string>
     <string name="timer_invalid_input">مدت‌زمان معتبر وارد کنید</string>
     <string name="sleep_timer_finished">تایمر تمام شد. صداها متوقف شدند.</string>

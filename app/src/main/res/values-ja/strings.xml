@@ -128,11 +128,11 @@
     <string name="preset_name_hint">空の場合は「無題のミックス」として保存されます</string>
     <string name="preset_dialog_save">保存</string>
     <string name="dialog_cancel">キャンセル</string>
-    <string name="timer_dialog_title">スリープタイマーを設定</string>
+    <string name="timer_dialog_title">スリープタイマー</string>
+    <string name="timer_dialog_subtitle">サウンドを再生する時間を選択してください</string>
     <string name="timer_custom">カスタム</string>
-    <string name="timer_custom_label">分</string>
-    <string name="timer_minutes_format">%1$d 分</string>
-    <string name="timer_start">開始</string>
+    <string name="timer_minutes_format">%1$d分</string>
+    <string name="timer_start">タイマーを開始</string>
     <string name="timer_set">%1$d 分のタイマーを設定しました</string>
     <string name="timer_invalid_input">有効なタイマー時間を入力してください</string>
     <string name="sleep_timer_finished">タイマーが終了しました。サウンドを停止しました。</string>

@@ -128,11 +128,11 @@
     <string name="preset_name_hint">خالی چھوڑنے پر یہ "بلا عنوان مکس" کے نام سے محفوظ ہوگا</string>
     <string name="preset_dialog_save">محفوظ کریں</string>
     <string name="dialog_cancel">منسوخ کریں</string>
-    <string name="timer_dialog_title">نیند کا ٹائمر سیٹ کریں</string>
+    <string name="timer_dialog_title">سلیپ ٹائمر</string>
+    <string name="timer_dialog_subtitle">منتخب کریں کہ آوازیں کتنی دیر چلیں</string>
     <string name="timer_custom">کسٹم</string>
-    <string name="timer_custom_label">منٹ</string>
     <string name="timer_minutes_format">%1$d منٹ</string>
-    <string name="timer_start">شروع کریں</string>
+    <string name="timer_start">ٹائمر شروع کریں</string>
     <string name="timer_set">ٹائمر %1$d منٹ کے لیے سیٹ ہو گیا</string>
     <string name="timer_invalid_input">درست دورانیہ درج کریں</string>
     <string name="sleep_timer_finished">ٹائمر ختم۔ آوازیں بند کر دی گئیں۔</string>

@@ -130,7 +130,6 @@
     <string name="dialog_cancel">Отмена</string>
     <string name="timer_dialog_title">Установить таймер сна</string>
     <string name="timer_custom">Пользовательский</string>
-    <string name="timer_custom_label">Минуты</string>
     <string name="timer_minutes_format">%1$d мин</string>
     <string name="timer_start">Запустить</string>
     <string name="timer_set">Таймер установлен на %1$d мин</string>

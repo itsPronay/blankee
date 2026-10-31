@@ -112,11 +112,11 @@
     <string name="preset_name_hint">খালি রেখে গেলে \"শিরোনামহীন মিক্স\" হিসাবে সংরক্ষিত হবে</string>
     <string name="preset_dialog_save">সংরক্ষণ</string>
     <string name="dialog_cancel">বাতিল</string>
-    <string name="timer_dialog_title">ঘুমের টাইমার সেট করুন</string>
+    <string name="timer_dialog_title">ঘুমের টাইমার</string>
+    <string name="timer_dialog_subtitle">শব্দগুলো কতক্ষণ চলবে তা বেছে নিন</string>
     <string name="timer_custom">কাস্টম</string>
-    <string name="timer_custom_label">মিনিট</string>
-    <string name="timer_minutes_format">%1$d মি</string>
-    <string name="timer_start">শুরু করুন</string>
+    <string name="timer_minutes_format">%1$d মিনিট</string>
+    <string name="timer_start">টাইমার শুরু করুন</string>
     <string name="timer_set">টাইমার সেট করা হয়েছে %1$d মিনিটের জন্য</string>
     <string name="timer_invalid_input">টাইমারের জন্য একটি বৈধ সময়কাল প্রবেশ করুন</string>
     <string name="sleep_timer_finished">টাইমার শেষ। শব্দ বন্ধ করা হয়েছে।</string>

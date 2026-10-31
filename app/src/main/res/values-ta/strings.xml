@@ -117,18 +117,18 @@
     <string name="preset_name_label">முன்பு அமைப்பின் பெயர்</string>
     <string name="preset_name_hint">வெறுமையாக விட்டாலால் பெயரிடப்பாத கலவை என சேமிக்கப்படும்</string>
     <string name="preset_dialog_save">சேமி</string>
-    <string name="dialog_cancel">ரத்து செய়யு</string>
-    <string name="timer_dialog_title">உறக்க டைமர் அமை</string>
+    <string name="dialog_cancel">ரத்து செய்</string>
+    <string name="timer_dialog_title">தூக்க டைமர்</string>
+    <string name="timer_dialog_subtitle">ஒலிகள் எவ்வளவு நேரம் இயங்க வேண்டும் என்பதைத் தேர்ந்தெடுக்கவும்</string>
     <string name="timer_custom">விருப்ப</string>
-    <string name="timer_custom_label">நிமிடங்கள்</string>
-    <string name="timer_minutes_format">%1$d நி</string>
-    <string name="timer_start">தொடக்கம்</string>
+    <string name="timer_minutes_format">%1$d நிமிடம்</string>
+    <string name="timer_start">டைமரைத் தொடங்கு</string>
     <string name="timer_set">டைமர் %1$d நிமிடங்களுக்கு அமைக்கப்பட்டுள்ளது</string>
-    <string name="timer_invalid_input">செல்லுபडि டைமர் கால அளவை உवेশiக्या செய்யவும்</string>
-    <string name="sleep_timer_finished">டைமர் முடிந்து விட்டது. ஒலிகள் நிறுத்தப்பட்டுவிட்டன।</string>
-    <string name="timer_countdown_label">உறக்க டைமர்: %1$s</string>
+    <string name="timer_invalid_input">சரியான டைமர் கால அளவை உள்ளிடவும்</string>
+    <string name="sleep_timer_finished">டைமர் முடிந்தது. ஒலிகள் நிறுத்தப்பட்டன.</string>
+    <string name="timer_countdown_label">தூக்க டைமர்: %1$s</string>
     <string name="timer_cancel">டைமரை ரத்து செய்யவும்</string>
-    <string name="timer_cancel_confirm_title">உறக்க டைமர்ை ரத்து செய்யவும்?</string>
+    <string name="timer_cancel_confirm_title">தூக்க டைமரை ரத்து செய்யவா?</string>
     <string name="timer_cancel_confirm_message">தற்போதைய டைமர்ை நிறுத்த வேண்டுமா?</string>
 
     <string name="notification_channel_name">பிளேபாக்</string>
