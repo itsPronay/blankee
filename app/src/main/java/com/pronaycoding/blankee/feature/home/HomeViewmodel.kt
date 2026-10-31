@@ -72,17 +72,7 @@ class HomeViewmodel(
 
     init {
         startCustomSoundsCollection()
-        restorePlaybackState()
-    }
-
-    /**
-     * SoundManager and GlobalPlaybackState outlive this ViewModel (and the activity), so sounds can
-     * still be playing when it is recreated. Rebuild the UI state from them instead of stopping everything.
-     */
-    private fun restorePlaybackState() {
-        _builtinVolumes.value = soundManager.activeBuiltInVolumes()
-        _customVolumes.value = soundManager.activeCustomVolumes()
-        syncPlaybackNotification()
+        resetAllSounds()
     }
 
     private fun builtInPresetIndexEndExclusive(): Int = getCardList().size
