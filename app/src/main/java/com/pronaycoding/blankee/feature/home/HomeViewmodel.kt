@@ -20,6 +20,7 @@ import com.pronaycoding.blankee.core.domain.usecase.preset.SavePresetUseCase
 import com.pronaycoding.blankee.core.domain.usecase.preset.UpdatePresetUseCase
 import com.pronaycoding.blankee.core.service.playback.GlobalPlaybackState
 import com.pronaycoding.blankee.core.service.playback.MediaPlaybackNotifications
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -29,6 +30,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.io.File
 
 class HomeViewmodel(
@@ -69,9 +71,18 @@ class HomeViewmodel(
     val sleepTimerRemainingMillis: StateFlow<Long?> = _sleepTimerRemainingMillis.asStateFlow()
 
     init {
-        soundManager.loadSounds()
         startCustomSoundsCollection()
-        resetAllSounds()
+        restorePlaybackState()
+    }
+
+    /**
+     * SoundManager and GlobalPlaybackState outlive this ViewModel (and the activity), so sounds can
+     * still be playing when it is recreated. Rebuild the UI state from them instead of stopping everything.
+     */
+    private fun restorePlaybackState() {
+        _builtinVolumes.value = soundManager.activeBuiltInVolumes()
+        _customVolumes.value = soundManager.activeCustomVolumes()
+        syncPlaybackNotification()
     }
 
     private fun builtInPresetIndexEndExclusive(): Int = getCardList().size
@@ -85,7 +96,11 @@ class HomeViewmodel(
 
                     sounds.forEach { sound ->
                         if (!loadedCustomSoundIds.contains(sound.id)) {
-                            val persistentPath = getPersistentFilePath(sound.id, sound.filePath)
+                            // Copying/checking the file is disk I/O, keep it off the main thread.
+                            val persistentPath =
+                                withContext(Dispatchers.IO) {
+                                    getPersistentFilePath(sound.id, sound.filePath)
+                                }
                             Log.d("HomeViewmodel", "Loading custom sound from: $persistentPath")
                             soundManager.loadCustomSound(sound.id, persistentPath)
                             loadedCustomSoundIds.add(sound.id)
