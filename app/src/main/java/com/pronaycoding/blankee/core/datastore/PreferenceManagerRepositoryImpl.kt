@@ -11,7 +11,9 @@ import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import com.pronaycoding.blankee.core.common.Constants.LANGUAGE_TAG_SYSTEM
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.runBlocking
 import java.util.Locale
 
@@ -70,6 +72,20 @@ class PreferenceManagerRepositoryImpl(
     override suspend fun setAmoledDark(enabled: Boolean) {
         appContext.dataStore.edit { prefs ->
             prefs[Keys.amoledDark] = enabled
+        }
+    }
+
+    override fun getAccentColorBlocking(defaultValue: String): String =
+        runBlocking {
+            appContext.dataStore.data.first()[Keys.accentColor] ?: defaultValue
+        }
+
+    override fun accentColorFlow(defaultValue: String): Flow<String> =
+        appContext.dataStore.data.map { it[Keys.accentColor] ?: defaultValue }
+
+    override suspend fun setAccentColor(id: String) {
+        appContext.dataStore.edit { prefs ->
+            prefs[Keys.accentColor] = id
         }
     }
 
@@ -197,6 +213,7 @@ class PreferenceManagerRepositoryImpl(
     private object Keys {
         val themeMode: Preferences.Key<String> = stringPreferencesKey("app_theme_mode")
         val amoledDark: Preferences.Key<Boolean> = booleanPreferencesKey("amoled_dark")
+        val accentColor: Preferences.Key<String> = stringPreferencesKey("accent_color")
         val languageTag: Preferences.Key<String> = stringPreferencesKey("app_language_tag")
         val launchCount: Preferences.Key<Int> = intPreferencesKey("launch_count")
         val enjoyPromptShown: Preferences.Key<Boolean> = booleanPreferencesKey("enjoy_prompt_shown")

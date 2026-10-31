@@ -23,6 +23,18 @@ package com.pronaycoding.blankee.feature.settings
  * @see PreferenceManagerRepository for preference persistence
  */
 
+import com.pronaycoding.blankee.core.ui.theme.AccentColors
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.selected
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.draw.clip
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.border
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -42,6 +54,7 @@ import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.BugReport
 import androidx.compose.material.icons.filled.Gavel
 import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.filled.Brush
 import androidx.compose.material.icons.filled.Language
 import androidx.compose.material.icons.filled.OpenInNew
 import androidx.compose.material.icons.filled.Palette
@@ -76,6 +89,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -107,11 +121,14 @@ fun SettingsScreenRoute(
     val selectedTheme by viewModel.selectedTheme.collectAsStateWithLifecycle()
     val amoledDark by viewModel.amoledDark.collectAsStateWithLifecycle()
     val selectedLanguage by viewModel.selectedLanguage.collectAsStateWithLifecycle()
+    val accentColor by viewModel.accentColor.collectAsStateWithLifecycle()
 
     SettingsScreen(
         selectedTheme = selectedTheme,
         amoledDark = amoledDark,
         selectedLanguage = selectedLanguage,
+        accentColor = accentColor,
+        updateAccentColor = viewModel::updateAccentColor,
         themeChoices = viewModel.themeChoices,
         languageChoices = viewModel.languageChoices,
         onBackPressed = onBackPressed,
@@ -127,6 +144,8 @@ fun SettingsScreen(
     selectedTheme: String,
     amoledDark: Boolean,
     selectedLanguage: String,
+    accentColor: String,
+    updateAccentColor: (String) -> Unit,
     themeChoices: List<ThemeChoice>,
     languageChoices: List<LanguageChoice>,
     updateTheme: (String) -> Unit,
@@ -282,6 +301,55 @@ fun SettingsScreen(
                                         context.findActivity()?.recreate()
                                     },
                                 )
+                            }
+                        }
+                    }
+
+                    HorizontalDivider(
+                        modifier = Modifier.padding(vertical = 20.dp),
+                        color = scheme.outlineVariant,
+                    )
+
+                    SettingHeading(
+                        icon = Icons.Default.Brush,
+                        title = stringResource(R.string.settings_accent_color),
+                        modifier = Modifier.padding(horizontal = 20.dp, vertical = 4.dp),
+                    )
+                    Spacer(modifier = Modifier.height(10.dp))
+                    Row(
+                        modifier =
+                            Modifier
+                                .fillMaxWidth()
+                                .horizontalScroll(rememberScrollState())
+                                .padding(horizontal = 24.dp, vertical = 12.dp),
+                        horizontalArrangement = Arrangement.spacedBy(12.dp),
+                    ) {
+                        AccentColors.forEach { option ->
+                            val selected = option.id == accentColor
+                            val swatch = option.color(scheme.background.luminance() < 0.5f)
+                            Box(
+                                contentAlignment = Alignment.Center,
+                                modifier =
+                                    Modifier
+                                        .size(36.dp)
+                                        .clip(CircleShape)
+                                        .background(swatch)
+                                        .border(
+                                            width = if (selected) 3.dp else 0.dp,
+                                            color = scheme.onSurface,
+                                            shape = CircleShape,
+                                        ).clickable(role = Role.RadioButton) {
+                                            if (!selected) updateAccentColor(option.id)
+                                        }.semantics { this.selected = selected; contentDescription = option.label },
+                            ) {
+                                if (selected) {
+                                    Icon(
+                                        imageVector = Icons.Default.Check,
+                                        contentDescription = null,
+                                        tint = Color.White,
+                                        modifier = Modifier.size(20.dp),
+                                    )
+                                }
                             }
                         }
                     }

@@ -34,8 +34,14 @@ import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.SideEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
@@ -114,6 +120,9 @@ private val LightColorScheme =
         outlineVariant = Color(0xFFCAC7D0),
     )
 
+/** The accent used for section titles and tabs; follows the user-selected accent color. */
+val LocalAccentColor = staticCompositionLocalOf { DefaultAccent }
+
 @Composable
 fun BlankeeAppTheme(
     // Dynamic color is available on Android 12+
@@ -121,10 +130,19 @@ fun BlankeeAppTheme(
     content: @Composable () -> Unit,
 ) {
     val context = LocalContext.current
-    val preferenceManager = PreferenceManagerRepositoryImpl(context)
     val systemDark = isSystemInDarkTheme()
-    val themeMode = preferenceManager.getThemeModeBlocking(Constants.MODE_DARK)
-    val amoledDark = preferenceManager.getAmoledDarkBlocking(false)
+    // Theme mode and AMOLED changes still recreate the activity, so these blocking reads
+    // happen once per activity rather than on each recomposition.
+    val preferenceManager = remember(context) { PreferenceManagerRepositoryImpl(context) }
+    val (themeMode, amoledDark) =
+        remember(preferenceManager) {
+            preferenceManager.getThemeModeBlocking(Constants.MODE_DARK) to
+                preferenceManager.getAmoledDarkBlocking(false)
+        }
+    // The accent is observed, so changing it recomposes the theme without recreating the activity.
+    val accentId by remember(preferenceManager) {
+        preferenceManager.accentColorFlow(Constants.ACCENT_DEFAULT)
+    }.collectAsState(initial = remember(preferenceManager) { preferenceManager.getAccentColorBlocking(Constants.ACCENT_DEFAULT) })
     val darkTheme =
         when (themeMode) {
             Constants.MODE_LIGHT -> false
@@ -132,7 +150,13 @@ fun BlankeeAppTheme(
             else -> true
         }
 
-    val colorScheme =
+    val accent =
+        AccentColors
+            .firstOrNull { it.id == accentId }
+            ?.takeIf { it.id != Constants.ACCENT_DEFAULT }
+            ?.color(darkTheme)
+
+    val baseScheme =
         when {
             dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
                 if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
@@ -140,6 +164,18 @@ fun BlankeeAppTheme(
             darkTheme && amoledDark -> AmoledColorScheme
             darkTheme -> DarkColorScheme
             else -> LightColorScheme
+        }
+
+    val colorScheme =
+        if (accent == null || (dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S)) {
+            baseScheme
+        } else {
+            baseScheme.copy(
+                primary = accent,
+                onPrimary = if (accent.luminance() > 0.5f) Color.Black else Color.White,
+                primaryContainer = if (darkTheme) accent.copy(alpha = 1f).darken(0.25f) else accent.lighten(0.45f),
+                onPrimaryContainer = if (darkTheme) Color.White else accent.darken(0.6f),
+            )
         }
 
     val view = LocalView.current
@@ -152,9 +188,17 @@ fun BlankeeAppTheme(
         }
     }
 
-    MaterialTheme(
-        colorScheme = colorScheme,
-        typography = Typography,
-        content = content,
-    )
+    CompositionLocalProvider(LocalAccentColor provides (accent ?: DefaultAccent)) {
+        MaterialTheme(
+            colorScheme = colorScheme,
+            typography = Typography,
+            content = content,
+        )
+    }
 }
+
+private fun Color.darken(fraction: Float): Color =
+    Color(red * (1 - fraction), green * (1 - fraction), blue * (1 - fraction), alpha)
+
+private fun Color.lighten(fraction: Float): Color =
+    Color(red + (1 - red) * fraction, green + (1 - green) * fraction, blue + (1 - blue) * fraction, alpha)

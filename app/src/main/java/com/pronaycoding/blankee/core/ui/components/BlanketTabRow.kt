@@ -15,6 +15,7 @@ package com.pronaycoding.blankee.core.ui.components
  * @see androidx.compose.material3.TabRow for Material Design tab row documentation
  */
 
+import com.pronaycoding.blankee.core.ui.theme.LocalAccentColor
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -55,7 +56,7 @@ fun BlanketTabRow(modifier: Modifier = Modifier) {
         ) {
             titles.forEachIndexed { index, title ->
                 Tab(
-                    selectedContentColor = Color(0xFF27a157).copy(alpha = .5f),
+                    selectedContentColor = LocalAccentColor.current.copy(alpha = .5f),
                     selected = (index == state),
                     onClick = { state = index },
                     text = {
@@ -63,7 +64,7 @@ fun BlanketTabRow(modifier: Modifier = Modifier) {
                             text = title,
                             color =
                                 if (state == index) {
-                                    Color(0xFF27a157)
+                                    LocalAccentColor.current
                                 } else {
                                     MaterialTheme.colorScheme.inverseSurface.copy(
                                         alpha = .7f,

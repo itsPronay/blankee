@@ -15,6 +15,7 @@ package com.pronaycoding.blankee.core.ui.components
  * @see androidx.compose.material3.HorizontalDivider for divider rendering
  */
 
+import com.pronaycoding.blankee.core.ui.theme.LocalAccentColor
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -72,7 +73,7 @@ fun TitleCardView(
     ) {
         Text(
             text = typeText,
-            color = Color(0xFF27a157),
+            color = LocalAccentColor.current,
             style = MaterialTheme.typography.titleLarge,
             fontWeight = FontWeight.Bold,
             fontFamily = FontFamily.Monospace,

@@ -64,6 +64,7 @@
     <string name="theme_dark">Dark</string>
     <string name="theme_auto">Auto</string>
     <string name="theme_amoled">AMOLED Dark</string>
+    <string name="settings_accent_color">Accent color</string>
     <string name="language_english">English</string>
     <string name="language_chinese">中文 (简体)</string>
     <string name="language_hindi">हिंदी</string>
