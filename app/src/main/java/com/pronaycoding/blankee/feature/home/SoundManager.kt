@@ -164,6 +164,9 @@ class SoundManager(
                     }
                 }
 
+            // Already registered (e.g. the UI was recreated while it is playing): keep the live player.
+            if (customSoundUris[soundId] == uri && customMediaPlayers.containsKey(soundId)) return true
+
             customMediaPlayers.remove(soundId)?.release() // avoid leaks if reloaded
             customSoundUris[soundId] = uri
             Log.d(TAG, "Registered custom sound: $soundId")
@@ -173,6 +176,18 @@ class SoundManager(
             false
         }
     }
+
+    /** Volumes of built-in sounds that are playing, or paused by [pauseAllSounds]. */
+    fun activeBuiltInVolumes(): Map<Int, Float> =
+        mediaPlayers
+            .filter { (index, player) -> (player.isActive || index in pausedBuiltInSounds) && player.volume > 0f }
+            .mapValues { it.value.volume }
+
+    /** Volumes of custom sounds that are playing, or paused by [pauseAllSounds]. */
+    fun activeCustomVolumes(): Map<Int, Float> =
+        customMediaPlayers
+            .filter { (id, player) -> (player.isActive || id in pausedCustomSounds) && player.volume > 0f }
+            .mapValues { it.value.volume }
 
     /**
      * Unloads a custom sound and releases resources.
