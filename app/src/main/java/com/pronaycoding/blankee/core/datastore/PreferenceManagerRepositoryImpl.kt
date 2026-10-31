@@ -103,9 +103,6 @@ class PreferenceManagerRepositoryImpl(
             appContext.dataStore.data.first()[Keys.languageTag] ?: defaultValue
         }
 
-    override fun languageTagFlow(defaultValue: String): Flow<String> =
-        appContext.dataStore.data.map { it[Keys.languageTag] ?: defaultValue }
-
     /**
      * Stores the language tag preference.
      *

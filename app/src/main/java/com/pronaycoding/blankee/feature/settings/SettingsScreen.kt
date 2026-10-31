@@ -426,6 +426,7 @@ fun SettingsScreen(
                                 onClick = {
                                     if (!isSelected) {
                                         updateLanguage(choice.tag)
+                                        context.findActivity()?.recreate()
                                     }
                                     expanded = false
                                 },
