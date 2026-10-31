@@ -62,6 +62,9 @@ interface PreferenceManagerRepository {
      */
     fun getLanguageTagBlocking(defaultValue: String): String
 
+    /** Emits the stored language tag whenever it changes. */
+    fun languageTagFlow(defaultValue: String): Flow<String>
+
     /**
      * Sets the language tag preference.
      *
