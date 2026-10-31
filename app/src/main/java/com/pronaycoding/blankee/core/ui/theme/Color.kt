@@ -41,23 +41,32 @@ val Warning = Color(0xFFFFB74D)
 val DefaultAccent = Color(0xFF27A157)
 
 /**
- * User-selectable accent colors, in the spirit of Blankie (iOS/macOS) and Blanket (GNOME).
+ * User-selectable accent colors, matching Blankie (iOS/macOS) in name and order.
+ * The values are Apple's system colors (as used by SwiftUI's `.red`, `.blue`, ...),
+ * with the light and dark appearance variants. "Default" keeps the app's own accent.
  */
 data class AccentColor(
     val id: String,
-    val color: Color,
+    val light: Color,
+    val dark: Color,
     val label: String,
-)
+) {
+    fun color(darkTheme: Boolean): Color = if (darkTheme) dark else light
+}
 
 val AccentColors =
     listOf(
-        AccentColor("default", DefaultAccent, "Default"),
-        AccentColor("blue", Color(0xFF3584E4), "Blue"),
-        AccentColor("teal", Color(0xFF2190A4), "Teal"),
-        AccentColor("yellow", Color(0xFFC88800), "Yellow"),
-        AccentColor("orange", Color(0xFFED5B00), "Orange"),
-        AccentColor("red", Color(0xFFE62D42), "Red"),
-        AccentColor("pink", Color(0xFFD56199), "Pink"),
-        AccentColor("purple", Color(0xFF9141AC), "Purple"),
-        AccentColor("slate", Color(0xFF6F8396), "Slate"),
+        AccentColor("default", DefaultAccent, DefaultAccent, "Default"),
+        AccentColor("red", Color(0xFFFF3B30), Color(0xFFFF453A), "Red"),
+        AccentColor("pink", Color(0xFFFF2D55), Color(0xFFFF375F), "Pink"),
+        AccentColor("orange", Color(0xFFFF9500), Color(0xFFFF9F0A), "Orange"),
+        AccentColor("brown", Color(0xFFA2845E), Color(0xFFAC8E68), "Brown"),
+        AccentColor("yellow", Color(0xFFFFCC00), Color(0xFFFFD60A), "Yellow"),
+        AccentColor("green", Color(0xFF34C759), Color(0xFF30D158), "Green"),
+        AccentColor("mint", Color(0xFF00C7BE), Color(0xFF63E6E2), "Mint"),
+        AccentColor("teal", Color(0xFF30B0C7), Color(0xFF40C8E0), "Teal"),
+        AccentColor("cyan", Color(0xFF32ADE6), Color(0xFF64D2FF), "Cyan"),
+        AccentColor("blue", Color(0xFF007AFF), Color(0xFF0A84FF), "Blue"),
+        AccentColor("indigo", Color(0xFF5856D6), Color(0xFF5E5CE6), "Indigo"),
+        AccentColor("purple", Color(0xFFAF52DE), Color(0xFFBF5AF2), "Purple"),
     )

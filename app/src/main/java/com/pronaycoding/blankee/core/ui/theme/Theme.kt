@@ -38,6 +38,7 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
@@ -140,8 +141,7 @@ fun BlankeeAppTheme(
     val accent =
         AccentColors
             .firstOrNull { it.id == preferenceManager.getAccentColorBlocking(Constants.ACCENT_DEFAULT) }
-            ?.color
-            ?.takeIf { it != Color.Unspecified }
+            ?.color(darkTheme)
 
     val baseScheme =
         when {
@@ -159,7 +159,7 @@ fun BlankeeAppTheme(
         } else {
             baseScheme.copy(
                 primary = accent,
-                onPrimary = Color.White,
+                onPrimary = if (accent.luminance() > 0.5f) Color.Black else Color.White,
                 primaryContainer = if (darkTheme) accent.copy(alpha = 1f).darken(0.25f) else accent.lighten(0.45f),
                 onPrimaryContainer = if (darkTheme) Color.White else accent.darken(0.6f),
             )

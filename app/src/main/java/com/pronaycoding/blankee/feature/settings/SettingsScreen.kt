@@ -89,6 +89,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -325,7 +326,7 @@ fun SettingsScreen(
                     ) {
                         AccentColors.forEach { option ->
                             val selected = option.id == accentColor
-                            val swatch = option.color
+                            val swatch = option.color(scheme.background.luminance() < 0.5f)
                             Box(
                                 contentAlignment = Alignment.Center,
                                 modifier =
