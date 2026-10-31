@@ -54,7 +54,7 @@ import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.BugReport
 import androidx.compose.material.icons.filled.Gavel
 import androidx.compose.material.icons.filled.Check
-import androidx.compose.material.icons.filled.ColorLens
+import androidx.compose.material.icons.filled.Brush
 import androidx.compose.material.icons.filled.Language
 import androidx.compose.material.icons.filled.OpenInNew
 import androidx.compose.material.icons.filled.Palette
@@ -311,7 +311,7 @@ fun SettingsScreen(
                     )
 
                     SettingHeading(
-                        icon = Icons.Default.ColorLens,
+                        icon = Icons.Default.Brush,
                         title = stringResource(R.string.settings_accent_color),
                         modifier = Modifier.padding(horizontal = 20.dp, vertical = 4.dp),
                     )
