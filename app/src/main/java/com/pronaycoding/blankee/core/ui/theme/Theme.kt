@@ -141,6 +141,7 @@ fun BlankeeAppTheme(
     val accent =
         AccentColors
             .firstOrNull { it.id == preferenceManager.getAccentColorBlocking(Constants.ACCENT_DEFAULT) }
+            ?.takeIf { it.id != Constants.ACCENT_DEFAULT }
             ?.color(darkTheme)
 
     val baseScheme =

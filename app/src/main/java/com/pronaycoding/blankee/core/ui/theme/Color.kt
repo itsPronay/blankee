@@ -43,7 +43,7 @@ val DefaultAccent = Color(0xFF27A157)
 /**
  * User-selectable accent colors, matching Blankie (iOS/macOS) in name and order.
  * The values are Apple's system colors (as used by SwiftUI's `.red`, `.blue`, ...),
- * with the light and dark appearance variants. "Default" keeps the app's own accent.
+ * with the light and dark appearance variants. "Default" keeps the app's original blue and look.
  */
 data class AccentColor(
     val id: String,
@@ -56,7 +56,7 @@ data class AccentColor(
 
 val AccentColors =
     listOf(
-        AccentColor("default", DefaultAccent, DefaultAccent, "Default"),
+        AccentColor("default", Primary, Primary, "Default"),
         AccentColor("red", Color(0xFFFF3B30), Color(0xFFFF453A), "Red"),
         AccentColor("pink", Color(0xFFFF2D55), Color(0xFFFF375F), "Pink"),
         AccentColor("orange", Color(0xFFFF9500), Color(0xFFFF9F0A), "Orange"),
