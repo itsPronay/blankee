@@ -54,6 +54,7 @@ import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.BugReport
 import androidx.compose.material.icons.filled.Gavel
 import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.filled.ColorLens
 import androidx.compose.material.icons.filled.Language
 import androidx.compose.material.icons.filled.OpenInNew
 import androidx.compose.material.icons.filled.Palette
@@ -303,14 +304,17 @@ fun SettingsScreen(
                         }
                     }
 
-                    Spacer(modifier = Modifier.height(16.dp))
-
-                    Text(
-                        text = stringResource(R.string.settings_accent_color),
-                        style = MaterialTheme.typography.bodyLarge,
-                        color = scheme.onSurface,
-                        modifier = Modifier.padding(horizontal = 24.dp),
+                    HorizontalDivider(
+                        modifier = Modifier.padding(vertical = 20.dp),
+                        color = scheme.outlineVariant,
                     )
+
+                    SettingHeading(
+                        icon = Icons.Default.ColorLens,
+                        title = stringResource(R.string.settings_accent_color),
+                        modifier = Modifier.padding(horizontal = 20.dp, vertical = 4.dp),
+                    )
+                    Spacer(modifier = Modifier.height(10.dp))
                     Row(
                         modifier =
                             Modifier
