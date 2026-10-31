@@ -36,3 +36,30 @@ val TextSecondary = Color(0xFF79747E)
 val Error = Color(0xFFEF5350)
 val Success = Color(0xFF66BB6A)
 val Warning = Color(0xFFFFB74D)
+
+/** Accent color used for section titles and tabs when no custom accent is chosen. */
+val DefaultAccent = Color(0xFF27A157)
+
+/**
+ * User-selectable accent colors, in the spirit of Blankie (iOS/macOS) and Blanket (GNOME).
+ * [Color.Unspecified] means "keep the app's original colors".
+ */
+data class AccentColor(
+    val id: String,
+    val color: Color,
+    val label: String,
+)
+
+val AccentColors =
+    listOf(
+        AccentColor("default", Color.Unspecified, "Default"),
+        AccentColor("blue", Color(0xFF3584E4), "Blue"),
+        AccentColor("teal", Color(0xFF2190A4), "Teal"),
+        AccentColor("green", Color(0xFF3A944A), "Green"),
+        AccentColor("yellow", Color(0xFFC88800), "Yellow"),
+        AccentColor("orange", Color(0xFFED5B00), "Orange"),
+        AccentColor("red", Color(0xFFE62D42), "Red"),
+        AccentColor("pink", Color(0xFFD56199), "Pink"),
+        AccentColor("purple", Color(0xFF9141AC), "Purple"),
+        AccentColor("slate", Color(0xFF6F8396), "Slate"),
+    )

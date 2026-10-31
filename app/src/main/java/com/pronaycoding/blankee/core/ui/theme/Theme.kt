@@ -34,7 +34,9 @@ import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.SideEffect
+import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
@@ -114,6 +116,9 @@ private val LightColorScheme =
         outlineVariant = Color(0xFFCAC7D0),
     )
 
+/** The accent used for section titles and tabs; follows the user-selected accent color. */
+val LocalAccentColor = staticCompositionLocalOf { DefaultAccent }
+
 @Composable
 fun BlankeeAppTheme(
     // Dynamic color is available on Android 12+
@@ -132,7 +137,13 @@ fun BlankeeAppTheme(
             else -> true
         }
 
-    val colorScheme =
+    val accent =
+        AccentColors
+            .firstOrNull { it.id == preferenceManager.getAccentColorBlocking(Constants.ACCENT_DEFAULT) }
+            ?.color
+            ?.takeIf { it != Color.Unspecified }
+
+    val baseScheme =
         when {
             dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
                 if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
@@ -140,6 +151,18 @@ fun BlankeeAppTheme(
             darkTheme && amoledDark -> AmoledColorScheme
             darkTheme -> DarkColorScheme
             else -> LightColorScheme
+        }
+
+    val colorScheme =
+        if (accent == null || (dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S)) {
+            baseScheme
+        } else {
+            baseScheme.copy(
+                primary = accent,
+                onPrimary = Color.White,
+                primaryContainer = if (darkTheme) accent.copy(alpha = 1f).darken(0.25f) else accent.lighten(0.45f),
+                onPrimaryContainer = if (darkTheme) Color.White else accent.darken(0.6f),
+            )
         }
 
     val view = LocalView.current
@@ -152,9 +175,17 @@ fun BlankeeAppTheme(
         }
     }
 
-    MaterialTheme(
-        colorScheme = colorScheme,
-        typography = Typography,
-        content = content,
-    )
+    CompositionLocalProvider(LocalAccentColor provides (accent ?: DefaultAccent)) {
+        MaterialTheme(
+            colorScheme = colorScheme,
+            typography = Typography,
+            content = content,
+        )
+    }
 }
+
+private fun Color.darken(fraction: Float): Color =
+    Color(red * (1 - fraction), green * (1 - fraction), blue * (1 - fraction), alpha)
+
+private fun Color.lighten(fraction: Float): Color =
+    Color(red + (1 - red) * fraction, green + (1 - green) * fraction, blue + (1 - blue) * fraction, alpha)

@@ -23,6 +23,19 @@ package com.pronaycoding.blankee.feature.settings
  * @see PreferenceManagerRepository for preference persistence
  */
 
+import com.pronaycoding.blankee.core.ui.theme.DefaultAccent
+import com.pronaycoding.blankee.core.ui.theme.AccentColors
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.selected
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.draw.clip
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.border
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -107,11 +120,14 @@ fun SettingsScreenRoute(
     val selectedTheme by viewModel.selectedTheme.collectAsStateWithLifecycle()
     val amoledDark by viewModel.amoledDark.collectAsStateWithLifecycle()
     val selectedLanguage by viewModel.selectedLanguage.collectAsStateWithLifecycle()
+    val accentColor by viewModel.accentColor.collectAsStateWithLifecycle()
 
     SettingsScreen(
         selectedTheme = selectedTheme,
         amoledDark = amoledDark,
         selectedLanguage = selectedLanguage,
+        accentColor = accentColor,
+        updateAccentColor = viewModel::updateAccentColor,
         themeChoices = viewModel.themeChoices,
         languageChoices = viewModel.languageChoices,
         onBackPressed = onBackPressed,
@@ -127,6 +143,8 @@ fun SettingsScreen(
     selectedTheme: String,
     amoledDark: Boolean,
     selectedLanguage: String,
+    accentColor: String,
+    updateAccentColor: (String) -> Unit,
     themeChoices: List<ThemeChoice>,
     languageChoices: List<LanguageChoice>,
     updateTheme: (String) -> Unit,
@@ -282,6 +300,53 @@ fun SettingsScreen(
                                         context.findActivity()?.recreate()
                                     },
                                 )
+                            }
+                        }
+                    }
+
+                    Spacer(modifier = Modifier.height(16.dp))
+
+                    Text(
+                        text = stringResource(R.string.settings_accent_color),
+                        style = MaterialTheme.typography.bodyLarge,
+                        color = scheme.onSurface,
+                        modifier = Modifier.padding(horizontal = 24.dp),
+                    )
+                    Row(
+                        modifier =
+                            Modifier
+                                .fillMaxWidth()
+                                .horizontalScroll(rememberScrollState())
+                                .padding(horizontal = 24.dp, vertical = 12.dp),
+                        horizontalArrangement = Arrangement.spacedBy(12.dp),
+                    ) {
+                        AccentColors.forEach { option ->
+                            val selected = option.id == accentColor
+                            val swatch = if (option.color == Color.Unspecified) DefaultAccent else option.color
+                            Box(
+                                contentAlignment = Alignment.Center,
+                                modifier =
+                                    Modifier
+                                        .size(36.dp)
+                                        .clip(CircleShape)
+                                        .background(swatch)
+                                        .border(
+                                            width = if (selected) 3.dp else 0.dp,
+                                            color = scheme.onSurface,
+                                            shape = CircleShape,
+                                        ).clickable(role = Role.RadioButton) {
+                                            updateAccentColor(option.id)
+                                            context.findActivity()?.recreate()
+                                        }.semantics { this.selected = selected; contentDescription = option.label },
+                            ) {
+                                if (selected) {
+                                    Icon(
+                                        imageVector = Icons.Default.Check,
+                                        contentDescription = null,
+                                        tint = Color.White,
+                                        modifier = Modifier.size(20.dp),
+                                    )
+                                }
                             }
                         }
                     }

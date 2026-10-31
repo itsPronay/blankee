@@ -73,6 +73,17 @@ class PreferenceManagerRepositoryImpl(
         }
     }
 
+    override fun getAccentColorBlocking(defaultValue: String): String =
+        runBlocking {
+            appContext.dataStore.data.first()[Keys.accentColor] ?: defaultValue
+        }
+
+    override suspend fun setAccentColor(id: String) {
+        appContext.dataStore.edit { prefs ->
+            prefs[Keys.accentColor] = id
+        }
+    }
+
     /**
      * Retrieves the stored language tag using synchronous blocking.
      *
@@ -197,6 +208,7 @@ class PreferenceManagerRepositoryImpl(
     private object Keys {
         val themeMode: Preferences.Key<String> = stringPreferencesKey("app_theme_mode")
         val amoledDark: Preferences.Key<Boolean> = booleanPreferencesKey("amoled_dark")
+        val accentColor: Preferences.Key<String> = stringPreferencesKey("accent_color")
         val languageTag: Preferences.Key<String> = stringPreferencesKey("app_language_tag")
         val launchCount: Preferences.Key<Int> = intPreferencesKey("launch_count")
         val enjoyPromptShown: Preferences.Key<Boolean> = booleanPreferencesKey("enjoy_prompt_shown")

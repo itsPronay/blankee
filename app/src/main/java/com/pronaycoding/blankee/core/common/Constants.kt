@@ -16,6 +16,7 @@ object Constants {
     const val MODE_LIGHT = "light"
     const val MODE_DARK = "dark"
     const val MODE_SYSTEM = "system"
+    const val ACCENT_DEFAULT = "default"
     const val LANGUAGE_TAG_SYSTEM = "system"
     const val LANGUAGE_TAG_ENGLISH = "en"
     const val LANGUAGE_TAG_CHINESE = "zh"

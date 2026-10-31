@@ -69,6 +69,10 @@ class SettingsViewModel(
     private val _amoledDark = MutableStateFlow(prefManager.getAmoledDarkBlocking(false))
     val amoledDark: StateFlow<Boolean> = _amoledDark.asStateFlow()
 
+    private val _accentColor =
+        MutableStateFlow(prefManager.getAccentColorBlocking(Constants.ACCENT_DEFAULT))
+    val accentColor: StateFlow<String> = _accentColor.asStateFlow()
+
     private val _selectedLanguage =
         MutableStateFlow(
             prefManager.getLanguageTagBlocking(Constants.LANGUAGE_TAG_SYSTEM),
@@ -88,6 +92,14 @@ class SettingsViewModel(
         _amoledDark.value = enabled
         runBlocking {
             prefManager.setAmoledDark(enabled)
+        }
+    }
+
+    fun updateAccentColor(id: String) {
+        if (_accentColor.value == id) return
+        _accentColor.value = id
+        runBlocking {
+            prefManager.setAccentColor(id)
         }
     }
 

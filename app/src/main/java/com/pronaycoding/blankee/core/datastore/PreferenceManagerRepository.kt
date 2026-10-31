@@ -38,6 +38,12 @@ interface PreferenceManagerRepository {
     /** Enables or disables the AMOLED variant of the dark theme. */
     suspend fun setAmoledDark(enabled: Boolean)
 
+    /** Returns the id of the selected accent color (see AccentColors). */
+    fun getAccentColorBlocking(defaultValue: String): String
+
+    /** Stores the id of the selected accent color. */
+    suspend fun setAccentColor(id: String)
+
     /**
      * Retrieves the current language tag synchronously (blocking operation).
      *
