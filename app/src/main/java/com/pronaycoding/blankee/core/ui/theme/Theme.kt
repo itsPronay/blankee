@@ -36,6 +36,7 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.SideEffect
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.luminance
@@ -127,10 +128,18 @@ fun BlankeeAppTheme(
     content: @Composable () -> Unit,
 ) {
     val context = LocalContext.current
-    val preferenceManager = PreferenceManagerRepositoryImpl(context)
     val systemDark = isSystemInDarkTheme()
-    val themeMode = preferenceManager.getThemeModeBlocking(Constants.MODE_DARK)
-    val amoledDark = preferenceManager.getAmoledDarkBlocking(false)
+    // Read once per activity: every preference change recreates the activity, and these are
+    // blocking DataStore reads that must not run on each recomposition.
+    val (themeMode, amoledDark, accentId) =
+        remember(context) {
+            val preferenceManager = PreferenceManagerRepositoryImpl(context)
+            Triple(
+                preferenceManager.getThemeModeBlocking(Constants.MODE_DARK),
+                preferenceManager.getAmoledDarkBlocking(false),
+                preferenceManager.getAccentColorBlocking(Constants.ACCENT_DEFAULT),
+            )
+        }
     val darkTheme =
         when (themeMode) {
             Constants.MODE_LIGHT -> false
@@ -140,7 +149,7 @@ fun BlankeeAppTheme(
 
     val accent =
         AccentColors
-            .firstOrNull { it.id == preferenceManager.getAccentColorBlocking(Constants.ACCENT_DEFAULT) }
+            .firstOrNull { it.id == accentId }
             ?.takeIf { it.id != Constants.ACCENT_DEFAULT }
             ?.color(darkTheme)
 
