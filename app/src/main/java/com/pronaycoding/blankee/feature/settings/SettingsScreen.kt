@@ -23,7 +23,6 @@ package com.pronaycoding.blankee.feature.settings
  * @see PreferenceManagerRepository for preference persistence
  */
 
-import com.pronaycoding.blankee.core.ui.theme.DefaultAccent
 import com.pronaycoding.blankee.core.ui.theme.AccentColors
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.selected
@@ -322,7 +321,7 @@ fun SettingsScreen(
                     ) {
                         AccentColors.forEach { option ->
                             val selected = option.id == accentColor
-                            val swatch = if (option.color == Color.Unspecified) DefaultAccent else option.color
+                            val swatch = option.color
                             Box(
                                 contentAlignment = Alignment.Center,
                                 modifier =

@@ -42,7 +42,6 @@ val DefaultAccent = Color(0xFF27A157)
 
 /**
  * User-selectable accent colors, in the spirit of Blankie (iOS/macOS) and Blanket (GNOME).
- * [Color.Unspecified] means "keep the app's original colors".
  */
 data class AccentColor(
     val id: String,
@@ -52,10 +51,9 @@ data class AccentColor(
 
 val AccentColors =
     listOf(
-        AccentColor("default", Color.Unspecified, "Default"),
+        AccentColor("default", DefaultAccent, "Default"),
         AccentColor("blue", Color(0xFF3584E4), "Blue"),
         AccentColor("teal", Color(0xFF2190A4), "Teal"),
-        AccentColor("green", Color(0xFF3A944A), "Green"),
         AccentColor("yellow", Color(0xFFC88800), "Yellow"),
         AccentColor("orange", Color(0xFFED5B00), "Orange"),
         AccentColor("red", Color(0xFFE62D42), "Red"),
