@@ -13,6 +13,7 @@ import androidx.media3.common.Player
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.datasource.RawResourceDataSource
 import androidx.media3.exoplayer.ExoPlayer
+import com.pronaycoding.blankee.core.model.CardItems
 import java.io.File
 
 /**
@@ -44,10 +45,6 @@ class SoundManager(
 ) {
     private val mediaPlayers = mutableMapOf<Int, ExoPlayer>()
     private val customMediaPlayers = mutableMapOf<Int, ExoPlayer>()
-
-    // Players are created lazily on first play: building an ExoPlayer is expensive (own playback
-    // thread, decoder), and creating all of them at launch blocked the main thread.
-    private val customSoundUris = mutableMapOf<Int, Uri>()
 
     // Separate sets so a built-in index and a custom id with the same number never collide.
     private val pausedBuiltInSounds = mutableSetOf<Int>()
@@ -102,35 +99,25 @@ class SoundManager(
     }
 
     /**
-     * Returns the player for a built-in sound, creating it on first use.
+     * Loads all built-in sounds from app resources into ExoPlayer instances.
+     *
+     * Call once during initialization. Each sound is created from [getCardList],
+     * set to loop, and stored in [mediaPlayers] indexed by its position.
      *
      * @see getCardList for the list of available built-in sounds
+     * @see playSound for playing a loaded sound
      */
     @androidx.annotation.OptIn(UnstableApi::class)
-    private fun builtInPlayer(index: Int): ExoPlayer? {
-        mediaPlayers[index]?.let { return it }
-        val item = getCardList().getOrNull(index) ?: return null
-        return try {
-            val uri = RawResourceDataSource.buildRawResourceUri(item.audioSource)
-            createLoopingPlayer(uri, "built-in $index") {
-                mediaPlayers.remove(index)?.release()
-            }.also { mediaPlayers[index] = it }
-        } catch (e: Exception) {
-            Log.e(TAG, "Error loading sound: $index - ${e.message}", e)
-            null
-        }
-    }
-
-    private fun customPlayer(soundId: Int): ExoPlayer? {
-        customMediaPlayers[soundId]?.let { return it }
-        val uri = customSoundUris[soundId] ?: return null
-        return try {
-            createLoopingPlayer(uri, "custom $soundId") {
-                customMediaPlayers.remove(soundId)?.release()
-            }.also { customMediaPlayers[soundId] = it }
-        } catch (e: Exception) {
-            Log.e(TAG, "Error loading custom sound: $soundId - ${e.message}", e)
-            null
+    fun loadSounds() {
+        getCardList().forEachIndexed { index: Int, item: CardItems ->
+            Log.d(TAG, "Loading sound: $index")
+            try {
+                mediaPlayers.remove(index)?.release() // avoid leaks if called twice
+                val uri = RawResourceDataSource.buildRawResourceUri(item.audioSource)
+                mediaPlayers[index] = createLoopingPlayer(uri, "built-in $index")
+            } catch (e: Exception) {
+                Log.e(TAG, "Error loading sound: $index - ${e.message}", e)
+            }
         }
     }
 
@@ -165,8 +152,11 @@ class SoundManager(
                 }
 
             customMediaPlayers.remove(soundId)?.release() // avoid leaks if reloaded
-            customSoundUris[soundId] = uri
-            Log.d(TAG, "Registered custom sound: $soundId")
+            customMediaPlayers[soundId] =
+                createLoopingPlayer(uri, "custom $soundId") {
+                    unloadCustomSound(soundId)
+                }
+            Log.d(TAG, "Successfully loaded custom sound: $soundId")
             true
         } catch (e: Exception) {
             Log.e(TAG, "Error loading custom sound: $soundId - ${e.message}", e)
@@ -179,7 +169,6 @@ class SoundManager(
      */
     fun unloadCustomSound(soundId: Int) {
         pausedCustomSounds.remove(soundId)
-        customSoundUris.remove(soundId)
         customMediaPlayers.remove(soundId)?.let {
             try {
                 it.release()
@@ -203,7 +192,7 @@ class SoundManager(
         volume: Float,
     ) {
         Log.d(TAG, "Play sound called for index: $soundIndex")
-        builtInPlayer(soundIndex)?.let { player ->
+        mediaPlayers[soundIndex]?.let { player ->
             player.volume = volume.coerceIn(0f, 1f)
             if (!player.isActive) {
                 player.play()
@@ -224,7 +213,7 @@ class SoundManager(
         volume: Float,
     ) {
         Log.d(TAG, "Play custom sound called for id: $soundId")
-        customPlayer(soundId)?.let { player ->
+        customMediaPlayers[soundId]?.let { player ->
             player.volume = volume.coerceIn(0f, 1f)
             if (!player.isActive) {
                 player.play()
@@ -246,7 +235,7 @@ class SoundManager(
     ) {
         mediaPlayers[soundIndex]?.let {
             it.volume = volume.coerceIn(0f, 1f)
-        }
+        } ?: Log.e(TAG, "Cannot control sound at index: $soundIndex, not found.")
     }
 
     /**
@@ -258,7 +247,7 @@ class SoundManager(
     ) {
         customMediaPlayers[soundId]?.let {
             it.volume = volume.coerceIn(0f, 1f)
-        }
+        } ?: Log.e(TAG, "Cannot control custom sound: $soundId, not found.")
     }
 
     /**
@@ -270,7 +259,7 @@ class SoundManager(
             it.pause()
             it.seekTo(0)
             Log.d(TAG, "Stopped sound at index: $soundIndex")
-        }
+        } ?: Log.e(TAG, "Cannot stop sound at index: $soundIndex, not found.")
     }
 
     /**
@@ -282,7 +271,7 @@ class SoundManager(
             it.pause()
             it.seekTo(0)
             Log.d(TAG, "Stopped custom sound: $soundId")
-        }
+        } ?: Log.e(TAG, "Cannot stop custom sound: $soundId, not found.")
     }
 
     /**
@@ -342,7 +331,6 @@ class SoundManager(
         customMediaPlayers.values.forEach { it.release() }
         mediaPlayers.clear()
         customMediaPlayers.clear()
-        customSoundUris.clear()
         pausedBuiltInSounds.clear()
         pausedCustomSounds.clear()
         Log.d(TAG, "SoundManager resources released.")
