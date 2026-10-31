@@ -14,11 +14,13 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
+import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import com.pronaycoding.blankee.core.common.Constants
 import com.pronaycoding.blankee.core.datastore.PreferenceManagerRepositoryImpl
 import com.pronaycoding.blankee.core.ui.components.EnjoyBlankeePrompt
+import com.pronaycoding.blankee.core.ui.theme.AppLanguageProvider
 import com.pronaycoding.blankee.core.ui.theme.BlankeeAppTheme
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
@@ -64,6 +66,7 @@ class MainActivity : ComponentActivity() {
         )
 
         setContent {
+            AppLanguageProvider {
             BlankeeAppTheme {
                 Surface {
                     val shouldShowEnjoyPrompt =
@@ -76,8 +79,8 @@ class MainActivity : ComponentActivity() {
                     if (showNotificationPrimer) {
                         AlertDialog(
                             onDismissRequest = { },
-                            title = { Text(getString(R.string.notification_primer_title)) },
-                            text = { Text(getString(R.string.notification_primer_message)) },
+                            title = { Text(stringResource(R.string.notification_primer_title)) },
+                            text = { Text(stringResource(R.string.notification_primer_message)) },
                             confirmButton = {
                                 TextButton(
                                     onClick = {
@@ -88,7 +91,7 @@ class MainActivity : ComponentActivity() {
                                         requestNotificationPermission.launch(Manifest.permission.POST_NOTIFICATIONS)
                                     },
                                 ) {
-                                    Text(getString(R.string.notification_primer_grant))
+                                    Text(stringResource(R.string.notification_primer_grant))
                                 }
                             },
                             dismissButton = {
@@ -100,12 +103,13 @@ class MainActivity : ComponentActivity() {
                                         }
                                     },
                                 ) {
-                                    Text(getString(R.string.notification_primer_continue_anyway), color = MaterialTheme.colorScheme.error)
+                                    Text(stringResource(R.string.notification_primer_continue_anyway), color = MaterialTheme.colorScheme.error)
                                 }
                             },
                         )
                     }
                 }
+            }
             }
         }
     }

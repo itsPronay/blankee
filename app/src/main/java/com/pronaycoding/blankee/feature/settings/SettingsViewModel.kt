@@ -94,7 +94,7 @@ class SettingsViewModel(
     fun updateLanguage(tag: String) {
         if (_selectedLanguage.value == tag) return
         _selectedLanguage.value = tag
-        runBlocking {
+        viewModelScope.launch {
             prefManager.setLanguageTag(tag)
         }
     }
