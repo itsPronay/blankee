@@ -1,5 +1,7 @@
 package com.pronaycoding.blankee.core.datastore
 
+import kotlinx.coroutines.flow.Flow
+
 /**
  * Repository interface for managing app preferences and settings.
  *
