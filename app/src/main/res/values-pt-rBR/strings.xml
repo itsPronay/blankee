@@ -120,7 +120,6 @@
     <string name="dialog_cancel">Cancelar</string>
     <string name="timer_dialog_title">Temporizador de sono</string>
     <string name="timer_dialog_subtitle">Escolha por quanto tempo os sons devem tocar</string>
-    <string name="timer_fade_hint">O volume diminui suavemente antes de a reprodução parar</string>
     <string name="timer_custom">Personalizado</string>
     <string name="timer_minutes_format">%1$d min</string>
     <string name="timer_start">Iniciar temporizador</string>

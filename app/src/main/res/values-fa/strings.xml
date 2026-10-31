@@ -130,7 +130,6 @@
     <string name="dialog_cancel">لغو</string>
     <string name="timer_dialog_title">تایمر خواب</string>
     <string name="timer_dialog_subtitle">مدت پخش صداها را انتخاب کنید</string>
-    <string name="timer_fade_hint">پیش از توقف پخش، صدا به آرامی کم می‌شود</string>
     <string name="timer_custom">سفارشی</string>
     <string name="timer_minutes_format">%1$d دقیقه</string>
     <string name="timer_start">شروع تایمر</string>

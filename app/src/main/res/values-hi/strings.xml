@@ -114,7 +114,6 @@
     <string name="dialog_cancel">रद्द करें</string>
     <string name="timer_dialog_title">स्लीप टाइमर</string>
     <string name="timer_dialog_subtitle">चुनें कि आवाज़ें कितनी देर तक चलें</string>
-    <string name="timer_fade_hint">प्लेबैक रुकने से पहले आवाज़ धीरे-धीरे कम हो जाती है</string>
     <string name="timer_custom">कस्टम</string>
     <string name="timer_minutes_format">%1$d मिनट</string>
     <string name="timer_start">टाइमर शुरू करें</string>

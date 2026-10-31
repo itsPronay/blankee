@@ -130,7 +130,6 @@
     <string name="dialog_cancel">ยกเลิก</string>
     <string name="timer_dialog_title">ตั้งเวลาหลับ</string>
     <string name="timer_dialog_subtitle">เลือกระยะเวลาที่ต้องการให้เสียงเล่น</string>
-    <string name="timer_fade_hint">เสียงจะค่อยๆ ลดลงก่อนหยุดเล่น</string>
     <string name="timer_custom">กำหนดเอง</string>
     <string name="timer_minutes_format">%1$d นาที</string>
     <string name="timer_start">เริ่มจับเวลา</string>

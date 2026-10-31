@@ -130,7 +130,6 @@
     <string name="dialog_cancel">Abbrechen</string>
     <string name="timer_dialog_title">Schlaftimer</string>
     <string name="timer_dialog_subtitle">Wähle, wie lange die Klänge abgespielt werden sollen</string>
-    <string name="timer_fade_hint">Die Lautstärke wird vor dem Stopp der Wiedergabe sanft ausgeblendet</string>
     <string name="timer_custom">Benutzerdefiniert</string>
     <string name="timer_minutes_format">%1$d Min.</string>
     <string name="timer_start">Timer starten</string>

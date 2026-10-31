@@ -130,7 +130,6 @@
     <string name="dialog_cancel">İptal</string>
     <string name="timer_dialog_title">Uyku zamanlayıcısı</string>
     <string name="timer_dialog_subtitle">Seslerin ne kadar süre çalacağını seçin</string>
-    <string name="timer_fade_hint">Oynatma durmadan önce ses yavaşça kısılır</string>
     <string name="timer_custom">Özel</string>
     <string name="timer_minutes_format">%1$d dk</string>
     <string name="timer_start">Zamanlayıcıyı başlat</string>

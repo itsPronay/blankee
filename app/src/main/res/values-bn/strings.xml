@@ -114,7 +114,6 @@
     <string name="dialog_cancel">বাতিল</string>
     <string name="timer_dialog_title">ঘুমের টাইমার</string>
     <string name="timer_dialog_subtitle">শব্দগুলো কতক্ষণ চলবে তা বেছে নিন</string>
-    <string name="timer_fade_hint">প্লেব্যাক বন্ধ হওয়ার আগে ভলিউম ধীরে ধীরে কমে যায়</string>
     <string name="timer_custom">কাস্টম</string>
     <string name="timer_minutes_format">%1$d মিনিট</string>
     <string name="timer_start">টাইমার শুরু করুন</string>

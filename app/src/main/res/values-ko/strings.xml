@@ -120,7 +120,6 @@
     <string name="dialog_cancel">취소</string>
     <string name="timer_dialog_title">수면 타이머</string>
     <string name="timer_dialog_subtitle">소리를 재생할 시간을 선택하세요</string>
-    <string name="timer_fade_hint">재생이 멈추기 전에 볼륨이 서서히 줄어듭니다</string>
     <string name="timer_custom">사용자 정의</string>
     <string name="timer_minutes_format">%1$d분</string>
     <string name="timer_start">타이머 시작</string>

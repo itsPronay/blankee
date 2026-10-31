@@ -114,7 +114,6 @@
     <string name="dialog_cancel">Cancelar</string>
     <string name="timer_dialog_title">Temporizador de sueño</string>
     <string name="timer_dialog_subtitle">Elige cuánto tiempo deben sonar los sonidos</string>
-    <string name="timer_fade_hint">El volumen se reduce suavemente antes de que se detenga la reproducción</string>
     <string name="timer_custom">Personalizado</string>
     <string name="timer_minutes_format">%1$d min</string>
     <string name="timer_start">Iniciar temporizador</string>

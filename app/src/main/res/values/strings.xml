@@ -137,9 +137,14 @@
     <string name="dialog_cancel">Cancel</string>
     <string name="timer_dialog_title">Sleep timer</string>
     <string name="timer_dialog_subtitle">Choose how long the sounds should play</string>
-    <string name="timer_fade_hint">Volume fades out gently before playback stops</string>
     <string name="timer_custom">Custom</string>
+    <string name="timer_custom_hint">Set your own time</string>
     <string name="timer_minutes_format">%1$d min</string>
+    <string name="timer_minutes_unit">min</string>
+    <string name="timer_custom_minutes_format">%1$s min</string>
+    <string name="timer_custom_hours_format">%1$s hr</string>
+    <string name="timer_unit_minutes">Minutes</string>
+    <string name="timer_unit_hours">Hours</string>
     <string name="timer_start">Start timer</string>
     <string name="timer_set">Timer set for %1$d minutes</string>
     <string name="timer_invalid_input">Enter a valid timer duration</string>

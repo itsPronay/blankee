@@ -130,7 +130,6 @@
     <string name="dialog_cancel">ਰੱਦ ਕਰੋ</string>
     <string name="timer_dialog_title">ਸਲੀਪ ਟਾਈਮਰ</string>
     <string name="timer_dialog_subtitle">ਚੁਣੋ ਕਿ ਆਵਾਜ਼ਾਂ ਕਿੰਨੀ ਦੇਰ ਚੱਲਣ</string>
-    <string name="timer_fade_hint">ਪਲੇਬੈਕ ਰੁਕਣ ਤੋਂ ਪਹਿਲਾਂ ਆਵਾਜ਼ ਹੌਲੀ-ਹੌਲੀ ਘੱਟ ਜਾਂਦੀ ਹੈ</string>
     <string name="timer_custom">ਕਸਟਮ</string>
     <string name="timer_minutes_format">%1$d ਮਿੰਟ</string>
     <string name="timer_start">ਟਾਈਮਰ ਸ਼ੁਰੂ ਕਰੋ</string>

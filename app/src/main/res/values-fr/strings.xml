@@ -120,7 +120,6 @@
     <string name="dialog_cancel">Annuler</string>
     <string name="timer_dialog_title">Minuteur de sommeil</string>
     <string name="timer_dialog_subtitle">Choisissez la durée de lecture des sons</string>
-    <string name="timer_fade_hint">Le volume diminue doucement avant l’arrêt de la lecture</string>
     <string name="timer_custom">Personnalisé</string>
     <string name="timer_minutes_format">%1$d min</string>
     <string name="timer_start">Démarrer le minuteur</string>

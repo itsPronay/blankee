@@ -130,7 +130,6 @@
     <string name="dialog_cancel">Hủy</string>
     <string name="timer_dialog_title">Hẹn giờ ngủ</string>
     <string name="timer_dialog_subtitle">Chọn thời gian phát âm thanh</string>
-    <string name="timer_fade_hint">Âm lượng giảm dần trước khi dừng phát</string>
     <string name="timer_custom">Tùy chỉnh</string>
     <string name="timer_minutes_format">%1$d phút</string>
     <string name="timer_start">Bắt đầu hẹn giờ</string>

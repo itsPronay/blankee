@@ -120,7 +120,6 @@
     <string name="dialog_cancel">取消</string>
     <string name="timer_dialog_title">睡眠定时器</string>
     <string name="timer_dialog_subtitle">选择声音播放的时长</string>
-    <string name="timer_fade_hint">播放停止前，音量会逐渐淡出</string>
     <string name="timer_custom">自定义</string>
     <string name="timer_minutes_format">%1$d 分钟</string>
     <string name="timer_start">开始定时</string>

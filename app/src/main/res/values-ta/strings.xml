@@ -120,7 +120,6 @@
     <string name="dialog_cancel">ரத்து செய்</string>
     <string name="timer_dialog_title">தூக்க டைமர்</string>
     <string name="timer_dialog_subtitle">ஒலிகள் எவ்வளவு நேரம் இயங்க வேண்டும் என்பதைத் தேர்ந்தெடுக்கவும்</string>
-    <string name="timer_fade_hint">பிளேபேக் நிற்கும் முன் ஒலி மெதுவாகக் குறையும்</string>
     <string name="timer_custom">விருப்ப</string>
     <string name="timer_minutes_format">%1$d நிமிடம்</string>
     <string name="timer_start">டைமரைத் தொடங்கு</string>

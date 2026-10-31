@@ -130,7 +130,6 @@
     <string name="dialog_cancel">منسوخ کریں</string>
     <string name="timer_dialog_title">سلیپ ٹائمر</string>
     <string name="timer_dialog_subtitle">منتخب کریں کہ آوازیں کتنی دیر چلیں</string>
-    <string name="timer_fade_hint">پلے بیک رکنے سے پہلے آواز آہستہ آہستہ کم ہو جاتی ہے</string>
     <string name="timer_custom">کسٹم</string>
     <string name="timer_minutes_format">%1$d منٹ</string>
     <string name="timer_start">ٹائمر شروع کریں</string>
