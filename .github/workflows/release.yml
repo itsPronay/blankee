@@ -1,0 +1,267 @@
+name: Release
+
+# One-tap release: Actions tab -> "Release" -> "Run workflow".
+#
+# What it does:
+#   1. Bumps versionCode / versionName in app/build.gradle.kts
+#   2. Builds a signed release APK
+#   3. Pushes a `release/vX.Y.Z` branch with the bump commit
+#   4. Creates a DRAFT GitHub Release (tag vX.Y.Z) with the APK + SHA-256 attached
+#   5. Opens a DRAFT pull request with the version bump into the default branch
+#
+# Nothing is public until you review the draft PR, merge it, and click
+# "Publish release" on the draft release.
+#
+# Required repository secrets (Settings -> Secrets and variables -> Actions):
+#   ANDROID_KEYSTORE_BASE64    base64 of your .jks/.keystore   (base64 -w0 release.jks)
+#   ANDROID_KEYSTORE_PASSWORD  keystore password
+#   ANDROID_KEY_ALIAS          key alias
+#   ANDROID_KEY_PASSWORD       key password
+#
+# Also required: Settings -> Actions -> General -> Workflow permissions:
+#   "Read and write permissions" + "Allow GitHub Actions to create and approve pull requests".
+
+on:
+  workflow_dispatch:
+    inputs:
+      bump:
+        description: "Version bump (ignored if 'version' is set)"
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+        default: patch
+      version:
+        description: "Optional exact versionName, e.g. 1.2.0 (leave empty to use bump)"
+        type: string
+        required: false
+        default: ""
+      prerelease:
+        description: "Mark the release as a pre-release"
+        type: boolean
+        default: false
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: gradle
+
+      - name: Verify signing secrets
+        env:
+          ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+        run: |
+          missing=0
+          for name in ANDROID_KEYSTORE_BASE64 ANDROID_KEYSTORE_PASSWORD ANDROID_KEY_ALIAS ANDROID_KEY_PASSWORD; do
+            if [ -z "${!name}" ]; then
+              echo "::error::Missing repository secret: $name"
+              missing=1
+            fi
+          done
+          exit $missing
+
+      - name: Compute next version
+        id: version
+        env:
+          BUMP: ${{ inputs.bump }}
+          EXPLICIT_VERSION: ${{ inputs.version }}
+        run: |
+          set -euo pipefail
+          file=app/build.gradle.kts
+          cur_code=$(sed -nE 's/^[[:space:]]*versionCode[[:space:]]*=[[:space:]]*([0-9]+).*/\1/p' "$file" | head -n1)
+          cur_name=$(sed -nE 's/^[[:space:]]*versionName[[:space:]]*=[[:space:]]*"([^"]+)".*/\1/p' "$file" | head -n1)
+          if [ -z "$cur_code" ] || [ -z "$cur_name" ]; then
+            echo "::error::Could not read versionCode/versionName from $file"
+            exit 1
+          fi
+
+          if [ -n "$EXPLICIT_VERSION" ]; then
+            new_name="${EXPLICIT_VERSION#v}"
+            if ! [[ "$new_name" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+              echo "::error::'version' must look like 1.2.3 (got '$EXPLICIT_VERSION')"
+              exit 1
+            fi
+          else
+            IFS=. read -r major minor patch <<< "$cur_name"
+            case "$BUMP" in
+              major) major=$((major + 1)); minor=0; patch=0 ;;
+              minor) minor=$((minor + 1)); patch=0 ;;
+              *)     patch=$((patch + 1)) ;;
+            esac
+            new_name="$major.$minor.$patch"
+          fi
+          new_code=$((cur_code + 1))
+          tag="v$new_name"
+
+          if git rev-parse -q --verify "refs/tags/$tag" >/dev/null \
+             || git ls-remote --exit-code --heads origin "release/$tag" >/dev/null 2>&1; then
+            echo "::error::Tag or branch for $tag already exists. Delete it or pick another version."
+            exit 1
+          fi
+
+          {
+            echo "old_name=$cur_name"
+            echo "old_code=$cur_code"
+            echo "new_name=$new_name"
+            echo "new_code=$new_code"
+            echo "tag=$tag"
+          } >> "$GITHUB_OUTPUT"
+          echo "Releasing $cur_name ($cur_code) -> $new_name ($new_code)"
+
+      - name: Bump version in build.gradle.kts
+        env:
+          NEW_NAME: ${{ steps.version.outputs.new_name }}
+          NEW_CODE: ${{ steps.version.outputs.new_code }}
+        run: |
+          set -euo pipefail
+          sed -i -E "s/^([[:space:]]*versionCode[[:space:]]*=[[:space:]]*)[0-9]+/\1${NEW_CODE}/" app/build.gradle.kts
+          sed -i -E "s/^([[:space:]]*versionName[[:space:]]*=[[:space:]]*)\"[^\"]+\"/\1\"${NEW_NAME}\"/" app/build.gradle.kts
+          git --no-pager diff --stat
+          grep -E 'versionCode|versionName' app/build.gradle.kts
+
+      - name: Commit bump to release branch
+        id: commit
+        env:
+          TAG: ${{ steps.version.outputs.tag }}
+          NEW_NAME: ${{ steps.version.outputs.new_name }}
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "release/$TAG"
+          git add app/build.gradle.kts
+          git commit -m "chore: bump version to $NEW_NAME"
+          git push origin "release/$TAG"
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+      - name: Decode keystore
+        env:
+          ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+        run: |
+          echo "$ANDROID_KEYSTORE_BASE64" | base64 --decode > "$RUNNER_TEMP/release.jks"
+          echo "ANDROID_KEYSTORE_PATH=$RUNNER_TEMP/release.jks" >> "$GITHUB_ENV"
+
+      - name: Grant execute permission for Gradle wrapper
+        run: chmod +x gradlew
+
+      - name: Build signed release APK
+        env:
+          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+        run: ./gradlew assembleRelease --no-daemon
+
+      - name: Verify APK is signed with the release key
+        id: apk
+        env:
+          TAG: ${{ steps.version.outputs.tag }}
+        run: |
+          set -euo pipefail
+          apk_dir=app/build/outputs/apk/release
+          src=$(ls "$apk_dir"/*.apk | head -n1)
+          out="$apk_dir/blankee-$TAG.apk"
+          mv "$src" "$out"
+
+          apksigner=$(ls "$ANDROID_HOME"/build-tools/*/apksigner | sort -V | tail -n1)
+          "$apksigner" verify --print-certs "$out" | tee "$RUNNER_TEMP/certs.txt"
+
+          # build.gradle.kts silently falls back to the debug key if the keystore
+          # is unusable. Refuse to publish a debug-signed APK.
+          if grep -qi "Android Debug" "$RUNNER_TEMP/certs.txt"; then
+            echo "::error::APK is signed with the debug key, not the release key."
+            exit 1
+          fi
+
+          (cd "$apk_dir" && sha256sum "blankee-$TAG.apk" > "blankee-$TAG.apk.sha256")
+          echo "path=$out" >> "$GITHUB_OUTPUT"
+          echo "sha256_path=$out.sha256" >> "$GITHUB_OUTPUT"
+
+      - name: Create draft GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.version.outputs.tag }}
+          SHA: ${{ steps.commit.outputs.sha }}
+          PRERELEASE: ${{ inputs.prerelease }}
+          APK: ${{ steps.apk.outputs.path }}
+          APK_SHA: ${{ steps.apk.outputs.sha256_path }}
+        run: |
+          set -euo pipefail
+          flags=(--draft --generate-notes --target "$SHA" --title "$TAG")
+          if [ "$PRERELEASE" = "true" ]; then flags+=(--prerelease); fi
+          gh release create "$TAG" "$APK" "$APK_SHA" "${flags[@]}"
+
+      - name: Open draft PR with the version bump
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.version.outputs.tag }}
+          OLD_NAME: ${{ steps.version.outputs.old_name }}
+          NEW_NAME: ${{ steps.version.outputs.new_name }}
+          OLD_CODE: ${{ steps.version.outputs.old_code }}
+          NEW_CODE: ${{ steps.version.outputs.new_code }}
+          BASE: ${{ github.event.repository.default_branch }}
+          REPO_URL: ${{ github.server_url }}/${{ github.repository }}
+        run: |
+          set -euo pipefail
+          cat > "$RUNNER_TEMP/pr-body.md" <<EOF
+          Automated release prep for **$TAG**.
+
+          | | Before | After |
+          |---|---|---|
+          | versionName | $OLD_NAME | $NEW_NAME |
+          | versionCode | $OLD_CODE | $NEW_CODE |
+
+          A **draft release** with the signed APK is already waiting: $REPO_URL/releases
+
+          ### To ship
+          1. Mark this PR ready for review and merge it (use **merge commit** or **rebase**, not squash, so the release tag's commit stays on \`$BASE\`).
+          2. Open the draft release \`$TAG\`, tweak the notes if you like, and click **Publish release**.
+
+          To abort: close this PR, delete the draft release, and delete branch \`release/$TAG\`.
+          EOF
+          gh pr create --draft \
+            --base "$BASE" \
+            --head "release/$TAG" \
+            --title "Release $TAG" \
+            --body-file "$RUNNER_TEMP/pr-body.md"
+
+      - name: Summary
+        if: success()
+        env:
+          TAG: ${{ steps.version.outputs.tag }}
+          REPO_URL: ${{ github.server_url }}/${{ github.repository }}
+        run: |
+          {
+            echo "## Draft release $TAG ready"
+            echo
+            echo "- Draft release: $REPO_URL/releases"
+            echo "- Version PR: $REPO_URL/pulls"
+            echo "- Merge the PR, then publish the draft release."
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Remove keystore
+        if: always()
+        run: rm -f "$RUNNER_TEMP/release.jks"
